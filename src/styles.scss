@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'src/variables';
-@import 'src/assets/scss/_tab.scss';
-@import 'src/assets/scss/_collapse.scss';
 
 *,
 *::after,
@@ -127,7 +125,7 @@ li {
 }
 ::-webkit-scrollbar-thumb {
   height: initial;
-  background: rgba($color: $white-secondary, $alpha: 1);
+  background: $black;
   border-radius: 50px;
 }
 

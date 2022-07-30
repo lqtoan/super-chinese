@@ -125,7 +125,7 @@ li {
 }
 ::-webkit-scrollbar-thumb {
   height: initial;
-  background: $black;
+  background: rgba($color: $white-secondary, $alpha: 1);
   border-radius: 50px;
 }
 

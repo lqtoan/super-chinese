@@ -9,6 +9,6 @@ const nzModules = [NzIconModule];
 
 @NgModule({
   declarations: [MainPageComponent],
-  imports: [CommonModule, TranslateModule, MainPageRoutingModule, nzModules]
+  imports: [CommonModule, TranslateModule, MainPageRoutingModule, nzModules],
 })
 export class MainPageModule {}

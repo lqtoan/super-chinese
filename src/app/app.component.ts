@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'AudioPlayer';
+  title = 'Super Chinese';
 
   constructor(private translateService: TranslateService, private readonly nzI18Service: NzI18nService) {
     this.translateService.addLangs(['en', 'vi']);

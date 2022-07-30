@@ -11,19 +11,19 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'home',
-        loadChildren: () => import('../pages/home/home.module').then((m) => m.HomeModule),
+        loadChildren: () => import('../pages/home/home.module').then(m => m.HomeModule),
       },
       {
         path: 'vocabulary',
-        loadChildren: () => import('../pages/vocabulary/vocabulary.module').then((m) => m.VocabularyModule),
+        loadChildren: () => import('../pages/vocabulary/vocabulary.module').then(m => m.VocabularyModule),
       },
       {
         path: 'curriculum',
-        loadChildren: () => import('../pages/curriculum/curriculum.module').then((m) => m.CurriculumModule),
+        loadChildren: () => import('../pages/curriculum/curriculum.module').then(m => m.CurriculumModule),
       },
       {
         path: 'exercise',
-        loadChildren: () => import('../pages/exercise/exercise.module').then((m) => m.ExerciseModule),
+        loadChildren: () => import('../pages/exercise/exercise.module').then(m => m.ExerciseModule),
       },
     ],
   },

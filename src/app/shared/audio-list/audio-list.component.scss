@@ -40,7 +40,7 @@
         }
       }
       .current {
-        background: $primary-color;
+        background: rgba($color: $primary-color, $alpha: 0.7);
         border-radius: 0.25rem;
       }
     }

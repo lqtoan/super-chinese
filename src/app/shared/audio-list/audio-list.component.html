@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="tab-content">
   <div *ngIf="!audioList">loading...</div>
   <div class="controls" *ngIf="selectedAudio">
@@ -37,42 +36,4 @@
       <p class="audio__description">{{ audio.description }}</p>
     </ul>
   </div>
-=======
-<div *ngIf="!audioList">loading...</div>
-<div class="controls" *ngIf="selectedAudio">
-  <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
-  <audio controls autoplay preload="none" [attr.src]="selectedAudio.url">
-    <source [src]="[selectedAudio.url]" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
-<div class="controls" *ngIf="!selectedAudio">
-  <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon nzType="heart" nzTheme="outline"></i></h4>
-  <audio controls>
-    <source type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
-<div class="pagination">
-  <pagination-controls
-    (pageChange)="currentPage = $event"
-    previousLabel="<"
-    nextLabel=">"
-    [maxSize]="6"
-    [directionLinks]="false"
-    [autoHide]="true"
-    [responsive]="false"
-  ></pagination-controls>
-</div>
-<div class="audio-list">
-  <ul
-    *ngFor="let audio of audioList | paginate: { itemsPerPage: 16, currentPage: currentPage }"
-    class="audio"
-    (click)="onSelect(audio)"
-  >
-    <strong class="audio__title">{{ audio.title | translate }}</strong>
-    <nz-divider></nz-divider>
-    <p class="audio__description">{{ audio.description }}</p>
-  </ul>
->>>>>>> fe2911f (add modules)
 </div>

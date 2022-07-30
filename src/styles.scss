@@ -1,1 +1,136 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'src/variables';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+html {
+  line-height: $line-height;
+  font-size: $font-size;
+}
+body {
+  margin: auto;
+  max-width: $max-width-container;
+  background: $white;
+  color: $black;
+  font-family: $primary-font !important;
+  font-display: fallback;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+}
+h2 {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+select {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: fit-content;
+  background: $black;
+  color: $white;
+}
+
+select::-ms-expand {
+  display: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+@keyframes slideToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideToLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideToBottom {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideToTop {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadedlyToClearly {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7.5px;
+  background: $white;
+  opacity: 0.6;
+}
+::-webkit-scrollbar-thumb {
+  height: initial;
+  background: $black;
+  border-radius: 50px;
+}
+
+/****************** audio ******************/
+audio::-webkit-media-controls-panel {
+  -webkit-appearance: none;
+  background: #fff;
+}

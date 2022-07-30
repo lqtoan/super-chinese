@@ -1,0 +1,127 @@
+@import 'src/styles.scss';
+
+.main {
+  overflow-y: hidden;
+  .navbar {
+    background: $black;
+    padding: 1.5rem 10rem;
+    height: 15vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &__logo {
+      color: $primary-color;
+    }
+    &__menu {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      .selected {
+        color: $primary-color;
+        opacity: 0.8;
+      }
+      a {
+        font-size: larger;
+        color: $white;
+        transition: $transition;
+      }
+      a:not(:first-of-type) {
+        margin-left: 1rem;
+      }
+      a:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .changeLanguage {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+  }
+
+  .footer {
+    padding: 1rem 10rem;
+    height: 10vh;
+    background: $black;
+    color: $white;
+    display: flex;
+    align-items: baseline;
+  }
+
+  .aside {
+    position: absolute;
+    bottom: 10vh;
+    left: calc(5vw - 0.5rem);
+    animation: fadedlyToClearly 1s linear 0.2s backwards;
+    ul {
+      .info {
+        font-size: 2rem;
+        color: $primary-color;
+        transition: $transition;
+      }
+      .info:hover {
+        transform: translateY(-2px);
+      }
+    }
+    ul:after {
+      content: '';
+      margin: 0 auto;
+      background: $primary-color;
+      display: block;
+      width: 1px;
+      height: 10vh;
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    .navbar {
+      padding: 1rem 4rem;
+    }
+    .footer {
+      padding: 1rem 4rem;
+    }
+    .aside {
+      left: calc(2vw - 0rem);
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    .navbar {
+      padding: 1rem;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      &__logo {
+        margin-bottom: 0.5rem;
+      }
+    }
+    .footer {
+      padding: 0.25rem 1rem;
+    }
+    .aside {
+      left: unset;
+      right: 0.5rem;
+      bottom: calc(5vh - 0.25rem);
+      ul {
+        .info {
+          padding: 0.5rem;
+          margin-bottom: 0.5rem;
+          width: 2rem;
+          height: 2rem;
+          line-height: 1rem;
+          background: $primary-color;
+          color: $white;
+          font-size: 1rem;
+          border-radius: 50%;
+          opacity: 0.8;
+        }
+      }
+      ul:after {
+        display: none;
+      }
+    }
+  }
+}

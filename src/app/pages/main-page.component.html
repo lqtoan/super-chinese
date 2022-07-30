@@ -1,0 +1,31 @@
+<div class="main">
+  <header class="navbar">
+    <h2 routerLink="/" class="navbar__logo">{{ 'SUPER_CHINESE' | translate }}</h2>
+    <nav class="navbar__menu">
+      <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
+        item.name | translate
+      }}</a>
+    </nav>
+    <select class="changeLanguage" (change)="changeLanguage($event)">
+      <option *ngIf="selectedLanguage" selected [value]="selectedLanguage">
+        {{ selectedLanguage | uppercase | translate }}
+      </option>
+      <option *ngIf="selectedLanguage != 'vi'" value="vi">{{ 'VI' | translate }}</option>
+      <option *ngIf="selectedLanguage != 'en'" value="en">{{ 'EN' | translate }}</option>
+    </select>
+  </header>
+  <router-outlet></router-outlet>
+  <footer class="footer">
+    <small>Copyright {{ year | date: 'yyyy' }} &copy; {{ 'FOOTER' | translate }} </small>
+  </footer>
+  <aside class="aside">
+    <ul>
+      <a class="info" target="_blank" href="https://www.facebook.com/mipan1234567890">
+        <i nz-icon nzType="facebook" nzTheme="fill"></i>
+      </a>
+      <a class="info" target="_blank" href="https://github.com/lqtoan">
+        <i nz-icon nzType="github" nzTheme="fill"></i>
+      </a>
+    </ul>
+  </aside>
+</div>

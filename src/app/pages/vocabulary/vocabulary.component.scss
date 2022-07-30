@@ -1,0 +1,120 @@
+@import '/src/styles.scss';
+
+::ng-deep {
+  .ant-tabs-top > .ant-tabs-nav {
+    margin: 0;
+  }
+  .ant-tabs-ink-bar {
+    background: $primary-color;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $primary-color;
+  }
+  .ant-tabs-tab {
+    padding: 0.5rem 0;
+    transition: $transition;
+  }
+  .ant-tabs-tab:hover {
+    color: $primary-color;
+  }
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 0 1rem;
+  }
+  .ant-tabs-tab-btn {
+    transition: none;
+  }
+
+  .ant-collapse>.ant-collapse-item {
+    border: none;
+  }
+  .ant-collapse>.ant-collapse-item>.ant-collapse-header {
+    padding: 1rem;
+    color: $black;
+  }
+  .ant-collapse-content {
+    border-top: none;
+    color: $black;
+    font-weight: normal;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+  .ant-collapse-content>.ant-collapse-content-box {
+    padding: 0.5rem;
+  }
+  .ant-collapse>.ant-collapse-item:last-child,
+  .ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header {
+    border-radius: 0.5rem;
+  }
+  .ant-collapse-item:last-child>.ant-collapse-content {
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+}
+
+nz-tabset {
+  padding: 0rem 10rem;
+  margin-bottom: 0;
+  height: 75vh;
+  overflow-y: hidden;
+  .tab-content {
+    padding: 1rem 0;
+    height: 70vh;
+    overflow-y: scroll;
+    .cell {
+      padding-bottom: 1rem;
+      margin-right: 1rem;
+      display: inline-block;
+    }
+  }
+  nz-collapse {
+    background: $white;
+    display: grid;
+    gap: 0.75rem;
+    border: none;
+    overflow-y: scroll;
+    nz-collapse-panel {
+      background: $white-secondary;
+      border-bottom: 1px solid rgba($color: $gray, $alpha: 0.1);
+      border-radius: 0.5rem;
+      font-weight: bold;
+      transition: $transition;
+      .wordList {
+        .word {
+          padding: 0 0.5rem 0.5rem;
+          line-height: $line-height;
+          border-radius: 5px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          &--name {
+            font-size: larger;
+            display: inline-block;
+            min-width: 4rem;
+            color: $black;
+          }
+          .wrap {
+            margin-left: 1rem;
+            display: flex;
+            flex-flow: column;
+            color: #00000073;
+          }
+        }
+        .word:not(:last-of-type) {
+          margin-bottom: 0.5rem;
+          border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $tablet) {
+  nz-tabset {
+    padding: 0 4rem;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  nz-tabset {
+    padding: 0 1rem;
+  }
+}

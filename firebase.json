@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/super-chinese",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

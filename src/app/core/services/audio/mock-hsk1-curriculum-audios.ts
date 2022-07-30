@@ -1,6 +1,6 @@
 import { Audio } from 'src/app/core/models/audio';
 
-export const curriculumAudios: Audio[] = [
+export const hsk1CurriculumAudios: Audio[] = [
   {
     title: '00',
     url: 'assets/curriculum/00.mp3',
@@ -23,8 +23,7 @@ export const curriculumAudios: Audio[] = [
   {
     title: 'CURRICULUM.01-4',
     url: 'assets/curriculum/01-4.mp3',
-    description:
-      'b p m f d t n l g k h j q x i u ü er a ia ua o uo e ie üe ai uai ei uei(ui) ao iao',
+    description: 'b p m f d t n l g k h j q x i u ü er a ia ua o uo e ie üe ai uai ei uei(ui) ao iao',
   },
   {
     title: '01-5',
@@ -69,8 +68,7 @@ export const curriculumAudios: Audio[] = [
   {
     title: 'CURRICULUM.02-4',
     url: 'assets/curriculum/02-4.mp3',
-    description:
-      'zh ch sh r z c s ou iou(iu) an ian uan üan en in uen(un) ün ang iang uang eng ing ueng ong iong',
+    description: 'zh ch sh r z c s ou iou(iu) an ian uan üan en in uen(un) ün ang iang uang eng ing ueng ong iong',
   },
   {
     title: '02-5',
@@ -151,8 +149,7 @@ export const curriculumAudios: Audio[] = [
   {
     title: '04-3',
     url: 'assets/curriculum/04-3.mp3',
-    description:
-      '他是谁？ 他是我同学。\
+    description: '他是谁？ 他是我同学。\
     她呢？ 她是你同学吗？\
     她不是我同学， 她是我朋友。',
   },
@@ -189,8 +186,7 @@ export const curriculumAudios: Audio[] = [
   {
     title: '05-3',
     url: 'assets/curriculum/05-3.mp3',
-    description:
-      '李老师多大了？ 她今年五十岁了。 她女儿呢？ 她女儿今年二十岁。',
+    description: '李老师多大了？ 她今年五十岁了。 她女儿呢？ 她女儿今年二十岁。',
   },
   {
     title: '05-4',
@@ -240,8 +236,7 @@ export const curriculumAudios: Audio[] = [
   {
     title: '06-3',
     url: 'assets/curriculum/06-3.mp3',
-    description:
-      '你会写汉字吗？ 我会写。这个字怎么写？ 对不起， 这个字我会读，不会写。',
+    description: '你会写汉字吗？ 我会写。这个字怎么写？ 对不起， 这个字我会读，不会写。',
   },
   {
     title: '06-4',
@@ -256,14 +251,12 @@ export const curriculumAudios: Audio[] = [
   {
     title: '07-2',
     url: 'assets/curriculum/07-2.mp3',
-    description:
-      '昨天是几月几号？ 昨天是 8 月 31 号， 星期二。 明天呢？ 明天是 9 月 2 号， 星期四。',
+    description: '昨天是几月几号？ 昨天是 8 月 31 号， 星期二。 明天呢？ 明天是 9 月 2 号， 星期四。',
   },
   {
     title: '07-3',
     url: 'assets/curriculum/07-3.mp3',
-    description:
-      '明天星期六， 你去学校吗？ 我去学校。 你去学校做什么？ 我去学校看书。',
+    description: '明天星期六， 你去学校吗？ 我去学校。 你去学校做什么？ 我去学校看书。',
   },
   {
     title: '07-4',
@@ -278,14 +271,12 @@ export const curriculumAudios: Audio[] = [
   {
     title: '08-2',
     url: 'assets/curriculum/08-2.mp3',
-    description:
-      '下午你想做什么？ 下午我想去商店。 你想买什么？ 我想买一个杯子。',
+    description: '下午你想做什么？ 下午我想去商店。 你想买什么？ 我想买一个杯子。',
   },
   {
     title: '08-3',
     url: 'assets/curriculum/08-3.mp3',
-    description:
-      '你好！ 这个杯子都少钱？ 28 快。 那个杯子多少钱？ 那个杯子 18 块钱。',
+    description: '你好！ 这个杯子都少钱？ 28 快。 那个杯子多少钱？ 那个杯子 18 块钱。',
   },
   {
     title: '08-4',

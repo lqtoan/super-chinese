@@ -1,12 +1,8 @@
 @import "/src/styles.scss";
 
 .tab-content {
-  padding: 1rem 0;
-  height: 70vh;
+  margin-top: 1rem;
+  padding-right: 0.25rem;
+  height: 65vh;
   overflow-y: scroll;
-  .cell {
-    padding-bottom: 1rem;
-    margin-right: 1rem;
-    display: inline-block;
-  }
 }

@@ -11,6 +11,8 @@
   .ant-tabs-tab {
     padding: 0.5rem 0;
     transition: $transition;
+    font-size: 1rem;
+    font-weight: 500;
   }
   .ant-tabs-tab:hover {
     color: $primary-color;

@@ -292,6 +292,18 @@ export const hsk1Vocabulary: Vocabulary[] = [
     words: [
       { name: '', pinyin: '', define: '' },
       { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
+      { name: '', pinyin: '', define: '' },
     ],
   },
   {

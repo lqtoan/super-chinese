@@ -286,17 +286,17 @@ export const hsk1CurriculumAudios: Audio[] = [
   {
     title: '09-1',
     url: 'assets/curriculum/09-1.mp3',
-    description: '',
+    description: '小猫在哪儿？ 小猫在那儿。 小狗在哪儿？ 小狗在椅子下面。',
   },
   {
     title: '09-2',
     url: 'assets/curriculum/09-2.mp3',
-    description: '',
+    description: '你在哪儿工作？ 我在学校工作。 你儿子在哪儿工作？ 我儿子在医院工作， 他是医生。',
   },
   {
     title: '09-3',
     url: 'assets/curriculum/09-3.mp3',
-    description: '',
+    description: '你爸爸在家吗？ 不在家。 他在哪儿呢？ 他在医院。',
   },
   {
     title: '09-4',

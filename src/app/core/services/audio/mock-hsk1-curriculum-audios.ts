@@ -373,4 +373,64 @@ export const hsk1CurriculumAudios: Audio[] = [
     url: 'assets/curriculum/12-4.mp3',
     description: '',
   },
+  {
+    title: '13-1',
+    url: 'assets/curriculum/13-1.mp3',
+    description: '',
+  },
+  {
+    title: '13-2',
+    url: 'assets/curriculum/13-2.mp3',
+    description: '',
+  },
+  {
+    title: '13-3',
+    url: 'assets/curriculum/13-3.mp3',
+    description: '',
+  },
+  {
+    title: '13-4',
+    url: 'assets/curriculum/13-4.mp3',
+    description: '',
+  },
+  {
+    title: '14-1',
+    url: 'assets/curriculum/14-1.mp3',
+    description: '',
+  },
+  {
+    title: '14-2',
+    url: 'assets/curriculum/14-2.mp3',
+    description: '',
+  },
+  {
+    title: '14-3',
+    url: 'assets/curriculum/14-3.mp3',
+    description: '',
+  },
+  {
+    title: '14-4',
+    url: 'assets/curriculum/14-4.mp3',
+    description: '',
+  },
+  {
+    title: '15-1',
+    url: 'assets/curriculum/15-1.mp3',
+    description: '',
+  },
+  {
+    title: '15-2',
+    url: 'assets/curriculum/15-2.mp3',
+    description: '',
+  },
+  {
+    title: '15-3',
+    url: 'assets/curriculum/15-3.mp3',
+    description: '',
+  },
+  {
+    title: '15-4',
+    url: 'assets/curriculum/15-4.mp3',
+    description: '',
+  },
 ];

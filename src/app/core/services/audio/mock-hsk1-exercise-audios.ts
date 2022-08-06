@@ -121,4 +121,28 @@ export const hsk1ExerciseAudios: Audio[] = [
     title: '12-2',
     url: 'assets/exercise/12-2.mp3',
   },
+  {
+    title: '13-1',
+    url: 'assets/exercise/13-1.mp3',
+  },
+  {
+    title: '13-2',
+    url: 'assets/exercise/13-2.mp3',
+  },
+  {
+    title: '14-1',
+    url: 'assets/exercise/14-1.mp3',
+  },
+  {
+    title: '14-2',
+    url: 'assets/exercise/14-2.mp3',
+  },
+  {
+    title: '15-1',
+    url: 'assets/exercise/15-1.mp3',
+  },
+  {
+    title: '15-2',
+    url: 'assets/exercise/15-2.mp3',
+  },
 ];

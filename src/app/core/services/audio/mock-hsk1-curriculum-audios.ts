@@ -1,6 +1,6 @@
 import { Audio } from 'src/app/core/models/audio';
 
-export const hsk1CurriculumAudios: Audio[] = [
+export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '00',
     url: 'assets/curriculum/00.mp3',

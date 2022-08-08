@@ -1,5 +1,5 @@
-import { hsk1ExerciseAudios } from './mock-hsk1-exercise-audios';
-import { hsk1CurriculumAudios } from './mock-hsk1-curriculum-audios';
+import { HSK1_EXERCISE_AUDIOS } from './mock-hsk1-exercise-audios';
+import { HSK1_CURRICULUM_AUDIOS } from './mock-hsk1-curriculum-audios';
 import { Audio } from '../../models/audio';
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
@@ -8,8 +8,8 @@ import { Observable, of, delay } from 'rxjs';
   providedIn: 'root',
 })
 export class AudioService {
-  private hsk1CurriculumAudios: Audio[] = hsk1CurriculumAudios;
-  private hsk1ExerciseAudios: Audio[] = hsk1ExerciseAudios;
+  private hsk1CurriculumAudios: Audio[] = HSK1_CURRICULUM_AUDIOS;
+  private hsk1ExerciseAudios: Audio[] = HSK1_EXERCISE_AUDIOS;
 
   constructor() {}
 

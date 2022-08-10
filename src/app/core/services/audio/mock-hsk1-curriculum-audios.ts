@@ -306,17 +306,17 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '10-1',
     url: 'assets/curriculum/10-1.mp3',
-    description: '',
+    description: '桌子上有什么？ 桌子上有一个电脑和一本书。 杯子在哪儿？ 杯子在桌子里。',
   },
   {
     title: '10-2',
     url: 'assets/curriculum/10-2.mp3',
-    description: '',
+    description: '前面那个人叫什么名字？ 她叫王方，在医院工作。 后面那个人呢？ 她叫什么名字？ 他叫谢朋， 在商店工作。',
   },
   {
     title: '10-3',
     url: 'assets/curriculum/10-3.mp3',
-    description: '',
+    description: '这儿有人吗？ 没有。 我能做这儿吗？ 请坐。',
   },
   {
     title: '10-4',
@@ -336,17 +336,17 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '11-1',
     url: 'assets/curriculum/11-1.mp3',
-    description: '',
+    description: '现在几点？ 现在是点十分。 中午几点吃饭？ 十二点吃饭。',
   },
   {
     title: '11-2',
     url: 'assets/curriculum/11-2.mp3',
-    description: '',
+    description: '爸爸什么时候回家？ 下午五点。 我们什么时候去看电影？ 六点三十分。',
   },
   {
     title: '11-3',
     url: 'assets/curriculum/11-3.mp3',
-    description: '',
+    description: '我星期一去北京。 你想在北京住几天？ 住三天。 星期五前能回家吗？ 能。',
   },
   {
     title: '11-4',

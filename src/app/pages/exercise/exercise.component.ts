@@ -12,15 +12,9 @@ export class ExerciseComponent implements OnInit {
   audioList: Audio[] = [];
   currentPage: number = 1;
 
-  selectedAudio?: Audio;
-
   constructor(private audioService: AudioService) {}
 
   ngOnInit(): void {
-    this.audioService.getExerciseAudioList().subscribe((as) => (this.audioList = as));
-  }
-
-  onSelect(audio: Audio): void {
-    this.selectedAudio = audio;
+    this.audioService.getExerciseAudioList().subscribe((res) => (this.audioList = res));
   }
 }

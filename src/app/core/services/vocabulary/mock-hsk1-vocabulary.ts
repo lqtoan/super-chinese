@@ -1,6 +1,6 @@
 import { Vocabulary } from '../../models/vocabulary';
 
-export const hsk1Vocabulary: Vocabulary[] = [
+export const HSK1_VOCABULARY: Vocabulary[] = [
   {
     name: '01 - 你好',
     words: [

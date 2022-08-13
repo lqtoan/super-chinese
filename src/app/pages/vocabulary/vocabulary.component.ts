@@ -1,4 +1,3 @@
-import { hsk1Vocabulary } from './../../core/services/vocabulary/mock-hsk1-vocabulary';
 import { Vocabulary } from './../../core/models/vocabulary';
 import { VocabularyService } from './../../core/services/vocabulary/vocabulary.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +12,6 @@ export class VocabularyComponent implements OnInit {
   constructor(private vocabularyService: VocabularyService) {}
 
   ngOnInit(): void {
-    this.vocabularyService.getHsk1Vocabulary().subscribe((vl) => (this.hsk1Vocabulary = vl));
+    this.vocabularyService.getHsk1Vocabulary().subscribe((res) => (this.hsk1Vocabulary = res));
   }
 }

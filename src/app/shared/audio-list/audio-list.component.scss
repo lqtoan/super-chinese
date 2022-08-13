@@ -8,7 +8,8 @@
     z-index: 2;
     padding: 0 2rem;
     height: 15vh;
-    background: rgba($color: $primary-color, $alpha: 0.7);
+    // background: rgba($color: $primary-color, $alpha: 0.7);
+    background-image: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 0.75), rgba($color: #88C0D0, $alpha: 0.75));
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -40,7 +41,7 @@
         }
       }
       .current {
-        background: rgba($color: $primary-color, $alpha: 0.7);
+        background: rgba($color: #81A1C1, $alpha: 0.5);
         border-radius: 0.25rem;
       }
     }
@@ -80,7 +81,8 @@
       }
     }
     .audio:hover {
-      background: $white-secondary;
+      // background: $white-secondary;
+      background-image: linear-gradient(135deg, rgba($color: $white-secondary, $alpha: 1), rgba($color: $white-secondary, $alpha: 0.75));
       border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
       // box-shadow: 0 0 10px 1px rgba($color: $gray, $alpha: 0.5);
     }
@@ -103,7 +105,7 @@
 
 @media screen and (max-width: $mobile) {
   .tab-content {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     .controls {
       padding: 0 1rem;
     }

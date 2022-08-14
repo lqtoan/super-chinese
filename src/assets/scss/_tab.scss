@@ -16,12 +16,13 @@
   }
   .ant-tabs-tab {
     padding: 0.5rem 0;
-    transition: $transition;
+    color: $black;
     font-size: 1rem;
     font-weight: 500;
+    transition: $transition;
   }
   .ant-tabs-tab:hover {
-    color: $primary-color;
+    color: $black;
     background-image: $linear-gradient;
     background-clip: text;
     -webkit-text-fill-color: transparent;

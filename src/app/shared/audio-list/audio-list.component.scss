@@ -36,14 +36,23 @@
     ::ng-deep .ngx-pagination {
       margin: 0 !important;
       li {
-        padding: 0 0.5rem;
+        padding: 0;
+        width: 2rem;
+        text-align: center;
+        border-radius: 0.25rem;
         a {
           padding: 0;
+          border-radius: 0.25rem;
+          transition: $transition;
+        }
+        a:hover {
+          background: $second-white;
         }
       }
       .current {
-        background: rgba($color: #81A1C1, $alpha: 0.5);
-        border-radius: 0.25rem;
+        background: transparent;
+        background-image: $magenta-blue-linear-gradient;
+        opacity: 0.5;
       }
     }
   }
@@ -83,7 +92,7 @@
     }
     .audio:hover {
       background: $second-white;
-      box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.25);
+      box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
     }
     .audio:nth-child(odd) {
       animation: slideToRight 0.75s ease 0s backwards;

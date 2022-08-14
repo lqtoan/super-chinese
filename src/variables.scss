@@ -8,6 +8,9 @@ $gray: #4C566A;
 
 $linear-gradient: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 1), rgba($color: #88C0D0, $alpha: 0.75));
 $white-linear-gradient: linear-gradient(135deg, rgba($color: $second-white, $alpha: 1), rgba($color: $second-white, $alpha: 0.5));
+$magenta-blue-linear-gradient: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 1), rgba($color: #5E81AC, $alpha: 0.75), rgba($color: #88C0D0, $alpha: 0.75));
+$magenta-blue-white-linear-gradient: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 0.5), rgba($color: #88C0D0, $alpha: 0.25), rgba($color: $second-white, $alpha: 1));
+$blue-linear-gradient: linear-gradient(135deg, rgba($color: #5E81AC, $alpha: 1), rgba($color: #88C0D0, $alpha: 1));
 
 $primary-font: 'Quicksand', sans-serif;
 $font-size: 100%;

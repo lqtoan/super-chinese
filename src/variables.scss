@@ -2,9 +2,12 @@
 
 $black: #2e3440;
 $white: #eceff4;
-$white-secondary: #d8dee9;
+$second-white: #d8dee9;
 $primary-color: #b48ead;
-$gray: #3b4252;
+$gray: #4C566A;
+
+$linear-gradient: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 1), rgba($color: #88C0D0, $alpha: 0.75));
+$white-linear-gradient: linear-gradient(135deg, rgba($color: $second-white, $alpha: 1), rgba($color: $second-white, $alpha: 0.5));
 
 $primary-font: 'Quicksand', sans-serif;
 $font-size: 100%;

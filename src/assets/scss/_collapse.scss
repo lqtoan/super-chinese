@@ -4,7 +4,7 @@
   }
   .ant-collapse>.ant-collapse-item>.ant-collapse-header {
     padding: 1rem;
-    color: $black;
+    color: $gray;
   }
   .ant-collapse-content {
     border-top: none;
@@ -31,8 +31,9 @@ nz-collapse {
   border: none;
   overflow-y: scroll;
   nz-collapse-panel {
-    background: $white-secondary;
-    border-bottom: 1px solid rgba($color: $gray, $alpha: 0.1);
+    background: $second-white;
+    background-image: $white-linear-gradient;
+    box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
     border-radius: 0.5rem;
     font-weight: bold;
     transition: $transition;

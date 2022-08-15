@@ -3,13 +3,12 @@
     margin: 0;
   }
   .ant-tabs-ink-bar {
-    // background: $primary-color;
-    background-image: $linear-gradient;
+    background: $linear-gradient;
     opacity: 0.5;
   }
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: $primary-color;
-    background-image: $linear-gradient;
+    background: $linear-gradient;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
@@ -23,7 +22,7 @@
   }
   .ant-tabs-tab:hover {
     color: $black;
-    background-image: $linear-gradient;
+    background: $linear-gradient;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }

@@ -24,7 +24,7 @@
       cursor: pointer;
       .selected {
         color: $primary-color;
-        background: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 0.9), rgba($color: #88C0D0, $alpha: 1));
+        background: $linear-gradient;
         background-clip: text;
         -webkit-text-fill-color: transparent;
         opacity: 0.8;

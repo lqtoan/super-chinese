@@ -311,7 +311,7 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '10-2',
     url: 'assets/curriculum/10-2.mp3',
-    description: '前面那个人叫什么名字？ 她叫王方，在医院工作。 后面那个人呢？ 她叫什么名字？ 他叫谢朋， 在商店工作。',
+    description: '前面那个人叫什么名字？ 她叫王方， 在医院工作。 后面那个人呢？ 她叫什么名字？ 他叫谢朋， 在商店工作。',
   },
   {
     title: '10-3',
@@ -356,17 +356,17 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '12-1',
     url: 'assets/curriculum/12-1.mp3',
-    description: '',
+    description: '昨天北京的天气怎么样？ 太热了。 明天呢？ 明天天气怎么样？ 明天天气很好， 不冷不热。',
   },
   {
     title: '12-2',
     url: 'assets/curriculum/12-2.mp3',
-    description: '',
+    description: '今天会下雨吗？ 今天不会下雨。 王小姐今天回来吗？ 不回来， 天气太冷了。',
   },
   {
     title: '12-3',
     url: 'assets/curriculum/12-3.mp3',
-    description: '',
+    description: '你身体怎么样？ 我身体不太好。 天气太热了， 不爱吃饭。 你多吃些水果， 多喝水。 谢谢你， 医生。',
   },
   {
     title: '12-4',

@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Super Chinese';
 
-  constructor(private translateService: TranslateService, private readonly nzI18Service: NzI18nService) {
+  constructor(private translateService: TranslateService) {
     this.translateService.addLangs(['en', 'vi']);
   }
 }

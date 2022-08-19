@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NzI18nService } from 'ng-zorro-antd/i18n';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

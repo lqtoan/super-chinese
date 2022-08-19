@@ -1,5 +1,5 @@
 <div class="tab-content">
-  <div *ngIf="!audioList">loading...</div>
+  <ng-container *ngIf="!audioList">loading...</ng-container>
   <div class="controls" *ngIf="selectedAudio">
     <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
     <audio controls autoplay preload="none" [attr.src]="selectedAudio.url">

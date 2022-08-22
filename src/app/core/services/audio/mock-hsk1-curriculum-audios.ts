@@ -376,17 +376,19 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '13-1',
     url: 'assets/curriculum/13-1.mp3',
-    description: '',
+    description: '喂， 你在做什么呢？ 我在看书呢。 大卫也在看书吗？ 他没看书， 他在学做中国菜呢。',
   },
   {
     title: '13-2',
     url: 'assets/curriculum/13-2.mp3',
-    description: '',
+    description:
+      '昨天上午你在做什么呢？ 我在睡觉呢。 你呢？ 我在家看电视呢。 你喜欢看电视吗？ 我不喜欢看电视， 我喜欢看电影。',
   },
   {
     title: '13-3',
     url: 'assets/curriculum/13-3.mp3',
-    description: '',
+    description:
+      '82304155， 这是李老师的电话吗？ 不是。 她的电话是82304156。 好， 我现在给她打电话。 她在工作呢， 你下午打吧。',
   },
   {
     title: '13-4',

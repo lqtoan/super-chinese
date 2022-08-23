@@ -367,25 +367,4 @@ export const HSK1_VOCABULARY: Vocabulary[] = [
       { name: '', pinyin: '', define: '' },
     ],
   },
-  {
-    name: '16',
-    words: [
-      { name: '', pinyin: '', define: '' },
-      { name: '', pinyin: '', define: '' },
-    ],
-  },
-  {
-    name: '17',
-    words: [
-      { name: '', pinyin: '', define: '' },
-      { name: '', pinyin: '', define: '' },
-    ],
-  },
-  {
-    name: '18',
-    words: [
-      { name: '', pinyin: '', define: '' },
-      { name: '', pinyin: '', define: '' },
-    ],
-  },
 ];

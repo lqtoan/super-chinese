@@ -1,6 +1,9 @@
 <div class="main">
   <header class="navbar">
-    <h2 routerLink="/" class="navbar__logo">{{ 'SUPER_CHINESE' | translate }}</h2>
+    <div>
+      <h2 routerLink="/" class="navbar__logo">{{ 'SUPER_CHINESE' | translate }}</h2>
+      <small class="navbar__slogan">"Học thêm một ngoại ngữ, đến thêm một thế giới, sống thêm một cuộc đời..."</small>
+    </div>
     <nav class="navbar__menu">
       <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
         item.name | translate

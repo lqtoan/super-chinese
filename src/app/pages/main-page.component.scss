@@ -19,6 +19,9 @@
       -webkit-text-fill-color: transparent;
       cursor: pointer;
     }
+    &__slogan {
+      color: $white;
+    }
     &__menu {
       display: flex;
       flex-flow: row wrap;
@@ -107,6 +110,9 @@
       align-items: center;
       &__logo {
         margin-bottom: 0.5rem;
+      }
+      &__slogan {
+        display: none;
       }
     }
     .footer {

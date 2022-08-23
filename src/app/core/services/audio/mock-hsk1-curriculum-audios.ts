@@ -4,6 +4,7 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '00',
     url: 'assets/curriculum/00.mp3',
+    description: '',
   },
   {
     title: '01-1',

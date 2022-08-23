@@ -1,10 +1,5 @@
-export class Audio {
-  constructor(title: string, url: string) {
-    this.title = title;
-    this.url = url;
-  }
-
+export interface Audio {
   title: string;
   url: string;
-  description?: string;
+  description: string;
 }

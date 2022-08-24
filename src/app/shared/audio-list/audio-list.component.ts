@@ -9,7 +9,7 @@ import { Audio } from 'src/app/core/models/audio';
 })
 export class AudioListComponent {
   @Input() audioList: Audio[] = [];
-  @Input() audioHeight: string = '';
+  @Input() audioHeight: string = '6rem';
   currentPage: number = 1;
   selectedAudio?: Audio;
 

@@ -5,7 +5,7 @@
   overflow-y: hidden;
   .navbar {
     background: $black;
-    padding: 1.5rem 10rem;
+    padding: 1.5rem 6rem;
     height: 15vh;
     display: flex;
     flex-flow: row wrap;
@@ -57,7 +57,7 @@
   }
 
   .footer {
-    padding: 1rem 10rem;
+    padding: 1rem 6rem;
     height: 10vh;
     background: $black;
     color: $white;
@@ -68,7 +68,7 @@
   .aside {
     position: absolute;
     bottom: 10vh;
-    left: calc(5vw - 0.5rem);
+    left: 2rem;
     animation: fadedlyToClearly 1s linear 0.2s backwards;
     ul {
       .info {

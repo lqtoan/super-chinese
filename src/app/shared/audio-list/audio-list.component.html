@@ -25,7 +25,7 @@
       [responsive]="false"
     ></pagination-controls>
   </div>
-  <div class="audio-list">
+  <div class="audio-list" [ngStyle]="{ 'grid-auto-rows': audioHeight}">
     <ul
       *ngFor="let audio of audioList | paginate: { itemsPerPage: 16, currentPage: currentPage }"
       class="audio"

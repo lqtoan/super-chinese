@@ -7,14 +7,11 @@ import { Audio } from 'src/app/core/models/audio';
   styleUrls: ['./audio-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AudioListComponent implements OnInit {
+export class AudioListComponent {
   @Input() audioList: Audio[] = [];
+  @Input() audioHeight: string = '';
   currentPage: number = 1;
   selectedAudio?: Audio;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onSelect(audio: Audio): void {
     this.selectedAudio = audio;

@@ -399,17 +399,17 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '14-1',
     url: 'assets/curriculum/14-1.mp3',
-    description: '',
+    description: '昨天上午你去哪儿了？ 我去商店买东西了。 你买什么了？ 我买了一点儿苹果。',
   },
   {
     title: '14-2',
     url: 'assets/curriculum/14-2.mp3',
-    description: '',
+    description: '你看见张先生了吗？ 看见了， 他去学开车了。 他什么时候能回来？ 四十分钟后回来。',
   },
   {
     title: '14-3',
     url: 'assets/curriculum/14-3.mp3',
-    description: '',
+    description: '王芳的衣服太漂亮了！ 是啊， 他买了不少衣服。 你买什么了？ 我没买， 这些都是王芳的东西。',
   },
   {
     title: '14-4',

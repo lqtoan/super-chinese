@@ -62,7 +62,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: row;
-    grid-auto-rows: 6rem;
     grid-gap: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto;
@@ -81,7 +80,7 @@
       transition: $transition;
       &__description {
         font-weight: normal;
-        color: #00000073;
+        color: rgba($color: $gray, $alpha: 0.75);
       }
       .wrapper {
         display: flex;
@@ -118,7 +117,11 @@
     }
     .audio-list {
       grid-template-columns: repeat(1, 1fr);
-      grid-auto-rows: 5rem;
+      grid-gap: 1rem;
+      .audio {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+      }
     }
   }
 }

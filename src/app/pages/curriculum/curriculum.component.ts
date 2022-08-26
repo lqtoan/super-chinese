@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-curriculum',
   templateUrl: './curriculum.component.html',
   styleUrls: ['./curriculum.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurriculumComponent implements OnInit {
   audioList: Audio[] = [];

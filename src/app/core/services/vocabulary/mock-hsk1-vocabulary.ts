@@ -342,8 +342,20 @@ export const HSK1_VOCABULARY: Vocabulary[] = [
   {
     name: '12',
     words: [
-      { name: '', pinyin: '', define: 'WORD.DEFINE.' },
-      { name: '', pinyin: '', define: 'WORD.DEFINE.' },
+      { name: '天气', pinyin: 'tiānqì', define: 'WORD.DEFINE.W' },
+      { name: '怎么样', pinyin: 'zěnmeyàng', define: 'WORD.DEFINE.' },
+      { name: '太', pinyin: 'tài', define: 'WORD.DEFINE.' },
+      { name: '热', pinyin: 'rè', define: 'WORD.DEFINE.' },
+      { name: '冷', pinyin: 'lěng', define: 'WORD.DEFINE.' },
+      { name: '下雨', pinyin: 'xiàyǔ', define: 'WORD.DEFINE.' },
+      { name: '雨', pinyin: 'yǔ', define: 'WORD.DEFINE.' },
+      { name: '小姐', pinyin: 'xiǎojiě', define: 'WORD.DEFINE.' },
+      { name: '来', pinyin: 'lái', define: 'WORD.DEFINE.' },
+      { name: '身体', pinyin: 'shēntǐ', define: 'WORD.DEFINE.' },
+      { name: '爱', pinyin: 'ài', define: 'WORD.DEFINE.' },
+      { name: '些', pinyin: 'xiē', define: 'WORD.DEFINE.' },
+      { name: '水果', pinyin: 'shuǐguǒ', define: 'WORD.DEFINE.' },
+      { name: '水', pinyin: 'shuǐ', define: 'WORD.DEFINE.' },
     ],
   },
   {

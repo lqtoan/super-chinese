@@ -1,11 +1,12 @@
 import { Vocabulary } from './../../core/models/vocabulary';
 import { VocabularyService } from './../../core/services/vocabulary/vocabulary.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-vocabulary',
   templateUrl: './vocabulary.component.html',
   styleUrls: ['./vocabulary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VocabularyComponent implements OnInit {
   hsk1Vocabulary: Vocabulary[] = [];

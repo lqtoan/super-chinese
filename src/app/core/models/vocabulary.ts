@@ -1,11 +1,6 @@
 import { Word } from './word';
 
-export class Vocabulary {
-  constructor(title: string, words: Word[]) {
-    this.name = title;
-    this.words = words;
-  }
-
+export interface Vocabulary {
   name: string;
   words: Word[];
 }

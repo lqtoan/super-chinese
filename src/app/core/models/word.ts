@@ -1,10 +1,4 @@
-export class Word {
-  constructor(name: string, define: string, pinyin: string) {
-    this.name = name;
-    this.pinyin = pinyin;
-    this.define = define;
-  }
-
+export interface Word {
   name: string;
   pinyin: string;
   define: string;

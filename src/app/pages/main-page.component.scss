@@ -5,7 +5,7 @@
   overflow-y: hidden;
   .navbar {
     background: $black;
-    padding: 1.5rem 6rem;
+    padding: 1.5rem 8rem;
     height: 15vh;
     display: flex;
     flex-flow: row wrap;
@@ -57,7 +57,7 @@
   }
 
   .footer {
-    padding: 1rem 6rem;
+    padding: 1rem 8rem;
     height: 10vh;
     background: $black;
     color: $white;

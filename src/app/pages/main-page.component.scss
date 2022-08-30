@@ -68,7 +68,7 @@
   .aside {
     position: absolute;
     bottom: 10vh;
-    left: 2rem;
+    left: calc(5vw - 1rem);
     animation: fadedlyToClearly 1s linear 0.2s backwards;
     ul {
       .info {

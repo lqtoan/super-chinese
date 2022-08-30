@@ -398,8 +398,15 @@ export const HSK1_VOCABULARY: Vocabulary[] = [
   {
     name: '15',
     words: [
-      { name: '', pinyin: '', define: '' },
-      { name: '', pinyin: '', define: '' },
+      { name: '认识', pinyin: 'rènshi', define: 'WORD.DEFINE.TO_MEET' },
+      { name: '年', pinyin: 'nián', define: 'WORD.DEFINE.YEAR' },
+      { name: '大学', pinyin: 'dàxué', define: 'WORD.DEFINE.COLLEGE' },
+      { name: '饭店', pinyin: 'fàndiàn', define: 'WORD.DEFINE.HOTEL' },
+      { name: '出租车', pinyin: 'chūzūchē', define: 'WORD.DEFINE.TAXI' },
+      { name: '一起', pinyin: 'yìqǐ', define: 'WORD.DEFINE.TOGETHER' },
+      { name: '高兴', pinyin: 'gāoxìng', define: 'WORD.DEFINE.GLAD' },
+      { name: '听', pinyin: 'tīng', define: 'WORD.DEFINE.TO_LISTEN' },
+      { name: '飞机', pinyin: 'fēijī', define: 'WORD.DEFINE.AIRPLANE' },
     ],
   },
 ];

@@ -419,17 +419,18 @@ export const HSK1_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '15-1',
     url: 'assets/curriculum/15-1.mp3',
-    description: '',
+    description:
+      '你和李小姐是什么时候认识的？ 我们是二零一一年九月认识的。 你们在哪儿认识的？ 我们是在学校认识的， 她是我大学同学。',
   },
   {
     title: '15-2',
     url: 'assets/curriculum/15-2.mp3',
-    description: '',
+    description: '你门是怎么来饭店的？ 我们是坐出租车来的。 李先生呢？ 他是和朋友一起开车来的。',
   },
   {
     title: '15-3',
     url: 'assets/curriculum/15-3.mp3',
-    description: '',
+    description: '很高兴认识您！ 李小姐。 认识你我也很高兴！ 听张先生说， 您是坐飞机来北京的？ 似的。',
   },
   {
     title: '15-4',

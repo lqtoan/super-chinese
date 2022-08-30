@@ -396,7 +396,7 @@ export const HSK1_VOCABULARY: Vocabulary[] = [
     ],
   },
   {
-    name: '15',
+    name: '15 - 我是坐飞机来的',
     words: [
       { name: '认识', pinyin: 'rènshi', define: 'WORD.DEFINE.TO_MEET' },
       { name: '年', pinyin: 'nián', define: 'WORD.DEFINE.YEAR' },

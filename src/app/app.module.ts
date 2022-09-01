@@ -12,6 +12,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
 registerLocaleData(vi);
 export const createTranslateLoader = (http: HttpClient) =>
   new TranslateHttpLoader(http, `${window.location.origin}/assets/i18n/`, '.json');
@@ -32,6 +35,10 @@ export const createTranslateLoader = (http: HttpClient) =>
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AuthModule.forRoot({
+      domain: 'hsk-1.us.auth0.com',
+      clientId: 'ok8azBGkMz22lpTRtVNlEbzcBLhCnSRX',
+    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],
   bootstrap: [AppComponent],

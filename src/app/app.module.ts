@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { environment as env } from '../environments/environment';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
@@ -34,8 +35,7 @@ export const createTranslateLoader = (http: HttpClient) =>
     HttpClientModule,
     BrowserAnimationsModule,
     AuthModule.forRoot({
-      domain: 'hsk-1.us.auth0.com',
-      clientId: 'ok8azBGkMz22lpTRtVNlEbzcBLhCnSRX',
+      ...env.auth,
     }),
   ],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],

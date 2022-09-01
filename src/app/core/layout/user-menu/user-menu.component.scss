@@ -1,0 +1,27 @@
+@import 'src/styles.scss';
+
+::ng-deep {
+  .ant-dropdown-menu-item {
+    padding: 0.5rem 1rem;
+    color: $black;
+    background: $white;
+    transition: $transition;
+  }
+  .ant-dropdown-menu-item:hover {
+    color: $primary-color;
+    background: $second-white;
+    opacity: 0.8;
+  }
+  .ant-dropdown-menu-item.ant-dropdown-menu-item-selected {
+    color: $primary-color;
+    background: $second-white;
+  }
+}
+
+.logout {
+  color: $red;
+}
+.logout:hover {
+  color: $white;
+  background: $red;
+}

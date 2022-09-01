@@ -27,33 +27,10 @@
       flex-flow: row wrap;
       align-items: center;
       cursor: pointer;
-      .selected {
-        color: $primary-color;
-        background: $linear-gradient;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        opacity: 0.8;
-      }
-      a {
-        font-size: larger;
-        color: $white;
-        transition: $transition;
-      }
-      a:not(:first-of-type) {
-        margin-left: 1rem;
-      }
-      a:hover {
-        background: $linear-gradient;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+      &__item:not(:last-child) {
+        margin-right: 1rem;
       }
     }
-  }
-
-  .changeLanguage {
-    position: absolute;
-    top: 2.5%;
-    right: 2.5%;
   }
 
   .footer {
@@ -105,11 +82,9 @@
   @media screen and (max-width: $mobile) {
     .navbar {
       padding: 1rem;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
       &__logo {
         margin-bottom: 0.5rem;
+        font-size: 1.75rem;
       }
       &__slogan {
         display: none;

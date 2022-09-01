@@ -1,3 +1,4 @@
+import { LayoutModule } from './../core/layout/layout.module';
 import { MainPageRoutingModule } from './main-page-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,6 @@ const nzModules = [NzIconModule];
 
 @NgModule({
   declarations: [MainPageComponent],
-  imports: [CommonModule, TranslateModule, MainPageRoutingModule, nzModules],
+  imports: [CommonModule, TranslateModule, MainPageRoutingModule, nzModules, LayoutModule],
 })
 export class MainPageModule {}

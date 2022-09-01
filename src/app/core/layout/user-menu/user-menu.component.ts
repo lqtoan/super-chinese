@@ -10,16 +10,16 @@ import { AuthService } from '@auth0/auth0-angular';
 export class UserMenuComponent implements OnInit {
   navItem = [
     {
-      name: 'VOCABULARY',
-      link: 'vocabulary',
+      name: 'SETTING',
+      link: 'setting',
     },
     {
-      name: 'CURRICULUM',
-      link: 'curriculum',
+      name: 'NEW',
+      link: 'new',
     },
     {
-      name: 'EXERCISE',
-      link: 'exercise',
+      name: 'SUPPORT',
+      link: 'support',
     },
   ];
 
@@ -28,7 +28,9 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToSetting() {
-    this.router.navigate(['/setting'])
+  navigate(link: string) {
+    console.log(link);
+    
+    this.router.navigate([`/${link}`])
   }
 }

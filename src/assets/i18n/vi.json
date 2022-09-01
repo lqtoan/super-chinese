@@ -1,6 +1,7 @@
 {
-  "VI": "VI",
-  "EN": "EN",
+  "CHOOSE_LANGUAGE": "Chọn ngôn ngữ",
+  "VI": "Tiếng Việt",
+  "EN": "Tiếng Anh",
   "SUPER_CHINESE": "Super Chinese",
   "SLOGAN": "\"Học thêm một ngoại ngữ, đến thêm một thế giới, sống thêm một cuộc đời...\"",
   "HOME": "Trang chủ",
@@ -8,6 +9,8 @@
   "CURRICULUM": "Giáo trình",
   "EXERCISE": "Bài tập",
   "SETTING": "Thiết lập",
+  "NEW": "Tính năng mới",
+  "SUPPORT": "Hỗ trợ",
   "LOGOUT": "Đăng xuất",
   "COMING_SOON": "Sắp có...",
   "SELECT": "Chọn bài đi nè",

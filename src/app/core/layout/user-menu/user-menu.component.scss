@@ -8,13 +8,13 @@
     transition: $transition;
   }
   .ant-dropdown-menu-item:hover {
-    color: $primary-color;
-    background: $second-white;
+    color: $white;
+    background: $primary-color;
     opacity: 0.8;
   }
   .ant-dropdown-menu-item.ant-dropdown-menu-item-selected {
-    color: $primary-color;
-    background: $second-white;
+    color: $white;
+    background: $primary-color;
   }
 }
 

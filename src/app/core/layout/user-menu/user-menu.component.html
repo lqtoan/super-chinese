@@ -1,13 +1,17 @@
 <ng-container *ngIf="(authService.user$ | async) as user">
   <div style="color: white;" nz-dropdown [nzDropdownMenu]="menu" nzTrigger="click" nzPlacement="bottomRight">
     <nz-avatar nzIcon="user" [nzSrc]="user.picture"></nz-avatar>
-    <i style="margin-left: 0.25rem;" nz-icon nzType="down" nzTheme="outline"></i>
+    <i style="margin-left: 0.5rem;" nz-icon nzType="down" nzTheme="outline"></i>
   </div>
 </ng-container>
 
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu nzSelectable>
-    <li nz-menu-item nzMatchRouter (click)="goToSetting()">{{ 'SETTING' | translate}}</li>
+    <li *ngFor="let item of navItem">
+      <span nz-menu-item (click)="navigate(item.link)">
+        {{ item.name | translate }}
+      </span>
+    </li>
     <li nz-menu-item nzMatchRouter class="logout" (click)="authService.logout()">{{ 'LOGOUT' | translate}}</li>
   </ul>
-</nz-dropdown-menu>
+</nz-dropdown-menu> 

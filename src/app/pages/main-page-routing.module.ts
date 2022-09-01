@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: MainPageComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'setting', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () => import('../pages/home/home.module').then(m => m.HomeModule),
@@ -28,6 +28,14 @@ const routes: Routes = [
       {
         path: 'setting',
         loadChildren: () => import('../pages/setting/setting.module').then(m => m.SettingModule),
+      },
+      {
+        path: 'new',
+        loadChildren: () => import('../pages/new/new.module').then(m => m.NewModule),
+      },
+      {
+        path: 'support',
+        loadChildren: () => import('../pages/support/support.module').then(m => m.SupportModule),
       },
     ],
   },

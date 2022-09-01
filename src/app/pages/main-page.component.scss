@@ -1,5 +1,5 @@
 @import 'src/styles.scss';
-@import '/src/assets/scss/animation';
+@import 'animation';
 
 .main {
   overflow-y: hidden;
@@ -28,7 +28,6 @@
       align-items: center;
       cursor: pointer;
       .selected {
-        color: $primary-color;
         background: $linear-gradient;
         background-clip: text;
         -webkit-text-fill-color: transparent;

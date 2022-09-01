@@ -8,9 +8,24 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  year: Date = new Date();
+  navItem = [
+    {
+      name: 'VOCABULARY',
+      link: 'vocabulary',
+    },
+    {
+      name: 'CURRICULUM',
+      link: 'curriculum',
+    },
+    {
+      name: 'EXERCISE',
+      link: 'exercise',
+    },
+  ];
+  selectedLanguage = localStorage.getItem('language');
+  year: Date = new Date;
 
-  constructor() {}
+  constructor(private translateService: TranslateService, public authService: AuthService) {}
 
   ngOnInit(): void {}
 }

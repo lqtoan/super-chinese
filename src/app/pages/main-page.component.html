@@ -5,8 +5,11 @@
       <small class="navbar__slogan">{{ 'SLOGAN' | translate }}</small>
     </div>
     <nav class="navbar__menu">
-      <app-change-language class="navbar__menu__item"></app-change-language>
-      <app-user-menu class="navbar__menu__item"></app-user-menu>
+      <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
+        item.name | translate
+      }}</a>
+      <button *ngIf="authService.isAuthenticated$ | async" (click)="authService.logout()">Log out</button>
+      <button *ngIf="!(authService.isAuthenticated$ | async)" (click)="authService.loginWithRedirect()">Log in</button>
     </nav>
   </header>
   <router-outlet></router-outlet>

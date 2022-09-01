@@ -8,6 +8,8 @@
       <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
         item.name | translate
       }}</a>
+      <button *ngIf="authService.isAuthenticated$ | async" (click)="authService.logout()">Log out</button>
+      <button *ngIf="!(authService.isAuthenticated$ | async)" (click)="authService.loginWithRedirect()">Log in</button>
     </nav>
     <select class="changeLanguage" (change)="changeLanguage($event)">
       <option *ngIf="selectedLanguage" selected [value]="selectedLanguage">

@@ -27,6 +27,24 @@
       flex-flow: row wrap;
       align-items: center;
       cursor: pointer;
+      .selected {
+        color: $primary-color;
+        background: $linear-gradient;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0.8;
+      }
+      a {
+        margin-right: 1rem;
+        font-size: larger;
+        color: $white;
+        transition: $transition;
+      }
+      a:hover {
+        background: $linear-gradient;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
       &__item:not(:last-child) {
         margin-right: 1rem;
       }
@@ -82,6 +100,9 @@
   @media screen and (max-width: $mobile) {
     .navbar {
       padding: 1rem;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
       &__slogan {
         display: none;
       }

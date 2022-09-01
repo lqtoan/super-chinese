@@ -28,8 +28,7 @@ export class UserMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  navigate(link: string) {
-    console.log(link);
-    this.router.navigate([`/${link}`])
+  goToSetting() {
+    this.router.navigate(['/setting'])
   }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserMenuComponent } from './user-menu/user-menu.component';
-import { ChangeLanguageComponent } from './change-language/change-language.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -11,8 +10,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 const nzModules = [NzAvatarModule, NzDropDownModule, NzIconModule, NzButtonModule];
 
 @NgModule({
-  declarations: [UserMenuComponent, ChangeLanguageComponent],
+  declarations: [UserMenuComponent],
   imports: [CommonModule, TranslateModule, nzModules],
-  exports: [UserMenuComponent, ChangeLanguageComponent],
+  exports: [UserMenuComponent],
 })
 export class LayoutModule {}

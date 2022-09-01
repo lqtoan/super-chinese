@@ -28,4 +28,9 @@ export class MainPageComponent implements OnInit {
   constructor(private translateService: TranslateService, public authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  changeLanguage(event: any) {
+    this.translateService.use(event.target.value);
+    localStorage.setItem('language', event.target.value);
+  }
 }

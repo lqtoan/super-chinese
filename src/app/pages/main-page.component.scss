@@ -34,7 +34,7 @@
         opacity: 0.8;
       }
       a {
-        margin-right: 1rem;
+        margin-right: 0.75rem;
         font-size: larger;
         color: $white;
         transition: $transition;
@@ -43,9 +43,6 @@
         background: $linear-gradient;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-      }
-      &__item:not(:last-child) {
-        margin-right: 0.5rem;
       }
     }
   }
@@ -102,6 +99,9 @@
       flex-flow: column;
       justify-content: center;
       align-items: center;
+      &__logo {
+        margin-bottom: 0.5rem;
+      }
       &__slogan {
         display: none;
       }

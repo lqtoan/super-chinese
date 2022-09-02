@@ -9,12 +9,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurriculumComponent implements OnInit {
-  audioList: Audio[] = [];
+  hsk1AudioList: Audio[] = [];
   currentPage: number = 1;
 
   constructor(private audioService: AudioService) {}
 
   ngOnInit(): void {
-    this.audioService.getCurriculumAudioList().subscribe((res) => (this.audioList = res));
+    this.audioService.getHsk1CurriculumAudioList().subscribe((res) => (this.hsk1AudioList = res));
   }
 }

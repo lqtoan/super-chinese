@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -25,7 +24,7 @@ export class MainPageComponent implements OnInit {
   selectedLanguage = localStorage.getItem('language');
   year: Date = new Date;
 
-  constructor(private translateService: TranslateService, public authService: AuthService) {}
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit(): void {}
 

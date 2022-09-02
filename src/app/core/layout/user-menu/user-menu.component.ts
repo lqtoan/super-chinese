@@ -1,6 +1,6 @@
+import { AuthenticationService } from './../../authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-user-menu',
@@ -23,14 +23,14 @@ export class UserMenuComponent implements OnInit {
     },
   ];
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthenticationService, private router: Router) {
+    this.authService.getAccessToken();
+  }
 
   ngOnInit(): void {
   }
 
   navigate(link: string) {
-    console.log(link);
-    
     this.router.navigate([`/${link}`])
   }
 }

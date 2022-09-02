@@ -50,11 +50,11 @@ a {
 }
 
 select {
-  cursor: pointer;
   border: none;
   outline: none;
   background: $white;
   color: $black;
+  cursor: pointer;
 }
 
 select::-ms-expand {

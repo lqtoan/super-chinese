@@ -1,6 +1,15 @@
 @import 'src/styles.scss';
 
 ::ng-deep {
+  .ant-dropdown-trigger {
+    padding: 0.25rem;
+    border: 2px solid rgba($color: $gray, $alpha: 0.75);
+    border-radius: 2rem 1rem 1rem 2rem;
+    transition: $transition;
+  }
+  .ant-dropdown-trigger:hover {
+    background: $gray;
+  }
   .ant-dropdown-menu-item {
     padding: 0.25rem 0.5rem;
     color: $black;
@@ -8,13 +17,10 @@
     transition: $transition;
   }
   .ant-dropdown-menu-item:hover {
-    color: $white;
-    background: $primary-color;
-    opacity: 0.8;
+    background: $second-white;
   }
-  .ant-dropdown-menu-item.ant-dropdown-menu-item-selected {
-    color: $white;
-    background: $primary-color;
+  .ant-dropdown-menu-item-selected {
+    background: $second-white;
   }
 }
 

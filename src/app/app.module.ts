@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,8 @@ export const createTranslateLoader = (http: HttpClient) =>
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -31,8 +33,6 @@ export const createTranslateLoader = (http: HttpClient) =>
       },
       defaultLanguage: localStorage.getItem('language')?.toString() || 'vi',
     }),
-    AppRoutingModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     AuthModule.forRoot({
       ...env.auth,

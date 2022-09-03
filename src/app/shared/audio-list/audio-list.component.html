@@ -1,5 +1,4 @@
 <div class="tab-content">
-  <ng-container *ngIf="!audioList">loading...</ng-container>
   <div class="controls" *ngIf="selectedAudio">
     <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
     <audio controls autoplay preload="none" [attr.src]="selectedAudio.url">
@@ -16,18 +15,19 @@
   </div>
   <div class="pagination">
     <pagination-controls
-      (pageChange)="currentPage = $event"
-      previousLabel="<"
-      nextLabel=">"
-      [maxSize]="6"
-      [directionLinks]="false"
-      [autoHide]="true"
-      [responsive]="false"
+    (pageChange)="currentPage = $event"
+    previousLabel="<"
+    nextLabel=">"
+    [maxSize]="6"
+    [directionLinks]="false"
+    [autoHide]="true"
+    [responsive]="false"
     ></pagination-controls>
   </div>
-  <div class="audio-list" [ngStyle]="{ 'grid-auto-rows': audioHeight}">
+  <ng-container *ngIf="!audio.list">loading...</ng-container>
+  <div class="audio-list" [ngStyle]="{ 'grid-auto-rows': audio.height}">
     <ul
-      *ngFor="let audio of audioList | paginate: { itemsPerPage: 16, currentPage: currentPage }"
+      *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
       class="audio"
       (click)="onSelect(audio)"
     >

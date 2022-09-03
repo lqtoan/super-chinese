@@ -1,5 +1,5 @@
-import { Audio } from '../../core/models/audio';
-import { AudioService } from '../../core/services/audio/audio.service';
+import { Audio } from '@models/audio';
+import { AudioService } from '@services/audio/audio.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({

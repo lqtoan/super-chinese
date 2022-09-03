@@ -21,6 +21,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
+      "@core/*": ["./src/app/core/*"],
       "@constants/*": ["./src/app/core/constants/*"],
       "@services/*": ["./src/app/core/services/*"],
       "@models/*": ["./src/app/core/models/*"],

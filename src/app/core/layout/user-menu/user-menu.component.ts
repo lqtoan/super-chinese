@@ -18,6 +18,10 @@ export class UserMenuComponent implements OnInit {
       link: 'new',
     },
     {
+      name: 'ABOUT',
+      link: 'about',
+    },
+    {
       name: 'SUPPORT',
       link: 'support',
     },

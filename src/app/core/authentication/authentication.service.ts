@@ -1,7 +1,7 @@
 import { AuthService } from '@auth0/auth0-angular';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

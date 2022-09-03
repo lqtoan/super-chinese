@@ -1,4 +1,4 @@
-import { Vocabulary } from './../../models/vocabulary';
+import { Vocabulary } from '@models/vocabulary';
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 import { HSK1_VOCABULARY } from './mock-hsk1-vocabulary';

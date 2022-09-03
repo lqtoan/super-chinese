@@ -3,24 +3,24 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
+import { AboutComponent } from './about.component';
 
 const nzModules = [NzIconModule, NzDividerModule];
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [AboutComponent],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: HomeComponent,
+        component: AboutComponent,
       },
     ]),
     CommonModule,
     nzModules,
     TranslateModule,
   ],
-  exports: [HomeComponent],
+  exports: [AboutComponent],
 })
-export class HomeModule {}
+export class AboutModule {}

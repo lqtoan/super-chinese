@@ -3,3 +3,8 @@ export interface Audio {
   url: string;
   description: string;
 }
+
+export interface AudioConfiguration {
+  list: Audio[];
+  height: string;
+}

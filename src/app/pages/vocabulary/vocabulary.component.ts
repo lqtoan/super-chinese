@@ -1,5 +1,5 @@
-import { Vocabulary } from './../../core/models/vocabulary';
-import { VocabularyService } from './../../core/services/vocabulary/vocabulary.service';
+import { Vocabulary } from '@models/vocabulary';
+import { VocabularyService } from '@services/vocabulary/vocabulary.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({

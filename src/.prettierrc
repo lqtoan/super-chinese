@@ -4,12 +4,5 @@
   "printWidth": 120,
   "tabWidth": 2,
   "semi": true,
-  "htmlWhitespaceSensitivity": "strict",
-  "arrowParens": "avoid",
-  "bracketSpacing": true,
-  "jsxBracketSameLine": true,
-  "proseWrap": "preserve",
-  "trailingComma": "all",
-  "endOfLine": "lf",
-  "parser": "babel"
+  "bracketSpacing": true
 }

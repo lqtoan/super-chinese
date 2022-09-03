@@ -1,16 +1,16 @@
 <div class="main">
-  <header class="navbar">
+  <nav class="navbar">
     <div>
       <h2 routerLink="/home" class="navbar__logo">{{ 'SUPER_CHINESE' | translate }}</h2>
       <small class="navbar__slogan">{{ 'SLOGAN' | translate }}</small>
     </div>
-    <nav class="navbar__menu">
+    <div class="navbar__menu">
       <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
         item.name | translate
       }}</a>
       <app-user-menu></app-user-menu>
-    </nav>
-  </header>
+    </div>
+  </nav>
   <router-outlet></router-outlet>
   <footer class="footer">
     <small>Copyright {{ year | date: 'yyyy' }} &copy; {{ 'FOOTER' | translate }} </small>

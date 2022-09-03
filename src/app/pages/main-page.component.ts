@@ -22,7 +22,7 @@ export class MainPageComponent implements OnInit {
     },
   ];
   selectedLanguage = localStorage.getItem('language');
-  year: Date = new Date;
+  year: Date = new Date();
 
   constructor(private translateService: TranslateService) {}
 

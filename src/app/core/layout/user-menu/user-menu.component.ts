@@ -5,13 +5,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-menu',
   templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.scss']
+  styleUrls: ['./user-menu.component.scss'],
 })
 export class UserMenuComponent implements OnInit {
   navItem = [
     {
-      name: 'SETTING',
-      link: 'setting',
+      name: 'HOME',
+      link: 'home',
     },
     {
       name: 'NEW',
@@ -31,10 +31,9 @@ export class UserMenuComponent implements OnInit {
     this.authService.getAccessToken();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   navigate(link: string) {
-    this.router.navigate([`/${link}`])
+    this.router.navigate([`/${link}`]);
   }
 }

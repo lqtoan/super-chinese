@@ -1,6 +1,6 @@
-import { HSK1_EXERCISE_AUDIOS } from './mock-hsk1-exercise-audios';
-import { HSK1_CURRICULUM_AUDIOS } from './mock-hsk1-curriculum-audios';
-import { Audio } from '@models/audio';
+import { Audio } from '@models/audio.model';
+import { HSK1_EXERCISE_AUDIOS } from '@data/mock-hsk1-exercise-audios';
+import { HSK1_CURRICULUM_AUDIOS } from '@data/mock-hsk1-curriculum-audios';
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
 

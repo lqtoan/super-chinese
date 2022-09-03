@@ -1,4 +1,4 @@
-import { Audio } from 'src/app/core/models/audio';
+import { Audio } from '@models/audio.model';
 
 export const HSK1_EXERCISE_AUDIOS: Audio[] = [
   {

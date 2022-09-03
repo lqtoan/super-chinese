@@ -1,4 +1,4 @@
-import { Vocabulary } from '../../models/vocabulary';
+import { Vocabulary } from '@models/vocabulary.model';
 
 export const HSK1_VOCABULARY: Vocabulary[] = [
   {

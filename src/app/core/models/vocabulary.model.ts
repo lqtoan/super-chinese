@@ -1,4 +1,4 @@
-import { Word } from './word';
+import { Word } from '@models/word.model';
 
 export interface Vocabulary {
   name: string;

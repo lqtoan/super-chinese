@@ -1,7 +1,7 @@
-import { Vocabulary } from '@models/vocabulary';
+import { Vocabulary } from '@models/vocabulary.model';
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
-import { HSK1_VOCABULARY } from './mock-hsk1-vocabulary';
+import { HSK1_VOCABULARY } from '@data/mock-hsk1-vocabulary';
 
 @Injectable({
   providedIn: 'root',

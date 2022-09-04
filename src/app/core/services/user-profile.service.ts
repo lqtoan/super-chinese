@@ -1,3 +1,4 @@
+import { UserProfile } from '@models/user-profile.model';
 import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -9,8 +10,8 @@ export class UserProfileService {
 
   API = `${environment.api}`;
 
-  getUserProfile(): Observable<any> {
+  getUserProfile(): Observable<UserProfile> {
     let url = `${this.API}/userinfo`;
-    return this.httpClient.get<any>(url);
+    return this.httpClient.get<UserProfile>(url);
   }
 }

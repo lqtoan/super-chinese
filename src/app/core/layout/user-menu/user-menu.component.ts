@@ -15,8 +15,8 @@ export class UserMenuComponent implements OnInit {
       icon: 'home',
     },
     {
-      name: 'SETTING',
-      link: 'setting',
+      name: 'USER_PROFILE',
+      link: 'user-profile',
       icon: 'user',
     },
     {

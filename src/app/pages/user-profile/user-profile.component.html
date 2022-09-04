@@ -1,1 +1,7 @@
-<div class="page"></div>
+<div class="page">
+  <div>Email: {{ user.email }}</div>
+  <div>Name: {{ user.name }}</div>
+  <div>Nick name: {{ user.nickname }}</div>
+  <img [style.height.rem]="4" [style.width.rem]="4" [style.border-radius.%]="50" [src]="user.picture" alt="" />
+  <div>Updated at: {{ user.updated_at | date: 'hh:mm dd/MM/yyyy' }}</div>
+</div>

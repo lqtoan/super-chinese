@@ -1,12 +1,12 @@
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VocabularyComponent } from './vocabulary.component';
 import { RouterModule } from '@angular/router';
-import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { VocabularyListModule } from 'src/app/shared/vocabulary-list/vocabulary-list.module';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
-const nzModules = [NzCollapseModule, NzTabsModule];
+const nzModules = [NzTabsModule];
 
 @NgModule({
   declarations: [VocabularyComponent],
@@ -20,6 +20,7 @@ const nzModules = [NzCollapseModule, NzTabsModule];
     CommonModule,
     nzModules,
     TranslateModule,
+    VocabularyListModule,
   ],
 })
 export class VocabularyModule {}

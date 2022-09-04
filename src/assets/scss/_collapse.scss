@@ -1,8 +1,8 @@
 ::ng-deep {
-  .ant-collapse>.ant-collapse-item {
+  .ant-collapse > .ant-collapse-item {
     border: none;
   }
-  .ant-collapse>.ant-collapse-item>.ant-collapse-header {
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     padding: 0.75rem 1rem;
     color: rgba($color: $black, $alpha: 0.9);
   }
@@ -12,14 +12,14 @@
     font-weight: normal;
     border-radius: 0 0 0.5rem 0.5rem;
   }
-  .ant-collapse-content>.ant-collapse-content-box {
+  .ant-collapse-content > .ant-collapse-content-box {
     padding: 0 1rem;
   }
-  .ant-collapse>.ant-collapse-item:last-child,
-  .ant-collapse>.ant-collapse-item:last-child>.ant-collapse-header {
+  .ant-collapse > .ant-collapse-item:last-child,
+  .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
     border-radius: 0.5rem;
   }
-  .ant-collapse-item:last-child>.ant-collapse-content {
+  .ant-collapse-item:last-child > .ant-collapse-content {
     border-radius: 0 0 0.5rem 0.5rem;
   }
 }
@@ -36,35 +36,5 @@ nz-collapse {
     border-radius: 0.5rem;
     font-weight: 900;
     transition: $transition;
-    .wordList {
-      .word {
-        padding: 0.5rem 0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        &--name {
-          min-width: 4rem;
-          color: $black;
-          font-size: 1rem;
-          font-weight: bolder;
-          letter-spacing: 1px;
-        }
-        &--pinyin {
-          color: $primary-color;
-        }
-        &--define {
-          color: #81A1C1;
-        }
-        .wrap {
-          margin-left: 0.5rem;
-          display: flex;
-          flex-flow: column;
-          line-height: 100%;
-        }
-      }
-      .word:not(:last-of-type) {
-        border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
-      }
-    }
   }
 }

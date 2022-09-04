@@ -1,20 +1,6 @@
 <nz-tabset [nzAnimated]="true">
   <nz-tab [nzTitle]="'HSK 1' | translate">
-    <div class="tab-content">
-      <nz-collapse nzExpandIconPosition="right" nzBordered="true">
-        <nz-collapse-panel *ngFor="let vocabulary of hsk1Vocabulary" [nzHeader]="vocabulary.name" [nzActive]="false">
-          <ul class="wordList">
-            <li *ngFor="let word of vocabulary.words" class="word">
-              <span class="word--name">{{ word.name }}</span>
-              <div class="wrap">
-                <span class="word--pinyin">{{ word.pinyin }}</span>
-                <span class="word--define">{{ word.define | translate }}</span>
-              </div>
-            </li>
-          </ul>
-        </nz-collapse-panel>
-      </nz-collapse>
-    </div>
+    <app-vocabulary-list [vocabularyList]="hsk1Vocabulary"></app-vocabulary-list>
   </nz-tab>
   <nz-tab [nzTitle]="'HSK 2' | translate">
     <ng-template nz-tab> {{ 'COMING_SOON' | translate }}</ng-template>

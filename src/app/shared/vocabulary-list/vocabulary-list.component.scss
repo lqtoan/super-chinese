@@ -1,0 +1,39 @@
+@import '/src/styles.scss';
+@import 'collapse';
+
+.tab-content {
+  margin-top: 0.5rem;
+  padding-right: 0.25rem;
+  height: 65vh;
+  overflow-y: scroll;
+  .wordList {
+    .word {
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      &--name {
+        min-width: 4rem;
+        color: $black;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+      }
+      &--pinyin {
+        color: $primary-color;
+      }
+      &--define {
+        color: #81a1c1;
+      }
+      .wrap {
+        margin-left: 0.5rem;
+        display: flex;
+        flex-flow: column;
+        line-height: 100%;
+      }
+    }
+    .word:not(:last-of-type) {
+      border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
+    }
+  }
+}

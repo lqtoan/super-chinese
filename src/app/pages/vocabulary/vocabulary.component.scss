@@ -1,10 +1,2 @@
-@import "/src/styles.scss";
+@import '/src/styles.scss';
 @import 'tab';
-@import 'collapse';
-
-.tab-content {
-  margin-top: 0.5rem;
-  padding-right: 0.25rem;
-  height: 65vh;
-  overflow-y: scroll;
-}

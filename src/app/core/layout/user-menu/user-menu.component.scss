@@ -1,6 +1,12 @@
 @import 'src/styles.scss';
 
 ::ng-deep {
+  .ant-dropdown {
+    margin-top: 0.25rem;
+  }
+  [nz-menu] {
+    border-radius: 0.5rem;
+  }
   .ant-dropdown-trigger {
     padding: 0.125rem;
     border: 2px solid rgba($color: $gray, $alpha: 0.75);

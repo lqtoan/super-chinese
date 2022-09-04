@@ -56,31 +56,6 @@
     align-items: baseline;
   }
 
-  .aside {
-    position: absolute;
-    bottom: 10vh;
-    left: calc(5vw - 1rem);
-    animation: fadedlyToClearly 1s linear 0.2s backwards;
-    ul {
-      .info {
-        font-size: 2rem;
-        color: $primary-color;
-        transition: $transition;
-      }
-      .info:hover {
-        transform: translateY(-2px);
-      }
-    }
-    ul:after {
-      content: '';
-      margin: 0 auto;
-      background: $primary-color;
-      display: block;
-      width: 1px;
-      height: 10vh;
-    }
-  }
-  
   @media screen and (max-width: $tablet) {
     .navbar {
       padding: 1rem 4rem;
@@ -92,7 +67,7 @@
       left: calc(2vw - 0rem);
     }
   }
-  
+
   @media screen and (max-width: $mobile) {
     .navbar {
       padding: 1rem;

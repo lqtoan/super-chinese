@@ -1,12 +1,13 @@
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupportComponent } from './support.component';
 import { RouterModule } from '@angular/router';
 
+const nzModules = [NzIconModule];
+
 @NgModule({
-  declarations: [
-    SupportComponent
-  ],
+  declarations: [SupportComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
         component: SupportComponent,
       },
     ]),
-  ]
+    nzModules,
+  ],
 })
-export class SupportModule { }
+export class SupportModule {}

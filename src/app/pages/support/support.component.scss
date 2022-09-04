@@ -1,1 +1,12 @@
 @import 'layout';
+
+ul {
+  .info {
+    font-size: 1rem;
+    color: $primary-color;
+    transition: $transition;
+  }
+  .info:hover {
+    transform: translateX(2px);
+  }
+}

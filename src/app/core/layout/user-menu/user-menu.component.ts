@@ -12,18 +12,22 @@ export class UserMenuComponent implements OnInit {
     {
       name: 'HOME',
       link: 'home',
+      icon: 'home',
     },
     {
       name: 'NEW',
       link: 'new',
+      icon: 'notification',
     },
     {
       name: 'ABOUT',
       link: 'about',
+      icon: 'profile',
     },
     {
       name: 'SUPPORT',
       link: 'support',
+      icon: 'mail',
     },
   ];
 

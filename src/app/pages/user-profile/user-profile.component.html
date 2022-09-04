@@ -1,6 +1,6 @@
 <div class="page">
-  <ng-container *ngIf="!(userProfileService.user$ | async)"> loading </ng-container>
-  <ng-container *ngIf="userProfileService.user$ | async as user">
+  <ng-container *ngIf="!(user$ | async)"><nz-spin nzSimple></nz-spin></ng-container>
+  <ng-container *ngIf="user$ | async as user">
     <ng-container>Email: {{ user.email }}</ng-container>
     <br />
     <ng-container>Name: {{ user.name }}</ng-container>

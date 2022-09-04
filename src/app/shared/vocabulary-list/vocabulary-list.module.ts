@@ -4,8 +4,9 @@ import { VocabularyListComponent } from './vocabulary-list.component';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { TranslateModule } from '@ngx-translate/core';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
-const nzModules = [NzCollapseModule, NzTabsModule];
+const nzModules = [NzCollapseModule, NzTabsModule, NzSpinModule];
 
 @NgModule({
   declarations: [VocabularyListComponent],

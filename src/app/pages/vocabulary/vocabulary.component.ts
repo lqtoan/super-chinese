@@ -1,4 +1,3 @@
-import { Vocabulary } from '@models/vocabulary.model';
 import { VocabularyService } from '@services/vocabulary.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
@@ -9,10 +8,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VocabularyComponent implements OnInit {
-  hsk1Vocabulary: Vocabulary[] = [];
   constructor(private vocabularyService: VocabularyService) {}
 
+  hsk1Vocabulary$ = this.vocabularyService.hsk1Vocabulary$;
+
   ngOnInit(): void {
-    this.vocabularyService.getHsk1Vocabulary().subscribe((res) => (this.hsk1Vocabulary = res));
+    this.hsk1Vocabulary$.pipe().subscribe();
+
+    this.getHsk1Vocabulary();
+  }
+
+  getHsk1Vocabulary() {
+    this.vocabularyService.getHsk1Vocabulary().subscribe();
   }
 }

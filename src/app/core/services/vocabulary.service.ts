@@ -1,6 +1,6 @@
 import { Vocabulary } from '@models/vocabulary.model';
 import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { Observable, of, delay, Subject, tap } from 'rxjs';
 import { HSK1_VOCABULARY } from '@data/mock-hsk1-vocabulary';
 
 @Injectable({
@@ -11,7 +11,13 @@ export class VocabularyService {
 
   constructor() {}
 
+  private vocabularySubject$ = new Subject<Vocabulary[]>();
+  hsk1Vocabulary$ = this.vocabularySubject$.asObservable();
+
   getHsk1Vocabulary(): Observable<Vocabulary[]> {
-    return of(this.hsk1Vocabulary).pipe(delay(50));
+    return of(this.hsk1Vocabulary).pipe(
+      delay(500),
+      tap((res) => this.vocabularySubject$.next(res))
+    );
   }
 }

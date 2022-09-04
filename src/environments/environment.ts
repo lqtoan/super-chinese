@@ -16,6 +16,7 @@ export const environment = {
     clientId,
     redirectUri: window.location.origin,
   },
+  api: 'https://hsk-1.us.auth0.com',
 };
 
 /*

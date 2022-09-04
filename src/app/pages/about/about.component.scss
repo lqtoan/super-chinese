@@ -44,6 +44,7 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     img {
+      aspect-ratio: 16/9;
       height: 250px;
       width: auto;
       box-shadow: 0 0 5px 1px rgba($color: $gray, $alpha: 0.5);

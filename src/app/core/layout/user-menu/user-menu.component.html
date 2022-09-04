@@ -9,7 +9,7 @@
   <ul nz-menu>
     <li *ngFor="let item of navItem">
       <span nz-menu-item (click)="navigate(item.link)">
-        <span style="margin-right: 0.5rem" nz-icon [nzType]="item.icon" nzTheme="fill"></span>
+        <span style="margin-right: 0.5rem" nz-icon [nzType]="item.icon" nzTheme="outline"></span>
         {{ item.name | translate }}
       </span>
     </li>

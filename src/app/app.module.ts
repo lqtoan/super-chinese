@@ -1,6 +1,7 @@
+import { interceptorProviders } from './core/inteceptor/index';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,7 +39,7 @@ export const createTranslateLoader = (http: HttpClient) =>
       ...env.auth,
     }),
   ],
-  providers: [{ provide: NZ_I18N, useValue: vi_VN }],
+  providers: [{ provide: NZ_I18N, useValue: vi_VN }, interceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,3 +1,4 @@
+import { Observable, Subject, tap } from 'rxjs';
 import { UserProfile } from '@models/user-profile.model';
 import { UserProfileService } from '@services/user-profile.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -9,21 +10,19 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserProfileComponent implements OnInit {
-  constructor(private readonly userProfileService: UserProfileService) {}
-
-  user: UserProfile = {
-    email: '',
-    email_verified: false,
-    name: '',
-    nickname: '',
-    picture: '',
-    sub: '',
-    updated_at: new Date(),
-  };
+  constructor(public readonly userProfileService: UserProfileService) {}
 
   ngOnInit(): void {
-    this.userProfileService.getUserProfile().subscribe((res) => {
-      this.user = res;
+    this.userProfileService.user$.pipe().subscribe((user) => {
+      console.log(user);
+    });
+
+    this.getUserProfile();
+  }
+
+  getUserProfile() {
+    this.userProfileService.getUserProfile().subscribe((user) => {
+      console.log(user);
     });
   }
 }

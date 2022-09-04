@@ -1,6 +1,6 @@
 import { UserProfile } from '@models/user-profile.model';
 import { environment } from './../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,8 +10,15 @@ export class UserProfileService {
 
   API = `${environment.api}`;
 
+  private userSubject$ = new Subject<UserProfile>();
+  user$ = this.userSubject$.asObservable();
+
   getUserProfile(): Observable<UserProfile> {
     let url = `${this.API}/userinfo`;
-    return this.httpClient.get<UserProfile>(url);
+    return this.httpClient.get<UserProfile>(url).pipe(
+      tap((res) => {
+        this.userSubject$.next(res);
+      })
+    );
   }
 }

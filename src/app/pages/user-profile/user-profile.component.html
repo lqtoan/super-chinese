@@ -1,19 +1,22 @@
 <div class="page">
-  <div>Email: {{ user.email }}</div>
-  <br />
-  <div>Name: {{ user.name }}</div>
-  <br />
-  <div>Nick name: {{ user.nickname }}</div>
-  <br />
-  <div>Avatar:</div>
-  <img
-    loading="eager"
-    [style.height.rem]="4"
-    [style.width.rem]="4"
-    [style.border-radius.%]="50"
-    [src]="user.picture"
-    alt="Avatar"
-  />
-  <br />
-  <div>Updated at: {{ user.updated_at | date: 'hh:mm dd/MM/yyyy' }}</div>
+  <ng-container *ngIf="!(userProfileService.user$ | async)"> loading </ng-container>
+  <ng-container *ngIf="userProfileService.user$ | async as user">
+    <ng-container>Email: {{ user.email }}</ng-container>
+    <br />
+    <ng-container>Name: {{ user.name }}</ng-container>
+    <br />
+    <ng-container>Nick name: {{ user.nickname }}</ng-container>
+    <br />
+    <ng-container>Avatar:</ng-container>
+    <img
+      loading="eager"
+      [style.height.rem]="4"
+      [style.width.rem]="4"
+      [style.border-radius.%]="50"
+      [src]="user.picture"
+      alt="Avatar"
+    />
+    <br />
+    <ng-container>Updated at: {{ user.updated_at | date: 'hh:mm dd/MM/yyyy' }}</ng-container>
+  </ng-container>
 </div>

@@ -1,6 +1,7 @@
 <div class="tab-content">
   <nz-collapse nzExpandIconPosition="right" nzBordered="true">
     <ng-container *ngIf="!vocabularyList"><nz-spin nzSimple></nz-spin></ng-container>
+    <ng-container *ngIf="vocabularyList"></ng-container>
     <nz-collapse-panel *ngFor="let vocabulary of vocabularyList" [nzHeader]="vocabulary.name" [nzActive]="false">
       <ul class="wordList">
         <li *ngFor="let word of vocabulary.words" class="word">

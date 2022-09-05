@@ -13,12 +13,15 @@ export class ExerciseComponent implements OnInit {
   hsk1Audio: AudioConfiguration = {
     list: [],
     height: '6rem',
+    isLoading: true,
   };
   currentPage: number = 1;
 
   constructor(private audioService: AudioService) {}
 
   ngOnInit(): void {
-    this.audioService.getHsk1ExerciseAudioList().subscribe((res) => (this.hsk1Audio.list = res));
+    this.audioService.getHsk1ExerciseAudioList().subscribe((res) => {
+      (this.hsk1Audio.list = res), (this.hsk1Audio.isLoading = false);
+    });
   }
 }

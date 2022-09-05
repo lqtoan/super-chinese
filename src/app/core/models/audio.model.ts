@@ -7,4 +7,5 @@ export interface Audio {
 export interface AudioConfiguration {
   list: Audio[];
   height: string;
+  isLoading: boolean;
 }

@@ -1,5 +1,6 @@
 @import '/src/styles.scss';
-@import 'animation';
+// @import 'animation';
+@import 'spinner';
 
 .tab-content {
   padding: 0.5rem 0;
@@ -9,7 +10,11 @@
     z-index: 2;
     padding: 0 2rem;
     height: 7rem;
-    background: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 0.75), rgba($color: #88C0D0, $alpha: 0.75));
+    background: linear-gradient(
+      135deg,
+      rgba($color: $primary-color, $alpha: 0.75),
+      rgba($color: #88c0d0, $alpha: 0.75)
+    );
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -26,7 +31,7 @@
       height: 2rem;
     }
   }
-  
+
   .pagination {
     height: 5vh;
     display: flex;
@@ -55,7 +60,7 @@
       }
     }
   }
-  
+
   .audio-list {
     padding-right: 0.5rem;
     height: calc(60vh - 7rem);
@@ -92,12 +97,12 @@
       background: $white-linear-gradient;
       box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
     }
-    .audio:nth-child(odd) {
-      animation: slideToRight 0.75s ease 0s backwards;
-    }
-    .audio:nth-child(even) {
-      animation: slideToLeft 0.75s ease 0s backwards;
-    }
+    // .audio:nth-child(odd) {
+    //   animation: slideToRight 0.75s ease 0s backwards;
+    // }
+    // .audio:nth-child(even) {
+    //   animation: slideToLeft 0.75s ease 0s backwards;
+    // }
   }
 }
 

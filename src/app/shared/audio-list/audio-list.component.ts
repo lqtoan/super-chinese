@@ -9,7 +9,8 @@ import { Audio, AudioConfiguration } from '@models/audio.model';
 export class AudioListComponent {
   @Input() audio: AudioConfiguration = {
     list: [],
-    height: '6rem'
+    height: '6rem',
+    isLoading: true,
   };
   currentPage: number = 1;
   selectedAudio?: Audio;

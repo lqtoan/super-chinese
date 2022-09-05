@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class VocabularyComponent implements OnInit {
   constructor(private vocabularyService: VocabularyService) {}
 
+  // isLoading = true;
   hsk1Vocabulary$ = this.vocabularyService.hsk1Vocabulary$;
 
   ngOnInit(): void {
@@ -20,5 +21,6 @@ export class VocabularyComponent implements OnInit {
 
   getHsk1Vocabulary() {
     this.vocabularyService.getHsk1Vocabulary().subscribe();
+    // this.isLoading = false;
   }
 }

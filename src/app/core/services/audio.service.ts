@@ -14,10 +14,10 @@ export class AudioService {
   constructor() {}
 
   getHsk1CurriculumAudioList(): Observable<Audio[]> {
-    return of(this.hsk1CurriculumAudios).pipe(delay(50));
+    return of(this.hsk1CurriculumAudios).pipe(delay(500));
   }
 
   getHsk1ExerciseAudioList(): Observable<Audio[]> {
-    return of(this.hsk1ExerciseAudios).pipe(delay(50));
+    return of(this.hsk1ExerciseAudios).pipe(delay(500));
   }
 }

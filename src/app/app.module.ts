@@ -1,3 +1,4 @@
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { interceptorProviders } from './core/inteceptor/index';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -38,6 +39,7 @@ export const createTranslateLoader = (http: HttpClient) =>
     AuthModule.forRoot({
       ...env.auth,
     }),
+    NzSpinModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }, interceptorProviders],
   bootstrap: [AppComponent],

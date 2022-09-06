@@ -34,9 +34,7 @@
             ],
             "styles": ["src/theme.less", "src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/assets/scss"
-              ]
+              "includePaths": ["src/assets/scss"]
             },
             "scripts": []
           },

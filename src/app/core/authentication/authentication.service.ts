@@ -6,11 +6,12 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   user$ = this.authService.user$;
+  loading$ = this.authService.isLoading$;
   private accessTokenSubject$ = new Subject();
   accessToken$ = this.accessTokenSubject$.asObservable();
 
   constructor(private authService: AuthService, @Inject(DOCUMENT) private doc: Document) {}
-  
+
   async loginWithRedirect() {
     this.authService.loginWithRedirect();
   }
@@ -20,7 +21,7 @@ export class AuthenticationService {
   }
 
   getAccessToken() {
-    this.authService.getAccessTokenSilently().subscribe(accessToken => {
+    this.authService.getAccessTokenSilently().subscribe((accessToken) => {
       this.accessTokenSubject$.next(accessToken);
       localStorage.setItem('accessToken', accessToken);
     });

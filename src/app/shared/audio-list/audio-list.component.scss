@@ -1,5 +1,5 @@
 @import '/src/styles.scss';
-// @import 'animation';
+@import 'animation';
 @import 'spinner';
 
 .tab-content {
@@ -97,12 +97,12 @@
       background: $white-linear-gradient;
       box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
     }
-    // .audio:nth-child(odd) {
-    //   animation: slideToRight 0.75s ease 0s backwards;
-    // }
-    // .audio:nth-child(even) {
-    //   animation: slideToLeft 0.75s ease 0s backwards;
-    // }
+    .audio:nth-child(odd) {
+      animation: slideToRight 0.75s ease 0s backwards;
+    }
+    .audio:nth-child(even) {
+      animation: slideToLeft 0.75s ease 0s backwards;
+    }
   }
 }
 

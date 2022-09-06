@@ -1,6 +1,6 @@
-<div class="tab-content">
-  <ng-container *ngIf="audio.isLoading"><nz-spin nzSimple></nz-spin></ng-container>
-  <ng-container *ngIf="!audio.isLoading">
+<ng-container *ngIf="audio.isLoading"><nz-spin nzSimple></nz-spin></ng-container>
+<ng-container *ngIf="!audio.isLoading">
+  <div class="tab-content">
     <div class="controls" *ngIf="selectedAudio">
       <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
       <audio controls autoplay preload="none" [attr.src]="selectedAudio.url">
@@ -37,5 +37,5 @@
         <p class="audio__description">{{ audio.description }}</p>
       </ul>
     </div>
-  </ng-container>
-</div>
+  </div>
+</ng-container>

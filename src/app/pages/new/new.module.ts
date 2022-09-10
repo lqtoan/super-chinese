@@ -1,12 +1,11 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewComponent } from './new.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    NewComponent
-  ],
+  declarations: [NewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -15,6 +14,7 @@ import { RouterModule } from '@angular/router';
         component: NewComponent,
       },
     ]),
-  ]
+    TranslateModule,
+  ],
 })
-export class NewModule { }
+export class NewModule {}

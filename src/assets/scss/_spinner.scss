@@ -1,10 +1,11 @@
 ::ng-deep {
   .ant-spin-dot-item {
-    background: $primary-color;
+    font-size: larger;
+    background: #b48ead;
   }
 }
 
 nz-spin {
   position: relative;
-  left: 50%;
+  left: 45%;
 }

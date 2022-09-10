@@ -1,19 +1,28 @@
-<ng-container *ngIf="authService.loading$ | async"><nz-spin nzSimple></nz-spin></ng-container>
+<ng-container *ngIf="authService.loading$ | async">
+  <nz-spin nzSimple></nz-spin>
+</ng-container>
 <div class="main">
   <nav class="navbar">
     <div>
-      <h2 routerLink="/home" class="navbar__logo">{{ 'SUPER_CHINESE' | translate }}</h2>
+      <h2 routerLink="/home"
+          class="navbar__logo">
+        {{ 'SUPER_CHINESE' | translate }}
+      </h2>
       <small class="navbar__slogan">{{ 'SLOGAN' | translate }}</small>
     </div>
     <div class="navbar__menu">
-      <a *ngFor="let item of navItem" [routerLink]="['/', item.link]" routerLinkActive="selected">{{
-        item.name | translate
-      }}</a>
+      <a *ngFor="let item of navItem"
+         [routerLink]="['/', item.link]"
+         routerLinkActive="selected">
+        {{ item.name | translate }}
+      </a>
       <app-user-menu></app-user-menu>
     </div>
   </nav>
   <router-outlet></router-outlet>
   <footer class="footer">
-    <small>Copyright {{ year | date: 'yyyy' }} &copy; {{ 'FOOTER' | translate }} </small>
+    <small>
+      Copyright {{ year | date: 'yyyy' }} &copy; {{ 'FOOTER' | translate }}
+    </small>
   </footer>
 </div>

@@ -2,7 +2,10 @@
 
 ul {
   .info {
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 2rem;
+    line-height: 125%;
     color: $primary-color;
     transition: $transition;
   }

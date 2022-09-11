@@ -359,7 +359,7 @@ export const HSK1_VOCABULARY: Vocabulary[] = [
     ],
   },
   {
-    name: '13 - 他在学做中国猜呢',
+    name: '13 - 他在学做中国菜呢',
     words: [
       { name: '喂', pinyin: 'wèi', define: 'WORD.DEFINE.HELLO' },
       { name: '也', pinyin: 'yě', define: 'WORD.DEFINE.ALSO' },

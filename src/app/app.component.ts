@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <ng-container *ngIf="authService.loading$ | async">
       <nz-spin style="margin-top: 50px;" nzSize="large" nzSimple></nz-spin>
-      <div class="slogan">{{ 'SLOGAN' | translate }}</div>
+      <h3 class="slogan">{{ 'SLOGAN' | translate }}</h3>
     </ng-container>
     <router-outlet></router-outlet>
   `,

@@ -25,9 +25,10 @@ export class MainPageComponent implements OnInit {
   selectedLanguage = localStorage.getItem('language');
   year: Date = new Date();
 
-  constructor(private translateService: TranslateService, public readonly authService: AuthenticationService) {
-    this.translateService.addLangs(['en', 'vi']);
-  }
+  constructor(
+    private readonly translateService: TranslateService,
+    public readonly authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {}
 

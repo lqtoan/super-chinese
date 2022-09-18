@@ -1,4 +1,4 @@
-<nz-tabset [nzAnimated]="true">
+<nz-tabset [nzAnimated]="false">
   <nz-tab [nzTitle]="'HSK 1' | translate">
     <ng-container class="tab-content">
       <app-audio-list [audio]="hsk1Audio"></app-audio-list>
@@ -6,7 +6,7 @@
   </nz-tab>
   <nz-tab [nzTitle]="'HSK 2' | translate">
     <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
+      <app-audio-list [audio]="hsk2Audio"></app-audio-list>
     </ng-template>
   </nz-tab>
   <nz-tab [nzTitle]="'HSK 3' | translate">

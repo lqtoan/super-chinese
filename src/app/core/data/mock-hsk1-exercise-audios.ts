@@ -181,4 +181,9 @@ export const HSK1_EXERCISE_AUDIOS: Audio[] = [
     url: 'assets/exercise/hsk1/15-2.mp3',
     description: '',
   },
+  {
+    title: '16',
+    url: 'assets/exercise/hsk1/16.mp3',
+    description: '',
+  },
 ];

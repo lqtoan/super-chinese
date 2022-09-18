@@ -2,6 +2,11 @@ import { Audio } from '@models/audio.model';
 
 export const HSK2_EXERCISE_AUDIOS: Audio[] = [
   {
+    title: '00',
+    url: 'assets/exercise/hsk2/00.mp3',
+    description: '',
+  },
+  {
     title: '01-1',
     url: 'assets/exercise/hsk2/01-1.mp3',
     description: '',
@@ -179,6 +184,11 @@ export const HSK2_EXERCISE_AUDIOS: Audio[] = [
   {
     title: '15-2',
     url: 'assets/exercise/hsk2/15-2.mp3',
+    description: '',
+  },
+  {
+    title: '16',
+    url: 'assets/exercise/hsk2/16.mp3',
     description: '',
   },
 ];

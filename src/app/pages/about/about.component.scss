@@ -1,6 +1,6 @@
 @import '/src/styles.scss';
 
-.home {
+.about {
   padding: 1rem 8rem;
   height: 75vh;
   overflow-x: hidden;
@@ -55,13 +55,13 @@
 }
 
 @media screen and (max-width: $tablet) {
-  .home {
+  .about {
     padding: 1rem 4rem;
   }
 }
 
 @media screen and (max-width: $mobile) {
-  .home {
+  .about {
     padding: 1rem 1rem 2.5rem;
     .slider {
       img {

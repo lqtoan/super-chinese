@@ -27,9 +27,8 @@ export class CurriculumComponent implements OnInit {
     this.audioService.getHsk1CurriculumAudioList().subscribe((res) => {
       (this.hsk1Audio.list = res), (this.hsk1Audio.isLoading = false);
     });
-    this.audioService.getHsk1CurriculumAudioList().subscribe((res) => {
+    this.audioService.getHsk2CurriculumAudioList().subscribe((res) => {
       (this.hsk2Audio.list = res), (this.hsk2Audio.isLoading = false);
     });
-    console.log('on init', this.hsk1Audio);
   }
 }

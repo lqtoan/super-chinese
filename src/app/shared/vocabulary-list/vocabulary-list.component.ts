@@ -9,5 +9,5 @@ import { Vocabulary } from '@models/vocabulary.model';
 })
 export class VocabularyListComponent {
   @Input() vocabularyList: Vocabulary[] = [];
-  // @Input() isLoading: boolean = true;
+  @Input() isLoading: boolean = true;
 }

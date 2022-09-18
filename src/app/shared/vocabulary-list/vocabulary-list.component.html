@@ -1,7 +1,7 @@
-<ng-container *ngIf="!vocabularyList">
+<ng-container *ngIf="isLoading">
   <nz-spin nzSimple></nz-spin>
 </ng-container>
-<ng-container *ngIf="vocabularyList">
+<ng-container *ngIf="!isLoading">
   <div class="tab-content">
     <nz-collapse nzExpandIconPosition="right"
                  nzBordered="true">

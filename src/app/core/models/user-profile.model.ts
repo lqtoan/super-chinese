@@ -6,4 +6,5 @@ export interface UserProfile {
   picture: string;
   sub: string;
   updated_at: Date;
+  created_at: Date;
 }

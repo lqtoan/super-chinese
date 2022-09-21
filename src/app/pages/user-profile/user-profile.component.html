@@ -1,5 +1,7 @@
 <div class="page">
-  <ng-container *ngIf="!(user$ | async)"><nz-spin nzSimple></nz-spin></ng-container>
+  <ng-container *ngIf="!(user$ | async)">
+    <nz-spin nzSimple></nz-spin>
+  </ng-container>
   <ng-container *ngIf="user$ | async as user">
     <ng-container>Email: {{ user.email }}</ng-container>
     <br />
@@ -8,14 +10,12 @@
     <ng-container>Nick name: {{ user.nickname }}</ng-container>
     <br />
     <ng-container>Avatar:</ng-container>
-    <img
-      loading="eager"
-      [style.height.rem]="4"
-      [style.width.rem]="4"
-      [style.border-radius.%]="50"
-      [src]="user.picture"
-      alt="Avatar"
-    />
+    <img loading="eager"
+         [style.height.rem]="4"
+         [style.width.rem]="4"
+         [style.border-radius.%]="50"
+         [src]="user.picture"
+         alt="Avatar" />
     <br />
     <ng-container>Updated at: {{ user.updated_at | date: 'hh:mm dd/MM/yyyy' }}</ng-container>
   </ng-container>

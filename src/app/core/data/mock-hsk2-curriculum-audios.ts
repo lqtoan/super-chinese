@@ -35,22 +35,22 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '02-1',
     url: 'assets/curriculum/hsk2/02-1.mp3',
-    description: '',
+    description: '你很少生病， 是不是喜欢运动？ 是啊， 我每天早上都要出去跑步。 你·每天几点起床？ 我每天六点起床。',
   },
   {
     title: '02-2',
     url: 'assets/curriculum/hsk2/02-2.mp3',
-    description: '',
+    description: '吃药了吗？ 现在身体怎么样？ 吃了。 现在好多了。 什么时候能出院？ 医生说下个星期。',
   },
   {
     title: '02-3',
     url: 'assets/curriculum/hsk2/02-3.mp3',
-    description: '',
+    description: '大卫今年多大了？ 二十多岁。 他多高？ 一米八几。 你怎么知道这么多啊？ 他是我同学。',
   },
   {
     title: '02-4',
     url: 'assets/curriculum/hsk2/02-4.mp3',
-    description: '',
+    description: '张老师星期六也不休息啊？ 是啊， 他这几天很忙， 没有时间休息。 那会很累吧？ 他每天回来都很累。',
   },
   {
     title: '02-5',

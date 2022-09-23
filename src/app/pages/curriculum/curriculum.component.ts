@@ -19,9 +19,8 @@ export class CurriculumComponent implements OnInit {
     height: '8rem',
     isLoading: true,
   };
-  currentPage: number = 1;
 
-  constructor(private audioService: AudioService) {}
+  constructor(private readonly audioService: AudioService) {}
 
   ngOnInit(): void {
     this.audioService.getHsk1CurriculumAudioList().subscribe((res) => {

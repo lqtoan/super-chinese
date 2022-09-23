@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VocabularyComponent implements OnInit {
-  constructor(private vocabularyService: VocabularyService) {}
+  constructor(private readonly vocabularyService: VocabularyService) {}
 
   isLoading = true;
   // hsk1Vocabulary$ = this.vocabularyService.hsk1Vocabulary$;
@@ -17,11 +17,11 @@ export class VocabularyComponent implements OnInit {
   hsk2Vocabulary: Vocabulary[] = [];
 
   ngOnInit(): void {
-    this.vocabularyService
-      .getHsk1Vocabulary()
-      .subscribe((res) => ((this.hsk1Vocabulary = res), (this.isLoading = false)));
-    this.vocabularyService
-      .getHsk2Vocabulary()
-      .subscribe((res) => ((this.hsk2Vocabulary = res), (this.isLoading = false)));
+    this.vocabularyService.getHsk1Vocabulary().subscribe((res) => {
+      (this.hsk1Vocabulary = res), (this.isLoading = false);
+    });
+    this.vocabularyService.getHsk2Vocabulary().subscribe((res) => {
+      (this.hsk2Vocabulary = res), (this.isLoading = false);
+    });
   }
 }

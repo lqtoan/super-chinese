@@ -85,11 +85,6 @@
         font-weight: normal;
         color: rgba($color: $gray, $alpha: 0.75);
       }
-      .wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
     }
     .audio:hover {
       background: $white-linear-gradient;

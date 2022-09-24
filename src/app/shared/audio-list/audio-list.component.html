@@ -41,7 +41,8 @@
           (click)="onSelect(audio)">
         <strong class="audio__title">{{ audio.title | translate }}</strong>
         <nz-divider></nz-divider>
-        <p class="audio__description">{{ audio.description }}</p>
+        <span *ngFor="let item of audio.description"
+              class="audio__description">{{ item }}</span>
       </ul>
     </div>
   </div>

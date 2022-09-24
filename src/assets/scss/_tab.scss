@@ -1,10 +1,15 @@
 ::ng-deep {
+  .ant-tabs-nav-wrap {
+    padding: 0 8rem;
+    background: $white;
+  }
   .ant-tabs-top > .ant-tabs-nav {
-    margin: 0;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 1px 25px 1px rgba($color: $gray, $alpha: 0.1);
   }
   .ant-tabs-ink-bar {
     background: $linear-gradient;
-    opacity: 0.5;
+    opacity: 0.75;
   }
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: $primary-color;
@@ -32,23 +37,37 @@
   .ant-tabs-tab-btn {
     transition: $transition;
   }
+  .ant-tabs-content-holder {
+    padding: 0rem 8rem;
+    margin-bottom: 0;
+    height: 75vh;
+    overflow-y: hidden;
+  }
 }
 
 nz-tabset {
-  padding: 0rem 8rem;
-  margin-bottom: 0;
   height: 75vh;
   overflow-y: hidden;
 }
 
 @media screen and (max-width: $tablet) {
-  nz-tabset {
-    padding: 0 4rem;
+  ::ng-deep {
+    .ant-tabs-nav-wrap {
+      padding: 0 4rem;
+    }
+    .ant-tabs-content-holder {
+      padding: 0rem 4rem;
+    }
   }
 }
 
 @media screen and (max-width: $mobile) {
-  nz-tabset {
-    padding: 0 1rem;
+  ::ng-deep {
+    .ant-tabs-nav-wrap {
+      padding: 0 1rem;
+    }
+    .ant-tabs-content-holder {
+      padding: 0rem 1rem;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { MainPageComponent } from './main-page.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
       {
         path: 'support',
         loadChildren: () => import('../pages/support/support.module').then((m) => m.SupportModule),
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+        pathMatch: 'full',
       },
     ],
   },

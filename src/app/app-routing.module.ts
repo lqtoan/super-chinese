@@ -8,12 +8,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/main-page.module').then((m) => m.MainPageModule),
     canActivate: [AuthGuard],
   },
-  {
-    path: '**',
-    redirectTo: '',
-    pathMatch: 'full',
-    canActivate: [AuthGuard],
-  },
 ];
 
 @NgModule({

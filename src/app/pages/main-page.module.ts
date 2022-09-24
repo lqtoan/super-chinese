@@ -6,11 +6,12 @@ import { MainPageComponent } from './main-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const nzModules = [NzIconModule];
 
 @NgModule({
-  declarations: [MainPageComponent],
+  declarations: [MainPageComponent, NotFoundComponent],
   imports: [CommonModule, TranslateModule, MainPageRoutingModule, nzModules, LayoutModule],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],
 })

@@ -5,8 +5,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <ng-container *ngIf="authService.loading$ | async">
-      <nz-spin style="margin-top: 50px;" nzSize="large" nzSimple></nz-spin>
-      <h3 class="slogan">{{ 'SLOGAN' | translate }}</h3>
+      <div class="loading-page">
+        <nz-spin nzSize="large" nzSimple></nz-spin>
+        <h3 class="slogan">{{ 'SLOGAN' | translate }}</h3>
+      </div>
     </ng-container>
     <router-outlet></router-outlet>
   `,

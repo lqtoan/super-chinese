@@ -68,10 +68,12 @@
     color: $white;
     background: $primary-color;
     border-radius: 50%;
+    box-shadow: 0 0 25px 1px rgba($color: $black, $alpha: 0.5);
     transition: $transition;
   }
   .facebook:hover {
-    transform: translateY(-2px);
+    opacity: 0.95;
+    box-shadow: 1px 1px 25px 1px rgba($color: $black, $alpha: 0.75);
   }
 
   @media screen and (max-width: $tablet) {
@@ -101,6 +103,12 @@
     }
     .footer {
       padding: 0.25rem 1rem;
+    }
+    .facebook {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.25rem;
+      line-height: 2.5rem;
     }
   }
 }

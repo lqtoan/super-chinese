@@ -16,7 +16,7 @@ export class CurriculumComponent implements OnInit {
   };
   hsk2Audio: AudioConfiguration = {
     list: [],
-    height: '8rem',
+    height: '12rem',
     isLoading: true,
   };
 

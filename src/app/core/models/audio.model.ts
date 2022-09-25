@@ -1,7 +1,7 @@
 export interface Audio {
   title: string;
   url: string;
-  description: string[] | string;
+  text: string[] | string;
 }
 
 export interface AudioConfiguration {

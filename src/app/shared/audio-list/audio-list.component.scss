@@ -76,19 +76,18 @@
       flex-flow: column;
       justify-content: flex-start;
       align-items: flex-start;
-      box-shadow: 1px 1px 0 0 $second-white;
+      box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
       border-radius: 0.5rem;
       cursor: pointer;
       scroll-snap-align: start;
       transition: $transition;
       &__description {
-        font-weight: normal;
-        color: rgba($color: $gray, $alpha: 0.75);
+        font-weight: 400;
+        font-size: 1rem;
       }
     }
     .audio:hover {
-      background: $white-linear-gradient;
-      box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
+      background: $second-white;
     }
     .audio:nth-child(odd) {
       animation: slideToRight 0.75s ease 0s backwards;
@@ -103,6 +102,11 @@
   .tab-content {
     .audio-list {
       grid-template-columns: repeat(2, 1fr);
+      .audio {
+        &__description {
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }

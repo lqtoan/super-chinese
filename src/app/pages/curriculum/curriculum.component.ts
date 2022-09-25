@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class CurriculumComponent implements OnInit {
   hsk1Audio: AudioConfiguration = {
     list: [],
-    height: '7rem',
+    height: '10rem',
     isLoading: true,
   };
   hsk2Audio: AudioConfiguration = {

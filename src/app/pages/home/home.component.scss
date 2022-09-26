@@ -7,14 +7,23 @@
   grid-auto-flow: row;
   grid-gap: 1rem;
   .card {
-    padding: 1rem;
-    box-shadow: 0 0 0 1px $second-white;
+    padding: 2rem 1rem;
+    color: $black;
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 1px 1px 5px 1px rgba($color: $gray, $alpha: 0.25);
     border-radius: 1rem;
-    transition: $transition;
+    span {
+      transition: $transition;
+    }
   }
   .card:hover {
-    box-shadow: 0 0 5px 1px rgba($color: $black, $alpha: 0.25);
     cursor: pointer;
+    span {
+      background: $linear-gradient;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 }
 

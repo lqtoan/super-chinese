@@ -4,7 +4,7 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '00',
     url: 'assets/curriculum/hsk2/00.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '01-1',
@@ -41,7 +41,7 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '01-5',
     url: 'assets/curriculum/hsk2/01-5.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '02-1',
@@ -66,56 +66,61 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '02-5',
     url: 'assets/curriculum/hsk2/02-5.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '03-1',
     url: 'assets/curriculum/hsk2/03-1.mp3',
-    text: [],
+    text: ['这块手表是你的吗？', '不是我的。 是我爸爸的。', '多少钱买的？', '三千多块'],
   },
   {
     title: '03-2',
     url: 'assets/curriculum/hsk2/03-2.mp3',
-    text: [],
+    text: ['这是今天早上的报纸吗？', '不是， 是昨天的。', '你听，是不是送报纸的来了？', '我看一下。不是，是送牛奶的。'],
   },
   {
     title: '03-3',
     url: 'assets/curriculum/hsk2/03-3.mp3',
-    text: [],
+    text: [
+      '这是谁的房间？',
+      '这是我和我丈夫的，旁边那个小的房间是我女儿的。',
+      '你女儿的房间真漂亮！都是粉色的。',
+      '是啊，粉色是我女儿最喜欢的颜色。',
+    ],
   },
   {
     title: '03-4',
     url: 'assets/curriculum/hsk2/03-4.mp3',
-    text: [],
+    text: ['你看见我的被子了吗？', '这里有几个杯子，那个是你的？', '左边那个红色的是我的。', '给你。'],
   },
   {
     title: '03-5',
     url: 'assets/curriculum/hsk2/03-5.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '04-1',
     url: 'assets/curriculum/hsk2/04-1.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '04-2',
     url: 'assets/curriculum/hsk2/04-2.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '04-3',
     url: 'assets/curriculum/hsk2/04-3.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '04-4',
     url: 'assets/curriculum/hsk2/04-4.mp3',
-    text: [],
+    text: [''],
   },
   {
     title: '04-5',
     url: 'assets/curriculum/hsk2/04-5.mp3',
-    text: [],
+    text: [''],
   },
 ];

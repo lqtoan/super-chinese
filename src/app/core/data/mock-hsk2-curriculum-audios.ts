@@ -101,22 +101,32 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '04-1',
     url: 'assets/curriculum/hsk2/04-1.mp3',
-    text: [''],
+    text: ['生日快乐！ 这是送给你的！', '是什么？是一本书吗？', '对， 这本书是我写的。', '太谢谢你了。'],
   },
   {
     title: '04-2',
     url: 'assets/curriculum/hsk2/04-2.mp3',
-    text: [''],
+    text: ['早上有你一个电话。', '电话是谁打的？', '不知道， 是儿子接的。', '好，晚上我问一下儿子。'],
   },
   {
     title: '04-3',
     url: 'assets/curriculum/hsk2/04-3.mp3',
-    text: [''],
+    text: [
+      '你喜欢踢足球吗？',
+      '非常喜欢。',
+      '你是什么时候开始踢足球的？',
+      '我十一岁的时候开始踢足球， 已经踢了十年了。',
+    ],
   },
   {
     title: '04-4',
     url: 'assets/curriculum/hsk2/04-4.mp3',
-    text: [''],
+    text: [
+      '你在这儿工作多长时间了？',
+      '已经两年多了， 我是2011 年来的。',
+      '你认识谢先生吗？',
+      '认识，我门是大学同学，这个工作是他帮我介绍的。',
+    ],
   },
   {
     title: '04-5',

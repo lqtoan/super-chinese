@@ -1,0 +1,14 @@
+<button (click)="onCreate()">Create</button>
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container *ngIf="vm.isLoading == false; else loading">
+    <ul *ngFor="let course of vm.courses">
+      <li>{{course.name}}</li>
+      <li>{{course.price}}</li>
+    </ul>
+  </ng-container>
+  <ng-template #loading>
+    <nz-spin nzSimple></nz-spin>
+  </ng-template>
+</ng-container>
+
+<app-course-form></app-course-form>

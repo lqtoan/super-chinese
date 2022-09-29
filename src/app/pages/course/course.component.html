@@ -3,7 +3,7 @@
     <ng-container *ngIf="(user$ | async) as user">
       <ng-container *ngIf="user.email == 'lqtoan37@gmail.com'; else notAccess">
         <ng-template nz-tab>
-          Hello
+          <app-course-list></app-course-list>
         </ng-template>
       </ng-container>
     </ng-container>

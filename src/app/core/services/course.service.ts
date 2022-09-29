@@ -1,11 +1,16 @@
 import { environment } from './../../../environments/environment';
-import { Observable, Subject, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Course } from '@models/course.model';
 
 @Injectable({ providedIn: 'root' })
-export class UserProfileService {
+export class CourseService {
   constructor(private readonly httpClient: HttpClient) {}
 
   API = `${environment.api}courses`;
+
+  getCourses(): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(this.API);
+  }
 }

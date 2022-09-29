@@ -39,4 +39,39 @@ export const HSK2_VOCABULARY: Vocabulary[] = [
       { name: '时间', pinyin: 'shíjiān', define: 'WORD.DEFINE.TIME' },
     ],
   },
+  {
+    name: '',
+    words: [
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+      {
+        name: '',
+        pinyin: '',
+        define: 'WORD.DEFINE.',
+      },
+    ],
+  },
 ];

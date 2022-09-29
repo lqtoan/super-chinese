@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class UserProfileService {
   constructor(private readonly httpClient: HttpClient) {}
 
-  API = `${environment.api}`;
+  API = `${environment.authApi}`;
 
   private userSubject$ = new Subject<UserProfile>();
   user$ = this.userSubject$.asObservable();

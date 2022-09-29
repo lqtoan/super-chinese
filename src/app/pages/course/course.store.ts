@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Course } from '@models/course.model';
@@ -20,7 +22,11 @@ const initialState = {
 
 @Injectable()
 export class CourseStore extends ComponentStore<CourseState> {
-  constructor(private readonly service: CourseService) {
+  constructor(
+    private readonly service: CourseService,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService
+  ) {
     super(initialState);
   }
 
@@ -79,6 +85,7 @@ export class CourseStore extends ComponentStore<CourseState> {
                 // this.setShowForm(false);
               }
               this.loadData();
+              this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (error) => {
               // TODO
@@ -104,6 +111,7 @@ export class CourseStore extends ComponentStore<CourseState> {
                 // this.setShowForm(false);
               }
               this.loadData();
+              this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (error) => {
               // TODO

@@ -25,6 +25,8 @@
   "SELECT": "Chọn bài đi nè",
   "INPUT.PLACE_HOLDER": "Vui lòng nhập",
   "SELECT.PLACE_HOLDER": "Vui lòng chọn",
+  "NOTIFICATION.CREATE_SUCCESSFULLY": "Thêm mới thành công",
+  "NOTIFICATION.DELETE_SUCCESSFULLY": "Xoá thành công",
   "CURRICULUM.01-4": "01-4: Thanh mẫu, vận mẫu và thanh điệu (1)",
   "CURRICULUM.02-4": "02-4: Thanh mẫu, vận mẫu và thanh điệu (2)",
   "FOOTER": "Được thiết kế và phát triển bởi Toàn",

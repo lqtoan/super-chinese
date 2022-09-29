@@ -17,4 +17,8 @@ export class CourseService {
   createCourse(course: Course) {
     return this.httpClient.post<Course>(this.API, course);
   }
+
+  deleteCourse(id: string) {
+    return this.httpClient.delete<Course>(`${this.API}/${id}`);
+  }
 }

@@ -17,7 +17,11 @@ export class CourseListComponent implements OnInit {
     this.store.loadData();
   }
 
-  onCreate() {
+  onShowForm() {
     this.store.setShowForm(true);
+  }
+
+  onDelete(id: string) {
+    this.store.deleteCourse(id);
   }
 }

@@ -1,19 +1,29 @@
 <ng-container *ngIf="vm$ | async as vm">
+  <div>
+    <button nz-button
+            class="create-button"
+            (click)="onShowForm()">Create</button>
+  </div>
   <ng-container *ngIf="vm.isLoading == false; else loading">
-    <div>
-      <span class="create-button"
-            (click)="onCreate()">Create</span>
-    </div>
-    <div class="course-list">
-      <ul class="course"
-          *ngFor="let course of vm.courses">
-        <li><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</li>
-        <li><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice }}</li>
-        <li><strong>{{'COURSE.BEGIN' | translate }}:</strong> {{ course.begin | date: 'hh:mm dd/MM/yyyy' }}</li>
-        <li><strong>{{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm dd/MM/yyyy' }}</li>
-        <li><strong>{{'COURSE.EXPIRED' | translate }}:</strong> {{ course.isComplete }}</li>
-      </ul>
-    </div>
+    <ng-container *ngIf="vm.courses.length ==0; else courseList">No course</ng-container>
+    <ng-template #courseList>
+      <div class="course-list">
+        <div class="course"
+             *ngFor="let course of vm.courses;">
+          <small><strong>ID:</strong> {{ course.id }}</small>
+          <h4><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</h4>
+          <h3 [style.color]="'red'"><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice }}
+          </h3>
+          <div><strong>{{'COURSE.BEGIN' | translate }}:</strong> {{ course.begin | date: 'hh:mm dd/MM/yyyy' }}</div>
+          <div><strong>{{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm dd/MM/yyyy' }}
+          </div>
+          <!-- <div><strong>{{'COURSE.EXPIRED' | translate }}:</strong> {{ course.isComplete }}</div> -->
+          <button nz-button
+                  class="delete-button"
+                  (click)="onDelete(course.id)">Delete</button>
+        </div>
+      </div>
+    </ng-template>
   </ng-container>
   <ng-template #loading>
     <nz-spin nzSimple></nz-spin>

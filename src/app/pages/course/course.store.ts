@@ -75,7 +75,33 @@ export class CourseStore extends ComponentStore<CourseState> {
           tapResponse(
             (data) => {
               if (data) {
-                this.setShowForm(false);
+                // console.log(data);
+                // this.setShowForm(false);
+              }
+              this.loadData();
+            },
+            (error) => {
+              // TODO
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isVisible: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly deleteCourse = this.effect<string>((params$) =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoading: true })),
+      switchMap((param) =>
+        this.service.deleteCourse(param).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                // console.log(data);
+                // this.setShowForm(false);
               }
               this.loadData();
             },

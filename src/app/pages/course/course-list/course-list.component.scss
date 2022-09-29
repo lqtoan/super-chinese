@@ -2,9 +2,10 @@
 @import 'spinner';
 
 .create-button {
-  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
   background: $primary-color;
   color: $white;
+  border: none;
   border-radius: 0.5rem;
   transition: $transition;
 }
@@ -15,13 +16,26 @@
 }
 
 .course-list {
-  margin-top: 1rem;
-  height: 50vh;
+  margin-top: 0.5rem;
+  padding-right: 0.25rem;
+  height: 60vh;
+  background: $white;
   overflow-y: scroll;
   .course {
     padding: 1rem;
     border: 2px solid $primary-color;
     border-radius: 0.5rem;
+    .delete-button {
+      background: $red;
+      color: $white;
+      border: none;
+      border-radius: 0.5rem;
+      transition: $transition;
+    }
+    .delete-button:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
   }
   .course:not(:last-child) {
     margin-bottom: 1rem;

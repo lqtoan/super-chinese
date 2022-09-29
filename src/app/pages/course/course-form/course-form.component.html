@@ -35,8 +35,7 @@
           <nz-form-item>
             <nz-form-label nzRequired>{{'COURSE.PRICE' | translate }}</nz-form-label>
             <nz-form-control>
-              <nz-input-number [(ngModel)]="initValue"
-                               [nzMin]="100000"
+              <nz-input-number [nzMin]="100000"
                                [nzStep]="10000"
                                formControlName="price"></nz-input-number>
             </nz-form-control>
@@ -48,9 +47,7 @@
           <nz-form-item>
             <nz-form-label nzRequired>{{'COURSE.BEGIN' | translate }}</nz-form-label>
             <nz-form-control>
-              <nz-date-picker [(ngModel)]="initDate"
-                              (ngModelChange)="onChange($event)"
-                              formControlName="begin"></nz-date-picker>
+              <nz-date-picker formControlName="begin"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </div>

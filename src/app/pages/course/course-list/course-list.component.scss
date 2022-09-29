@@ -18,13 +18,17 @@
 .course-list {
   margin-top: 0.5rem;
   padding-right: 0.25rem;
-  height: 60vh;
+  height: 55vh;
   background: $white;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   .course {
     padding: 1rem;
-    border: 2px solid $primary-color;
+    background: #fff;
+    border: 1.5px solid $primary-color;
     border-radius: 0.5rem;
+    box-shadow: 2px 2px 1px 1px rgba($color: $second-white, $alpha: 1);
+    scroll-snap-align: start;
     .delete-button {
       background: $red;
       color: $white;
@@ -38,6 +42,6 @@
     }
   }
   .course:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 }

@@ -1,6 +1,7 @@
 <ng-container *ngIf="vm$ | async as vm">
   <div>
     <button nz-button
+            nzSize="large"
             class="create-button"
             (click)="onShowForm()">Create</button>
   </div>
@@ -19,8 +20,13 @@
           </div>
           <!-- <div><strong>{{'COURSE.EXPIRED' | translate }}:</strong> {{ course.isComplete }}</div> -->
           <button nz-button
-                  class="delete-button"
-                  (click)="onDelete(course.id)">Delete</button>
+                  nz-popconfirm
+                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+                  nzOkText="OK"
+                  nzCancelText="Cancel"
+                  (nzOnConfirm)="onDelete(course.id)"
+                  (nzOnCancel)="cancel()"
+                  class="delete-button">Delete</button>
         </div>
       </div>
     </ng-template>

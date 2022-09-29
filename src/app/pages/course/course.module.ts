@@ -18,6 +18,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 const nzModules = [
   NzTabsModule,
@@ -29,6 +30,7 @@ const nzModules = [
   NzDatePickerModule,
   NzInputNumberModule,
   NzButtonModule,
+  NzPopconfirmModule,
 ];
 
 @NgModule({

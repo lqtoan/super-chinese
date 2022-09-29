@@ -25,6 +25,7 @@
   "SELECT": "Select a file",
   "INPUT.PLACE_HOLDER": "Please input",
   "SELECT.PLACE_HOLDER": "Please select",
+  "CONFIRM_DELETE": "Are you sure delete?",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Create successfully",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Delete successfully",
   "CURRICULUM.01-4": "01-4: Initials, finals and tones of Chinese Pinyin (1)",

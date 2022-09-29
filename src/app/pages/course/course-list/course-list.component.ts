@@ -24,4 +24,6 @@ export class CourseListComponent implements OnInit {
   onDelete(id: string) {
     this.store.deleteCourse(id);
   }
+
+  cancel() {}
 }

@@ -15,6 +15,8 @@ import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { NZ_DATE_LOCALE } from 'ng-zorro-antd/i18n';
+import { enUS } from 'date-fns/locale';
 
 registerLocaleData(vi);
 export function createTranslateLoader(http: HttpClient) {
@@ -41,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     NzSpinModule,
   ],
-  providers: [interceptorProviders],
+  providers: [interceptorProviders, { provide: NZ_DATE_LOCALE, useValue: enUS }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

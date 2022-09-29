@@ -8,12 +8,14 @@ export interface CourseState {
   isLoading: boolean;
   courses: Course[];
   isVisible: boolean;
+  formValue: Partial<Course> | undefined;
 }
 
 const initialState = {
   isLoading: false,
   courses: [],
   isVisible: false,
+  formValue: undefined,
 };
 
 @Injectable()
@@ -23,7 +25,6 @@ export class CourseStore extends ComponentStore<CourseState> {
   }
 
   readonly vm$ = this.select(({ isLoading, courses }) => ({ isLoading, courses }), { debounce: true });
-  readonly isVisibleForm$ = this.select((state) => state.isVisible, { debounce: true });
 
   readonly loadData = this.effect(($) =>
     $.pipe(
@@ -35,7 +36,6 @@ export class CourseStore extends ComponentStore<CourseState> {
           tapResponse(
             (data) => {
               this.patchState({ courses: data });
-              console.log(data);
             },
             (error) => {
               // TODO
@@ -49,10 +49,21 @@ export class CourseStore extends ComponentStore<CourseState> {
     )
   );
 
+  readonly isVisibleForm$ = this.select((state) => state.isVisible, { debounce: true });
+
   readonly setShowForm = this.updater<boolean>(
     (state, isVisible): CourseState => ({
       ...state,
       isVisible,
     })
   );
+
+  readonly setFormValue = this.updater<Course | undefined>(
+    (state, formValue): CourseState => ({
+      ...state,
+      formValue,
+    })
+  );
+
+  readonly formValue$ = this.select((state) => state.formValue);
 }

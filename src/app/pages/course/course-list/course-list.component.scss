@@ -1,0 +1,29 @@
+@import '/src/variables.scss';
+@import 'spinner';
+
+.create-button {
+  padding: 0.5rem 1rem;
+  background: $primary-color;
+  color: $white;
+  border-radius: 0.5rem;
+  transition: $transition;
+}
+
+.create-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.course-list {
+  margin-top: 1rem;
+  height: 50vh;
+  overflow-y: scroll;
+  .course {
+    padding: 1rem;
+    border: 2px solid $primary-color;
+    border-radius: 0.5rem;
+  }
+  .course:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

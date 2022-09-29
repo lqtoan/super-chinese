@@ -1,5 +1,5 @@
 import { environment } from './../../../environments/environment';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '@models/course.model';
@@ -11,6 +11,6 @@ export class CourseService {
   API = `${environment.api}courses`;
 
   getCourses(): Observable<Course[]> {
-    return this.httpClient.get<Course[]>(this.API);
+    return this.httpClient.get<Course[]>(this.API).pipe(delay(500));
   }
 }

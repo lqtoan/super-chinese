@@ -1,10 +1,19 @@
-<button (click)="onCreate()">Create</button>
 <ng-container *ngIf="vm$ | async as vm">
   <ng-container *ngIf="vm.isLoading == false; else loading">
-    <ul *ngFor="let course of vm.courses">
-      <li>{{course.name}}</li>
-      <li>{{course.price}}</li>
-    </ul>
+    <div>
+      <span class="create-button"
+            (click)="onCreate()">Create</span>
+    </div>
+    <div class="course-list">
+      <ul class="course"
+          *ngFor="let course of vm.courses">
+        <li><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</li>
+        <li><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice }}</li>
+        <li><strong>{{'COURSE.BEGIN' | translate }}:</strong> {{ course.begin | date: 'hh:mm dd/MM/yyyy' }}</li>
+        <li><strong>{{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm dd/MM/yyyy' }}</li>
+        <li><strong>{{'COURSE.EXPIRED' | translate }}:</strong> {{ course.isComplete }}</li>
+      </ul>
+    </div>
   </ng-container>
   <ng-template #loading>
     <nz-spin nzSimple></nz-spin>

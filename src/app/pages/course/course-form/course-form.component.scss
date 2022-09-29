@@ -1,0 +1,53 @@
+@import '/src/variables.scss';
+
+nz-form-label {
+  margin: 0;
+}
+
+.ant-input:hover,
+.ant-input:focus {
+  border-color: $primary-color;
+  box-shadow: unset;
+}
+
+input {
+  width: 100%;
+}
+
+nz-input-number {
+  width: 100%;
+}
+
+.ant-input-number:hover,
+.ant-input-number:focus {
+  border-color: $primary-color;
+  box-shadow: unset;
+}
+
+nz-date-picker {
+  width: 100%;
+}
+
+.ant-picker:hover,
+.ant-picker:focus {
+  border-color: $primary-color;
+  box-shadow: unset;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+  background: $linear-gradient;
+}
+
+button {
+  background: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: 0.5rem;
+  transition: $transition;
+}
+
+button:hover {
+  background: $primary-color;
+  color: $white;
+  opacity: 0.8;
+}

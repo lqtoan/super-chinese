@@ -34,5 +34,6 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.courseForm.value);
+    this.store.createCourse(this.courseForm.value);
   }
 }

@@ -66,4 +66,28 @@ export class CourseStore extends ComponentStore<CourseState> {
   );
 
   readonly formValue$ = this.select((state) => state.formValue);
+
+  readonly createCourse = this.effect<Course>((params$) =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoading: true })),
+      switchMap((param) =>
+        this.service.createCourse(param).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                this.setShowForm(false);
+              }
+              this.loadData();
+            },
+            (error) => {
+              // TODO
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isVisible: false });
+          })
+        )
+      )
+    )
+  );
 }

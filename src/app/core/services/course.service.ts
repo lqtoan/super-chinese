@@ -13,4 +13,8 @@ export class CourseService {
   getCourses(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.API).pipe(delay(500));
   }
+
+  createCourse(course: Course) {
+    return this.httpClient.post<Course>(this.API, course);
+  }
 }

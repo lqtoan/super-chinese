@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseComponent } from './course.component';
 import { RouterModule } from '@angular/router';
-import { PipesModule } from './../../core/pipe/pipes.module';
+import { PipesModule } from '../../core/pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CourseListComponent } from './course-list/course-list.component';

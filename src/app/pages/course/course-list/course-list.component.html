@@ -1,3 +1,6 @@
+<ng-container *ngIf="!(vm$ | async)">
+  <nz-spin nzSimple></nz-spin>
+</ng-container>
 <ng-container *ngIf="vm$ | async as vm">
   <div>
     <button nz-button

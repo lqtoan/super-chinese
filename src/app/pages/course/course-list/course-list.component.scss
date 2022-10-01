@@ -30,6 +30,7 @@
     box-shadow: 2px 2px 1px 1px rgba($color: $second-white, $alpha: 1);
     scroll-snap-align: start;
     .delete-button {
+      margin-top: 0.5rem;
       background: $red;
       color: $white;
       border: none;

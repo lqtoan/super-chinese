@@ -5,6 +5,7 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Course } from '@models/course.model';
 import { CourseService } from '@services/course.service';
 import { finalize, switchMap, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface CourseState {
   isLoading: boolean;
@@ -87,8 +88,8 @@ export class CourseStore extends ComponentStore<CourseState> {
               this.loadData();
               this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
-            (error) => {
-              // TODO
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
             }
           ),
           finalize(() => {
@@ -113,8 +114,8 @@ export class CourseStore extends ComponentStore<CourseState> {
               this.loadData();
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
-            (error) => {
-              // TODO
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
             }
           ),
           finalize(() => {

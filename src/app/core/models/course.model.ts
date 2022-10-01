@@ -1,5 +1,5 @@
 export interface Course {
-  id: string;
+  _id: string; // auto gen by MongoDb
   name: string;
   price: number;
   begin: Date;

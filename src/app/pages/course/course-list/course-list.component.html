@@ -14,7 +14,7 @@
       <div class="course-list">
         <div class="course"
              *ngFor="let course of vm.courses;">
-          <small><strong>ID:</strong> {{ course.id }}</small>
+          <small><strong>ID:</strong> {{ course._id }}</small>
           <h4><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</h4>
           <h3 [style.color]="'red'"><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice }}
           </h3>
@@ -27,7 +27,7 @@
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
                   nzOkText="OK"
                   nzCancelText="Cancel"
-                  (nzOnConfirm)="onDelete(course.id)"
+                  (nzOnConfirm)="onDelete(course._id)"
                   (nzOnCancel)="cancel()"
                   class="delete-button">Delete</button>
         </div>

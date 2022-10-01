@@ -11,6 +11,10 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
+        path: 'dictionary',
+        loadChildren: () => import('../pages/dictionary/dictionary.module').then((m) => m.DictionaryModule),
+      },
+      {
         path: 'home',
         loadChildren: () => import('../pages/home/home.module').then((m) => m.HomeModule),
       },

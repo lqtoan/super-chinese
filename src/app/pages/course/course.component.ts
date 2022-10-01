@@ -10,17 +10,7 @@ import { UserProfileService } from '@services/user-profile.service';
   providers: [NzMessageService],
 })
 export class CourseComponent implements OnInit {
-  constructor(private readonly userProfileService: UserProfileService) {}
+  constructor() {}
 
-  user$ = this.userProfileService.user$;
-
-  ngOnInit(): void {
-    this.userProfileService.user$.pipe().subscribe();
-
-    this.getUserProfile();
-  }
-
-  getUserProfile() {
-    this.userProfileService.getUserProfile().subscribe();
-  }
+  ngOnInit(): void {}
 }

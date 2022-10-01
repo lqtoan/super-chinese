@@ -11,10 +11,13 @@
       <small class="navbar__slogan">{{ 'SLOGAN' | translate }}</small>
     </div>
     <div class="navbar__menu">
-      <a *ngFor="let item of navItem"
-         [routerLink]="['/', item.link]"
+      <a routerLink="/home"
          routerLinkActive="selected">
-        {{ item.name | translate }}
+        {{ 'HOME' | translate }}
+      </a>
+      <a routerLink="/dictionary"
+         routerLinkActive="selected">
+        {{ 'DICTIONARY' | translate }}
       </a>
       <app-user-menu></app-user-menu>
     </div>

@@ -11,7 +11,7 @@
       <div nz-row
            [nzGutter]="16">
         <div nz-col
-             nzSpan="24">
+             nzSpan="12">
           <nz-form-item>
             <nz-form-label nzRequired
                            nzFor="name">{{'COURSE.NAME' | translate }}</nz-form-label>
@@ -45,10 +45,19 @@
         <div nz-col
              nzSpan="12">
           <nz-form-item>
-            <nz-form-label nzRequired>{{'COURSE.BEGIN' | translate }}</nz-form-label>
+            <nz-form-label nzRequired>{{'COURSE.BEGIN_DATE' | translate }}</nz-form-label>
             <nz-form-control>
-              <nz-date-picker formControlName="begin"
-                              nzShowTime></nz-date-picker>
+              <nz-date-picker formControlName="beginDate"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col
+             nzSpan="12">
+          <nz-form-item>
+            <nz-form-label nzRequired>{{'COURSE.BEGIN_TIME' | translate }}</nz-form-label>
+            <nz-form-control>
+              <nz-time-picker formControlName="beginTime"></nz-time-picker>
             </nz-form-control>
           </nz-form-item>
         </div>

@@ -1,0 +1,30 @@
+@import '/src/variables.scss';
+
+.page-content {
+  padding: 1rem 8rem;
+  height: 75vh;
+  .create-button {
+    background: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 0.5rem;
+    transition: $transition;
+  }
+
+  .create-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .page-content {
+    padding: 1rem 4rem;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .page-content {
+    padding: 1rem;
+  }
+}

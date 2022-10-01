@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { Course } from '@models/course.model';
 import { CourseService } from '@services/course.service';
-import { finalize, switchMap, tap } from 'rxjs/operators';
+import { finalize, map, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface CourseState {
@@ -44,8 +44,8 @@ export class CourseStore extends ComponentStore<CourseState> {
             (data) => {
               this.patchState({ courses: data });
             },
-            (error) => {
-              // TODO
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
             }
           ),
           finalize(() => {

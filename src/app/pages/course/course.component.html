@@ -1,14 +1,9 @@
 <nz-tabset [nzAnimated]="true">
   <nz-tab [nzTitle]="'COURSE' | translate">
-    <ng-container *ngIf="(user$ | async) as user">
-      <ng-container *ngIf="user.email == 'lqtoan37@gmail.com'; else notAccess">
-        <ng-template nz-tab>
-          <app-course-list></app-course-list>
-        </ng-template>
-      </ng-container>
-    </ng-container>
+    <ng-template nz-tab>
+      <app-course-list></app-course-list>
+    </ng-template>
   </nz-tab>
-  <ng-template #notAccess>{{ 'COMING_SOON' | translate }}</ng-template>
   <nz-tab [nzTitle]="'STUDENT' | translate">
     <ng-template nz-tab>
       {{ 'COMING_SOON' | translate }}

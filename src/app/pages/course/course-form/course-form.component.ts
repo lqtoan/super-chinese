@@ -26,7 +26,9 @@ export class CourseFormComponent implements OnInit {
   readonly courseForm: FormGroup = this.formBuilder.group({
     name: [this.initName, Validators.compose([Validators.required])],
     price: [this.initPrice, Validators.compose([Validators.required])],
-    begin: [this.initDate, Validators.compose([Validators.required])],
+    beginDate: [this.initDate, Validators.compose([Validators.required])],
+    beginTime: [this.initDate, Validators.compose([Validators.required])],
+    createdDate: ['', Validators.compose([])],
   });
 
   ngOnInit(): void {
@@ -48,12 +50,16 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.createCourse(this.courseForm.value);
+    let formValue = this.courseForm.getRawValue();
+    formValue.createdDate = new Date();
+    this.store.createCourse(formValue);
     this.courseForm.get('name')?.reset();
     this.courseForm.setValue({
       name: this.initName,
       price: this.initPrice,
-      begin: this.initDate,
+      beginDate: this.initDate,
+      beginTime: this.initDate,
+      createdDate: '',
     });
   }
 }

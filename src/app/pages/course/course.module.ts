@@ -17,8 +17,10 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 const nzModules = [
   NzTabsModule,
@@ -28,9 +30,11 @@ const nzModules = [
   NzGridModule,
   NzInputModule,
   NzDatePickerModule,
+  NzTimePickerModule,
   NzInputNumberModule,
   NzButtonModule,
   NzPopconfirmModule,
+  NzIconModule,
 ];
 
 @NgModule({

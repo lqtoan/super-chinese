@@ -1,5 +1,6 @@
 import { CourseStore } from '../course.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserProfileService } from '@services/user-profile.service';
 
 @Component({
   selector: 'app-course-list',
@@ -9,12 +10,20 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseListComponent implements OnInit {
-  constructor(private readonly store: CourseStore) {}
+  constructor(private readonly store: CourseStore, private readonly userProfileService: UserProfileService) {}
 
   readonly vm$ = this.store.vm$;
+  user$ = this.userProfileService.user$;
 
   ngOnInit(): void {
+    this.user$.subscribe();
+    this.getUserProfile();
+
     this.store.loadData();
+  }
+
+  getUserProfile() {
+    this.userProfileService.getUserProfile().subscribe();
   }
 
   onShowForm() {

@@ -40,6 +40,13 @@
       opacity: 0.8;
       cursor: pointer;
     }
+    .ant-btn[disabled],
+    .ant-btn[disabled]:hover {
+      cursor: not-allowed;
+      color: $black;
+      background: #f5f5f5;
+      border-color: $gray;
+    }
   }
   .course:not(:last-child) {
     margin-bottom: 0.5rem;

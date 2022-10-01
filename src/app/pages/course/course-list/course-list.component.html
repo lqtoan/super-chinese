@@ -1,57 +1,54 @@
-<ng-container *ngIf="(user$ | async) as user">
-  <ng-container *ngIf="user.email == 'lqtoan37@gmail.com'; else notAccess">
-    <ng-container *ngIf="!(vm$ | async)">
-      <nz-spin nzSimple></nz-spin>
-    </ng-container>
-    <ng-container *ngIf="vm$ | async as vm">
-      <div>
-        <button nz-button
-                nzSize="large"
-                class="create-button"
-                (click)="onShowForm()"><span nz-icon
-                nzType="plus"
-                nzTheme="outline"></span>Create</button>
-      </div>
-      <ng-container *ngIf="vm.isLoading == false; else loading">
-        <ng-container *ngIf="vm.courses.length ==0; else courseList">No course</ng-container>
-        <ng-template #courseList>
-          <div class="course-list">
-            <div class="course"
-                 *ngFor="let course of vm.courses;">
-              <small><strong>ID:</strong> {{ course._id }}</small>
-              <h4><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</h4>
-              <h3 [style.color]="'red'"><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice
-                }}
-              </h3>
-              <div><strong>{{'COURSE.BEGIN_DATE' | translate }}:</strong> {{ course.beginDate | date: 'dd/MM/yyyy' }}
-              </div>
-              <div><strong>{{'COURSE.BEGIN_TIME' | translate }}:</strong> {{ course.beginTime | date: 'hh:mm:ss' }}
-              </div>
-              <div><strong>{{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm:ss
-                dd/MM/yyyy'
-                }}
-              </div>
-              <div><strong>{{'COURSE.CREATED_BY' | translate }}:</strong> {{ user.name }}</div>
-              <button nz-button
-                      nz-popconfirm
-                      [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-                      nzOkText="OK"
-                      nzCancelText="Cancel"
-                      (nzOnConfirm)="onDelete(course._id)"
-                      (nzOnCancel)="cancel()"
-                      class="delete-button"><span nz-icon
-                      nzType="delete"
-                      nzTheme="fill"></span>Delete</button>
-            </div>
+<ng-container *ngIf="{user: user$ | async, vm: vm$ | async } as courseTemplate">
+  <div>
+    <button nz-button
+            nzSize="large"
+            class="create-button"
+            (click)="onShowForm()">
+      <span nz-icon
+            nzType="plus"
+            nzTheme="outline">
+      </span>Create</button>
+  </div>
+  <ng-container *ngIf="courseTemplate.vm.isLoading == false; else loading">
+    <ng-container *ngIf="courseTemplate.vm.courses.length ==0; else courseList">No course</ng-container>
+    <ng-template #courseList>
+      <div class="course-list">
+        <div class="course"
+             *ngFor="let course of courseTemplate.vm.courses;">
+          <small><strong>ID:</strong> {{ course._id }}</small>
+          <h4><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</h4>
+          <h3 [style.color]="'red'"><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice
+            }}
+          </h3>
+          <div><strong>{{'COURSE.BEGIN_DATE' | translate }}:</strong> {{ course.beginDate | date: 'dd/MM/yyyy' }}
           </div>
-        </ng-template>
-      </ng-container>
-      <ng-template #loading>
-        <nz-spin nzSimple></nz-spin>
-      </ng-template>
-    </ng-container>
+          <div><strong>{{'COURSE.BEGIN_TIME' | translate }}:</strong> {{ course.beginTime | date: 'hh:mm:ss' }}
+          </div>
+          <div>
+            <strong>
+              {{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm:ss dd/MM/yyyy'}}
+          </div>
+          <div><strong>{{'COURSE.CREATED_BY' | translate }}:</strong> {{ courseTemplate.user.name }}</div>
+          <button nz-button
+                  [disabled]="courseTemplate.user.email != 'lqtoan37@gmail.com'"
+                  nz-popconfirm
+                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+                  nzOkText="OK"
+                  nzCancelText="Cancel"
+                  (nzOnConfirm)="onDelete(course._id)"
+                  (nzOnCancel)="cancel()"
+                  class="delete-button">
+            <span nz-icon
+                  nzType="delete"
+                  nzTheme="fill"></span>Delete
+          </button>
+        </div>
+      </div>
+    </ng-template>
   </ng-container>
-  <ng-template #notAccess>{{ 'COMING_SOON' | translate }}</ng-template>
+  <ng-template #loading>
+    <nz-spin nzSimple></nz-spin>
+  </ng-template>
 </ng-container>
 
 <app-course-form></app-course-form>

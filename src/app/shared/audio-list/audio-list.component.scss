@@ -60,6 +60,7 @@
   }
 
   .audio-list {
+    padding-right: 0.5rem;
     height: calc(60vh - 7rem);
     background: rgba($color: $white, $alpha: 0.1);
     display: grid;

@@ -1,7 +1,7 @@
 import { CourseStore } from './../course.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NzI18nService, vi_VN, en_US } from 'ng-zorro-antd/i18n';
+import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
 
 @Component({
   selector: 'app-course-form',
@@ -30,7 +30,15 @@ export class CourseFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.i18n.setLocale(this.currentLanguage == 'vi' ? vi_VN : en_US);
+    if (this.currentLanguage == 'vi') {
+      this.i18n.setLocale(vi_VN);
+    }
+    if (this.currentLanguage == 'en') {
+      this.i18n.setLocale(en_US);
+    }
+    if (this.currentLanguage == 'zh') {
+      this.i18n.setLocale(zh_CN);
+    }
   }
 
   onClose() {

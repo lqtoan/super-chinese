@@ -14,13 +14,15 @@
     box-shadow: 0px 2px 5px 1px rgba($color: $gray, $alpha: 0.25);
     border-radius: 0.5rem;
     transition: $transition;
+    span {
+      transition: $transition;
+    }
   }
   .card:hover {
     cursor: pointer;
     box-shadow: 0 2px 10px 0px rgba($color: $primary-color, $alpha: 1),
       0 5px 10px 1px rgba($color: #88c0d0, $alpha: 0.75);
     span {
-      font-weight: 700;
       background: $magenta-blue-linear-gradient;
       background-clip: text;
       -webkit-text-fill-color: transparent;

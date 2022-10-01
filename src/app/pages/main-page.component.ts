@@ -31,9 +31,4 @@ export class MainPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  changeLanguage(event: any) {
-    this.translateService.use(event.target.value);
-    localStorage.setItem('language', event.target.value);
-  }
 }

@@ -10,11 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DictionaryFormComponent implements OnInit {
   constructor(private readonly store: DictionaryStore, private readonly formBuilder: FormBuilder) {}
 
+  private readonly initDate: Date = new Date();
+
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     define: ['', Validators.compose([Validators.required])],
-    createdDate: ['', Validators.compose([])],
+    hsk: ['', Validators.compose([Validators.required])],
+    createdDate: [this.initDate, Validators.compose([])],
     createdBy: ['', Validators.compose([])],
   });
 
@@ -32,5 +35,6 @@ export class DictionaryFormComponent implements OnInit {
     let formValue = this.dictionaryForm.getRawValue();
     formValue.createdDate = new Date();
     this.store.createDictionary(formValue);
+    this.dictionaryForm.reset();
   }
 }

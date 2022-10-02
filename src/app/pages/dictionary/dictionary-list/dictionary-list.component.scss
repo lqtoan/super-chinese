@@ -13,11 +13,23 @@
   cursor: pointer;
 }
 
-.delete-button {
-  color: $red;
-  transition: $transition;
+nz-table {
+  .ant-table-cell {
+    padding: 0.75rem 1rem;
+  }
+  .delete-button {
+    color: $red;
+    transition: $transition;
+  }
+  .delete-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }
-.delete-button:hover {
-  opacity: 0.8;
-  cursor: pointer;
+
+::ng-deep {
+  .ant-table-column-title {
+    position: static;
+    z-index: auto;
+  }
 }

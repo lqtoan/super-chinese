@@ -7,6 +7,7 @@ import { DictionaryComponent } from './dictionary.component';
 import { DictionaryListComponent } from './dictionary-list/dictionary-list.component';
 import { DictionaryFormComponent } from './dictionary-form/dictionary-form.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -16,7 +17,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 const nzModules = [
   NzSpinModule,
@@ -28,6 +29,7 @@ const nzModules = [
   NzPopconfirmModule,
   NzIconModule,
   NzTableModule,
+  NzSelectModule,
 ];
 
 @NgModule({

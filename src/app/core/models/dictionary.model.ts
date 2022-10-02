@@ -3,6 +3,7 @@ export interface Dictionary {
   display: string;
   pinyin: string;
   define: string;
+  hsk: string;
   createdDate: Date;
   updatedDate?: Date;
   createdBy: string;

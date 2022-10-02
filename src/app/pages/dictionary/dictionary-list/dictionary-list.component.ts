@@ -12,7 +12,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
 
-  sortFn = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
+  private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
+  private readonly filterDisplay = (list: string[], item: Dictionary) =>
+    list.some((name) => item.display.indexOf(name) !== -1);
 
   readonly vm$ = this.store.vm$;
   ngOnInit(): void {

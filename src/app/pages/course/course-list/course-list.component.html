@@ -1,4 +1,4 @@
-<ng-container *ngIf="{user: user$ | async, vm: vm$ | async } as courseTemplate">
+<ng-container *ngIf=" vm$ | async as vm">
   <div>
     <button nz-button
             nzSize="large"
@@ -9,12 +9,12 @@
             nzTheme="outline">
       </span>Create</button>
   </div>
-  <ng-container *ngIf="courseTemplate.vm.isLoading == false; else loading">
-    <ng-container *ngIf="courseTemplate.vm.courses.length ==0; else courseList">No course</ng-container>
+  <ng-container *ngIf="vm.isLoading === false; else loading">
+    <ng-container *ngIf="vm.courses.length == 0; else courseList">No course</ng-container>
     <ng-template #courseList>
       <div class="course-list">
         <div class="course"
-             *ngFor="let course of courseTemplate.vm.courses;">
+             *ngFor="let course of vm.courses;">
           <small><strong>ID:</strong> {{ course._id }}</small>
           <h4><strong>{{'COURSE.NAME' | translate }}:</strong> {{ course.name }}</h4>
           <h3 [style.color]="'red'"><strong>{{'COURSE.PRICE' | translate }}:</strong> {{ course.price | formatPrice
@@ -28,9 +28,8 @@
             <strong>
               {{'COURSE.CREATED' | translate }}:</strong> {{ course.createdDate | date: 'hh:mm:ss dd/MM/yyyy'}}
           </div>
-          <div><strong>{{'COURSE.CREATED_BY' | translate }}:</strong> {{ courseTemplate.user.name }}</div>
+          <!-- <div><strong>{{'COURSE.CREATED_BY' | translate }}:</strong> {{ course.createdBy }}</div> -->
           <button nz-button
-                  [disabled]="courseTemplate.user.email != 'lqtoan37@gmail.com'"
                   nz-popconfirm
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
                   nzOkText="OK"

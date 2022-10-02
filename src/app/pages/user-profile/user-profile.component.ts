@@ -1,3 +1,4 @@
+import { UserProfileStore } from './user-profile.store';
 import { UserProfileService } from '@services/user-profile.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
@@ -6,19 +7,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UserProfileStore],
 })
 export class UserProfileComponent implements OnInit {
-  constructor(private readonly userProfileService: UserProfileService) {}
+  constructor(private readonly store: UserProfileStore) {}
 
-  user$ = this.userProfileService.user$;
+  readonly vm$ = this.store.vm$;
 
   ngOnInit(): void {
-    this.userProfileService.user$.pipe().subscribe();
-
-    this.getUserProfile();
-  }
-
-  getUserProfile() {
-    this.userProfileService.getUserProfile().subscribe();
+    this.store.loadData();
   }
 }

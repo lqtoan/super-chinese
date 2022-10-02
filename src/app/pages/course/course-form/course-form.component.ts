@@ -2,6 +2,7 @@ import { CourseStore } from './../course.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
+import { UserProfileService } from '@services/user-profile.service';
 
 @Component({
   selector: 'app-course-form',
@@ -13,7 +14,7 @@ export class CourseFormComponent implements OnInit {
   constructor(
     private readonly store: CourseStore,
     private readonly formBuilder: FormBuilder,
-    private i18n: NzI18nService
+    private readonly i18n: NzI18nService
   ) {}
   readonly isVisibleForm$ = this.store.isVisibleForm$;
   readonly formValue$ = this.store.formValue$;
@@ -29,6 +30,7 @@ export class CourseFormComponent implements OnInit {
     beginDate: [this.initDate, Validators.compose([Validators.required])],
     beginTime: [this.initDate, Validators.compose([Validators.required])],
     createdDate: ['', Validators.compose([])],
+    createdBy: ['', Validators.compose([])],
   });
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class CourseFormComponent implements OnInit {
       beginDate: this.initDate,
       beginTime: this.initDate,
       createdDate: '',
+      createdBy: '',
     });
   }
 }

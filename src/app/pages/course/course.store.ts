@@ -82,8 +82,7 @@ export class CourseStore extends ComponentStore<CourseState> {
           tapResponse(
             (data) => {
               if (data) {
-                // console.log(data);
-                // this.setShowForm(false);
+                this.setShowForm(false);
               }
               this.loadData();
               this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));

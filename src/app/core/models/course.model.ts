@@ -5,5 +5,6 @@ export interface Course {
   beginDate: Date;
   beginTime: Date;
   createdDate: Date;
+  createdBy: string;
   isComplete: boolean;
 }

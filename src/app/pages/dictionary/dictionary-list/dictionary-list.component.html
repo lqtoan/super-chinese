@@ -9,11 +9,12 @@
   <nz-table [style.margin-top.rem]="'0.5'"
             [nzSize]="'small'"
             #virtualTable
+            [nzFooter]="'Tất cả chữ Hán đang có là ' + vm.words.length + ' chữ.'"
             [nzVirtualItemSize]="25"
             [nzVirtualForTrackBy]="trackByIndex"
             [nzFrontPagination]="false"
             [nzShowPagination]="false"
-            [nzScroll]="{ x: 'calc(70vw - 32px)', y: 'calc(75vh - 220px)' }"
+            [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
             [nzLoading]="vm.isLoading"
             [nzData]="vm.words">
     <thead>

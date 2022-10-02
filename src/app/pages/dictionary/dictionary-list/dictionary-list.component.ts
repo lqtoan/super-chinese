@@ -35,6 +35,4 @@ export class DictionaryListComponent implements OnInit {
   onDelete(id: string) {
     this.store.deleteDictionary(id);
   }
-
-  onSortChange() {}
 }

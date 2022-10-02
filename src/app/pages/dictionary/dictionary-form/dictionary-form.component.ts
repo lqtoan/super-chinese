@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DictionaryFormComponent implements OnInit {
   constructor(private readonly store: DictionaryStore, private readonly formBuilder: FormBuilder) {}
 
-  readonly courseForm: FormGroup = this.formBuilder.group({
+  readonly dictionaryForm: FormGroup = this.formBuilder.group({
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     define: ['', Validators.compose([Validators.required])],
@@ -24,7 +24,13 @@ export class DictionaryFormComponent implements OnInit {
 
   onClose() {
     this.store.setShowForm(false);
-    // this.courseForm.get('name')?.reset();
-    // this.store.setFormValue(undefined);
+    this.dictionaryForm.reset();
+    this.store.setFormValue(undefined);
+  }
+
+  onSubmit() {
+    let formValue = this.dictionaryForm.getRawValue();
+    formValue.createdDate = new Date();
+    this.store.createDictionary(formValue);
   }
 }

@@ -29,11 +29,49 @@
           </nz-form-item>
         </div>
 
+        <div nz-col
+             nzSpan="12">
+          <nz-form-item>
+            <nz-form-label nzRequired
+                           nzFor="pinyin">{{'DICTIONARY.PINYIN' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorPinyin">
+              <input nz-input
+                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                     id="display"
+                     formControlName="pinyin">
+              <ng-template #errorPinyin
+                           let-control>
+                <ng-container *ngIf="control.touched && control.hasError('required')">
+                  {{ 'INPUT.PLACE_HOLDER' | translate }}
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
 
+        <div nz-col
+             nzSpan="12">
+          <nz-form-item>
+            <nz-form-label nzRequired
+                           nzFor="define">{{'DICTIONARY.DEFINE' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorDefine">
+              <input nz-input
+                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                     id="display"
+                     formControlName="define">
+              <ng-template #errorDefine
+                           let-control>
+                <ng-container *ngIf="control.touched && control.hasError('required')">
+                  {{ 'INPUT.PLACE_HOLDER' | translate }}
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
       </div>
     </form>
-    <button [disabled]="courseForm.invalid"
+    <button [disabled]="dictionaryForm.invalid"
             nz-button
-            (click)="onSubmit()">Create</button>
+            (click)="onSubmit()">{{ 'ACTION.CREATE' | translate }}</button>
   </ng-container>
 </nz-drawer>

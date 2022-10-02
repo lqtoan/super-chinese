@@ -1,6 +1,5 @@
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { UserProfileService } from '@services/user-profile.service';
 
 @Component({
   selector: 'app-course',

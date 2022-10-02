@@ -1,8 +1,11 @@
-import { DictionaryComponent } from './dictionary.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { DictionaryComponent } from './dictionary.component';
+import { DictionaryListComponent } from './dictionary-list/dictionary-list.component';
+import { DictionaryFormComponent } from './dictionary-form/dictionary-form.component';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
@@ -27,7 +30,7 @@ const nzModules = [
 ];
 
 @NgModule({
-  declarations: [DictionaryComponent],
+  declarations: [DictionaryComponent, DictionaryListComponent, DictionaryFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([

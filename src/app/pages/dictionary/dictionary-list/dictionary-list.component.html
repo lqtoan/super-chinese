@@ -13,15 +13,19 @@
             [nzVirtualForTrackBy]="trackByIndex"
             [nzFrontPagination]="false"
             [nzShowPagination]="false"
-            [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
+            [nzScroll]="{ x: 'calc(70vw - 32px)', y: 'calc(75vh - 240px)' }"
             [nzLoading]="vm.isLoading"
             [nzData]="vm.words">
     <thead>
       <tr>
-        <th>Actions</th>
-        <th>Index</th>
-        <th *ngFor="let label of headers.labels">{{ label | translate }}</th>
-
+        <th nzWidth="120px">{{ 'DICTIONARY.DISPLAY' | translate }}</th>
+        <th nzWidth="120px"
+            [nzSortOrder]="'ascend'"
+            [nzSortFn]="sortFn">{{ 'DICTIONARY.PINYIN' | translate }}</th>
+        <th nzWidth="240px">{{ 'DICTIONARY.DEFINE' | translate }}</th>
+        <th nzWidth="120px">{{ 'CREATED' | translate }}</th>
+        <th nzWidth="120px">{{ 'CREATED_BY' | translate }}</th>
+        <th nzWidth="40px"></th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +33,11 @@
                    let-data
                    let-index="index">
         <tr>
+          <td>{{ data.display }}</td>
+          <td>{{ data.pinyin }}</td>
+          <td>{{ data.define }}</td>
+          <td>{{ data.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</td>
+          <td>{{ data.createdBy }}</td>
           <td>
             <span nz-popconfirm
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
@@ -41,10 +50,6 @@
                   nzType="delete"
                   nzTheme="fill"></span>
           </td>
-          <td>{{ data._id }}</td>
-          <td>{{ data.display }}</td>
-          <td>{{ data.pinyin }}</td>
-          <td>{{ data.define }}</td>
         </tr>
       </ng-template>
     </tbody>

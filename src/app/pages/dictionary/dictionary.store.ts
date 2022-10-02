@@ -42,8 +42,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
-              console.log(data);
-
               this.patchState({ words: data });
             },
             (error: HttpErrorResponse) => {

@@ -1,4 +1,4 @@
-import { TableHeader } from '@models/table.model';
+import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
@@ -12,10 +12,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
 
-  readonly headers: TableHeader = {
-    labels: ['DICTIONARY.DISPLAY', 'DICTIONARY.PINYIN', 'DICTIONARY.DEFINE'],
-    fields: ['display', 'pinyin', 'define'],
-  };
+  sortFn = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
 
   readonly vm$ = this.store.vm$;
   ngOnInit(): void {
@@ -29,4 +26,6 @@ export class DictionaryListComponent implements OnInit {
   onDelete(id: string) {
     this.store.deleteDictionary(id);
   }
+
+  onSortChange() {}
 }

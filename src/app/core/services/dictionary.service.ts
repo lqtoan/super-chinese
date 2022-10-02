@@ -11,7 +11,7 @@ export class DictionaryService {
   API = `${environment.api}words`;
 
   getDictionaries(): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(this.API).pipe(delay(500));
+    return this.httpClient.get<Dictionary[]>(this.API);
   }
 
   createDictionary(dictionary: Dictionary) {

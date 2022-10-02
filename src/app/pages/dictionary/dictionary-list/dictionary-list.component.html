@@ -7,6 +7,7 @@
 </div>
 <ng-container *ngIf="(vm$ | async) as vm">
   <nz-table [style.margin-top.rem]="'0.5'"
+            [nzSize]="'small'"
             #virtualTable
             [nzVirtualItemSize]="25"
             [nzVirtualForTrackBy]="trackByIndex"
@@ -17,15 +18,25 @@
             [nzData]="vm.words">
     <thead>
       <tr>
-        <th nzWidth="120px">{{ 'DICTIONARY.DISPLAY' | translate }}</th>
-        <th nzWidth="120px"
+        <th nzWidth="5rem"
+            nzLeft>{{ 'DICTIONARY.DISPLAY' | translate }}</th>
+        <th nzWidth="8rem"
             [nzSortOrder]="'ascend'"
+            [nzSortPriority]="1"
             [nzSortFn]="sortPinyin">{{ 'DICTIONARY.PINYIN' | translate }}</th>
-        <th nzWidth="240px">{{ 'DICTIONARY.DEFINE' | translate }}</th>
-        <th nzWidth="80px">HSK</th>
+        <th nzWidth="12rem">{{ 'DICTIONARY.DEFINE' | translate }}</th>
+        <th nzWidth="5rem"
+            [nzAlign]="'center'"
+            [nzFilterMultiple]="true"
+            [nzFilters]="initHskFilter"
+            [nzFilterFn]="filterHsk"
+            [nzSortOrder]="'ascend'"
+            [nzSortPriority]="2"
+            [nzSortFn]="sortHsk">HSK</th>
         <th nzWidth="200px">{{ 'CREATED' | translate }}</th>
+        <th nzWidth="200px">{{ 'UPDATED' | translate }}</th>
         <!-- <th nzWidth="120px">{{ 'CREATED_BY' | translate }}</th> -->
-        <th nzWidth="40px"></th>
+        <!-- <th nzWidth="40px"></th> -->
       </tr>
     </thead>
     <tbody>
@@ -33,13 +44,14 @@
                    let-data
                    let-index="index">
         <tr>
-          <td>{{ data.display }}</td>
+          <td nzLeft>{{ data.display }}</td>
           <td>{{ data.pinyin }}</td>
           <td>{{ data.define }}</td>
-          <td>{{ data.hsk }}</td>
+          <td [nzAlign]="'center'">{{ data.hsk }}</td>
           <td>{{ data.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</td>
+          <td>{{ data.updatedDate | date: 'hh:mm:ss dd/MM/yyyy' }}</td>
           <!-- <td>{{ data.createdBy }}</td> -->
-          <td>
+          <!-- <td>
             <span nz-popconfirm
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
                   nzOkText="OK"
@@ -50,7 +62,7 @@
                   nz-icon
                   nzType="delete"
                   nzTheme="fill"></span>
-          </td>
+          </td> -->
         </tr>
       </ng-template>
     </tbody>

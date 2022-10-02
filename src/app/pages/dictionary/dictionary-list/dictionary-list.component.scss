@@ -14,9 +14,6 @@
 }
 
 nz-table {
-  .ant-table-cell {
-    padding: 0.75rem 1rem;
-  }
   .delete-button {
     color: $red;
     transition: $transition;
@@ -24,6 +21,9 @@ nz-table {
   .delete-button:hover {
     opacity: 0.8;
     cursor: pointer;
+  }
+  .ant-dropdown-trigger {
+    border: unset !important;
   }
 }
 

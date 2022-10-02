@@ -1,6 +1,7 @@
 import { DictionaryStore } from './../dictionary.store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { en_US, NzI18nService, vi_VN, zh_CN } from 'ng-zorro-antd/i18n';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -8,8 +9,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./dictionary-form.component.scss'],
 })
 export class DictionaryFormComponent implements OnInit {
-  constructor(private readonly store: DictionaryStore, private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly store: DictionaryStore,
+    private readonly formBuilder: FormBuilder,
+    private readonly i18n: NzI18nService
+  ) {}
+  readonly isVisibleForm$ = this.store.isVisibleForm$;
 
+  private readonly currentLanguage = localStorage.getItem('language');
   private readonly initDate: Date = new Date();
 
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
@@ -21,9 +28,17 @@ export class DictionaryFormComponent implements OnInit {
     createdBy: ['', Validators.compose([])],
   });
 
-  readonly isVisibleForm$ = this.store.isVisibleForm$;
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.currentLanguage == 'vi') {
+      this.i18n.setLocale(vi_VN);
+    }
+    if (this.currentLanguage == 'en') {
+      this.i18n.setLocale(en_US);
+    }
+    if (this.currentLanguage == 'zh') {
+      this.i18n.setLocale(zh_CN);
+    }
+  }
 
   onClose() {
     this.store.setShowForm(false);

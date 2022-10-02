@@ -11,7 +11,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
 
-  ngOnInit(): void {}
+  readonly vm$ = this.store.vm$;
+  ngOnInit(): void {
+    this.store.loadData();
+  }
 
   onShowForm() {
     this.store.setShowForm(true);

@@ -15,11 +15,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { NzListModule } from 'ng-zorro-antd/list';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 const nzModules = [
   NzSpinModule,
-  NzListModule,
   NzDrawerModule,
   NzFormModule,
   NzGridModule,
@@ -27,6 +26,7 @@ const nzModules = [
   NzButtonModule,
   NzPopconfirmModule,
   NzIconModule,
+  NzTableModule,
 ];
 
 @NgModule({

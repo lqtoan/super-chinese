@@ -42,6 +42,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
+              console.log(data);
+
               this.patchState({ words: data });
             },
             (error: HttpErrorResponse) => {
@@ -82,11 +84,10 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
-                // console.log(data);
-                // this.setShowForm(false);
+                this.setShowForm(false);
+                this.loadData();
+                this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
-              this.loadData();
-              this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);

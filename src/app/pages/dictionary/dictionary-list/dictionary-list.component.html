@@ -5,5 +5,38 @@
           nzType="plus"
           nzTheme="outline"></span>Create</button>
 </div>
+<ng-container *ngIf="(vm$ | async) as vm">
+  <nz-table [style.margin-top.rem]="'0.25'"
+            #virtualTable
+            [nzBordered]="false"
+            [nzVirtualItemSize]="25"
+            [nzVirtualForTrackBy]="trackByIndex"
+            [nzFrontPagination]="false"
+            [nzShowPagination]="false"
+            [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
+            [nzLoading]="vm.isLoading"
+            [nzData]="vm.words">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Display</th>
+        <th>Pinyin</th>
+        <th>Define</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template nz-virtual-scroll
+                   let-data
+                   let-index="index">
+        <tr>
+          <td>{{ index }}</td>
+          <td>{{ data.display }}</td>
+          <td>{{ data.pinyin }}</td>
+          <td>{{ data.define }}</td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </nz-table>
+</ng-container>
 
 <app-dictionary-form></app-dictionary-form>

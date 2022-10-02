@@ -83,9 +83,9 @@ export class CourseStore extends ComponentStore<CourseState> {
             (data) => {
               if (data) {
                 this.setShowForm(false);
+                this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
+                this.loadData();
               }
-              this.loadData();
-              this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);

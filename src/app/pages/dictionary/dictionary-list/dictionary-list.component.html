@@ -3,10 +3,10 @@
           class="create-button"
           (click)="onShowForm()"><span nz-icon
           nzType="plus"
-          nzTheme="outline"></span>Create</button>
+          nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
 </div>
 <ng-container *ngIf="(vm$ | async) as vm">
-  <nz-table [style.margin-top.rem]="'0.25'"
+  <nz-table [style.margin-top.rem]="'0.5'"
             #virtualTable
             [nzBordered]="false"
             [nzVirtualItemSize]="25"
@@ -18,10 +18,10 @@
             [nzData]="vm.words">
     <thead>
       <tr>
+        <th>Actions</th>
         <th>Index</th>
-        <th>Display</th>
-        <th>Pinyin</th>
-        <th>Define</th>
+        <th *ngFor="let label of headers.labels">{{ label | translate }}</th>
+
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,19 @@
                    let-data
                    let-index="index">
         <tr>
-          <td>{{ index }}</td>
+          <td>
+            <span nz-popconfirm
+                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+                  nzOkText="OK"
+                  nzCancelText="Cancel"
+                  (nzOnConfirm)="onDelete(data._id)"
+                  (nzOnCancel)="cancel()"
+                  class="delete-button"
+                  nz-icon
+                  nzType="delete"
+                  nzTheme="fill"></span>
+          </td>
+          <td>{{ data._id }}</td>
           <td>{{ data.display }}</td>
           <td>{{ data.pinyin }}</td>
           <td>{{ data.define }}</td>

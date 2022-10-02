@@ -1,3 +1,4 @@
+import { TableHeader } from '@models/table.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
@@ -11,6 +12,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
 
+  readonly headers: TableHeader = {
+    labels: ['DICTIONARY.DISPLAY', 'DICTIONARY.PINYIN', 'DICTIONARY.DEFINE'],
+    fields: ['display', 'pinyin', 'define'],
+  };
+
   readonly vm$ = this.store.vm$;
   ngOnInit(): void {
     this.store.loadData();
@@ -18,5 +24,9 @@ export class DictionaryListComponent implements OnInit {
 
   onShowForm() {
     this.store.setShowForm(true);
+  }
+
+  onDelete(id: string) {
+    this.store.deleteDictionary(id);
   }
 }

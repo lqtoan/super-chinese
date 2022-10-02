@@ -2,7 +2,7 @@
            [nzVisible]="(isVisibleForm$ | async)!"
            nzPlacement="right"
            nzWidth="calc(25vw + 200px)"
-           nzTitle="Create"
+           [nzTitle]="'ACTION.CREATE' | translate"
            (nzOnClose)="onClose()">
   <ng-container *nzDrawerContent>
     <form nz-form
@@ -65,6 +65,6 @@
     </form>
     <button [disabled]="courseForm.invalid"
             nz-button
-            (click)="onSubmit()">Create</button>
+            (click)="onSubmit()">{{ 'ACTION.CREATE' | translate }}</button>
   </ng-container>
 </nz-drawer>

@@ -7,7 +7,7 @@
       <span nz-icon
             nzType="plus"
             nzTheme="outline">
-      </span>Create</button>
+      </span>{{ 'ACTION.CREATE' | translate }}</button>
   </div>
   <ng-container *ngIf="vm.isLoading === false; else loading">
     <ng-container *ngIf="vm.courses.length == 0; else courseList">No course</ng-container>
@@ -39,7 +39,7 @@
                   class="delete-button">
             <span nz-icon
                   nzType="delete"
-                  nzTheme="fill"></span>Delete
+                  nzTheme="fill"></span>{{ 'ACTION.DELETE' | translate }}
           </button>
         </div>
       </div>

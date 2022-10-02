@@ -16,6 +16,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const nzModules = [
   NzSpinModule,
@@ -41,6 +42,8 @@ const nzModules = [
     ]),
     TranslateModule,
     nzModules,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class DictionaryModule {}

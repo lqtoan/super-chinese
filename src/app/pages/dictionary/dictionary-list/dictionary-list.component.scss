@@ -12,3 +12,12 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.delete-button {
+  color: $red;
+  transition: $transition;
+}
+.delete-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

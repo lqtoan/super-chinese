@@ -1,4 +1,4 @@
-import { TableHeader } from '@models/table-header.model';
+import { TableHeader } from 'src/app/shared/table/models/table-header.model';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';

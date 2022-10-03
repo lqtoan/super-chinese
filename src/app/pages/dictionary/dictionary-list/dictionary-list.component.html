@@ -6,54 +6,10 @@
           nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
 </div>
 <ng-container *ngIf="(vm$ | async) as vm">
-  <nz-table [style.margin-top.rem]="'0.5'"
-            [nzSize]="'small'"
-            #virtualTable
-            [nzFooter]="'Tất cả chữ Hán đang có là ' + vm.words.length + ' chữ.'"
-            [nzVirtualItemSize]="25"
-            [nzVirtualForTrackBy]="trackByIndex"
-            [nzFrontPagination]="false"
-            [nzShowPagination]="false"
-            [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
-            [nzLoading]="vm.isLoading"
-            [nzData]="vm.words">
-    <thead>
-      <tr>
-        <ng-container *ngFor="let header of headers; let i = index">
-          <th [nzWidth]="headers[i].width"
-              [nzAlign]="headers[i].align"
-              [nzFilters]="headers[i].filters"
-              [nzFilterFn]="headers[i].filterFn"
-              [nzSortOrder]="headers[i].sortOrder"
-              [nzSortPriority]="headers[i].sortPriority"
-              [nzSortFn]="headers[i].sortFn">{{ headers[i].label | translate }}</th>
-        </ng-container>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-template nz-virtual-scroll
-                   let-row
-                   let-index="index">
-        <tr>
-          <ng-container *ngFor="let header of headers">
-            <td [nzPotion]="header.position">{{ row[header.field] }}</td>
-          </ng-container>
-          <!-- <td>
-              <span nz-popconfirm
-              [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-              nzOkText="OK"
-              nzCancelText="Cancel"
-              (nzOnConfirm)="onDelete(data._id)"
-              (nzOnCancel)="cancel()"
-              class="delete-button"
-              nz-icon
-              nzType="delete"
-              nzTheme="fill"></span>
-            </td> -->
-        </tr>
-      </ng-template>
-    </tbody>
-  </nz-table>
+  <app-table [trackByIndex]="trackByIndex"
+             [records]="vm.words"
+             [isLoading]="vm.isLoading"
+             [headers]="headers"></app-table>
 </ng-container>
 
 <app-dictionary-form></app-dictionary-form>

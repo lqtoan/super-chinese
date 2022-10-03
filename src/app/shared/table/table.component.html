@@ -1,0 +1,48 @@
+<nz-table [style.margin-top.rem]="'0.5'"
+          [nzSize]="'small'"
+          #virtualTable
+          [nzFooter]="'Tất cả chữ Hán đang có là ' + records.length + ' chữ.'"
+          [nzVirtualItemSize]="25"
+          [nzVirtualForTrackBy]="trackByIndex"
+          [nzFrontPagination]="false"
+          [nzShowPagination]="false"
+          [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
+          [nzLoading]="isLoading"
+          [nzData]="records">
+  <thead>
+    <tr>
+      <ng-container *ngFor="let header of headers; let i = index">
+        <th [nzWidth]="headers[i].width"
+            [nzAlign]="headers[i].align"
+            [nzFilters]="headers[i].filters"
+            [nzFilterFn]="headers[i].filterFn"
+            [nzSortOrder]="headers[i].sortOrder"
+            [nzSortPriority]="headers[i].sortPriority"
+            [nzSortFn]="headers[i].sortFn">{{ headers[i].label | translate }}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-template nz-virtual-scroll
+                 let-row
+                 let-index="index">
+      <tr>
+        <ng-container *ngFor="let header of headers">
+          <td [nzPotion]="header.position">{{ row[header.field] }}</td>
+          <!-- <td>
+            <span nz-popconfirm
+                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+                  nzOkText="OK"
+                  nzCancelText="Cancel"
+                  (nzOnConfirm)="onDelete(data._id)"
+                  (nzOnCancel)="cancel()"
+                  class="delete-button"
+                  nz-icon
+                  nzType="delete"
+                  nzTheme="fill"></span>
+          </td> -->
+        </ng-container>
+      </tr>
+    </ng-template>
+  </tbody>
+</nz-table>

@@ -1,3 +1,4 @@
+import { TableModule } from './../../shared/table/table.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -16,7 +17,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 
 const nzModules = [
@@ -28,7 +28,6 @@ const nzModules = [
   NzButtonModule,
   NzPopconfirmModule,
   NzIconModule,
-  NzTableModule,
   NzSelectModule,
 ];
 
@@ -46,6 +45,7 @@ const nzModules = [
     nzModules,
     FormsModule,
     ReactiveFormsModule,
+    TableModule,
   ],
 })
 export class DictionaryModule {}

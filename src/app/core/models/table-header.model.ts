@@ -1,6 +1,9 @@
 import { NzTableFilterFn, NzTableSortFn } from 'ng-zorro-antd/table';
 
-export interface TableHeader<RecordType> extends TableHeaderConfiguration<RecordType> {
+export interface TableHeader<RecordType> {
+  label: string;
+  field: keyof RecordType & string;
+  width?: string;
   position?: 'left' | 'right';
   align?: 'left' | 'right' | 'center';
 
@@ -12,10 +15,4 @@ export interface TableHeader<RecordType> extends TableHeaderConfiguration<Record
   // Filter
   filters?: Array<{ text: string; value: any; byDefault?: boolean }>;
   filterFn?: NzTableFilterFn<RecordType> | boolean;
-}
-
-export interface TableHeaderConfiguration<RecordType> {
-  label: string;
-  field: keyof RecordType & string;
-  width?: string;
 }

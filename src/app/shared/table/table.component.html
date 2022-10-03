@@ -1,5 +1,7 @@
 <nz-table [style.margin-top.rem]="'0.5'"
           [nzSize]="'small'"
+          [nzSimple]="true"
+          [nzOuterBordered]="true"
           #virtualTable
           [nzFooter]="'Tất cả chữ Hán đang có là ' + records.length + ' chữ.'"
           [nzVirtualItemSize]="25"
@@ -30,8 +32,10 @@
                  let-index="index">
       <tr>
         <ng-container *ngFor="let header of headers">
-          <td [nzLeft]="header.position === 'left'"
-              [nzRight]="header.position === 'right'">{{ row[header.field] }}</td>
+          <td [nzAlign]="header.align"
+              [nzLeft]="header.position === 'left'"
+              [nzRight]="header.position === 'right'">{{ row[header.field] }}
+          </td>
           <!-- <td>
             <span nz-popconfirm
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
@@ -49,3 +53,7 @@
     </ng-template>
   </tbody>
 </nz-table>
+
+<ng-template #noResults>
+  <nz-empty [nzNotFoundContent]="'No data found'"></nz-empty>
+</ng-template>

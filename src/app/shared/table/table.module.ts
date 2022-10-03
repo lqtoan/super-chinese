@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
-const nzModules = [NzTableModule];
+const nzModules = [NzTableModule, NzEmptyModule];
 
 @NgModule({
   declarations: [TableComponent],

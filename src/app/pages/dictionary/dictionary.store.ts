@@ -6,6 +6,7 @@ import { Dictionary } from '@models/dictionary.model';
 import { finalize, map, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { DatePipe } from '@angular/common';
 
 export interface DictionaryState {
   isLoading: boolean;
@@ -26,7 +27,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   constructor(
     private readonly service: DictionaryService,
     private readonly message: NzMessageService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly datePipe: DatePipe
   ) {
     super(initialState);
   }
@@ -42,6 +44,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
+              data.forEach((word) => {
+                word.pinyin.toLowerCase();
+                word.define.toLowerCase();
+                word.createdDate = this.datePipe.transform(word.createdDate, 'HH:mm:ss dd/MM/yyyy');
+                word.updatedDate = this.datePipe.transform(word.updatedDate, 'HH:mm:ss dd/MM/yyyy');
+              });
               this.patchState({ words: data });
             },
             (error: HttpErrorResponse) => {

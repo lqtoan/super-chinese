@@ -18,6 +18,7 @@ export class DictionaryListComponent implements OnInit {
   private readonly initHskFilter = [
     { text: 'HSK 1', value: 'hsk1', byDefault: false },
     { text: 'HSK 2', value: 'hsk2', byDefault: false },
+    { text: 'HSK 3', value: 'hsk3', byDefault: false },
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
@@ -35,15 +36,14 @@ export class DictionaryListComponent implements OnInit {
       label: 'HSK',
       field: 'hsk',
       width: '5rem',
-      align: 'center',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
       sortPriority: 2,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },
-    { label: 'CREATED', field: 'createdDate', width: '200px' },
-    { label: 'UPDATED', field: 'updatedDate', width: '200px' },
+    { label: 'CREATED', field: 'createdDate', cellType: 'date', width: '200px' },
+    { label: 'UPDATED', field: 'updatedDate', cellType: 'date', width: '200px' },
   ];
 
   readonly vm$ = this.store.vm$;

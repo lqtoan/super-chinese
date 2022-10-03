@@ -1,16 +1,17 @@
-import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { interceptorProviders } from './core/inteceptor/index';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment as env } from '../environments/environment';
 
 // Import the module from the SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
+
 import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';

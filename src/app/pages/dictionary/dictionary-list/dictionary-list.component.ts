@@ -1,3 +1,4 @@
+import { TableHeader } from './../../../core/models/table.model';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -11,7 +12,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
-
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
   private readonly filterHsk = (list: string[], item: Dictionary) => list.some((name) => item.hsk.indexOf(name) !== -1);
@@ -20,8 +20,31 @@ export class DictionaryListComponent implements OnInit {
     { text: 'HSK 2', value: 'hsk2', byDefault: false },
   ];
 
-  private readonly filterDisplay = (list: string[], item: Dictionary) =>
-    list.some((name) => item.display.indexOf(name) !== -1);
+  private readonly headers: TableHeader<Dictionary>[] = [
+    { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
+    {
+      label: 'DICTIONARY.PINYIN',
+      field: 'pinyin',
+      width: '8rem',
+      sortOrder: 'ascend',
+      sortFn: this.sortPinyin,
+      sortPriority: 1,
+    },
+    { label: 'DICTIONARY.DEFINE', field: 'define', width: '12rem' },
+    {
+      label: 'HSK',
+      field: 'hsk',
+      width: '5rem',
+      align: 'center',
+      sortOrder: 'ascend',
+      sortFn: this.sortHsk,
+      sortPriority: 2,
+      filters: this.initHskFilter,
+      filterFn: this.filterHsk,
+    },
+    { label: 'CREATED', field: 'createdDate', width: '200px' },
+    { label: 'UPDATED', field: 'updatedDate', width: '200px' },
+  ];
 
   readonly vm$ = this.store.vm$;
   ngOnInit(): void {

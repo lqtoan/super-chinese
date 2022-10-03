@@ -19,51 +19,37 @@
             [nzData]="vm.words">
     <thead>
       <tr>
-        <th nzWidth="5rem"
-            nzLeft>{{ 'DICTIONARY.DISPLAY' | translate }}</th>
-        <th nzWidth="8rem"
-            [nzSortOrder]="'ascend'"
-            [nzSortPriority]="1"
-            [nzSortFn]="sortPinyin">{{ 'DICTIONARY.PINYIN' | translate }}</th>
-        <th nzWidth="12rem">{{ 'DICTIONARY.DEFINE' | translate }}</th>
-        <th nzWidth="5rem"
-            [nzAlign]="'center'"
-            [nzFilterMultiple]="true"
-            [nzFilters]="initHskFilter"
-            [nzFilterFn]="filterHsk"
-            [nzSortOrder]="'ascend'"
-            [nzSortPriority]="2"
-            [nzSortFn]="sortHsk">HSK</th>
-        <th nzWidth="200px">{{ 'CREATED' | translate }}</th>
-        <th nzWidth="200px">{{ 'UPDATED' | translate }}</th>
-        <!-- <th nzWidth="120px">{{ 'CREATED_BY' | translate }}</th> -->
-        <!-- <th nzWidth="40px"></th> -->
+        <ng-container *ngFor="let header of headers; let i = index">
+          <th [nzWidth]="headers[i].width"
+              [nzAlign]="headers[i].align"
+              [nzFilters]="headers[i].filters"
+              [nzFilterFn]="headers[i].filterFn"
+              [nzSortOrder]="headers[i].sortOrder"
+              [nzSortPriority]="headers[i].sortPriority"
+              [nzSortFn]="headers[i].sortFn">{{ headers[i].label | translate }}</th>
+        </ng-container>
       </tr>
     </thead>
     <tbody>
       <ng-template nz-virtual-scroll
-                   let-data
+                   let-row
                    let-index="index">
         <tr>
-          <td nzLeft>{{ data.display }}</td>
-          <td>{{ data.pinyin }}</td>
-          <td>{{ data.define }}</td>
-          <td [nzAlign]="'center'">{{ data.hsk }}</td>
-          <td>{{ data.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</td>
-          <td>{{ data.updatedDate | date: 'hh:mm:ss dd/MM/yyyy' }}</td>
-          <!-- <td>{{ data.createdBy }}</td> -->
+          <ng-container *ngFor="let header of headers">
+            <td [nzPotion]="header.position">{{ row[header.field] }}</td>
+          </ng-container>
           <!-- <td>
-            <span nz-popconfirm
-                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-                  nzOkText="OK"
-                  nzCancelText="Cancel"
-                  (nzOnConfirm)="onDelete(data._id)"
-                  (nzOnCancel)="cancel()"
-                  class="delete-button"
-                  nz-icon
-                  nzType="delete"
-                  nzTheme="fill"></span>
-          </td> -->
+              <span nz-popconfirm
+              [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+              nzOkText="OK"
+              nzCancelText="Cancel"
+              (nzOnConfirm)="onDelete(data._id)"
+              (nzOnCancel)="cancel()"
+              class="delete-button"
+              nz-icon
+              nzType="delete"
+              nzTheme="fill"></span>
+            </td> -->
         </tr>
       </ng-template>
     </tbody>

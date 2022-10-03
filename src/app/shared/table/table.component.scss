@@ -1,0 +1,23 @@
+@import '/src/variables.scss';
+
+::ng-deep {
+  .ant-table.ant-table-small {
+    font-size: 1rem;
+  }
+  .ant-table {
+    color: #000;
+    font-family: sans-serif, monospace;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-display: fall-back;
+  }
+  .ant-table-container {
+    border-radius: 5rem;
+  }
+  .ant-table-thead > tr > th {
+    background: #e8e8e8;
+  }
+  .ant-table-thead th.ant-table-column-sort {
+    background: #e8e8e8;
+  }
+}

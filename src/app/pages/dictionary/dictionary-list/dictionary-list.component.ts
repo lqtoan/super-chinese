@@ -42,8 +42,9 @@ export class DictionaryListComponent implements OnInit {
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },
-    { label: 'CREATED', field: 'createdDate', cellType: 'date', width: '200px' },
-    { label: 'UPDATED', field: 'updatedDate', cellType: 'date', width: '200px' },
+    { label: 'CREATED', field: 'createdDate', width: '200px' },
+    { label: 'UPDATED', field: 'updatedDate', width: '200px' },
+    { label: 'CREATED_BY', field: 'createdBy', width: '200px' },
   ];
 
   readonly vm$ = this.store.vm$;

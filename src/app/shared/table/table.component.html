@@ -1,14 +1,13 @@
 <nz-table [style.margin-top.rem]="'0.5'"
           [nzSize]="'small'"
-          [nzSimple]="true"
+          [nzSimple]=""
           [nzOuterBordered]="true"
           #virtualTable
-          [nzFooter]="'Tất cả chữ Hán đang có là ' + records.length + ' chữ.'"
-          [nzVirtualItemSize]="25"
+          [nzVirtualItemSize]="20"
           [nzVirtualForTrackBy]="trackByIndex"
           [nzFrontPagination]="false"
           [nzShowPagination]="false"
-          [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 240px)' }"
+          [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 220px)' }"
           [nzLoading]="isLoading"
           [nzData]="records">
   <thead>
@@ -27,6 +26,9 @@
     </tr>
   </thead>
   <tbody>
+    <ng-container *ngIf="records.length">
+      <nz-empty [nzNotFoundContent]="'No data found'"></nz-empty>
+    </ng-container>
     <ng-template nz-virtual-scroll
                  let-row
                  let-index="index">
@@ -53,7 +55,3 @@
     </ng-template>
   </tbody>
 </nz-table>
-
-<ng-template #noResults>
-  <nz-empty [nzNotFoundContent]="'No data found'"></nz-empty>
-</ng-template>

@@ -45,10 +45,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               data.forEach((word) => {
-                word.pinyin.toLowerCase();
-                word.define.toLowerCase();
+                word.pinyin = word.pinyin.toLowerCase();
+                word.define = word.define.toLowerCase();
                 word.createdDate = this.datePipe.transform(word.createdDate, 'HH:mm:ss dd/MM/yyyy');
                 word.updatedDate = this.datePipe.transform(word.updatedDate, 'HH:mm:ss dd/MM/yyyy');
+                word.createdBy = 'toan';
               });
               this.patchState({ words: data });
             },

@@ -9,7 +9,13 @@
   <app-table [trackByIndex]="trackByIndex"
              [records]="vm.words"
              [isLoading]="vm.isLoading"
-             [headers]="headers"></app-table>
+             [headers]="headers">
+    <ng-template appTableCell="date"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      {{ value | date: 'dd/MM/yyyy hh:mm' }}
+    </ng-template>
+  </app-table>
 </ng-container>
 
 <app-dictionary-form></app-dictionary-form>

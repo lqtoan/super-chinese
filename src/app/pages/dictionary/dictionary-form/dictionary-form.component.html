@@ -1,6 +1,5 @@
-<nz-drawer [nzClosable]="true"
-           [nzVisible]="(isVisibleForm$ | async)!"
-           nzPlacement="right"
+<nz-drawer [nzVisible]="(isVisibleForm$ | async)!"
+           nzWidth="calc(25vw + 200px)"
            [nzTitle]="'ACTION.CREATE' | translate"
            (nzOnClose)="onClose()">
   <ng-container *nzDrawerContent>

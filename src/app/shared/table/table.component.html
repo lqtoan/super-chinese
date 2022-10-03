@@ -14,6 +14,8 @@
       <ng-container *ngFor="let header of headers; let i = index">
         <th [nzWidth]="headers[i].width"
             [nzAlign]="headers[i].align"
+            [nzLeft]="headers[i].position === 'left'"
+            [nzRight]="headers[i].position === 'right'"
             [nzFilters]="headers[i].filters"
             [nzFilterFn]="headers[i].filterFn"
             [nzSortOrder]="headers[i].sortOrder"
@@ -28,7 +30,8 @@
                  let-index="index">
       <tr>
         <ng-container *ngFor="let header of headers">
-          <td [nzPotion]="header.position">{{ row[header.field] }}</td>
+          <td [nzLeft]="header.position === 'left'"
+              [nzRight]="header.position === 'right'">{{ row[header.field] }}</td>
           <!-- <td>
             <span nz-popconfirm
                   [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"

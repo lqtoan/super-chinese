@@ -3,6 +3,7 @@ import { NzTableFilterFn, NzTableSortFn } from 'ng-zorro-antd/table';
 export interface TableHeader<RecordType> {
   label: string;
   field: keyof RecordType & string;
+  cellType?: string;
   width?: string;
   position?: 'left' | 'right';
   align?: 'left' | 'right' | 'center';

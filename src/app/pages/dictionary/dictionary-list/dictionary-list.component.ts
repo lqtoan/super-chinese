@@ -65,7 +65,6 @@ export class DictionaryListComponent implements OnInit {
     {
       label: '',
       cellType: 'actions',
-      position: 'left',
       width: '2rem',
       field: '_id',
     },

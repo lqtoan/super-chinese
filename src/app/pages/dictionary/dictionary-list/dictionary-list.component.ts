@@ -22,13 +22,6 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   readonly headers: TableHeader<Dictionary>[] = [
-    {
-      label: '',
-      cellType: 'actions',
-      position: 'left',
-      width: '2rem',
-      field: '_id',
-    },
     { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
@@ -39,7 +32,7 @@ export class DictionaryListComponent implements OnInit {
       sortFn: this.sortPinyin,
       sortPriority: 1,
     },
-    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '12rem' },
+    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '16rem' },
     {
       label: 'HSK',
       field: 'hsk',
@@ -63,7 +56,14 @@ export class DictionaryListComponent implements OnInit {
       cellType: 'date',
       width: '200px',
     },
-    { label: 'CREATED_BY', field: 'createdBy', width: '200px' },
+    { label: 'CREATED_BY', field: 'createdBy', width: '6rem' },
+    {
+      label: '',
+      cellType: 'actions',
+      position: 'left',
+      width: '2rem',
+      field: '_id',
+    },
   ];
 
   readonly vm$ = this.store.vm$;

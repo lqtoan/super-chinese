@@ -6,6 +6,7 @@ $second-white: #d8dee9;
 $primary-color: #b48ead;
 $gray: #4c566a;
 $red: #bf616a;
+$blue: #88c0d0;
 
 $linear-gradient: linear-gradient(
   135deg,
@@ -14,7 +15,7 @@ $linear-gradient: linear-gradient(
     $alpha: 1,
   ),
   rgba(
-    $color: #88c0d0,
+    $color: $blue,
     $alpha: 0.75,
   )
 );
@@ -40,7 +41,7 @@ $magenta-blue-linear-gradient: linear-gradient(
     $alpha: 0.75,
   ),
   rgba(
-    $color: #88c0d0,
+    $color: $blue,
     $alpha: 0.75,
   )
 );
@@ -51,7 +52,7 @@ $blue-linear-gradient: linear-gradient(
     $alpha: 1,
   ),
   rgba(
-    $color: #88c0d0,
+    $color: $blue,
     $alpha: 1,
   )
 );
@@ -66,7 +67,7 @@ $magenta-blue-white-linear-gradient: linear-gradient(
     $alpha: 0.375,
   ),
   rgba(
-    $color: #88c0d0,
+    $color: $blue,
     $alpha: 0.375,
   ),
   rgba(

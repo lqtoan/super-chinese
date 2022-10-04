@@ -20,8 +20,7 @@
   }
   .card:hover {
     cursor: pointer;
-    box-shadow: 0 2px 10px 0px rgba($color: $primary-color, $alpha: 1),
-      0 5px 10px 1px rgba($color: #88c0d0, $alpha: 0.75);
+    box-shadow: 0 2px 10px 0px rgba($color: $primary-color, $alpha: 1), 0 5px 10px 1px rgba($color: $blue, $alpha: 0.75);
     span {
       background: $magenta-blue-linear-gradient;
       background-clip: text;
@@ -36,34 +35,31 @@
     .card {
       padding: 1rem;
       height: 10rem;
-      color: $black;
       display: flex;
       flex-flow: column wrap;
       justify-content: center;
-      box-shadow: 0px 2px 5px 1px rgba($color: $gray, $alpha: 0.25);
+      color: $gray;
+      background: $magenta-blue-white-linear-gradient;
+      box-shadow: 0 2px 10px 0 rgba($color: $gray, $alpha: 0.5);
       border-radius: 0.5rem;
       transition: $transition;
       span {
+        color: $second-white;
+        text-shadow: 0 1px 10px $gray;
         line-height: 110%;
-        font-size: 3rem;
+        font-size: 4rem;
         font-weight: 600;
       }
       .sub-title {
+        color: $black;
         font-style: italic;
         line-height: 100%;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
     .card:hover {
       cursor: pointer;
-      box-shadow: 0 0px 5px 2px rgba($color: $primary-color, $alpha: 1),
-        0 0px 10px 5px rgba($color: $primary-color, $alpha: 0.5);
-      span,
-      .sub-title {
-        background: $magenta-blue-linear-gradient;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      box-shadow: 0 2px 10px 0 rgba($color: $gray, $alpha: 0.75);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { TableHeader } from 'src/app/shared/table/models/table-header.model';
+import { TableHeader } from 'src/app/shared/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -19,6 +19,10 @@ export class DictionaryListComponent implements OnInit {
     { text: 'HSK 1', value: 'hsk1', byDefault: false },
     { text: 'HSK 2', value: 'hsk2', byDefault: false },
     { text: 'HSK 3', value: 'hsk3', byDefault: false },
+    { text: 'HSK 4', value: 'hsk3', byDefault: false },
+    { text: 'HSK 5', value: 'hsk3', byDefault: false },
+    { text: 'HSK 6', value: 'hsk3', byDefault: false },
+    { text: '-------', value: 'z---', byDefault: false },
   ];
 
   readonly headers: TableHeader<Dictionary>[] = [

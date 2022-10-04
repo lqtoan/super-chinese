@@ -8,11 +8,7 @@
     position: sticky;
     padding: 0 2rem;
     height: 7rem;
-    background: linear-gradient(
-      135deg,
-      rgba($color: $primary-color, $alpha: 0.75),
-      rgba($color: #88c0d0, $alpha: 0.75)
-    );
+    background: linear-gradient(135deg, rgba($color: $primary-color, $alpha: 0.75), rgba($color: $blue, $alpha: 0.75));
     display: flex;
     flex-direction: column;
     align-content: center;

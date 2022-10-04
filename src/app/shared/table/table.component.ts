@@ -1,5 +1,5 @@
 import { TableCellContext, TableCellDirective } from './directives/table-cell.directive';
-import { TableHeader } from './models/table-header.model';
+import { TableHeader } from './models/index';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

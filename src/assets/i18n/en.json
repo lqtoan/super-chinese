@@ -7,6 +7,7 @@
   "SLOGAN": "Learn a new language, come more world, live more life.",
   "HOME": "Home",
   "DICTIONARY": "Dictionary",
+  "TOTALS": "Totals: {{ totals }} words",
   "ACTION.CREATE": "Create",
   "ACTION.DELETE": "Delete",
   "ACTION.UPDATE": "Edit",

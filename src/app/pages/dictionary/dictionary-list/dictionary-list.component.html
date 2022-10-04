@@ -1,15 +1,17 @@
-<div>
-  <button nz-button
-          class="create-button"
-          (click)="onCreate()"><span nz-icon
-          nzType="plus"
-          nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-</div>
 <ng-container *ngIf="(vm$ | async) as vm">
   <app-table [trackByIndex]="trackByIndex"
              [records]="vm.words"
              [isLoading]="vm.isLoading"
              [headers]="headers">
+    <div slot="top"
+         class="top-table">
+      <button nz-button
+              class="create-button"
+              (click)="onCreate()"><span nz-icon
+              nzType="plus"
+              nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
+      <span><u>{{ 'TOTALS' | translate: { totals: vm.words.length } }}</u></span>
+    </div>
     <ng-template appTableCell="actions"
                  let-rowIndex="rowIndex"
                  let-value>
@@ -20,7 +22,7 @@
               (click)="onEdit(value)"></span>
 
         <!-- Testing delete is OK-->
-        <span nz-popconfirm
+        <!-- <span nz-popconfirm
               [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
               nzOkText="OK"
               nzCancelText="Cancel"
@@ -29,7 +31,7 @@
               class="delete-button"
               nz-icon
               nzType="delete"
-              nzTheme="fill"></span>
+              nzTheme="fill"></span> -->
         <!-- {{ value }} -->
       </div>
     </ng-template>

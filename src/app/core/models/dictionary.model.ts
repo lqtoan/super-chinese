@@ -5,6 +5,6 @@ export interface Dictionary {
   define: string;
   hsk: string;
   createdDate: Date;
-  updatedDate?: Date;
+  updatedDate: Date;
   createdBy: string;
 }

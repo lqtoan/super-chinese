@@ -158,4 +158,79 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
     url: 'assets/curriculum/hsk2/05-5.mp3',
     text: [''],
   },
+  {
+    title: '06-1',
+    url: 'assets/curriculum/hsk2/06-1.mp3',
+    text: [''],
+  },
+  {
+    title: '06-2',
+    url: 'assets/curriculum/hsk2/06-2.mp3',
+    text: [''],
+  },
+  {
+    title: '06-3',
+    url: 'assets/curriculum/hsk2/06-3.mp3',
+    text: [''],
+  },
+  {
+    title: '06-4',
+    url: 'assets/curriculum/hsk2/06-4.mp3',
+    text: [''],
+  },
+  {
+    title: '06-5',
+    url: 'assets/curriculum/hsk2/06-5.mp3',
+    text: [''],
+  },
+  {
+    title: '07-1',
+    url: 'assets/curriculum/hsk2/07-1.mp3',
+    text: [''],
+  },
+  {
+    title: '07-2',
+    url: 'assets/curriculum/hsk2/07-2.mp3',
+    text: [''],
+  },
+  {
+    title: '07-3',
+    url: 'assets/curriculum/hsk2/07-3.mp3',
+    text: [''],
+  },
+  {
+    title: '07-4',
+    url: 'assets/curriculum/hsk2/07-4.mp3',
+    text: [''],
+  },
+  {
+    title: '07-5',
+    url: 'assets/curriculum/hsk2/07-5.mp3',
+    text: [''],
+  },
+  {
+    title: '08-1',
+    url: 'assets/curriculum/hsk2/08-1.mp3',
+    text: [''],
+  },
+  {
+    title: '08-2',
+    url: 'assets/curriculum/hsk2/08-2.mp3',
+    text: [''],
+  },
+  {
+    title: '08-3',
+    url: 'assets/curriculum/hsk2/08-3.mp3',
+    text: [''],
+  },
+  {
+    title: '08-4',
+    url: 'assets/curriculum/hsk2/08-4.mp3',
+    text: [''],
+  },
+  {
+    title: '08-5',
+    url: 'assets/curriculum/hsk2/08-5.mp3',
+    text: [''],
+  },
 ];

@@ -7,7 +7,7 @@
   "SLOGAN": "多学一门外语， 多看一个世界， 多过一种人生",
   "HOME": "主页",
   "DICTIONARY": "词典",
-  "TOTALS": "Totals: {{ totals }} words",
+  "TOTALS": "全部的: {{ totals }} 字",
   "ACTION.CREATE": "创建",
   "ACTION.DELETE": "删除",
   "ACTION.UPDATE": "更新",

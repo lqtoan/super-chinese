@@ -46,7 +46,7 @@
                  let-rowIndex="rowIndex"
                  let-value>
       <ng-container *ngIf="value === 'hsk1'">
-        <nz-tag [nzColor]="'cyan'">HSK 1</nz-tag>
+        <nz-tag [nzColor]="'green'">HSK 1</nz-tag>
       </ng-container>
       <ng-container *ngIf="value === 'hsk2'">
         <nz-tag [nzColor]="'blue'">HSK 2</nz-tag>
@@ -55,14 +55,23 @@
         <nz-tag [nzColor]="'geekblue'">HSK 3</nz-tag>
       </ng-container>
       <ng-container *ngIf="value === 'hsk4'">
-        <nz-tag [nzColor]="'orange'">HSK 4</nz-tag>
+        <nz-tag [nzColor]="'purple'">HSK 4</nz-tag>
       </ng-container>
       <ng-container *ngIf="value === 'hsk5'">
-        <nz-tag [nzColor]="'volcano'">HSK 5</nz-tag>
+        <nz-tag [nzColor]="'orange'">HSK 5</nz-tag>
       </ng-container>
       <ng-container *ngIf="value === 'hsk6'">
-        <nz-tag [nzColor]="'purple'">HSK 6</nz-tag>
+        <nz-tag [nzColor]="'volcano'">HSK 6</nz-tag>
       </ng-container>
+      <ng-container *ngIf="value === 'hsk79'">
+        <nz-tag [nzColor]="'magenta'">HSK 7-9</nz-tag>
+      </ng-container>
+      <!-- <ng-container *ngIf="value === 'hsk8'">
+        <nz-tag [nzColor]="'red'">HSK 8</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk9'">
+        <nz-tag [nzColor]="'magenta'">HSK 9</nz-tag>
+      </ng-container> -->
       <ng-container *ngIf="value === 'z---'">
         <nz-tag>--------</nz-tag>
       </ng-container>

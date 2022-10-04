@@ -19,9 +19,10 @@ export class DictionaryListComponent implements OnInit {
     { text: 'HSK 1', value: 'hsk1', byDefault: false },
     { text: 'HSK 2', value: 'hsk2', byDefault: false },
     { text: 'HSK 3', value: 'hsk3', byDefault: false },
-    { text: 'HSK 4', value: 'hsk3', byDefault: false },
-    { text: 'HSK 5', value: 'hsk3', byDefault: false },
-    { text: 'HSK 6', value: 'hsk3', byDefault: false },
+    { text: 'HSK 4', value: 'hsk4', byDefault: false },
+    { text: 'HSK 5', value: 'hsk5', byDefault: false },
+    { text: 'HSK 6', value: 'hsk6', byDefault: false },
+    { text: 'HSK 7-9', value: 'hsk79', byDefault: false },
     { text: '-------', value: 'z---', byDefault: false },
   ];
 
@@ -34,7 +35,7 @@ export class DictionaryListComponent implements OnInit {
       width: '8rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 2,
+      sortPriority: 1,
     },
     { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '16rem' },
     {
@@ -44,7 +45,7 @@ export class DictionaryListComponent implements OnInit {
       width: '5rem',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
-      sortPriority: 1,
+      sortPriority: 2,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },

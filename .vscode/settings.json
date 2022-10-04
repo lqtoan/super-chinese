@@ -4,5 +4,5 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "cSpell.words": ["popconfirm"]
+  "cSpell.words": ["geekblue", "popconfirm"]
 }

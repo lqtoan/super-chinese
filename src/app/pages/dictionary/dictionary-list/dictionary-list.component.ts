@@ -14,6 +14,10 @@ export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
+  private readonly sortCreatedDate = (a: Dictionary, b: Dictionary) =>
+    a.createdDate.toString().localeCompare(b.createdDate.toString());
+  private readonly sortUpdatedDate = (a: Dictionary, b: Dictionary) =>
+    a.updatedDate.toString().localeCompare(b.updatedDate.toString());
   private readonly filterHsk = (list: string[], item: Dictionary) => list.some((name) => item.hsk.indexOf(name) !== -1);
   private readonly initHskFilter = [
     { text: 'HSK 1', value: 'hsk1', byDefault: false },
@@ -37,7 +41,7 @@ export class DictionaryListComponent implements OnInit {
       width: '8rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 1,
+      sortPriority: 2,
     },
     { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '12rem' },
     {
@@ -47,12 +51,20 @@ export class DictionaryListComponent implements OnInit {
       width: '5rem',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
-      sortPriority: 2,
+      sortPriority: 3,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },
-    { label: 'CREATED', field: 'createdDate', cellType: 'date', width: '200px' },
-    { label: 'UPDATED', field: 'updatedDate', width: '200px' },
+    {
+      label: 'CREATED',
+      field: 'createdDate',
+      cellType: 'date',
+      width: '200px',
+      sortOrder: 'ascend',
+      sortFn: this.sortCreatedDate,
+      sortPriority: 1,
+    },
+    { label: 'UPDATED', field: 'updatedDate', cellType: 'date', width: '200px' },
     { label: 'CREATED_BY', field: 'createdBy', width: '200px' },
   ];
 
@@ -68,9 +80,7 @@ export class DictionaryListComponent implements OnInit {
 
   // TODO edit
   onEdit(id: string) {
-    console.log(id);
-    this.store.setIsCreate(false);
-    this.store.setShowForm(true);
+    this.store.getDictionaryById(id);
   }
 
   onDelete(id: string) {

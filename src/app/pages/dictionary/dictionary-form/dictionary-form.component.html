@@ -80,6 +80,14 @@
                            nzLabel="HSK 1"></nz-option>
                 <nz-option nzValue="hsk2"
                            nzLabel="HSK 2"></nz-option>
+                <nz-option nzValue="hsk3"
+                           nzLabel="HSK 3"></nz-option>
+                <nz-option nzValue="hsk4"
+                           nzLabel="HSK 4"></nz-option>
+                <nz-option nzValue="hsk5"
+                           nzLabel="HSK 5"></nz-option>
+                <nz-option nzValue="hsk6"
+                           nzLabel="HSK 6"></nz-option>
               </nz-select>
               <ng-template #errorHsk
                            let-control>
@@ -94,6 +102,7 @@
     </form>
     <button [disabled]="dictionaryForm.invalid"
             nz-button
-            (click)="onSubmit()">{{ 'ACTION.CREATE' | translate }}</button>
+            (click)="onSubmit()">
+      {{ (isCreate$ | async) ? ("ACTION.CREATE" | translate) : ("ACTION.UPDATE" | translate) }}</button>
   </ng-container>
 </nz-drawer>

@@ -19,17 +19,17 @@
               nzTheme="fill"
               (click)="onEdit(value)"></span>
 
-        <!-- Test delete OK-->
-        <!-- <span nz-popconfirm
-                         [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-                         nzOkText="OK"
-                         nzCancelText="Cancel"
-                         (nzOnConfirm)="onDelete(value)"
-                         (nzOnCancel)="onCancel()"
-                         class="delete-button"
-                         nz-icon
-                         nzType="delete"
-                         nzTheme="fill"></span> -->
+        <!-- Testing delete is OK-->
+        <span nz-popconfirm
+              [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+              nzOkText="OK"
+              nzCancelText="Cancel"
+              (nzOnConfirm)="onDelete(value)"
+              (nzOnCancel)="onCancel()"
+              class="delete-button"
+              nz-icon
+              nzType="delete"
+              nzTheme="fill"></span>
         <!-- {{ value }} -->
       </div>
     </ng-template>
@@ -51,6 +51,15 @@
       </ng-container>
       <ng-container *ngIf="value === 'hsk3'">
         <nz-tag [nzColor]="'geekblue'">HSK 3</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk4'">
+        <nz-tag [nzColor]="'orange'">HSK 4</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk5'">
+        <nz-tag [nzColor]="'volcano'">HSK 5</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk6'">
+        <nz-tag [nzColor]="'purple'">HSK 6</nz-tag>
       </ng-container>
     </ng-template>
 

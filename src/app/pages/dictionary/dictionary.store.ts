@@ -44,7 +44,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
-              console.log(data);
               this.patchState({ words: data });
             },
             (error: HttpErrorResponse) => {
@@ -97,6 +96,57 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 this.setShowForm(false);
                 this.loadData();
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
+              }
+            },
+            (error: HttpErrorResponse) => {
+              console.log(error.error.message);
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isVisible: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly getDictionaryById = this.effect<string>((trigger$) =>
+    trigger$.pipe(
+      tap(() => this.patchState({ isLoading: true })),
+      switchMap((id) =>
+        this.service.getDictionaryById(id).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                this.setFormValue(data);
+                this.setIsCreate(false);
+                this.setShowForm(true);
+              }
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isLoading: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly updateDictionary = this.effect<Dictionary>((params$) =>
+    params$.pipe(
+      tap(() => this.patchState({ isLoading: true })),
+      switchMap((param) =>
+        this.service.updateDictionary(param).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                this.setShowForm(false);
+                this.loadData();
+                this.message.success(this.translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
             (error: HttpErrorResponse) => {

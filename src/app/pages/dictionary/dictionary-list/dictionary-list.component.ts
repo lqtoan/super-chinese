@@ -34,7 +34,7 @@ export class DictionaryListComponent implements OnInit {
       width: '8rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 1,
+      sortPriority: 2,
     },
     { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '16rem' },
     {
@@ -44,7 +44,7 @@ export class DictionaryListComponent implements OnInit {
       width: '5rem',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
-      sortPriority: 2,
+      sortPriority: 1,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },

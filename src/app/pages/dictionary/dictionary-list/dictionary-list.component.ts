@@ -37,7 +37,7 @@ export class DictionaryListComponent implements OnInit {
       sortFn: this.sortPinyin,
       sortPriority: 1,
     },
-    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '16rem' },
+    { label: 'DICTIONARY.DEFINE', field: 'define', width: '16rem' },
     {
       label: 'HSK',
       field: 'hsk',

@@ -13,23 +13,25 @@
     <ng-template appTableCell="actions"
                  let-rowIndex="rowIndex"
                  let-value>
-      <span nz-icon
-            nzType="edit"
-            nzTheme="fill"
-            (click)="onEdit(value)"></span>
+      <div class="actions">
+        <span nz-icon
+              nzType="edit"
+              nzTheme="fill"
+              (click)="onEdit(value)"></span>
 
-      <!-- Test delete OK-->
-      <!-- <span nz-popconfirm
-            [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-            nzOkText="OK"
-            nzCancelText="Cancel"
-            (nzOnConfirm)="onDelete(value)"
-            (nzOnCancel)="onCancel()"
-            class="delete-button"
-            nz-icon
-            nzType="delete"
-            nzTheme="fill"></span> -->
-      <!-- {{ value }} -->
+        <!-- Test delete OK-->
+        <!-- <span nz-popconfirm
+                         [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+                         nzOkText="OK"
+                         nzCancelText="Cancel"
+                         (nzOnConfirm)="onDelete(value)"
+                         (nzOnCancel)="onCancel()"
+                         class="delete-button"
+                         nz-icon
+                         nzType="delete"
+                         nzTheme="fill"></span> -->
+        <!-- {{ value }} -->
+      </div>
     </ng-template>
 
     <ng-template appTableCell="lowercase"

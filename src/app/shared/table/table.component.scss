@@ -11,6 +11,9 @@
     letter-spacing: 1px;
     font-display: fall-back;
   }
+  nz-table {
+    box-shadow: 0 2px 10px 5px rgba($color: $black, $alpha: 0.25);
+  }
   .ant-table-thead > tr > th {
     background: $white;
   }

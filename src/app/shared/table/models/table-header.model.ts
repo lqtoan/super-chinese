@@ -11,7 +11,7 @@ export interface TableHeader<RecordType> {
   // Sort
   sortOrder?: 'ascend' | 'descend' | null;
   sortFn?: NzTableSortFn<RecordType> | boolean;
-  sortPriority?: number;
+  sortPriority?: number | boolean;
 
   // Filter
   filters?: Array<{ text: string; value: any; byDefault?: boolean }>;

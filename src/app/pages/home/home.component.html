@@ -1,12 +1,14 @@
 <div class="page">
   <strong>{{ 'CHOOSE_LANGUAGE' | translate }}: </strong>
   <app-change-language></app-change-language>
-
-  <div class="cards">
+  <div class="cards--star">
     <div routerLink="/dictionary"
          class="card">
       <span>{{ 'DICTIONARY' | translate }}</span>
+      <p class="sub-title"><small>{{ 'STAR' | translate }}</small></p>
     </div>
+  </div>
+  <div class="cards">
     <div routerLink="/vocabulary"
          class="card">
       <span>{{ 'VOCABULARY' | translate }}</span>

@@ -1,7 +1,7 @@
 <nz-table [style.margin-top.rem]="'0.5'"
           [nzSize]="'small'"
           [nzSimple]=""
-          [nzOuterBordered]="true"
+          [nzBordered]="false"
           #virtualTable
           [nzVirtualItemSize]="20"
           [nzVirtualForTrackBy]="trackByIndex"
@@ -21,7 +21,9 @@
             [nzFilterFn]="headers[i].filterFn"
             [nzSortOrder]="headers[i].sortOrder"
             [nzSortPriority]="headers[i].sortPriority"
-            [nzSortFn]="headers[i].sortFn">{{ headers[i].label | translate }}</th>
+            [nzSortFn]="headers[i].sortFn">
+          {{ headers[i].label | translate }}
+        </th>
       </ng-container>
     </tr>
   </thead>
@@ -31,12 +33,22 @@
     </ng-container>
     <ng-template nz-virtual-scroll
                  let-row
-                 let-index="index">
+                 let-rowIndex="index">
       <tr>
-        <ng-container *ngFor="let header of headers">
+        <ng-container *ngFor="let header of headers; let cellIndex = index">
           <td [nzAlign]="header.align"
               [nzLeft]="header.position === 'left'"
-              [nzRight]="header.position === 'right'">{{ row[header.field] }}
+              [nzRight]="header.position === 'right'">
+            <ng-template [ngTemplateOutlet]="cellTemplates[header.cellType || ''] || defaultCell"
+                         [ngTemplateOutletContext]="{
+                $implicit: header.field && row[header.field],
+                cellIndex: cellIndex,
+                rowIndex:  rowIndex,
+                cellType: header.cellType
+              }">
+            </ng-template>
+            <ng-template #defaultCell
+                         let-cellValue>{{ cellValue }}</ng-template>
           </td>
           <!-- <td>
             <span nz-popconfirm

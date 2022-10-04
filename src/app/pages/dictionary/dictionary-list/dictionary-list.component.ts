@@ -21,7 +21,14 @@ export class DictionaryListComponent implements OnInit {
     { text: 'HSK 3', value: 'hsk3', byDefault: false },
   ];
 
-  private readonly headers: TableHeader<Dictionary>[] = [
+  readonly headers: TableHeader<Dictionary>[] = [
+    // {
+    //   label: 'Actions',
+    //   cellType: 'actions',
+    //   position: 'left',
+    //   width: '50px',
+    //   field: '_id',
+    // },
     { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
@@ -31,7 +38,7 @@ export class DictionaryListComponent implements OnInit {
       sortFn: this.sortPinyin,
       sortPriority: 1,
     },
-    { label: 'DICTIONARY.DEFINE', field: 'define', width: '12rem' },
+    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'define', width: '12rem' },
     {
       label: 'HSK',
       field: 'hsk',
@@ -42,7 +49,7 @@ export class DictionaryListComponent implements OnInit {
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },
-    { label: 'CREATED', field: 'createdDate', width: '200px' },
+    { label: 'CREATED', field: 'createdDate', cellType: 'date', width: '200px' },
     { label: 'UPDATED', field: 'updatedDate', width: '200px' },
     { label: 'CREATED_BY', field: 'createdBy', width: '200px' },
   ];

@@ -10,10 +10,15 @@
              [records]="vm.words"
              [isLoading]="vm.isLoading"
              [headers]="headers">
+    <ng-template appTableCell="define"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      {{ value | lowercase }}
+    </ng-template>
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>
-      {{ value | date: 'dd/MM/yyyy hh:mm' }}
+      {{ value | date: 'hh:mm:ss dd/MM/yyyy' }}
     </ng-template>
   </app-table>
 </ng-container>

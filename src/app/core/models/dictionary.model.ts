@@ -4,7 +4,7 @@ export interface Dictionary {
   pinyin: string;
   define: string;
   hsk: string;
-  createdDate: string | null;
-  updatedDate: string | null;
+  createdDate: Date;
+  updatedDate?: Date;
   createdBy: string;
 }

@@ -2,6 +2,7 @@
           [nzSize]="'small'"
           [nzSimple]=""
           [nzBordered]="false"
+          [nzOuterBordered]="true"
           #virtualTable
           [nzVirtualItemSize]="20"
           [nzVirtualForTrackBy]="trackByIndex"
@@ -9,6 +10,7 @@
           [nzShowPagination]="false"
           [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 220px)' }"
           [nzLoading]="isLoading"
+          [nzNoResult]="'No'"
           [nzData]="records">
   <thead>
     <tr>
@@ -50,18 +52,6 @@
             <ng-template #defaultCell
                          let-cellValue>{{ cellValue }}</ng-template>
           </td>
-          <!-- <td>
-            <span nz-popconfirm
-                  [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
-                  nzOkText="OK"
-                  nzCancelText="Cancel"
-                  (nzOnConfirm)="onDelete(data._id)"
-                  (nzOnCancel)="cancel()"
-                  class="delete-button"
-                  nz-icon
-                  nzType="delete"
-                  nzTheme="fill"></span>
-          </td> -->
         </ng-container>
       </tr>
     </ng-template>

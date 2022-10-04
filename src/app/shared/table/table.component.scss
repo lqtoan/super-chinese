@@ -6,19 +6,18 @@
   }
   .ant-table {
     color: $black;
-    // background: $white;
+    background: #fff;
     font-weight: 300;
     letter-spacing: 1px;
     font-display: fall-back;
-    td.ant-table-cell-fix-left,
-    td.ant-table-cell-fix-right {
-      // background: $white;
-    }
   }
   .ant-table-thead > tr > th {
     background: $white;
   }
   .ant-table-thead th.ant-table-column-sort {
     background: $white;
+  }
+  .ant-table-thead th.ant-table-column-sort:hover {
+    background: rgba($color: $white, $alpha: 0.5);
   }
 }

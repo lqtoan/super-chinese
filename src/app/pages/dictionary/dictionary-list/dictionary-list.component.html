@@ -10,11 +10,42 @@
              [records]="vm.words"
              [isLoading]="vm.isLoading"
              [headers]="headers">
-    <ng-template appTableCell="define"
+    <ng-template appTableCell="actions"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      <span nz-icon
+            nzType="edit"
+            nzTheme="fill"
+            (click)="onEdit(value)"></span>
+
+      <!-- Test delete OK-->
+      <!-- <span nz-icon
+            nzType="delete"
+            nzTheme="fill"
+            (click)="onDelete(value)"></span> -->
+      <!-- {{ value }} -->
+    </ng-template>
+
+    <ng-template appTableCell="lowercase"
                  let-rowIndex="rowIndex"
                  let-value>
       {{ value | lowercase }}
     </ng-template>
+
+    <ng-template appTableCell="hsk"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      <ng-container *ngIf="value === 'hsk1'">
+        <nz-tag [nzColor]="'cyan'">HSK 1</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk2'">
+        <nz-tag [nzColor]="'blue'">HSK 2</nz-tag>
+      </ng-container>
+      <ng-container *ngIf="value === 'hsk3'">
+        <nz-tag [nzColor]="'geekblue'">HSK 3</nz-tag>
+      </ng-container>
+    </ng-template>
+
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>

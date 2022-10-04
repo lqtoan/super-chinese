@@ -44,6 +44,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
+              console.log(data);
               this.patchState({ words: data });
             },
             (error: HttpErrorResponse) => {
@@ -67,14 +68,14 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     })
   );
 
+  readonly formValue$ = this.select((state) => state.formValue);
+
   readonly setFormValue = this.updater<Dictionary | undefined>(
     (state, formValue): DictionaryState => ({
       ...state,
       formValue,
     })
   );
-
-  readonly formValue$ = this.select((state) => state.formValue);
 
   readonly createDictionary = this.effect<Dictionary>((params$) =>
     params$.pipe(

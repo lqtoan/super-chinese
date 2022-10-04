@@ -38,7 +38,6 @@ export class TableComponent<RecordType> {
 
   private mapCustomCells(): void {
     this.cellTemplates = this.customCells.reduce((acc, item) => ({ ...acc, [item.type || '']: item.template }), {});
-
     this.cdr.markForCheck();
   }
 }

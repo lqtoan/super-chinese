@@ -1,12 +1,14 @@
 import { DictionaryStore } from './../dictionary.store';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { en_US, NzI18nService, vi_VN, zh_CN } from 'ng-zorro-antd/i18n';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-dictionary-form',
   templateUrl: './dictionary-form.component.html',
   styleUrls: ['./dictionary-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DictionaryFormComponent implements OnInit {
   constructor(
@@ -14,12 +16,14 @@ export class DictionaryFormComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly i18n: NzI18nService
   ) {}
+  readonly destroy$ = new Subject<void>();
   readonly isVisibleForm$ = this.store.isVisibleForm$;
 
   private readonly currentLanguage = localStorage.getItem('language');
   private readonly initDate: Date = new Date();
 
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
+    _id: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     define: ['', Validators.compose([Validators.required])],

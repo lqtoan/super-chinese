@@ -22,30 +22,32 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   readonly headers: TableHeader<Dictionary>[] = [
-    // {
-    //   label: 'Actions',
-    //   cellType: 'actions',
-    //   position: 'left',
-    //   width: '50px',
-    //   field: '_id',
-    // },
+    {
+      label: '',
+      cellType: 'actions',
+      position: 'left',
+      width: '50px',
+      field: '_id',
+    },
     { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
+      cellType: 'lowercase',
       width: '8rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 1,
+      sortPriority: 2,
     },
-    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'define', width: '12rem' },
+    { label: 'DICTIONARY.DEFINE', field: 'define', cellType: 'lowercase', width: '12rem' },
     {
       label: 'HSK',
       field: 'hsk',
+      cellType: 'hsk',
       width: '5rem',
-      sortOrder: 'ascend',
+      sortOrder: null,
       sortFn: this.sortHsk,
-      sortPriority: 2,
+      sortPriority: 1,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },
@@ -60,6 +62,12 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onShowForm() {
+    this.store.setShowForm(true);
+  }
+
+  // TODO edit
+  onEdit(id: string) {
+    console.log(id);
     this.store.setShowForm(true);
   }
 

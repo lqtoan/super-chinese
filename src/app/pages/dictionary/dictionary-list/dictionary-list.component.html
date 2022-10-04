@@ -19,10 +19,16 @@
             (click)="onEdit(value)"></span>
 
       <!-- Test delete OK-->
-      <!-- <span nz-icon
+      <!-- <span nz-popconfirm
+            [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+            nzOkText="OK"
+            nzCancelText="Cancel"
+            (nzOnConfirm)="onDelete(value)"
+            (nzOnCancel)="onCancel()"
+            class="delete-button"
+            nz-icon
             nzType="delete"
-            nzTheme="fill"
-            (click)="onDelete(value)"></span> -->
+            nzTheme="fill"></span> -->
       <!-- {{ value }} -->
     </ng-template>
 

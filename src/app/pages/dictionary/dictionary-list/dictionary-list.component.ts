@@ -26,7 +26,7 @@ export class DictionaryListComponent implements OnInit {
       label: '',
       cellType: 'actions',
       position: 'left',
-      width: '50px',
+      width: '2rem',
       field: '_id',
     },
     { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
@@ -74,4 +74,6 @@ export class DictionaryListComponent implements OnInit {
   onDelete(id: string) {
     this.store.deleteDictionary(id);
   }
+
+  onCancel() {}
 }

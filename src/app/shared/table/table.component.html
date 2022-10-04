@@ -10,7 +10,7 @@
           [nzShowPagination]="false"
           [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 220px)' }"
           [nzLoading]="isLoading"
-          [nzNoResult]="'No'"
+          [nzNoResult]="noResult"
           [nzData]="records">
   <thead>
     <tr>
@@ -57,3 +57,8 @@
     </ng-template>
   </tbody>
 </nz-table>
+
+<ng-template #noResult>
+  <nz-empty class="pt-5"
+            [nzNotFoundContent]="'NO_RESULT' | translate"></nz-empty>
+</ng-template>

@@ -10,6 +10,7 @@
   "ACTION.CREATE": "Create",
   "ACTION.DELETE": "Delete",
   "ACTION.EDIT": "Edit",
+  "NO_RESULT": "No result",
   "DICTIONARY.DISPLAY": "Word",
   "DICTIONARY.PINYIN": "Pinyin",
   "DICTIONARY.DEFINE": "Define",

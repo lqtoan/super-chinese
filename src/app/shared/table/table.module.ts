@@ -5,9 +5,10 @@ import { TableComponent } from './table.component';
 import { TableCellDirective } from './directives/table-cell.directive';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
-const nzModules = [NzTableModule, NzTagModule];
+const nzModules = [NzTableModule, NzEmptyModule, NzTagModule];
 
 @NgModule({
   declarations: [TableComponent, TableCellDirective],

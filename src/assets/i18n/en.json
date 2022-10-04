@@ -9,7 +9,7 @@
   "DICTIONARY": "Dictionary",
   "ACTION.CREATE": "Create",
   "ACTION.DELETE": "Delete",
-  "ACTION.EDIT": "Edit",
+  "ACTION.UPDATE": "Edit",
   "NO_RESULT": "No result",
   "DICTIONARY.DISPLAY": "Word",
   "DICTIONARY.PINYIN": "Pinyin",

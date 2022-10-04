@@ -18,6 +18,10 @@ export class DictionaryService {
     return this.httpClient.post<Dictionary>(this.API, dictionary);
   }
 
+  updateDictionary(id: string, body: Dictionary) {
+    return this.httpClient.put<Dictionary>(`${this.API}/${id}`, body);
+  }
+
   deleteDictionary(id: string) {
     return this.httpClient.delete<Dictionary>(`${this.API}/${id}`);
   }

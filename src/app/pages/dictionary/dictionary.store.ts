@@ -3,15 +3,15 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { Injectable } from '@angular/core';
 import { DictionaryService } from '@services/dictionary.service';
 import { Dictionary } from '@models/dictionary.model';
-import { finalize, map, switchMap, tap } from 'rxjs/operators';
+import { finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { DatePipe } from '@angular/common';
 
 export interface DictionaryState {
   isLoading: boolean;
   words: Dictionary[];
   isVisible: boolean;
+  isCreate: boolean;
   formValue: Partial<Dictionary> | undefined;
 }
 
@@ -19,6 +19,7 @@ const initialState = {
   isLoading: false,
   words: [],
   isVisible: false,
+  isCreate: true,
   formValue: undefined,
 };
 
@@ -27,8 +28,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   constructor(
     private readonly service: DictionaryService,
     private readonly message: NzMessageService,
-    private readonly translateService: TranslateService,
-    private readonly datePipe: DatePipe
+    private readonly translateService: TranslateService
   ) {
     super(initialState);
   }
@@ -65,6 +65,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     (state, isVisible): DictionaryState => ({
       ...state,
       isVisible,
+    })
+  );
+
+  readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
+
+  readonly setIsCreate = this.updater<boolean>(
+    (state, isCreate): DictionaryState => ({
+      ...state,
+      isCreate,
     })
   );
 

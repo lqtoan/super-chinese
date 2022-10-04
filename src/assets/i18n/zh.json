@@ -9,7 +9,7 @@
   "DICTIONARY": "词典",
   "ACTION.CREATE": "创建",
   "ACTION.DELETE": "删除",
-  "ACTION.EDIT": "更新",
+  "ACTION.UPDATE": "更新",
   "NO_RESULT": "没有数据",
   "DICTIONARY.DISPLAY": "汉子",
   "DICTIONARY.PINYIN": "拼音",

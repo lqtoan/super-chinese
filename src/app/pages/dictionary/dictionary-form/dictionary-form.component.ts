@@ -18,6 +18,7 @@ export class DictionaryFormComponent implements OnInit {
   ) {}
   readonly destroy$ = new Subject<void>();
   readonly isVisibleForm$ = this.store.isVisibleForm$;
+  readonly isCreate$ = this.store.isCreate$;
 
   private readonly currentLanguage = localStorage.getItem('language');
   private readonly initDate: Date = new Date();

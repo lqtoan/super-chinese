@@ -1,6 +1,6 @@
 <nz-drawer [nzVisible]="(isVisibleForm$ | async)!"
            nzWidth="calc(25vw + 200px)"
-           [nzTitle]="'ACTION.CREATE' | translate"
+           [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
            (nzOnClose)="onClose()">
   <ng-container *nzDrawerContent>
     <form nz-form

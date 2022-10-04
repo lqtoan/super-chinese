@@ -9,7 +9,7 @@
   "DICTIONARY": "Từ điển",
   "ACTION.CREATE": "Tạo mới",
   "ACTION.DELETE": "Xoá",
-  "ACTION.EDIT": "Cập nhật",
+  "ACTION.UPDATE": "Cập nhật",
   "NO_RESULT": "Không có dữ liệu",
   "DICTIONARY.DISPLAY": "Hán tự",
   "DICTIONARY.PINYIN": "Phiên âm",

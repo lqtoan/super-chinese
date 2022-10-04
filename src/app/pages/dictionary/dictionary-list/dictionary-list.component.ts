@@ -61,13 +61,15 @@ export class DictionaryListComponent implements OnInit {
     this.store.loadData();
   }
 
-  onShowForm() {
+  onCreate() {
+    this.store.setIsCreate(true);
     this.store.setShowForm(true);
   }
 
   // TODO edit
   onEdit(id: string) {
     console.log(id);
+    this.store.setIsCreate(false);
     this.store.setShowForm(true);
   }
 

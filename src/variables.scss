@@ -19,6 +19,17 @@ $linear-gradient: linear-gradient(
     $alpha: 0.75,
   )
 );
+$second_linear-gradient: linear-gradient(
+  135deg,
+  rgba(
+    $color: $primary-color,
+    $alpha: 0.75,
+  ),
+  rgba(
+    $color: $blue,
+    $alpha: 0.75,
+  )
+);
 $white-linear-gradient: linear-gradient(
   135deg,
   rgba(

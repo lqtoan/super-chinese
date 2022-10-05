@@ -65,7 +65,6 @@ export class DictionaryFormComponent implements OnInit {
       display: data.display,
       pinyin: data.pinyin,
       define: data.define,
-      createdDate: data.createdDate,
       hsk: data.hsk,
     });
   }
@@ -84,6 +83,7 @@ export class DictionaryFormComponent implements OnInit {
       this.dictionaryForm.reset();
     } else {
       formValue.createdDate = new Date();
+      // TODO: createdBy
       this.store.createDictionary(formValue);
       this.dictionaryForm.reset();
     }

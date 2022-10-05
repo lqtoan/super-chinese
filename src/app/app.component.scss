@@ -1,7 +1,10 @@
 @import 'spinner';
 
 .loading-page {
-  padding: 10rem 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   overflow: hidden;
 }

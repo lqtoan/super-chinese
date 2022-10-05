@@ -84,7 +84,6 @@ export class CourseStore extends ComponentStore<CourseState> {
               if (data) {
                 this.setShowForm(false);
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
-                this.loadData();
               }
             },
             (error: HttpErrorResponse) => {
@@ -92,7 +91,7 @@ export class CourseStore extends ComponentStore<CourseState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisible: false });
+            this.loadData();
           })
         )
       )
@@ -110,7 +109,6 @@ export class CourseStore extends ComponentStore<CourseState> {
                 // console.log(data);
                 // this.setShowForm(false);
               }
-              this.loadData();
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {
@@ -118,7 +116,7 @@ export class CourseStore extends ComponentStore<CourseState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisible: false });
+            this.loadData();
           })
         )
       )

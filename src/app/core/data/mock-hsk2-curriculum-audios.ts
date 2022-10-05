@@ -136,22 +136,32 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '05-1',
     url: 'assets/curriculum/hsk2/05-1.mp3',
-    text: [''],
+    text: ['晚上我们去饭馆吃饭，怎么样?', '我不想去外面吃，我想在家吃。', '那你准备做什么呢？', '就做你爱吃的鱼吧。'],
   },
   {
     title: '05-2',
     url: 'assets/curriculum/hsk2/05-2.mp3',
-    text: [''],
+    text: ['帮我看一下这件衣服怎么样。', '颜色还可以， 就是有点儿大。', '这件小的怎么样？', '这件不错， 就买这件吧。'],
   },
   {
     title: '05-3',
     url: 'assets/curriculum/hsk2/05-3.mp3',
-    text: [''],
+    text: [
+      '今天去不去打球？',
+      '这两天有点儿累， 不去打球了。',
+      '你在做什么呢？ 是在想昨天的考试吗？',
+      '是啊， 我觉得听和说还可以， 读和写不好， 很多字我都不知道是什么意思。',
+    ],
   },
   {
     title: '05-4',
     url: 'assets/curriculum/hsk2/05-4.mp3',
-    text: [''],
+    text: [
+      '休息一下吧， 喝咖啡吗？',
+      '不喝了， 我已经喝两杯了。',
+      '是啊， 咖啡喝多了对身体不好。',
+      '以后我少喝点儿， 每天喝一杯。',
+    ],
   },
   {
     title: '05-5',
@@ -161,22 +171,22 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '06-1',
     url: 'assets/curriculum/hsk2/06-1.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '06-2',
     url: 'assets/curriculum/hsk2/06-2.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '06-3',
     url: 'assets/curriculum/hsk2/06-3.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '06-4',
     url: 'assets/curriculum/hsk2/06-4.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '06-5',
@@ -186,22 +196,22 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '07-1',
     url: 'assets/curriculum/hsk2/07-1.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '07-2',
     url: 'assets/curriculum/hsk2/07-2.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '07-3',
     url: 'assets/curriculum/hsk2/07-3.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '07-4',
     url: 'assets/curriculum/hsk2/07-4.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '07-5',
@@ -211,22 +221,22 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '08-1',
     url: 'assets/curriculum/hsk2/08-1.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '08-2',
     url: 'assets/curriculum/hsk2/08-2.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '08-3',
     url: 'assets/curriculum/hsk2/08-3.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '08-4',
     url: 'assets/curriculum/hsk2/08-4.mp3',
-    text: [''],
+    text: ['', '', '', ''],
   },
   {
     title: '08-5',

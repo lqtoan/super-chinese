@@ -31,9 +31,6 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngIf="records.length">
-      <nz-empty [nzNotFoundContent]="'No data found'"></nz-empty>
-    </ng-container>
     <ng-template nz-virtual-scroll
                  let-row
                  let-rowIndex="index">

@@ -10,6 +10,7 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 export interface DictionaryState {
   isLoading: boolean;
   words: Dictionary[];
+  total: number;
   isVisible: boolean;
   isCreate: boolean;
   formValue: Partial<Dictionary> | undefined;
@@ -18,6 +19,7 @@ export interface DictionaryState {
 const initialState = {
   isLoading: false,
   words: [],
+  total: 0,
   isVisible: false,
   isCreate: true,
   formValue: undefined,
@@ -33,7 +35,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, words }) => ({ isLoading, words }), { debounce: true });
+  readonly vm$ = this.select(({ isLoading, words, total }) => ({ isLoading, words, total }), { debounce: true });
 
   readonly loadData = this.effect(($) =>
     $.pipe(
@@ -44,7 +46,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getDictionaries().pipe(
           tapResponse(
             (data) => {
-              this.patchState({ words: data });
+              this.patchState({ words: data, total: data.length });
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);
@@ -94,7 +96,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               if (data) {
                 this.setShowForm(false);
-                this.loadData();
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
@@ -104,7 +105,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisible: false });
+            // this.patchState({ isVisible: false });
+            this.loadData();
           })
         )
       )
@@ -113,7 +115,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
 
   readonly getDictionaryById = this.effect<string>((trigger$) =>
     trigger$.pipe(
-      tap(() => this.patchState({ isLoading: true })),
+      // tap(() => this.patchState({ isLoading: true })),
       switchMap((id) =>
         this.service.getDictionaryById(id).pipe(
           tapResponse(
@@ -129,7 +131,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            // this.patchState({ isLoading: false });
           })
         )
       )
@@ -145,7 +147,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               if (data) {
                 this.setShowForm(false);
-                this.loadData();
                 this.message.success(this.translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
@@ -154,7 +155,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisible: false });
+            this.loadData();
+            // this.patchState({ isVisible: false });
           })
         )
       )
@@ -172,7 +174,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 // console.log(data);
                 // this.setShowForm(false);
               }
-              this.loadData();
+
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {
@@ -180,7 +182,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisible: false });
+            this.loadData();
           })
         )
       )

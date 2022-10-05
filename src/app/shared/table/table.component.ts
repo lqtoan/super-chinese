@@ -21,6 +21,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class TableComponent<RecordType> {
   @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
+  @Input() total: number = this.records.length;
   @Input() isLoading: boolean = true;
   @Input() headers: TableHeader<RecordType>[] = [];
 

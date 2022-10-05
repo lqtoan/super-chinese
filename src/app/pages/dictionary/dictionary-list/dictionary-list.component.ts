@@ -12,6 +12,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
+  // private readonly total: number = 0;
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
   private readonly filterHsk = (list: string[], item: Dictionary) => list.some((name) => item.hsk.indexOf(name) !== -1);
@@ -26,7 +27,7 @@ export class DictionaryListComponent implements OnInit {
     { text: '-------', value: 'z---', byDefault: false },
   ];
 
-  readonly headers: TableHeader<Dictionary>[] = [
+  private readonly headers: TableHeader<Dictionary>[] = [
     { label: 'DICTIONARY.DISPLAY', field: 'display', width: '5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
@@ -80,7 +81,6 @@ export class DictionaryListComponent implements OnInit {
     this.store.setShowForm(true);
   }
 
-  // TODO edit
   onEdit(id: string) {
     this.store.getDictionaryById(id);
   }

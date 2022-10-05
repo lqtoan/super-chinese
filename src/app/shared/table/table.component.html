@@ -39,11 +39,9 @@
           <td [nzAlign]="header.align"
               [nzLeft]="header.position === 'left'"
               [nzRight]="header.position === 'right'">
-            <ng-template [ngTemplateOutlet]="cellTemplates[header.cellType || ''] || defaultCell"
+            <ng-template [ngTemplateOutlet]="cellTemplates[header.cellType] || defaultCell"
                          [ngTemplateOutletContext]="{
                 $implicit: header.field && row[header.field],
-                cellIndex: cellIndex,
-                rowIndex:  rowIndex,
                 cellType: header.cellType
               }">
             </ng-template>

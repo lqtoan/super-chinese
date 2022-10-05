@@ -1,4 +1,4 @@
-<nz-drawer [nzVisible]="(isVisibleForm$ | async)!"
+<nz-drawer [nzVisible]="(isVisibleForm$ | async)"
            nzWidth="calc(25vw + 200px)"
            [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
            (nzOnClose)="onClose()">

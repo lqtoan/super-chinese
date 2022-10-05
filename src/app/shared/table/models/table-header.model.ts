@@ -1,4 +1,4 @@
-import { NzTableFilterFn, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { SortFn, SortOrder, FilterFn, Filters } from './types';
 
 export interface TableHeader<RecordType> {
   label: string;
@@ -9,11 +9,11 @@ export interface TableHeader<RecordType> {
   align?: 'left' | 'right' | 'center';
 
   // Sort
-  sortOrder?: NzTableSortOrder;
-  sortFn?: NzTableSortFn<RecordType> | boolean;
+  sortOrder?: SortOrder;
+  sortFn?: SortFn<RecordType> | boolean;
   sortPriority?: number | boolean;
 
   // Filter
-  filters?: Array<{ text: string; value: any; byDefault?: boolean }>;
-  filterFn?: NzTableFilterFn<RecordType> | boolean;
+  filters?: Filters;
+  filterFn?: FilterFn<RecordType> | boolean;
 }

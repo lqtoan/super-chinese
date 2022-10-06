@@ -68,19 +68,19 @@ export class DictionaryListComponent implements OnInit {
       label: 'CREATED',
       field: 'createdDate',
       cellType: 'date',
-      width: '12rem',
+      width: '10.5rem',
     },
     {
       label: 'UPDATED',
       field: 'updatedDate',
       cellType: 'date',
-      width: '12rem',
+      width: '10.5rem',
     },
     { label: 'CREATED_BY', field: 'createdBy', width: '6rem' },
     {
       label: '',
       cellType: 'actions',
-      width: '3rem',
+      width: '2rem',
       field: '_id',
     },
   ];

@@ -41,7 +41,8 @@
     <ng-template appTableCell="display"
                  let-rowIndex="rowIndex"
                  let-value>
-      <p [style.color]="'red'">{{ value }}</p>
+      <p [style.color]="'red'"
+         [style.font-weight]="'400'">{{ value }}</p>
     </ng-template>
 
     <ng-template appTableCell="lowercase"
@@ -90,7 +91,7 @@
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>
-      {{ value | date: 'hh:mm:ss dd/MM/yyyy' }}
+      <div style="font-family: sans-serif, monospace; font-size: 14px;">{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
     </ng-template>
   </app-table>
 </ng-container>

@@ -3,6 +3,7 @@
 ::ng-deep {
   .ant-table.ant-table-small {
     font-family: sans-serif, monospace;
+    font-size: 1rem;
   }
   .ant-table {
     color: $black;
@@ -16,6 +17,7 @@
   }
   .ant-table-thead > tr > th {
     background: $white;
+    font-size: 14px;
     font-weight: 600;
   }
   .ant-table-thead > tr > th:first-child {

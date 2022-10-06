@@ -45,6 +45,7 @@ export class DictionaryListComponent implements OnInit {
       field: 'hsk',
       cellType: 'hsk',
       width: '5rem',
+      align: 'center',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
       sortPriority: 2,
@@ -55,13 +56,13 @@ export class DictionaryListComponent implements OnInit {
       label: 'CREATED',
       field: 'createdDate',
       cellType: 'date',
-      width: '200px',
+      width: '12rem',
     },
     {
       label: 'UPDATED',
       field: 'updatedDate',
       cellType: 'date',
-      width: '200px',
+      width: '12rem',
     },
     { label: 'CREATED_BY', field: 'createdBy', width: '6rem' },
     {

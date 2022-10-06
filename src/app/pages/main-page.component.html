@@ -13,12 +13,16 @@
     <div class="navbar__menu">
       <a routerLink="/home"
          routerLinkActive="selected">
-        {{ 'HOME' | translate }}
+        <span nz-icon
+              nzType="home"
+              [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#b48ead'"></span>
       </a>
-      <a routerLink="/dictionary"
+      <!-- <a routerLink="/dictionary"
          routerLinkActive="selected">
         {{ 'DICTIONARY' | translate }}
-      </a>
+      </a> -->
+      <app-change-language [style.margin-right.rem]="'0.5'"></app-change-language>
       <app-user-menu></app-user-menu>
     </div>
   </nav>

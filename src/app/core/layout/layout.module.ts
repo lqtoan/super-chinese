@@ -1,3 +1,4 @@
+import { ChangeLanguageComponent } from './change-language/change-language.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserMenuComponent } from './user-menu/user-menu.component';
@@ -10,8 +11,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 const nzModules = [NzAvatarModule, NzDropDownModule, NzIconModule, NzButtonModule];
 
 @NgModule({
-  declarations: [UserMenuComponent],
+  declarations: [UserMenuComponent, ChangeLanguageComponent],
   imports: [CommonModule, TranslateModule, nzModules],
-  exports: [UserMenuComponent],
+  exports: [UserMenuComponent, ChangeLanguageComponent],
 })
 export class LayoutModule {}

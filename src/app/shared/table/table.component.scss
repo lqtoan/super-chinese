@@ -11,7 +11,7 @@
     letter-spacing: 1px;
     font-display: fall-back;
     .ant-table-header {
-      overflow-y: hidden !important;
+      background: $white;
     }
   }
   nz-table {

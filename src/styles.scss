@@ -58,16 +58,22 @@ a {
 }
 
 select {
-  border: none;
+  padding: 0.5rem;
+  border: 2px solid rgba($color: $gray, $alpha: 0.75);
+  border-radius: 2rem;
   outline: none;
-  background: $white;
-  color: $black;
+  background: transparent;
+  color: $white;
   cursor: pointer;
 }
 
 select::-ms-expand {
   display: none;
   cursor: pointer;
+}
+
+select:hover {
+  background: rgba($color: $gray, $alpha: 0.75);
 }
 
 li {

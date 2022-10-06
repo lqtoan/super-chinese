@@ -1,7 +1,6 @@
 import { TableCellContext, TableCellDirective } from './directives/table-cell.directive';
 import { Table, TableHeader } from './models/index';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -9,7 +8,6 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
   Output,
   QueryList,
   TemplateRef,
@@ -40,20 +38,18 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
-  @Input() idField: keyof RecordType = '_id' || null;
+  @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
   @Input() @InputBoolean() isLoading = true;
   @Input() headers: TableHeader<RecordType>[] = [];
-  @Input() @InputBoolean() allowSelectRow = true;
-  // @Input() @InputBoolean() allowSelectMultipleRows = true;
-  // @Input() @InputBoolean() allowSelectAllRows = true;
+  @Input() @InputBoolean() isSelectable = true;
 
   @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 
   @ContentChildren(TableCellDirective) readonly customCells!: QueryList<TableCellDirective<RecordType>>;
   cellTemplates: Record<string, TemplateRef<TableCellContext<RecordType>>> = {};
 
-  @ViewChild('virtualTable', { static: false }) nzTableComponent?: Table<RecordType>;
+  @ViewChild('virtualTable', { static: false }) table?: Table<RecordType>;
 
   private readonly destroy$ = new Subject<void>();
 

@@ -1,7 +1,7 @@
 import { TableHeader } from 'src/app/shared/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-dictionary-list',
@@ -9,6 +9,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./dictionary-list.component.scss'],
   providers: [DictionaryStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
@@ -66,7 +67,7 @@ export class DictionaryListComponent implements OnInit {
     {
       label: '',
       cellType: 'actions',
-      width: '2rem',
+      width: '3rem',
       field: '_id',
     },
   ];

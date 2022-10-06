@@ -42,3 +42,15 @@ nz-table {
     z-index: auto;
   }
 }
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  width: 7.5px;
+  height: 10px;
+  // background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  height: initial;
+  background: $white;
+  border-radius: 5px;
+}

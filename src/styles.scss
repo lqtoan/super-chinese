@@ -23,20 +23,28 @@ body {
 }
 
 h1 {
+  margin-bottom: 0;
   font-size: 4rem;
   line-height: 4rem;
 }
 h2 {
+  margin-bottom: 0;
   font-size: 2rem;
   line-height: 2rem;
 }
 h3 {
+  margin-bottom: 0;
   font-size: 1.5rem;
   line-height: 1.5rem;
 }
 h4 {
+  margin-bottom: 0;
   font-size: 1.25rem;
   line-height: 1.25rem;
+}
+
+p {
+  margin-bottom: 0;
 }
 
 img {
@@ -77,10 +85,4 @@ li {
   height: initial;
   background: $magenta-blue-white-linear-gradient;
   border-radius: 50px;
-}
-
-/****************** audio ******************/
-audio::-webkit-media-controls-panel {
-  -webkit-appearance: none;
-  background: #fff;
 }

@@ -40,7 +40,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
-  @Input() idField: keyof RecordType = '_id';
+  @Input() idField: keyof RecordType = '_id' || null;
   @Input() total: number = this.records.length;
   @Input() @InputBoolean() isLoading = true;
   @Input() headers: TableHeader<RecordType>[] = [];
@@ -74,22 +74,14 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   }
 
   private onCheck(id: IdType, checked: boolean) {
-    this.updateCheckedSet(id, checked);
+    this.updateCheckedKeys(id, checked);
     this.refreshCheckedStatus();
 
     this.checkedKeysChange.emit(this.checkedKeys);
     console.log('onCheck', this._checkedKeys);
   }
 
-  private onCheckAll(checked: boolean) {
-    this.records.forEach((record) => this.updateCheckedSet(record[this.idField], checked));
-    this.refreshCheckedStatus();
-
-    this.checkedKeysChange.emit(this.checkedKeys);
-    console.log('onCheckAll', this._checkedKeys);
-  }
-
-  private updateCheckedSet(id: IdType, checked: boolean): void {
+  private updateCheckedKeys(id: IdType, checked: boolean) {
     if (checked) {
       this._checkedKeys.add(id);
     } else {
@@ -105,6 +97,14 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
       this._checkedKeys.size > 0 &&
       this.records.some((record) => this._checkedKeys.has(record[this.idField])) &&
       !this.allRecordsChecked;
+  }
+
+  private onCheckAll(checked: boolean) {
+    this.records.forEach((record) => this.updateCheckedKeys(record[this.idField], checked));
+    this.refreshCheckedStatus();
+
+    this.checkedKeysChange.emit(this.checkedKeys);
+    console.log('onCheckAll', this._checkedKeys);
   }
 
   ngOnDestroy(): void {

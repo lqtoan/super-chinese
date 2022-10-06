@@ -17,6 +17,10 @@
     cursor: pointer;
   }
 }
+.actions {
+  display: flex;
+  justify-content: center;
+}
 
 .actions:hover {
   cursor: pointer;

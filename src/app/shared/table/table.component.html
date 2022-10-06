@@ -15,7 +15,7 @@
           [nzData]="records">
   <thead>
     <tr>
-      <th *ngIf="allowSelectRow && allowSelectMultipleRow; else emptyHeader"
+      <th *ngIf="allowSelectRow && allowSelectMultipleRows; else emptyHeader"
           [nzChecked]="allRecordsChecked"
           [nzIndeterminate]="indeterminate"
           [nzDisabled]="!(allowSelectAllRows && records.length)"
@@ -25,8 +25,7 @@
       </th>
 
       <ng-template #emptyHeader>
-        <th *ngIf="isRowSelectable"
-            nzWidth="40px"
+        <th nzWidth="40px"
             nzLeft></th>
       </ng-template>
 
@@ -51,7 +50,7 @@
                  let-rowIndex="index">
       <tr>
         <ng-container *ngIf="allowSelectRow">
-          <td *ngIf="allowSelectMultipleRow; else singleSelection"
+          <td *ngIf="allowSelectMultipleRows; else singleSelection"
               [nzChecked]="isChecked(row[idField])"
               (nzCheckedChange)="onItemChecked(row[idField], $event)"
               nzLeft></td>

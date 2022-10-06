@@ -44,7 +44,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   @Input() @InputBoolean() isLoading = true;
   @Input() headers: TableHeader<RecordType>[] = [];
   @Input() @InputBoolean() allowSelectRow = true;
-  @Input() @InputBoolean() allowSelectMultipleRow = true;
+  @Input() @InputBoolean() allowSelectMultipleRows = true;
   @Input() @InputBoolean() allowSelectAllRows = true;
 
   @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
@@ -81,7 +81,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   }
 
   onItemChecked(id: IdType, checked: boolean): void {
-    if (!this.allowSelectMultipleRow) {
+    if (!this.allowSelectMultipleRows) {
       for (const key of this._checkedKeys.keys()) {
         this.updateCheckedSet(key, false);
       }

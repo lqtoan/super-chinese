@@ -66,6 +66,8 @@ export class DictionaryFormComponent implements OnInit {
       pinyin: data.pinyin,
       define: data.define,
       hsk: data.hsk,
+      createdDate: data.createdDate,
+      createdBy: data.createdBy,
     });
   }
 

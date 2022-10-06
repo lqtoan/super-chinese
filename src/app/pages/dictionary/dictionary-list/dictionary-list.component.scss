@@ -44,3 +44,15 @@ nz-table {
   padding: 0 0.25rem;
   width: 3.5rem;
 }
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  width: 7.5px;
+  height: 10px;
+  background: #fff !important;
+}
+::-webkit-scrollbar-thumb {
+  height: initial;
+  background: $white !important;
+  border-radius: 5px;
+}

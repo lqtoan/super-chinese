@@ -38,6 +38,12 @@
       </div>
     </ng-template>
 
+    <ng-template appTableCell="display"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      <p [style.color]="'red'">{{ value }}</p>
+    </ng-template>
+
     <ng-template appTableCell="lowercase"
                  let-rowIndex="rowIndex"
                  let-value>

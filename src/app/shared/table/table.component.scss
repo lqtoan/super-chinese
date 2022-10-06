@@ -11,11 +11,15 @@
     letter-spacing: 1px;
     font-display: fall-back;
     .ant-table-header {
-      background: $white;
+      background: $second-white;
     }
   }
   .ant-table-thead > tr > th {
     background: $white;
+    font-weight: 600;
+  }
+  .ant-table-thead > tr > th:first-child {
+    color: red;
   }
   .ant-table-thead th.ant-table-column-sort {
     background: $white;
@@ -36,16 +40,4 @@ nz-table {
 nz-pagination {
   padding: 0.25rem 0 !important;
   margin: 0 !important;
-}
-
-/****************** thumbnail ******************/
-::-webkit-scrollbar {
-  width: 7.5px;
-  height: 10px;
-  background: #fff;
-}
-::-webkit-scrollbar-thumb {
-  height: initial;
-  background: $white;
-  border-radius: 5px;
 }

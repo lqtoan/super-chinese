@@ -22,7 +22,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements OnDestroy {
   private _checkedKeys: Set<IdType> = new Set<IdType>();

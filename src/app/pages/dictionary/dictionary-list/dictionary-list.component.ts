@@ -1,3 +1,4 @@
+import { vi_VN } from 'ng-zorro-antd/i18n';
 import { TableHeader } from 'src/app/shared/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
@@ -14,6 +15,8 @@ export class DictionaryListComponent implements OnInit {
   constructor(private readonly store: DictionaryStore) {}
   // private readonly total: number = 0;
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
+  private readonly sortChinaVietnamWord = (a: Dictionary, b: Dictionary) =>
+    a.chinaVietnamWord.localeCompare(b.chinaVietnamWord);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
   private readonly filterHsk = (list: string[], item: Dictionary) => list.some((name) => item.hsk.indexOf(name) !== -1);
   private readonly initHskFilter = [
@@ -33,10 +36,19 @@ export class DictionaryListComponent implements OnInit {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
       cellType: 'lowercase',
-      width: '8rem',
+      width: '6.5rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 1,
+      sortPriority: 2,
+    },
+    {
+      label: 'DICTIONARY.CHINA_VIETNAM_WORD',
+      field: 'chinaVietnamWord',
+      cellType: 'titlecase',
+      width: '8rem',
+      sortOrder: 'ascend',
+      // sortFn: this.sortChinaVietnamWord,
+      sortPriority: 2,
     },
     { label: 'DICTIONARY.DEFINE', field: 'define', width: '16rem' },
     {
@@ -47,7 +59,7 @@ export class DictionaryListComponent implements OnInit {
       align: 'center',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
-      sortPriority: 2,
+      sortPriority: 1,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },

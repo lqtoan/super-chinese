@@ -38,15 +38,9 @@ nz-table {
     border: unset !important;
   }
 }
-::ng-deep {
-  .ant-table-column-title {
-    position: static;
-    z-index: auto;
-  }
-}
 
 .ant-tag {
   margin: 0;
   padding: 0 0.25rem;
-  width: -webkit-fill-available;
+  width: 3.5rem;
 }

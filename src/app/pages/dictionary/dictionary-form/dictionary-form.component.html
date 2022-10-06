@@ -36,7 +36,7 @@
             <nz-form-control [nzErrorTip]="errorPinyin">
               <input nz-input
                      placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="display"
+                     id="pinyin"
                      formControlName="pinyin">
               <ng-template #errorPinyin
                            let-control>
@@ -52,13 +52,13 @@
              nzSpan="12">
           <nz-form-item>
             <nz-form-label nzRequired
-                           nzFor="define">{{'DICTIONARY.DEFINE' | translate }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorDefine">
+                           nzFor="chinaVietnamWord">{{'DICTIONARY.CHINA_VIETNAM_WORD' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorChinaVietnamWord">
               <input nz-input
                      placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="display"
-                     formControlName="define">
-              <ng-template #errorDefine
+                     id="chinaVietnamWord"
+                     formControlName="chinaVietnamWord">
+              <ng-template #errorChinaVietnamWord
                            let-control>
                 <ng-container *ngIf="control.touched && control.hasError('required')">
                   {{ 'INPUT.PLACE_HOLDER' | translate }}
@@ -102,6 +102,27 @@
             </nz-form-control>
           </nz-form-item>
         </div>
+
+        <div nz-col
+             nzSpan="24">
+          <nz-form-item>
+            <nz-form-label nzRequired
+                           nzFor="define">{{'DICTIONARY.DEFINE' | translate }}</nz-form-label>
+            <nz-form-control [nzErrorTip]="errorDefine">
+              <input nz-input
+                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                     id="define"
+                     formControlName="define">
+              <ng-template #errorDefine
+                           let-control>
+                <ng-container *ngIf="control.touched && control.hasError('required')">
+                  {{ 'INPUT.PLACE_HOLDER' | translate }}
+                </ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
       </div>
     </form>
     <button [disabled]="dictionaryForm.invalid"

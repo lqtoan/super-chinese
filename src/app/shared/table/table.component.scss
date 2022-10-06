@@ -21,7 +21,11 @@
     background: $white;
   }
   .ant-table-thead th.ant-table-column-sort:hover {
-    background: rgba($color: $white, $alpha: 0.5);
+    background: rgba($color: $white, $alpha: 0.75);
+  }
+  .ant-table-column-title {
+    position: static;
+    z-index: auto;
   }
 }
 

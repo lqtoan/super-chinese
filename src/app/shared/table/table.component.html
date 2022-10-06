@@ -5,7 +5,7 @@
           [nzBordered]="false"
           [nzOuterBordered]="true"
           #virtualTable
-          [nzVirtualItemSize]="10"
+          [nzVirtualItemSize]="20"
           [nzVirtualForTrackBy]="trackByIndex"
           [nzFrontPagination]="false"
           [nzShowPagination]="false"
@@ -15,6 +15,21 @@
           [nzData]="records">
   <thead>
     <tr>
+      <th *ngIf="allowSelectRow && allowSelectMultipleRow; else emptyHeader"
+          [nzChecked]="allRecordsChecked"
+          [nzIndeterminate]="indeterminate"
+          [nzDisabled]="!(allowSelectAllRows && records.length)"
+          (nzCheckedChange)="onAllChecked($event)"
+          nzWidth="40px"
+          nzLeft>
+      </th>
+
+      <ng-template #emptyHeader>
+        <th *ngIf="isRowSelectable"
+            nzWidth="40px"
+            nzLeft></th>
+      </ng-template>
+
       <ng-container *ngFor="let header of headers; let i = index">
         <th [nzWidth]="headers[i].width"
             [nzAlign]="headers[i].align"
@@ -35,6 +50,21 @@
                  let-row
                  let-rowIndex="index">
       <tr>
+        <ng-container *ngIf="allowSelectRow">
+          <td *ngIf="allowSelectMultipleRow; else singleSelection"
+              [nzChecked]="isChecked(row[idField])"
+              (nzCheckedChange)="onItemChecked(row[idField], $event)"
+              nzLeft></td>
+
+          <ng-template #singleSelection>
+            <td nzLeft>
+              <label [ngModel]="isChecked(row[idField])"
+                     (ngModelChange)="onItemChecked(row[idField], $event)"
+                     nz-radio></label>
+            </td>
+          </ng-template>
+        </ng-container>
+
         <ng-container *ngFor="let header of headers; let cellIndex = index">
           <td [nzAlign]="header.align"
               [nzLeft]="header.position === 'left'"

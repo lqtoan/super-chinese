@@ -26,9 +26,8 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements AfterViewInit, OnDestroy {
+export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements OnDestroy {
   private _checkedKeys: Set<IdType> = new Set<IdType>();
-
   get checkedKeys() {
     return Array.from(this._checkedKeys).filter(Boolean);
   }
@@ -36,6 +35,8 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this._checkedKeys = new Set(value.filter(Boolean));
     this.refreshCheckedStatus();
   }
+  allRecordsChecked = false;
+  indeterminate = false;
 
   @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
@@ -44,8 +45,8 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   @Input() @InputBoolean() isLoading = true;
   @Input() headers: TableHeader<RecordType>[] = [];
   @Input() @InputBoolean() allowSelectRow = true;
-  @Input() @InputBoolean() allowSelectMultipleRows = true;
-  @Input() @InputBoolean() allowSelectAllRows = true;
+  // @Input() @InputBoolean() allowSelectMultipleRows = true;
+  // @Input() @InputBoolean() allowSelectAllRows = true;
 
   @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 
@@ -68,35 +69,24 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this.cdr.markForCheck();
   }
 
-  ngAfterViewInit(): void {
-    this.nzTableComponent?.cdkVirtualScrollViewport?.scrolledIndexChange
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: number) => {
-        // console.log('scroll index to', data);
-      });
-  }
-
   isChecked(id: IdType): boolean {
     return this._checkedKeys.has(id);
   }
 
-  onItemChecked(id: IdType, checked: boolean): void {
-    if (!this.allowSelectMultipleRows) {
-      for (const key of this._checkedKeys.keys()) {
-        this.updateCheckedSet(key, false);
-      }
-    }
+  private onCheck(id: IdType, checked: boolean) {
     this.updateCheckedSet(id, checked);
     this.refreshCheckedStatus();
 
     this.checkedKeysChange.emit(this.checkedKeys);
+    console.log('onCheck', this._checkedKeys);
   }
 
-  onAllChecked(checked: boolean): void {
+  private onCheckAll(checked: boolean) {
     this.records.forEach((record) => this.updateCheckedSet(record[this.idField], checked));
     this.refreshCheckedStatus();
 
     this.checkedKeysChange.emit(this.checkedKeys);
+    console.log('onCheckAll', this._checkedKeys);
   }
 
   private updateCheckedSet(id: IdType, checked: boolean): void {
@@ -107,8 +97,6 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     }
   }
 
-  allRecordsChecked = false;
-  indeterminate = false;
   private refreshCheckedStatus(): void {
     this.allRecordsChecked =
       this._checkedKeys.size > 0 && this.records.every((record) => this._checkedKeys.has(record[this.idField]));

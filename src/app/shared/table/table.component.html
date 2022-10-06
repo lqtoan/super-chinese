@@ -15,17 +15,17 @@
           [nzData]="records">
   <thead>
     <tr>
-      <th *ngIf="allowSelectRow && allowSelectMultipleRows; else emptyHeader"
+      <th *ngIf="allowSelectRow; else emptyHeader"
           [nzChecked]="allRecordsChecked"
           [nzIndeterminate]="indeterminate"
-          [nzDisabled]="!(allowSelectAllRows && records.length)"
-          (nzCheckedChange)="onAllChecked($event)"
-          nzWidth="40px"
+          [nzDisabled]="!(allowSelectRow && records.length)"
+          (nzCheckedChange)="onCheckAll($event)"
+          nzWidth="2rem"
           nzLeft>
       </th>
 
       <ng-template #emptyHeader>
-        <th nzWidth="40px"
+        <th nzWidth="2rem"
             nzLeft></th>
       </ng-template>
 
@@ -50,18 +50,9 @@
                  let-rowIndex="index">
       <tr>
         <ng-container *ngIf="allowSelectRow">
-          <td *ngIf="allowSelectMultipleRows; else singleSelection"
-              [nzChecked]="isChecked(row[idField])"
-              (nzCheckedChange)="onItemChecked(row[idField], $event)"
+          <td [nzChecked]="isChecked(row[idField])"
+              (nzCheckedChange)="onCheck(row[idField], $event)"
               nzLeft></td>
-
-          <ng-template #singleSelection>
-            <td nzLeft>
-              <label [ngModel]="isChecked(row[idField])"
-                     (ngModelChange)="onItemChecked(row[idField], $event)"
-                     nz-radio></label>
-            </td>
-          </ng-template>
         </ng-container>
 
         <ng-container *ngFor="let header of headers; let cellIndex = index">

@@ -7,8 +7,9 @@ import { TableCellDirective } from './directives/table-cell.directive';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
-const nzModules = [NzTableModule, NzEmptyModule, NzTagModule];
+const nzModules = [NzTableModule, NzEmptyModule, NzTagModule, NzRadioModule];
 
 @NgModule({
   declarations: [TableComponent, TableCellDirective],

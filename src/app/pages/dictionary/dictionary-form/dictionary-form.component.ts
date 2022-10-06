@@ -29,7 +29,7 @@ export class DictionaryFormComponent implements OnInit {
     _id: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
-    chinaVietnamWord: ['', Validators.compose([Validators.required])],
+    chinaVietnamWord: ['', Validators.compose([])],
     define: ['', Validators.compose([Validators.required])],
     hsk: ['', Validators.compose([Validators.required])],
     createdDate: [this.initDate, Validators.compose([])],

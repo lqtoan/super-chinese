@@ -1,6 +1,4 @@
 import { VocabularyStore } from './vocabulary.store';
-import { Vocabulary } from '@models/vocabulary.model';
-import { VocabularyService } from '@services/vocabulary.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./vocabulary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [VocabularyStore],
+  // encapsulation: ViewEncapsulation.None,
 })
 export class VocabularyComponent implements OnInit {
   constructor(private readonly store: VocabularyStore) {}

@@ -1,18 +1,2 @@
 @import '/src/variables.scss';
-
-.page-content {
-  padding: 0.5rem 8rem;
-  height: 75vh;
-}
-
-@media screen and (max-width: $tablet) {
-  .page-content {
-    padding: 0.5rem 4rem;
-  }
-}
-
-@media screen and (max-width: $mobile) {
-  .page-content {
-    padding: 0.5rem 1rem;
-  }
-}
+@import 'layout';

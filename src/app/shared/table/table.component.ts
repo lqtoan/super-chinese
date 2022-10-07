@@ -103,6 +103,14 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     console.log('onCheckAll', this._checkedKeys);
   }
 
+  // ngAfterViewInit(): void {
+  //   this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
+  //     .pipe(takeUntil(this.destroy$))
+  //     .subscribe((data: number) => {
+  //       console.log('scroll index to', data);
+  //     });
+  // }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

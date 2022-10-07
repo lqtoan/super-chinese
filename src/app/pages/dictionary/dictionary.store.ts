@@ -39,7 +39,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
 
   readonly loadData = this.effect(($) =>
     $.pipe(
-      // debounceTime(500),
       tap(() => {
         this.patchState({ isLoading: true });
       }),
@@ -90,7 +89,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
 
   readonly createDictionary = this.effect<Dictionary>((params$) =>
     params$.pipe(
-      debounceTime(500),
       tap(() => this.patchState({ isLoading: true })),
       switchMap((param) =>
         this.service.createDictionary(param).pipe(
@@ -142,7 +140,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
 
   readonly updateDictionary = this.effect<Dictionary>((params$) =>
     params$.pipe(
-      debounceTime(500),
       tap(() => this.patchState({ isLoading: true })),
       switchMap((param) =>
         this.service.updateDictionary(param).pipe(

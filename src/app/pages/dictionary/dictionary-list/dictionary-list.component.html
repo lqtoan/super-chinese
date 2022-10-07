@@ -82,7 +82,7 @@
           <nz-tag [nzColor]="'magenta'">HSK 7+</nz-tag>
         </ng-container>
         <ng-container *ngSwitchCase="'z---'">
-          <nz-tag>------</nz-tag>
+          <nz-tag>---------</nz-tag>
         </ng-container>
       </ng-container>
     </ng-template>
@@ -90,8 +90,7 @@
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>
-      <div style="font-family: sans-serif, monospace; font-size: 14px; font-weight: 200;">{{ value | date: 'hh:mm:ss
-        dd/MM/yyyy' }}</div>
+      <div style="font-family: sans-serif, monospace; font-weight: 200;">{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
     </ng-template>
   </app-table>
 </ng-container>

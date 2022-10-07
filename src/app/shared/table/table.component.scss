@@ -2,13 +2,12 @@
 
 ::ng-deep {
   .ant-table.ant-table-small {
-    font-size: 1rem;
+    font-family: sans-serif, monospace;
   }
   .ant-table {
     color: $black;
     background: #fff;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+    font-weight: 300;
     font-display: fall-back;
     .ant-table-header {
       background: $second-white;
@@ -16,8 +15,7 @@
   }
   .ant-table-thead > tr > th {
     background: $white;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
   }
   .ant-table-thead > tr > th:first-child {
     color: $red;

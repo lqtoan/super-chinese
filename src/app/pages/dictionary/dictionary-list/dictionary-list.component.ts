@@ -40,7 +40,7 @@ export class DictionaryListComponent implements OnInit {
       width: '7rem',
       sortOrder: 'ascend',
       sortFn: this.sortPinyin,
-      sortPriority: 3,
+      sortPriority: false,
     },
     {
       label: 'DICTIONARY.CHINA_VIETNAM_WORD',
@@ -49,7 +49,7 @@ export class DictionaryListComponent implements OnInit {
       width: '8.5rem',
       sortOrder: 'ascend',
       sortFn: this.sortChinaVietnamWord,
-      sortPriority: 2,
+      sortPriority: false,
     },
     { label: 'DICTIONARY.DEFINE', field: 'define', width: '16rem' },
     {
@@ -60,7 +60,7 @@ export class DictionaryListComponent implements OnInit {
       align: 'center',
       sortOrder: 'ascend',
       sortFn: this.sortHsk,
-      sortPriority: 1,
+      sortPriority: false,
       filters: this.initHskFilter,
       filterFn: this.filterHsk,
     },

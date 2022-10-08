@@ -83,12 +83,11 @@ li {
 /****************** thumbnail ******************/
 ::-webkit-scrollbar {
   width: 5px;
-  height: 7.5px;
-  background: $white;
-  opacity: 0.6;
+  height: 5px;
+  background: $white !important;
 }
 ::-webkit-scrollbar-thumb {
   height: initial;
-  background: $magenta-blue-white-linear-gradient;
-  border-radius: 50px;
+  background: $magenta-blue-white-linear-gradient !important;
+  border-radius: 5px;
 }

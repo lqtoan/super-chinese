@@ -53,4 +53,6 @@ export class UserProfileStore extends ComponentStore<UserProfileState> {
       )
     )
   );
+
+  readonly getUserName = (): string => this.get().profile.nickname;
 }

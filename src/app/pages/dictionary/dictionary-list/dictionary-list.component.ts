@@ -36,7 +36,7 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
-    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '5rem', position: 'left' },
+    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
@@ -83,7 +83,7 @@ export class DictionaryListComponent implements OnInit {
       cellType: 'date',
       width: '10rem',
     },
-    { label: 'CREATED_BY', field: 'createdBy', width: '6rem' },
+    { label: 'CREATED_BY', field: 'createdBy', cellType: 'ellipsis', width: '5rem' },
     {
       label: '',
       cellType: 'actions',

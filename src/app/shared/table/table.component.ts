@@ -33,18 +33,18 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this._checkedKeys = new Set(value.filter(Boolean));
     this.refreshCheckedStatus();
   }
-  allRecordsChecked = false;
-  indeterminate = false;
+  private allRecordsChecked = false;
+  private indeterminate = false;
 
-  // @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
   @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
-  @Input() @InputBoolean() isLoading = true;
+  @Input() isLoading: boolean = true;
   @Input() headers: TableHeader<RecordType>[] = [];
-  @Input() @InputBoolean() isSelectable = true;
+  @Input() @InputBoolean() isSelectable = false;
+  @Input() @InputBoolean() clientPagination = false;
 
-  @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
+  // @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 
   @ContentChildren(TableCellDirective) readonly customCells!: QueryList<TableCellDirective<RecordType>>;
   cellTemplates: Record<string, TemplateRef<TableCellContext<RecordType>>> = {};
@@ -73,7 +73,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this.updateCheckedKeys(id, checked);
     this.refreshCheckedStatus();
 
-    this.checkedKeysChange.emit(this.checkedKeys);
+    // this.checkedKeysChange.emit(this.checkedKeys);
     console.log('onCheck', this._checkedKeys);
   }
 
@@ -85,7 +85,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     }
   }
 
-  private refreshCheckedStatus(): void {
+  private refreshCheckedStatus() {
     this.allRecordsChecked =
       this._checkedKeys.size > 0 && this.records.every((record) => this._checkedKeys.has(record[this.idField]));
 
@@ -99,11 +99,11 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this.records.forEach((record) => this.updateCheckedKeys(record[this.idField], checked));
     this.refreshCheckedStatus();
 
-    this.checkedKeysChange.emit(this.checkedKeys);
+    // this.checkedKeysChange.emit(this.checkedKeys);
     console.log('onCheckAll', this._checkedKeys);
   }
 
-  // ngAfterViewInit(): void {
+  // ngAfterViewInit() {
   //   this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
   //     .pipe(takeUntil(this.destroy$))
   //     .subscribe((data: number) => {
@@ -111,7 +111,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   //     });
   // }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }

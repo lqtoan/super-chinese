@@ -1,10 +1,8 @@
 <ng-container *ngIf="(vm$ | async) as vm">
-  <app-table [trackByIndex]="trackByIndex"
-             [records]="vm.words"
+  <app-table [records]="vm.words"
              [total]="vm.total"
              [isLoading]="vm.isLoading"
-             [headers]="headers"
-             [isSelectable]="false">
+             [headers]="headers">
     <div slot="top"
          class="top-table">
       <button nz-button
@@ -12,7 +10,7 @@
               (click)="onCreate()"><span nz-icon
               nzType="plus"
               nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-      <span><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></span>
+      <strong><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
     </div>
     <ng-template appTableCell="actions"
                  let-rowIndex="rowIndex"
@@ -91,6 +89,12 @@
                  let-rowIndex="rowIndex"
                  let-value>
       <div style="font-weight: 200;">{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
+    </ng-template>
+
+    <ng-template appTableCell="ellipsis"
+                 let-rowIndex="rowIndex"
+                 let-value>
+      <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ value }}</div>
     </ng-template>
   </app-table>
 </ng-container>

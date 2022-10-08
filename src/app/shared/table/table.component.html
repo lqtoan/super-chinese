@@ -5,14 +5,13 @@
           [nzBordered]="false"
           [nzOuterBordered]="true"
           [nzVirtualItemSize]="10"
-          [nzFrontPagination]="false"
-          [nzShowPagination]="false"
-          nzShowSizeChanger
+          [nzFrontPagination]="clientPagination"
+          [nzShowPagination]="clientPagination"
+          [nzShowSizeChanger]="clientPagination"
           [nzPageSize]="20"
-          [nzPageSizeOptions]="[20, 500, 12000]"
-          [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 210px)' }"
+          [nzPageSizeOptions]="[20, 100, 500]"
+          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 210px)' } : { x: 'calc(100%)', y: 'calc(75vh - 170px)'}"
           [nzLoading]="isLoading"
-          [nzLoadingDelay]="500"
           [nzNoResult]="noResult"
           [nzData]="records">
   <thead>

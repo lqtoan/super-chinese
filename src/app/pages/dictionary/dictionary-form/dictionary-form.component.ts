@@ -1,3 +1,4 @@
+import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -10,9 +11,14 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './dictionary-form.component.html',
   styleUrls: ['./dictionary-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UserProfileStore],
 })
 export class DictionaryFormComponent implements OnInit {
-  constructor(private readonly store: DictionaryStore, private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly store: DictionaryStore,
+    private readonly formBuilder: FormBuilder,
+    private readonly userStore: UserProfileStore
+  ) {}
   readonly destroy$ = new Subject<void>();
   readonly isVisibleForm$ = this.store.isVisibleForm$;
   readonly isCreate$ = this.store.isCreate$;
@@ -24,7 +30,7 @@ export class DictionaryFormComponent implements OnInit {
     _id: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
-    chinaVietnamWord: ['', Validators.compose([Validators.required])],
+    chinaVietnamWord: ['', Validators.compose([])],
     define: ['', Validators.compose([Validators.required])],
     hsk: ['', Validators.compose([Validators.required])],
     createdDate: [this.initDate, Validators.compose([])],
@@ -33,6 +39,7 @@ export class DictionaryFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.userStore.loadData();
     this.store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
@@ -54,6 +61,7 @@ export class DictionaryFormComponent implements OnInit {
       define: data.define,
       hsk: data.hsk,
       createdDate: data.createdDate,
+      updatedDate: data.updatedDate,
       createdBy: data.createdBy,
     });
   }
@@ -72,7 +80,7 @@ export class DictionaryFormComponent implements OnInit {
       this.dictionaryForm.reset();
     } else {
       formValue.createdDate = new Date();
-      // TODO: createdBy
+      formValue.createdBy = this.userStore.getUserName();
       this.store.createDictionary(formValue);
       this.dictionaryForm.reset();
     }

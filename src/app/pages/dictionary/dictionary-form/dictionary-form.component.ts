@@ -74,7 +74,7 @@ export class DictionaryFormComponent implements OnInit {
   onSubmit() {
     this.email = this.userStore.getEmail();
     let formValue = this.dictionaryForm.getRawValue();
-    if (formValue._id && this.email == 'lqtoan37@gmail.com') {
+    if (formValue._id) {
       formValue.updatedDate = new Date();
       this.store.updateDictionary(formValue);
       this.dictionaryForm.reset();

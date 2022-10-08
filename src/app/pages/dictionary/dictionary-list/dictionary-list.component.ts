@@ -32,7 +32,7 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
-    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4rem', position: 'left' },
+    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4.5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
@@ -103,7 +103,7 @@ export class DictionaryListComponent implements OnInit {
 
   onEdit(id: string) {
     this.email = this.userStore.getEmail();
-    if (this.email == 'lqtoan37@gmail.com') {
+    if (this.email === 'lqtoan37@gmail.com') {
       this.store.getDictionaryById(id);
     }
   }

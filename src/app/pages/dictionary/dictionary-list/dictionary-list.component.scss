@@ -1,4 +1,8 @@
 @import '/src/variables.scss';
+@font-face {
+  font-family: MyFont;
+  src: url('../../../../assets/fonts/pinyin.woff') format('woff');
+}
 
 .top-table {
   display: flex;

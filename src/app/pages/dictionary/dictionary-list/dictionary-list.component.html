@@ -2,7 +2,9 @@
   <app-table [records]="vm.words"
              [total]="vm.total"
              [isLoading]="vm.isLoading"
-             [headers]="vm.headers">
+             [headers]="vm.headers"
+             isSelectable="false"
+             clientPagination="false">
     <div slot="top"
          class="top-table">
       <button nz-button
@@ -39,7 +41,8 @@
     <ng-template appTableCell="display"
                  let-rowIndex="rowIndex"
                  let-value>
-      <p style="color: #bf616a; font-weight: 400;">{{ value }}</p>
+      <p style="margin-top: 0.5rem; color: #bf616a; font-family: MyFont; font-weight: 400;">{{ value
+        }}</p>
     </ng-template>
 
     <ng-template appTableCell="lowercase"

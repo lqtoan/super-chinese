@@ -1,4 +1,9 @@
 @import '/src/variables.scss';
+@font-face {
+  font-family: MyFont;
+  src: url('../../../assets/fonts/pinyin.ttf') format('truetype'),
+    url('../../../assets/fonts/pinyin.woff') format('woff'), url('../../../assets/fonts/pinyin.woff2') format('woff2');
+}
 
 ::ng-deep {
   .ant-table.ant-table-small {
@@ -7,6 +12,7 @@
   .ant-table {
     color: $black;
     background: #fff;
+    font-size: 16px;
     font-weight: 300;
     font-display: fall-back;
     scroll-snap-type: y mandatory;

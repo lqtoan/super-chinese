@@ -30,16 +30,16 @@
   &--star {
     padding-top: 1rem;
     grid-template-columns: repeat(1, 1fr);
-    height: 11rem;
+    height: 12rem;
     text-align: center;
     .card {
-      padding: 1rem;
+      padding: 1rem 0;
       height: 10rem;
       display: flex;
       flex-flow: column wrap;
       justify-content: center;
       color: $gray;
-      background: $second_linear-gradient;
+      background: $second-linear-gradient;
       box-shadow: 0 2px 10px 0 rgba($color: $gray, $alpha: 0.5);
       border-radius: 0.5rem;
       transition: $transition;
@@ -47,14 +47,15 @@
         color: $white;
         text-shadow: 0 1px 10px rgba($color: $black, $alpha: 0.75);
         line-height: 110%;
-        font-size: 4rem;
+        font-size: 2.5rem;
         font-weight: 600;
       }
       .sub-title {
-        color: $gray;
+        color: $black;
         font-style: italic;
         line-height: 100%;
         font-size: 1.25rem;
+        font-weight: 500;
       }
     }
     .card:hover {

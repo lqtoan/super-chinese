@@ -47,12 +47,12 @@ nz-table {
 
 /****************** thumbnail ******************/
 ::-webkit-scrollbar {
-  width: 7.5px;
-  height: 10px;
-  background: #fff !important;
+  width: 5px;
+  height: 5px;
+  background: $white !important;
 }
 ::-webkit-scrollbar-thumb {
   height: initial;
-  background: $white !important;
+  background: $magenta-blue-white-linear-gradient !important;
   border-radius: 5px;
 }

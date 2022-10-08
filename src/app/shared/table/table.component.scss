@@ -9,6 +9,10 @@
     background: #fff;
     font-weight: 300;
     font-display: fall-back;
+    scroll-snap-type: y mandatory;
+    tr {
+      scroll-snap-align: center;
+    }
     .ant-table-header {
       background: $second-white;
     }
@@ -30,13 +34,24 @@
     position: static;
     z-index: auto;
   }
+  .ant-table-pagination.ant-pagination {
+    padding: 0.25rem 0.5rem !important;
+    margin: 0 !important;
+    background: #fcfcfc;
+    .ant-pagination-options {
+      display: block;
+    }
+  }
 }
 
 nz-table {
   box-shadow: 0 2px 10px 5px rgba($color: $black, $alpha: 0.25);
 }
 
-nz-pagination {
-  padding: 0.25rem 0 !important;
-  margin: 0 !important;
+@media screen and (max-width: $tablet) {
+  ::ng-deep {
+    .ant-table.ant-table-small {
+      font-size: 12px;
+    }
+  }
 }

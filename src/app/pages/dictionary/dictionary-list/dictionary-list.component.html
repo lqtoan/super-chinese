@@ -61,7 +61,7 @@
                  let-value>
       <ng-container [ngSwitch]="value">
         <ng-container *ngSwitchCase="'hsk1'">
-          <nz-tag [nzColor]="'green'">HSK 1</nz-tag>
+          <nz-tag [nzColor]="'cyan'">HSK 1</nz-tag>
         </ng-container>
         <ng-container *ngSwitchCase="'hsk2'">
           <nz-tag [nzColor]="'blue'">HSK 2</nz-tag>
@@ -73,10 +73,10 @@
           <nz-tag [nzColor]="'purple'">HSK 4</nz-tag>
         </ng-container>
         <ng-container *ngSwitchCase="'hsk5'">
-          <nz-tag [nzColor]="'orange'">HSK 5</nz-tag>
+          <nz-tag [nzColor]="'volcano'">HSK 5</nz-tag>
         </ng-container>
         <ng-container *ngSwitchCase="'hsk6'">
-          <nz-tag [nzColor]="'volcano'">HSK 6</nz-tag>
+          <nz-tag [nzColor]="'red'">HSK 6</nz-tag>
         </ng-container>
         <ng-container *ngSwitchCase="'hsk79'">
           <nz-tag [nzColor]="'magenta'">HSK 7+</nz-tag>
@@ -90,7 +90,7 @@
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>
-      <div style="font-family: sans-serif, monospace; font-weight: 200;">{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
+      <div style="font-weight: 200;">{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
     </ng-template>
   </app-table>
 </ng-container>

@@ -1,16 +1,19 @@
 <ng-content select="[slot=top]"></ng-content>
-<nz-table [style.margin-top.rem]="'0.5'"
+<nz-table #virtualTable
+          [style.margin-top.rem]="'0.5'"
           [nzSize]="'small'"
-          [nzSimple]=""
           [nzBordered]="false"
           [nzOuterBordered]="true"
-          #virtualTable
           [nzVirtualItemSize]="10"
-          [nzVirtualForTrackBy]="trackByIndex"
-          [nzFrontPagination]="false"
-          [nzShowPagination]="false"
-          [nzScroll]="{ x: 'calc(100%)', y: 'calc(80vh - 220px)' }"
+          [nzFrontPagination]="true"
+          [nzShowPagination]="true"
+          nzShowSizeChanger
+          [nzPageSize]="50"
+          [nzPageSizeOptions]="[20, 50, 100, 500, 10000]"
+          [nzShowTotal]="totalTemplate"
+          [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 210px)' }"
           [nzLoading]="isLoading"
+          [nzLoadingDelay]="500"
           [nzNoResult]="noResult"
           [nzData]="records">
   <thead>
@@ -71,4 +74,10 @@
 
 <ng-template #noResult>
   <nz-empty [nzNotFoundContent]="'NO_RESULT' | translate"></nz-empty>
+</ng-template>
+
+<ng-template #totalTemplate
+             let-range="range"
+             let-total>
+  {{ range[0] }}-{{ range[1] }} / {{ total }}
 </ng-template>

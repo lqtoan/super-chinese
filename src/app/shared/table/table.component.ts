@@ -8,11 +8,11 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
+  OnInit,
   Output,
   QueryList,
   TemplateRef,
   ViewChild,
-  ViewEncapsulation,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { InputBoolean } from 'ng-zorro-antd/core/util';
@@ -36,7 +36,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   allRecordsChecked = false;
   indeterminate = false;
 
-  @Input() trackByIndex: any;
+  // @Input() trackByIndex: any;
   @Input() records: RecordType[] = [];
   @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
@@ -55,12 +55,12 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   constructor(private readonly cdr: ChangeDetectorRef) {}
 
-  ngAfterContentInit(): void {
+  ngAfterContentInit() {
     this.customCells.changes.pipe(takeUntil(this.destroy$)).subscribe(() => this.mapCustomCells());
     this.mapCustomCells();
   }
 
-  private mapCustomCells(): void {
+  private mapCustomCells() {
     this.cellTemplates = this.customCells.reduce((acc, item) => ({ ...acc, [item.type || '']: item.template }), {});
     this.cdr.markForCheck();
   }

@@ -28,13 +28,12 @@
     }
   }
   &--star {
-    padding-top: 1rem;
     grid-template-columns: repeat(1, 1fr);
     height: 12rem;
     text-align: center;
     .card {
       padding: 1rem 0;
-      height: 10rem;
+      height: 12rem;
       display: flex;
       flex-flow: column wrap;
       justify-content: center;

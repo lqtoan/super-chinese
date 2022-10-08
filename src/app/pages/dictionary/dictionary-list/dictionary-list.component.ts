@@ -1,4 +1,3 @@
-import { en_US, NzI18nService, vi_VN, zh_CN } from 'ng-zorro-antd/i18n';
 import { TableHeader } from 'src/app/shared/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
@@ -8,18 +7,15 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   selector: 'app-dictionary-list',
   templateUrl: './dictionary-list.component.html',
   styleUrls: ['./dictionary-list.component.scss'],
-  providers: [DictionaryStore, NzI18nService],
+  providers: [DictionaryStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
-  private readonly currentLanguage = localStorage.getItem('language');
-  constructor(private readonly store: DictionaryStore, private readonly i18n: NzI18nService) {}
+  constructor(private readonly store: DictionaryStore) {}
 
   // private readonly total: number = 0;
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
-  private readonly sortChinaVietnamWord = (a: Dictionary, b: Dictionary) =>
-    a.chinaVietnamWord.localeCompare(b.chinaVietnamWord);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
   private readonly sortCreatedDate = (a: Dictionary, b: Dictionary) =>
     a.createdDate.toString().localeCompare(b.createdDate.toString());
@@ -94,16 +90,7 @@ export class DictionaryListComponent implements OnInit {
 
   readonly vm$ = this.store.vm$;
   ngOnInit(): void {
-    if (this.currentLanguage == 'vi') {
-      this.i18n.setLocale(vi_VN);
-    }
-    if (this.currentLanguage == 'en') {
-      this.i18n.setLocale(en_US);
-    }
-    if (this.currentLanguage == 'zh') {
-      this.i18n.setLocale(zh_CN);
-    }
-
+    this.store.setHeaders(this.headers);
     this.store.loadData();
   }
 

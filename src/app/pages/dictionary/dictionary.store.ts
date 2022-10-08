@@ -6,9 +6,11 @@ import { Dictionary } from '@models/dictionary.model';
 import { finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { TableHeader } from 'src/app/shared/table/models';
 
 export interface DictionaryState {
   isLoading: boolean;
+  headers: TableHeader<Dictionary>[];
   words: Dictionary[];
   total: number;
   isVisible: boolean;
@@ -18,6 +20,7 @@ export interface DictionaryState {
 
 const initialState = {
   isLoading: false,
+  headers: [],
   words: [],
   total: 0,
   isVisible: false,
@@ -35,7 +38,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, words, total }) => ({ isLoading, words, total }), { debounce: true });
+  readonly vm$ = this.select(({ isLoading, headers, words, total }) => ({ isLoading, headers, words, total }), {
+    debounce: true,
+  });
 
   readonly loadData = this.effect(($) =>
     $.pipe(
@@ -60,8 +65,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
-  readonly isVisibleForm$ = this.select((state) => state.isVisible, { debounce: true });
+  readonly headers$ = this.select((state) => state.headers, { debounce: true });
+  readonly setHeaders = this.updater<TableHeader<Dictionary>[]>(
+    (state, headers): DictionaryState => ({
+      ...state,
+      headers,
+    })
+  );
 
+  readonly isVisibleForm$ = this.select((state) => state.isVisible, { debounce: true });
   readonly setShowForm = this.updater<boolean>(
     (state, isVisible): DictionaryState => ({
       ...state,
@@ -70,7 +82,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
 
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
-
   readonly setIsCreate = this.updater<boolean>(
     (state, isCreate): DictionaryState => ({
       ...state,
@@ -79,7 +90,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
 
   readonly formValue$ = this.select((state) => state.formValue);
-
   readonly setFormValue = this.updater<Dictionary | undefined>(
     (state, formValue): DictionaryState => ({
       ...state,

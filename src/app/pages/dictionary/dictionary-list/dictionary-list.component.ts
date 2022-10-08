@@ -1,20 +1,20 @@
 import { TableHeader } from 'src/app/shared/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
+import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-dictionary-list',
   templateUrl: './dictionary-list.component.html',
   styleUrls: ['./dictionary-list.component.scss'],
-  providers: [DictionaryStore],
+  providers: [DictionaryStore, UserProfileStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
-  constructor(private readonly store: DictionaryStore) {}
+  constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
 
-  // private readonly total: number = 0;
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
   private readonly sortCreatedDate = (a: Dictionary, b: Dictionary) =>
@@ -89,9 +89,11 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   readonly vm$ = this.store.vm$;
+  private email: string = '';
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData();
+    this.userStore.loadData();
   }
 
   onCreate() {
@@ -100,7 +102,10 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onEdit(id: string) {
-    this.store.getDictionaryById(id);
+    this.email = this.userStore.getEmail();
+    if (this.email == 'lqtoan37@gmail.com') {
+      this.store.getDictionaryById(id);
+    }
   }
 
   onDelete(id: string) {

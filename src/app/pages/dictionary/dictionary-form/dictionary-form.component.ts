@@ -3,7 +3,6 @@ import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { en_US, NzI18nService, vi_VN, zh_CN } from 'ng-zorro-antd/i18n';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -11,7 +10,6 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './dictionary-form.component.html',
   styleUrls: ['./dictionary-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [UserProfileStore],
 })
 export class DictionaryFormComponent implements OnInit {
   constructor(
@@ -38,8 +36,9 @@ export class DictionaryFormComponent implements OnInit {
     createdBy: ['', Validators.compose([])],
   });
 
+  private email: string = '';
+
   ngOnInit(): void {
-    this.userStore.loadData();
     this.store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
@@ -73,8 +72,9 @@ export class DictionaryFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.email = this.userStore.getEmail();
     let formValue = this.dictionaryForm.getRawValue();
-    if (formValue._id) {
+    if (formValue._id && this.email == 'lqtoan37@gmail.com') {
       formValue.updatedDate = new Date();
       this.store.updateDictionary(formValue);
       this.dictionaryForm.reset();

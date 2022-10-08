@@ -5,12 +5,11 @@
           [nzBordered]="false"
           [nzOuterBordered]="true"
           [nzVirtualItemSize]="10"
-          [nzFrontPagination]="true"
-          [nzShowPagination]="true"
+          [nzFrontPagination]="false"
+          [nzShowPagination]="false"
           nzShowSizeChanger
-          [nzPageSize]="50"
-          [nzPageSizeOptions]="[20, 50, 100, 500, 10000]"
-          [nzShowTotal]="totalTemplate"
+          [nzPageSize]="20"
+          [nzPageSizeOptions]="[20, 500, 12000]"
           [nzScroll]="{ x: 'calc(100%)', y: 'calc(75vh - 210px)' }"
           [nzLoading]="isLoading"
           [nzLoadingDelay]="500"
@@ -74,10 +73,4 @@
 
 <ng-template #noResult>
   <nz-empty [nzNotFoundContent]="'NO_RESULT' | translate"></nz-empty>
-</ng-template>
-
-<ng-template #totalTemplate
-             let-range="range"
-             let-total>
-  {{ range[0] }}-{{ range[1] }} / {{ total }}
 </ng-template>

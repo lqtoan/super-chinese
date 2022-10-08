@@ -28,18 +28,27 @@
     background: $white;
   }
   .ant-table-thead th.ant-table-column-sort:hover {
-    background: rgba($color: $white, $alpha: 0.75);
+    background: rgba($color: $second-white, $alpha: 0.25);
   }
   .ant-table-column-title {
     position: static;
     z-index: auto;
   }
   .ant-table-pagination.ant-pagination {
-    padding: 0.25rem 0.5rem !important;
+    padding: 0.5rem !important;
     margin: 0 !important;
-    background: #fcfcfc;
+    background: $white;
+    display: flex;
+    flex-flow: row nowrap;
+    // justify-content: flex-end;
+    .ant-pagination-total-text {
+      margin: 0;
+    }
     .ant-pagination-options {
       display: block;
+      .ant-select-selector {
+        padding: 0 0.25rem;
+      }
     }
   }
 }
@@ -51,7 +60,7 @@ nz-table {
 @media screen and (max-width: $tablet) {
   ::ng-deep {
     .ant-table.ant-table-small {
-      font-size: 12px;
+      font-size: 13px;
     }
   }
 }

@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
     <ng-container *ngIf="authService.loading$ | async">
       <div class="loading-page">
         <span><nz-spin nzSize="large"></nz-spin></span>
-        <h3 class="slogan">{{ 'SLOGAN' | translate }}</h3>
+        <h4 class="slogan">{{ 'SLOGAN' | translate }}</h4>
       </div>
     </ng-container>
     <router-outlet></router-outlet>

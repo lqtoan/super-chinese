@@ -43,16 +43,13 @@ export class DictionaryListComponent implements OnInit {
       sortFn: this.sortPinyin,
       sortPriority: false,
     },
+    { label: 'DICTIONARY.DEFINE', field: 'define', width: '16rem' },
     {
       label: 'DICTIONARY.CHINA_VIETNAM_WORD',
       field: 'chinaVietnamWord',
       cellType: 'titlecase',
       width: '8rem',
-      // sortOrder: 'ascend',
-      // sortFn: this.sortChinaVietnamWord,
-      // sortPriority: false,
     },
-    { label: 'DICTIONARY.DEFINE', field: 'define', width: '16rem' },
     {
       label: 'HSK',
       field: 'hsk',

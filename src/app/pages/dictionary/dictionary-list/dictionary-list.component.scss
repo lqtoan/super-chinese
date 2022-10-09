@@ -7,7 +7,7 @@
 .top-table {
   display: flex;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
   .create-button {
     padding: 0 0.5rem;
     background: $primary-color;
@@ -21,8 +21,9 @@
     cursor: pointer;
   }
   .search-input {
+    padding: 0.25 0.5rem;
     margin-left: 0.25rem;
-    width: calc(25vw + 4rem);
+    width: calc(25vw + 5rem);
     border-radius: 0.5rem;
   }
   .totals {

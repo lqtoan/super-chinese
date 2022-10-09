@@ -57,7 +57,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
-  readonly loadData = this.effect<string>(($) =>
+  readonly loadData = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => {

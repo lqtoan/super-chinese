@@ -12,19 +12,22 @@
               (click)="onCreate()"><span nz-icon
               nzType="plus"
               nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-      <input *ngIf="isChinaVietnamSearch"
-             class="search-input"
-             nz-input
-             [placeholder]="'ACTION.LOOK_UP.CHI_VIE' | translate"
-             (keydown.enter)="getVietnameseWords($event)" />
-      <input *ngIf="!isChinaVietnamSearch"
-             class="search-input"
-             nz-input
-             [placeholder]="'ACTION.LOOK_UP.VIE_CHI' | translate"
-             (keydown.enter)="getChineseWords($event)" />
-      <nz-switch [style.margin-left.rem]="'0.25'"
-                 [ngModel]="isChinaVietnamSearch"
-                 (ngModelChange)="isChinaVietnamSearch = $event"></nz-switch>
+      <nz-input-group class="search-input"
+                      [nzSuffix]="suffixIconSearch">
+        <input *ngIf="isChinaVietnamSearch"
+               nz-input
+               [placeholder]="'ACTION.LOOK_UP.CHI_VIE' | translate"
+               (keydown.enter)="getVietnameseWords($event)" />
+        <input *ngIf="!isChinaVietnamSearch"
+               nz-input
+               [placeholder]="'ACTION.LOOK_UP.VIE_CHI' | translate"
+               (keydown.enter)="getChineseWords($event)" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <nz-switch [style.margin-left.rem]="'0.25'"
+                   [ngModel]="isChinaVietnamSearch"
+                   (ngModelChange)="isChinaVietnamSearch = $event"></nz-switch>
+      </ng-template>
       <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
     </div>
     <ng-template appTableCell="actions"

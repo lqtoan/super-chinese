@@ -90,11 +90,10 @@ export class DictionaryListComponent implements OnInit {
 
   readonly vm$ = this.store.vm$;
   private email: string = '';
-  private readonly keyword: string = 'hello';
   private readonly isChinaVietnamSearch: boolean = false;
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
-    this.store.loadData(this.store.filter$);
+    this.store.loadData();
     this.userStore.loadData();
   }
 
@@ -120,11 +119,15 @@ export class DictionaryListComponent implements OnInit {
 
   getVietnameseWords(event: any) {
     let keyword: string = event.target.value;
-    this.store.getVietnameseWords(keyword.toString());
+    if (keyword) {
+      this.store.getVietnameseWords(keyword.toString());
+    } else this.store.loadData();
   }
 
   getChineseWords(event: any) {
     let keyword: string = event.target.value;
-    this.store.getChineseWords(keyword.toString());
+    if (keyword) {
+      this.store.getChineseWords(keyword.toString());
+    } else this.store.loadData();
   }
 }

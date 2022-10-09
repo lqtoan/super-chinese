@@ -9,10 +9,6 @@
     background: #fff;
     font-weight: 300;
     font-display: fall-back;
-    scroll-snap-type: y mandatory;
-    tr {
-      scroll-snap-align: center;
-    }
     .ant-table-header {
       background: $second-white;
     }
@@ -27,6 +23,7 @@
   }
   .ant-table-thead th.ant-table-column-sort {
     background: $white;
+    transition: $transition;
   }
   .ant-table-thead th.ant-table-column-sort:hover {
     background: rgba($color: $second-white, $alpha: 0.25);

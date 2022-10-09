@@ -1,6 +1,6 @@
 <ng-content select="[slot=top]"></ng-content>
 <nz-table #virtualTable
-          [style.margin-top.rem]="'0.5'"
+          [style.margin-top.rem]="'1'"
           [nzSize]="'small'"
           [nzBordered]="false"
           [nzOuterBordered]="true"
@@ -10,7 +10,7 @@
           [nzShowSizeChanger]="clientPagination"
           [nzPageSize]="20"
           [nzPageSizeOptions]="[20, 100, 500]"
-          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 210px)' } : { x: 'calc(100%)', y: 'calc(75vh - 170px)'}"
+          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 160px)' } : { x: 'calc(100%)', y: 'calc(75vh - 120px)'}"
           [nzLoading]="isLoading"
           [nzNoResult]="noResult"
           [nzData]="records">

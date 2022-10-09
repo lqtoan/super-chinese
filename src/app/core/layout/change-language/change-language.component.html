@@ -1,12 +1,12 @@
 <select (change)="changeLanguage($event)">
-        <option *ngIf="selectedLanguage"
+        <option *ngIf="currentLanguage"
                 selected
-                [value]="selectedLanguage">{{ selectedLanguage | uppercase | translate }}
+                [value]="currentLanguage">{{ currentLanguage | uppercase | translate }}
         </option>
-        <option *ngIf="selectedLanguage != 'vi'"
+        <option *ngIf="currentLanguage != 'vi'"
                 value="vi">{{ 'VI' | translate }}</option>
-        <option *ngIf="selectedLanguage != 'en'"
+        <option *ngIf="currentLanguage != 'en'"
                 value="en">{{ 'EN' | translate }}</option>
-        <option *ngIf="selectedLanguage != 'zh'"
+        <option *ngIf="currentLanguage != 'zh'"
                 value="zh">{{ 'ZH' | translate }}</option>
 </select>

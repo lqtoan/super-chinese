@@ -4,16 +4,15 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-change-language',
   templateUrl: './change-language.component.html',
-  styleUrls: ['./change-language.component.scss']
+  styleUrls: ['./change-language.component.scss'],
 })
 export class ChangeLanguageComponent implements OnInit {
-  selectedLanguage = localStorage.getItem('language');
+  currentLanguage = localStorage.getItem('language');
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private readonly translateService: TranslateService) {}
 
-  ngOnInit(): void {
-  }
-  
+  ngOnInit(): void {}
+
   changeLanguage(event: any) {
     this.translateService.use(event.target.value);
     localStorage.setItem('language', event.target.value);

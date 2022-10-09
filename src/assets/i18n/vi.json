@@ -12,6 +12,8 @@
   "ACTION.CREATE": "Tạo mới",
   "ACTION.DELETE": "Xoá",
   "ACTION.UPDATE": "Cập nhật",
+  "ACTION.LOOK_UP": "Tra từ",
+  "ACTION.SEARCH": "Tìm kiếm",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Thêm mới thành công",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Cập nhật thành công",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Xoá thành công",

@@ -6,7 +6,7 @@
 
 .top-table {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
   .create-button {
     background: $primary-color;
@@ -15,10 +15,20 @@
     border-radius: 0.5rem;
     transition: $transition;
   }
-
   .create-button:hover {
     opacity: 0.8;
     cursor: pointer;
+  }
+  .search-input {
+    margin-left: 0.25rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+  }
+  .totals {
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .actions {

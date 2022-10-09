@@ -1,17 +1,20 @@
+import { DEFAULT_DEBOUNCE_TIME } from './../../core/common/default-debounce-time.const';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Injectable } from '@angular/core';
 import { DictionaryService } from '@services/dictionary.service';
 import { Dictionary } from '@models/dictionary.model';
-import { finalize, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { TableHeader } from 'src/app/shared/table/models';
+import { from } from 'rxjs';
 
 export interface DictionaryState {
   isLoading: boolean;
   headers: TableHeader<Dictionary>[];
   words: Dictionary[];
+  keyword: string;
   total: number;
   isVisible: boolean;
   isCreate: boolean;
@@ -22,6 +25,7 @@ const initialState = {
   isLoading: false,
   headers: [],
   words: [],
+  keyword: '',
   total: 0,
   isVisible: false,
   isCreate: true,
@@ -42,13 +46,25 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     debounce: true,
   });
 
-  readonly loadData = this.effect(($) =>
+  readonly filter$ = from(this.select(({ keyword }) => keyword));
+  readonly setFilter = this.effect<string>((params$) =>
+    params$.pipe(
+      tap((params) => {
+        this.patchState({
+          keyword: params,
+        });
+      })
+    )
+  );
+
+  readonly loadData = this.effect<string>(($) =>
     $.pipe(
+      debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => {
         this.patchState({ isLoading: true });
       }),
-      switchMap(() =>
-        this.service.getDictionaries().pipe(
+      switchMap((keyword) =>
+        this.service.getDictionaries(keyword).pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });
@@ -59,6 +75,31 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.patchState({ isLoading: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly getDictionaryById = this.effect<string>((trigger$) =>
+    trigger$.pipe(
+      // tap(() => this.patchState({ isLoading: true })),
+      switchMap((id) =>
+        this.service.getDictionaryById(id).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                this.setFormValue(data);
+                this.setIsCreate(false);
+                this.setShowForm(true);
+              }
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => {
+            // this.patchState({ isLoading: false });
           })
         )
       )
@@ -115,33 +156,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            // this.patchState({ isVisible: false });
-            this.loadData();
-          })
-        )
-      )
-    )
-  );
-
-  readonly getDictionaryById = this.effect<string>((trigger$) =>
-    trigger$.pipe(
-      // tap(() => this.patchState({ isLoading: true })),
-      switchMap((id) =>
-        this.service.getDictionaryById(id).pipe(
-          tapResponse(
-            (data) => {
-              if (data) {
-                this.setFormValue(data);
-                this.setIsCreate(false);
-                this.setShowForm(true);
-              }
-            },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
-            }
-          ),
-          finalize(() => {
-            // this.patchState({ isLoading: false });
+            this.patchState({ isLoading: false });
           })
         )
       )
@@ -165,8 +180,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.loadData();
-            // this.patchState({ isVisible: false });
+            this.patchState({ isLoading: false });
           })
         )
       )
@@ -184,7 +198,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 // console.log(data);
                 // this.setShowForm(false);
               }
-
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {
@@ -192,7 +205,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.loadData();
+            this.patchState({ isLoading: false });
           })
         )
       )

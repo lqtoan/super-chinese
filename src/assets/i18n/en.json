@@ -12,6 +12,8 @@
   "ACTION.CREATE": "Create",
   "ACTION.DELETE": "Delete",
   "ACTION.UPDATE": "Edit",
+  "ACTION.LOOK_UP": "Look up",
+  "ACTION.SEARCH": "Search",
   "CONFIRM_DELETE": "Are you sure delete?",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Create successfully",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Update successfully",

@@ -12,7 +12,11 @@
               (click)="onCreate()"><span nz-icon
               nzType="plus"
               nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-      <strong><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
+      <input class="search-input"
+             nz-input
+             [placeholder]="'ACTION.SEARCH' | translate"
+             (keydown.enter)="search($event)" />
+      <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
     </div>
     <ng-template appTableCell="actions"
                  let-rowIndex="rowIndex"
@@ -41,7 +45,7 @@
     <ng-template appTableCell="display"
                  let-rowIndex="rowIndex"
                  let-value>
-      <p style="margin-top: 0.25rem; color: #bf616a; font-family: MyFont; font-size: 15px;">{{ value }}</p>
+      <p style="margin-top: 0.25rem; color: #bf616a; font-family: MyFont; font-size: 1rem;">{{ value }}</p>
     </ng-template>
 
     <ng-template appTableCell="lowercase"

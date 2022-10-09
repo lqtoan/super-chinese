@@ -1,6 +1,6 @@
 import { Dictionary } from '@models/dictionary.model';
 import { environment } from './../../../environments/environment';
-import { delay, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,8 +10,8 @@ export class DictionaryService {
 
   API = `${environment.api}words`;
 
-  getDictionaries(): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(this.API);
+  getDictionaries(keyword?: string): Observable<Dictionary[]> {
+    return this.httpClient.get<Dictionary[]>(`${this.API}?keyword=${keyword}`);
   }
 
   getDictionaryById(id: string): Observable<Dictionary> {

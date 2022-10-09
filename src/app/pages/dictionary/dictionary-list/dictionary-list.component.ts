@@ -32,7 +32,7 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
-    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4.25rem', position: 'left' },
+    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4.5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
@@ -90,9 +90,10 @@ export class DictionaryListComponent implements OnInit {
 
   readonly vm$ = this.store.vm$;
   private email: string = '';
+  private keyword: string = 'hello';
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
-    this.store.loadData();
+    this.store.loadData(this.store.filter$);
     this.userStore.loadData();
   }
 
@@ -109,8 +110,15 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    this.store.deleteDictionary(id);
+    if (this.email === 'lqtoan37@gmail.com') {
+      this.store.deleteDictionary(id);
+    }
   }
 
   onCancel() {}
+
+  search(event: any) {
+    let keyword: string = event.target.value;
+    this.store.loadData(keyword.toString());
+  }
 }

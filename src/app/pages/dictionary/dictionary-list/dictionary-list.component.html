@@ -12,10 +12,19 @@
               (click)="onCreate()"><span nz-icon
               nzType="plus"
               nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-      <input class="search-input"
+      <input *ngIf="isChinaVietnamSearch"
+             class="search-input"
              nz-input
-             [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="search($event)" />
+             [placeholder]="'ACTION.LOOK_UP.CHI_VIE' | translate"
+             (keydown.enter)="getVietnameseWords($event)" />
+      <input *ngIf="!isChinaVietnamSearch"
+             class="search-input"
+             nz-input
+             [placeholder]="'ACTION.LOOK_UP.VIE_CHI' | translate"
+             (keydown.enter)="getChineseWords($event)" />
+      <nz-switch [style.margin-left.rem]="'0.25'"
+                 [ngModel]="isChinaVietnamSearch"
+                 (ngModelChange)="isChinaVietnamSearch = $event"></nz-switch>
       <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
     </div>
     <ng-template appTableCell="actions"

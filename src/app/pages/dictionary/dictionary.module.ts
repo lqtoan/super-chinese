@@ -19,6 +19,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 const nzModules = [
   NzSpinModule,
@@ -31,6 +32,7 @@ const nzModules = [
   NzIconModule,
   NzSelectModule,
   NzTagModule,
+  NzSwitchModule,
 ];
 
 @NgModule({

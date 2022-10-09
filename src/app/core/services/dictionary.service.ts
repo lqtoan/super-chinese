@@ -10,8 +10,8 @@ export class DictionaryService {
 
   API = `${environment.api}words`;
 
-  getDictionaries(keyword?: string): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(`${this.API}?keyword=${keyword}`);
+  getDictionaries(): Observable<Dictionary[]> {
+    return this.httpClient.get<Dictionary[]>(`${this.API}`);
   }
 
   getDictionaryById(id: string): Observable<Dictionary> {
@@ -28,5 +28,13 @@ export class DictionaryService {
 
   deleteDictionary(id: string) {
     return this.httpClient.delete<Dictionary>(`${this.API}/${id}`);
+  }
+
+  getVietnameseWords(keyword?: string): Observable<Dictionary[]> {
+    return this.httpClient.get<Dictionary[]>(`${this.API}/vietnamese?keyword=${keyword}`);
+  }
+
+  getChineseWords(keyword?: string): Observable<Dictionary[]> {
+    return this.httpClient.get<Dictionary[]>(`${this.API}/chinese?keyword=${keyword}`);
   }
 }

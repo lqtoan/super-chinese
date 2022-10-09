@@ -90,7 +90,8 @@ export class DictionaryListComponent implements OnInit {
 
   readonly vm$ = this.store.vm$;
   private email: string = '';
-  private keyword: string = 'hello';
+  private readonly keyword: string = 'hello';
+  private readonly isChinaVietnamSearch: boolean = false;
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData(this.store.filter$);
@@ -117,8 +118,13 @@ export class DictionaryListComponent implements OnInit {
 
   onCancel() {}
 
-  search(event: any) {
+  getVietnameseWords(event: any) {
     let keyword: string = event.target.value;
-    this.store.loadData(keyword.toString());
+    this.store.getVietnameseWords(keyword.toString());
+  }
+
+  getChineseWords(event: any) {
+    let keyword: string = event.target.value;
+    this.store.getChineseWords(keyword.toString());
   }
 }

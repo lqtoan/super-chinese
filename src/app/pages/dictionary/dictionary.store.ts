@@ -63,8 +63,56 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       tap(() => {
         this.patchState({ isLoading: true });
       }),
-      switchMap((keyword) =>
-        this.service.getDictionaries(keyword).pipe(
+      switchMap(() =>
+        this.service.getDictionaries().pipe(
+          tapResponse(
+            (data) => {
+              this.patchState({ words: data, total: data.length });
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isLoading: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly getVietnameseWords = this.effect<string>(($) =>
+    $.pipe(
+      debounceTime(DEFAULT_DEBOUNCE_TIME),
+      tap(() => {
+        this.patchState({ isLoading: true });
+      }),
+      switchMap((param) =>
+        this.service.getVietnameseWords(param).pipe(
+          tapResponse(
+            (data) => {
+              this.patchState({ words: data, total: data.length });
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => {
+            this.patchState({ isLoading: false });
+          })
+        )
+      )
+    )
+  );
+
+  readonly getChineseWords = this.effect<string>(($) =>
+    $.pipe(
+      debounceTime(DEFAULT_DEBOUNCE_TIME),
+      tap(() => {
+        this.patchState({ isLoading: true });
+      }),
+      switchMap((param) =>
+        this.service.getChineseWords(param).pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });

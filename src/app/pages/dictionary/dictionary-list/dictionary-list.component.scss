@@ -9,6 +9,7 @@
   justify-content: flex-start;
   align-items: baseline;
   .create-button {
+    padding: 0 0.5rem;
     background: $primary-color;
     color: $white;
     border: none;
@@ -21,7 +22,7 @@
   }
   .search-input {
     margin-left: 0.25rem;
-    width: 8rem;
+    width: calc(25vw + 5rem);
     border-radius: 0.5rem;
   }
   .totals {

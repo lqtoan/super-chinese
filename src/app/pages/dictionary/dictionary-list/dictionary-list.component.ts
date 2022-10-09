@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
+  private readonly isChinaVietnamSearch: boolean = false;
   constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
 
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
@@ -90,7 +91,6 @@ export class DictionaryListComponent implements OnInit {
 
   readonly vm$ = this.store.vm$;
   private email: string = '';
-  private readonly isChinaVietnamSearch: boolean = false;
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData();
@@ -118,16 +118,14 @@ export class DictionaryListComponent implements OnInit {
   onCancel() {}
 
   getVietnameseWords(event: any) {
-    let keyword: string = event.target.value;
-    if (keyword) {
-      this.store.getVietnameseWords(keyword.toString());
+    if (event.target.value) {
+      this.store.getVietnameseWords(event.target.value);
     } else this.store.loadData();
   }
 
   getChineseWords(event: any) {
-    let keyword: string = event.target.value;
-    if (keyword) {
-      this.store.getChineseWords(keyword.toString());
+    if (event.target.value) {
+      this.store.getChineseWords(event.target.value);
     } else this.store.loadData();
   }
 }

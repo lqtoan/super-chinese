@@ -22,7 +22,7 @@
   }
   .search-input {
     padding: 0.25 0.5rem;
-    margin-left: 0.25rem;
+    margin-left: 0.5rem;
     width: calc(25vw + 5rem);
     border-radius: 0.5rem;
   }
@@ -62,4 +62,13 @@ nz-table {
   border-width: 1.5px;
   border-radius: 2.5px;
   font-weight: 400;
+}
+
+@media screen and (max-width: $mobile) {
+  .top-table {
+    .search-input {
+      margin-left: 0.25rem;
+      padding: 0.25rem;
+    }
+  }
 }

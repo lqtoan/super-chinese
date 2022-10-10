@@ -206,22 +206,42 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '07-1',
     url: 'assets/curriculum/hsk2/07-1.mp3',
-    text: ['', '', '', ''],
+    text: [
+      '大卫回来了吗？',
+      '没有， 他还在教室学习呢。',
+      '已经九点了， 他怎么还在学习？',
+      '明天有考试， 他说今天要好好准备。',
+    ],
   },
   {
     title: '07-2',
     url: 'assets/curriculum/hsk2/07-2.mp3',
-    text: ['', '', '', ''],
+    text: [
+      '你现在在哪儿呢？',
+      '在去机场的路上。 你已经到了吗？',
+      '我下飞机了。 你还有多长时间能到这儿',
+      '二十分钟就到。',
+    ],
   },
   {
     title: '07-3',
     url: 'assets/curriculum/hsk2/07-3.mp3',
-    text: ['', '', '', ''],
+    text: [
+      '你家离公司远吗？',
+      '很远， 坐公共汽车要一个多小时呢！',
+      '坐公共汽车太慢了， 你怎么不开车？',
+      '开车也不快， 路上车太多了！',
+    ],
   },
   {
     title: '07-4',
     url: 'assets/curriculum/hsk2/07-4.mp3',
-    text: ['', '', '', ''],
+    text: [
+      '今天晚上我们一起吃饭吧， 给你过生日。',
+      '今天？ 离我的生日还有一个多星期呢！',
+      '下个星期我要去北京， 今天过巴。',
+      '好吧， 离这儿不远有一个中国饭馆， 走几分钟就到了。',
+    ],
   },
   {
     title: '07-5',
@@ -251,6 +271,81 @@ export const HSK2_CURRICULUM_AUDIOS: Audio[] = [
   {
     title: '08-5',
     url: 'assets/curriculum/hsk2/08-5.mp3',
+    text: [''],
+  },
+  {
+    title: '09-1',
+    url: 'assets/curriculum/hsk2/09-1.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '09-2',
+    url: 'assets/curriculum/hsk2/09-2.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '09-3',
+    url: 'assets/curriculum/hsk2/09-3.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '09-4',
+    url: 'assets/curriculum/hsk2/09-4.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '09-5',
+    url: 'assets/curriculum/hsk2/09-5.mp3',
+    text: [''],
+  },
+  {
+    title: '10-1',
+    url: 'assets/curriculum/hsk2/10-1.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '10-2',
+    url: 'assets/curriculum/hsk2/10-2.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '10-3',
+    url: 'assets/curriculum/hsk2/10-3.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '10-4',
+    url: 'assets/curriculum/hsk2/10-4.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '10-5',
+    url: 'assets/curriculum/hsk2/10-5.mp3',
+    text: [''],
+  },
+  {
+    title: '11-1',
+    url: 'assets/curriculum/hsk2/11-1.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '11-2',
+    url: 'assets/curriculum/hsk2/11-2.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '11-3',
+    url: 'assets/curriculum/hsk2/11-3.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '11-4',
+    url: 'assets/curriculum/hsk2/11-4.mp3',
+    text: ['', '', '', ''],
+  },
+  {
+    title: '11-5',
+    url: 'assets/curriculum/hsk2/11-5.mp3',
     text: [''],
   },
 ];

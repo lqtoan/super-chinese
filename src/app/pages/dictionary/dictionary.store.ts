@@ -204,7 +204,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            this.loadData();
           })
         )
       )
@@ -228,7 +228,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            this.loadData();
           })
         )
       )
@@ -253,7 +253,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            this.loadData();
           })
         )
       )

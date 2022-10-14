@@ -1,8 +1,7 @@
 @import '/src/variables.scss';
+@import 'layout';
 
-.about {
-  padding: 1rem 8rem;
-  height: 75vh;
+.page {
   overflow-x: hidden;
   overflow-y: scroll;
   a {
@@ -54,15 +53,9 @@
   }
 }
 
-@media screen and (max-width: $tablet) {
-  .about {
-    padding: 1rem 4rem;
-  }
-}
-
 @media screen and (max-width: $mobile) {
-  .about {
-    padding: 1rem 1rem 2.5rem;
+  .page {
+    padding: calc(2 * $small-space);
     .slider {
       img {
         width: 75vw;

@@ -8,7 +8,6 @@ import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { TableHeader } from 'src/app/shared/table/models';
-import { from } from 'rxjs';
 
 export interface DictionaryState {
   isLoading: boolean;
@@ -16,7 +15,8 @@ export interface DictionaryState {
   words: Dictionary[];
   keyword: string;
   total: number;
-  isVisible: boolean;
+  isChineseVietnameseSearch: boolean;
+  isVisibleForm: boolean;
   isCreate: boolean;
   formValue: Partial<Dictionary> | undefined;
 }
@@ -27,7 +27,8 @@ const initialState = {
   words: [],
   keyword: '',
   total: 0,
-  isVisible: false,
+  isChineseVietnameseSearch: false,
+  isVisibleForm: false,
   isCreate: true,
   formValue: undefined,
 };
@@ -42,19 +43,17 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, headers, words, total }) => ({ isLoading, headers, words, total }), {
-    debounce: true,
-  });
-
-  readonly filter$ = from(this.select(({ keyword }) => keyword));
-  readonly setFilter = this.effect<string>((params$) =>
-    params$.pipe(
-      tap((params) => {
-        this.patchState({
-          keyword: params,
-        });
-      })
-    )
+  readonly vm$ = this.select(
+    ({ isLoading, headers, words, total, isChineseVietnameseSearch }) => ({
+      isLoading,
+      headers,
+      words,
+      total,
+      isChineseVietnameseSearch,
+    }),
+    {
+      debounce: true,
+    }
   );
 
   readonly loadData = this.effect(($) =>
@@ -81,7 +80,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
-  readonly getVietnameseWords = this.effect<string>(($) =>
+  readonly loadVietnameseWords = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => {
@@ -105,7 +104,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
-  readonly getChineseWords = this.effect<string>(($) =>
+  readonly loadChineseWords = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => {
@@ -129,9 +128,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
-  readonly getDictionaryById = this.effect<string>((trigger$) =>
+  readonly loadWordById = this.effect<string>((trigger$) =>
     trigger$.pipe(
-      // tap(() => this.patchState({ isLoading: true })),
       switchMap((id) =>
         this.service.getDictionaryById(id).pipe(
           tapResponse(
@@ -146,9 +144,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.message.error(error.error.message);
             }
           ),
-          finalize(() => {
-            // this.patchState({ isLoading: false });
-          })
+          finalize(() => {})
         )
       )
     )
@@ -162,11 +158,19 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     })
   );
 
-  readonly isVisibleForm$ = this.select((state) => state.isVisible, { debounce: true });
-  readonly setShowForm = this.updater<boolean>(
-    (state, isVisible): DictionaryState => ({
+  readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
+  readonly setIsChineseVietnameseSearch = this.updater<boolean>(
+    (state, isChineseVietnameseSearch): DictionaryState => ({
       ...state,
-      isVisible,
+      isChineseVietnameseSearch,
+    })
+  );
+
+  readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
+  readonly setShowForm = this.updater<boolean>(
+    (state, isVisibleForm): DictionaryState => ({
+      ...state,
+      isVisibleForm,
     })
   );
 

@@ -3,6 +3,9 @@
 
 @media screen and (max-width: $mobile) {
   .page {
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem;
+    p {
+      text-indent: 1.5rem;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { TableCellContext, TableCellDirective } from './directives/table-cell.directive';
 import { Table, TableHeader } from './models/index';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -21,7 +22,7 @@ import { InputBoolean } from 'ng-zorro-antd/core/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // encapsulation: ViewEncapsulation.None,
 })
-export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements OnDestroy {
+export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements AfterViewInit, OnDestroy {
   private _checkedKeys: Set<IdType> = new Set<IdType>();
   get checkedKeys() {
     return Array.from(this._checkedKeys).filter(Boolean);
@@ -33,6 +34,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   private allRecordsChecked = false;
   private indeterminate = false;
 
+  readonly trackByIndex: any;
   @Input() records: RecordType[] = [];
   @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
@@ -44,7 +46,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   // @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 
   @ContentChildren(TableCellDirective) readonly customCells!: QueryList<TableCellDirective<RecordType>>;
-  cellTemplates: Record<string, TemplateRef<TableCellContext<RecordType>>> = {};
+  private cellTemplates: Record<string, TemplateRef<TableCellContext<RecordType>>> = {};
 
   @ViewChild('virtualTable', { static: false }) table?: Table<RecordType>;
 
@@ -100,13 +102,13 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     console.log('onCheckAll', this._checkedKeys);
   }
 
-  // ngAfterViewInit() {
-  //   this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
-  //     .pipe(takeUntil(this.destroy$))
-  //     .subscribe((data: number) => {
-  //       console.log('scroll index to', data);
-  //     });
-  // }
+  ngAfterViewInit() {
+    this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: number) => {
+        // console.log('scroll index to', data, 'rows:', document.getElementsByTagName('tr').length);
+      });
+  }
 
   ngOnDestroy() {
     this.destroy$.next();

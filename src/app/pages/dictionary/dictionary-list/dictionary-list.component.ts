@@ -13,7 +13,6 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
-  private readonly isChinaVietnamSearch: boolean = false;
   constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
 
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
@@ -87,7 +86,6 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   readonly vm$ = this.store.vm$;
-  private email: string = '';
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData();
@@ -100,29 +98,29 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onEdit(id: string) {
-    this.email = this.userStore.getEmail();
-    if (this.email === 'lqtoan37@gmail.com') {
-      this.store.getDictionaryById(id);
+    if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
+      this.store.loadWordById(id);
     }
   }
 
   onDelete(id: string) {
-    if (this.email === 'lqtoan37@gmail.com') {
+    if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
       this.store.deleteDictionary(id);
     }
   }
 
   onCancel() {}
 
-  getVietnameseWords(event: any) {
-    if (event.target.value) {
-      this.store.getVietnameseWords(event.target.value);
-    } else this.store.loadData();
+  onChange(event: boolean) {
+    this.store.loadData();
+    this.store.setIsChineseVietnameseSearch(event);
   }
 
-  getChineseWords(event: any) {
+  search(event: any) {
     if (event.target.value) {
-      this.store.getChineseWords(event.target.value);
+      this.store.isChineseVietnameseSearch()
+        ? this.store.loadVietnameseWords(event.target.value)
+        : this.store.loadChineseWords(event.target.value);
     } else this.store.loadData();
   }
 }

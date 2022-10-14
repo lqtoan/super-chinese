@@ -1,18 +1,18 @@
 @import '/src/styles.scss';
 
 .page {
-  padding: 1rem 8rem;
+  padding: $small-space $big-space;
   height: 75vh;
 }
 
 @media screen and (max-width: $tablet) {
   .page {
-    padding: 1rem 4rem;
+    padding: $small-space $medium-space;
   }
 }
 
 @media screen and (max-width: $mobile) {
   .page {
-    padding: 1rem;
+    padding: $small-space;
   }
 }

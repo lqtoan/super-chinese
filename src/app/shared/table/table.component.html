@@ -1,10 +1,11 @@
 <ng-content select="[slot=top]"></ng-content>
 <nz-table #virtualTable
-          [style.margin-top.rem]="'0.5'"
+          [style.margin-top.rem]="'0.25'"
           [nzSize]="'small'"
           [nzBordered]="false"
           [nzOuterBordered]="true"
-          [nzVirtualItemSize]="24"
+          [nzVirtualForTrackBy]="trackByIndex"
+          [nzVirtualItemSize]="records.length * 15 / 100"
           [nzFrontPagination]="clientPagination"
           [nzShowPagination]="clientPagination"
           [nzShowSizeChanger]="clientPagination"
@@ -42,8 +43,7 @@
   </thead>
   <tbody>
     <ng-template nz-virtual-scroll
-                 let-row
-                 let-rowIndex="index">
+                 let-row>
       <tr>
         <ng-container *ngIf="isSelectable">
           <td [nzChecked]="isChecked(row[idField])"
@@ -51,7 +51,7 @@
               nzLeft></td>
         </ng-container>
 
-        <ng-container *ngFor="let header of headers; let cellIndex = index">
+        <ng-container *ngFor="let header of headers">
           <td [nzAlign]="header.align"
               [nzLeft]="header.position === 'left'"
               [nzRight]="header.position === 'right'">

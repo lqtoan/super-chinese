@@ -8,7 +8,7 @@
   "HOME": "主页",
   "DICTIONARY": "汉越词典",
   "STAR": "显著特征",
-  "TOTALS": "全部的: {{ totals }} 字",
+  "TOTALS": "全部: {{ totals }} 词汇",
   "ACTION.CREATE": "创建",
   "ACTION.DELETE": "删除",
   "ACTION.UPDATE": "更新",

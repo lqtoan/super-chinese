@@ -14,18 +14,18 @@
               nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
       <nz-input-group class="search-input"
                       [nzSuffix]="switch">
-        <input *ngIf="isChinaVietnamSearch"
+        <input *ngIf="vm.isChineseVietnameseSearch"
                nz-input
                [placeholder]="'ACTION.LOOK_UP.CHI_VIE' | translate"
-               (keydown.enter)="getVietnameseWords($event)" />
-        <input *ngIf="!isChinaVietnamSearch"
+               (keydown.enter)="search($event)" />
+        <input *ngIf="!vm.isChineseVietnameseSearch"
                nz-input
                [placeholder]="'ACTION.LOOK_UP.VIE_CHI' | translate"
-               (keydown.enter)="getChineseWords($event)" />
+               (keydown.enter)="search($event)" />
       </nz-input-group>
       <ng-template #switch>
-        <nz-switch [ngModel]="isChinaVietnamSearch"
-                   (ngModelChange)="isChinaVietnamSearch = $event"></nz-switch>
+        <nz-switch [ngModel]="vm.isChineseVietnameseSearch"
+                   (ngModelChange)="onChange($event)"></nz-switch>
       </ng-template>
       <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
     </div>

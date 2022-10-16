@@ -116,7 +116,7 @@ export class DictionaryListComponent implements OnInit {
     this.store.setIsChineseVietnameseSearch(event);
   }
 
-  search(event: any) {
+  onSearch(event: any) {
     if (event.target.value) {
       this.store.isChineseVietnameseSearch()
         ? this.store.loadVietnameseWords(event.target.value)

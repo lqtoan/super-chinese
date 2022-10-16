@@ -17,11 +17,11 @@
         <input *ngIf="vm.isChineseVietnameseSearch"
                nz-input
                [placeholder]="'ACTION.LOOK_UP.CHI_VIE' | translate"
-               (keydown.enter)="search($event)" />
+               (keydown.enter)="onSearch($event)" />
         <input *ngIf="!vm.isChineseVietnameseSearch"
                nz-input
                [placeholder]="'ACTION.LOOK_UP.VIE_CHI' | translate"
-               (keydown.enter)="search($event)" />
+               (keydown.enter)="onSearch($event)" />
       </nz-input-group>
       <ng-template #switch>
         <nz-switch [ngModel]="vm.isChineseVietnameseSearch"

@@ -1,5 +1,5 @@
 <nz-drawer [nzVisible]="(isVisibleForm$ | async)"
-           nzWidth="calc(25vw + 200px)"
+           nzWidth="calc(25vw + 378px)"
            [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
            (nzOnClose)="onClose()">
   <ng-container *nzDrawerContent>
@@ -124,8 +124,10 @@
 
       </div>
     </form>
-    <button [disabled]="dictionaryForm.invalid"
+    <button class="create-button"
+            [disabled]="dictionaryForm.invalid"
             nz-button
+            nzSize="large"
             (click)="onSubmit()">
       {{ (isCreate$ | async) ? ("ACTION.CREATE" | translate) : ("ACTION.UPDATE" | translate) }}</button>
   </ng-container>

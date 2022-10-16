@@ -1,6 +1,6 @@
 @import '/src/variables.scss';
 
-button {
+.create-button {
   background: $primary-color;
   color: $white;
   border: none;
@@ -8,8 +8,22 @@ button {
   transition: $transition;
 }
 
-button:hover {
+.create-button:hover {
   background: $primary-color;
+  color: $white;
+  opacity: 0.8;
+}
+
+.cancel-button {
+  background: rgba($color: $black, $alpha: 0.25);
+  color: $white;
+  border: none;
+  border-radius: 0.5rem;
+  transition: $transition;
+}
+
+.cancel-button:hover {
+  background: rgba($color: $black, $alpha: 0.25);
   color: $white;
   opacity: 0.8;
 }

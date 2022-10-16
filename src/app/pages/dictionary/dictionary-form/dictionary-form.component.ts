@@ -1,7 +1,7 @@
 import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './dictionary-form.component.html',
   styleUrls: ['./dictionary-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryFormComponent implements OnInit {
   constructor(
@@ -35,8 +36,6 @@ export class DictionaryFormComponent implements OnInit {
     updatedDate: ['', Validators.compose([])],
     createdBy: ['', Validators.compose([])],
   });
-
-  private email: string = '';
 
   ngOnInit(): void {
     this.store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
@@ -66,23 +65,35 @@ export class DictionaryFormComponent implements OnInit {
   }
 
   onClose() {
-    this.store.setShowForm(false);
-    this.dictionaryForm.reset();
-    this.store.setFormValue(undefined);
+    this.onCancel();
   }
 
   onSubmit() {
-    this.email = this.userStore.getEmail();
+    this.isEdit() ? this.edit() : this.create();
+    this.dictionaryForm.reset();
+  }
+
+  isEdit(): boolean {
     let formValue = this.dictionaryForm.getRawValue();
-    if (formValue._id) {
-      formValue.updatedDate = new Date();
-      this.store.updateDictionary(formValue);
-      this.dictionaryForm.reset();
-    } else {
-      formValue.createdDate = new Date();
-      formValue.createdBy = this.userStore.getUserName();
-      this.store.createDictionary(formValue);
-      this.dictionaryForm.reset();
-    }
+    return formValue._id ? true : false;
+  }
+
+  create() {
+    let formValue = this.dictionaryForm.getRawValue();
+    formValue.createdDate = new Date();
+    formValue.createdBy = this.userStore.getUserName();
+    this.store.createDictionary(formValue);
+  }
+
+  edit() {
+    let formValue = this.dictionaryForm.getRawValue();
+    formValue.updatedDate = new Date();
+    this.store.updateDictionary(formValue);
+  }
+
+  onCancel() {
+    this.store.setShowForm(false);
+    this.dictionaryForm.reset();
+    this.store.setFormValue(undefined);
   }
 }

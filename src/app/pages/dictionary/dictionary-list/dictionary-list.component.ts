@@ -32,7 +32,7 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
-    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '4.5rem', position: 'left' },
+    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '5.5rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
@@ -122,5 +122,9 @@ export class DictionaryListComponent implements OnInit {
         ? this.store.loadVietnameseWords(event.target.value)
         : this.store.loadChineseWords(event.target.value);
     } else this.store.loadData();
+  }
+
+  onSpeak(text: string) {
+    this.store.speak(text);
   }
 }

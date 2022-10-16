@@ -263,4 +263,17 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
+
+  readonly speak = this.effect<string>(($) =>
+    $.pipe(
+      debounceTime(DEFAULT_DEBOUNCE_TIME),
+      tap((text) => {
+        let synth = speechSynthesis;
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.7; //set the speed, accepts between [0.1 - 10], defaults to 1
+        utterance.lang = 'zh-CN';
+        synth.speak(utterance);
+      })
+    )
+  );
 }

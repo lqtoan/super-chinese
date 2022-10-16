@@ -41,6 +41,20 @@
   cursor: pointer;
 }
 
+.display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $primary-color;
+    transition: $transition;
+  }
+  span:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
 nz-table {
   .delete-button {
     color: $red;

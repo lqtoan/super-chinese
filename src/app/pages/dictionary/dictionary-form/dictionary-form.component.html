@@ -127,7 +127,6 @@
     <button class="create-button"
             [disabled]="dictionaryForm.invalid"
             nz-button
-            nzSize="large"
             (click)="onSubmit()">
       {{ (isCreate$ | async) ? ("ACTION.CREATE" | translate) : ("ACTION.UPDATE" | translate) }}</button>
   </ng-container>

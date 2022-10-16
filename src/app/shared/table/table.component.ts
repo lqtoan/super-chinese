@@ -106,11 +106,11 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: number) => {
-        console.log({
-          index: data,
-          totalRows: document.getElementsByTagName('tr').length,
-          itemSize: this.table?.nzVirtualItemSize,
-        });
+        // console.log({
+        //   index: data,
+        //   totalRows: document.getElementsByTagName('tr').length,
+        //   itemSize: this.table?.nzVirtualItemSize,
+        // });
       });
   }
 

@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
-  constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
+  readonly vm$ = this.store.vm$;
 
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
@@ -85,7 +85,8 @@ export class DictionaryListComponent implements OnInit {
     },
   ];
 
-  readonly vm$ = this.store.vm$;
+  constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
+
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData();
@@ -117,6 +118,8 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onSearch(event: any) {
+    console.log(typeof event);
+
     if (event.target.value) {
       this.store.isChineseVietnameseSearch()
         ? this.store.loadVietnameseWords(event.target.value)

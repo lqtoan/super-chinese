@@ -2,7 +2,7 @@
   <app-table [records]="vm.words"
              [total]="vm.total"
              [isLoading]="vm.isLoading"
-             [headers]="vm.headers"
+             [headers]="headers"
              isSelectable="false"
              clientPagination="false">
     <div slot="top"
@@ -33,7 +33,6 @@
                  let-rowIndex="rowIndex"
                  let-value>
     </ng-template>
-
     <ng-template appTableCell="actions"
                  let-rowIndex="rowIndex"
                  let-value>
@@ -57,7 +56,6 @@
         <!-- {{ value }} -->
       </div>
     </ng-template>
-
     <ng-template appTableCell="display"
                  let-rowIndex="rowIndex"
                  let-value>
@@ -69,19 +67,16 @@
               (click)="onSpeak(value)"></span>
       </div>
     </ng-template>
-
     <ng-template appTableCell="lowercase"
                  let-rowIndex="rowIndex"
                  let-value>
       {{ value | lowercase }}
     </ng-template>
-
     <ng-template appTableCell="titlecase"
                  let-rowIndex="rowIndex"
                  let-value>
       {{ value | titlecase }}
     </ng-template>
-
     <ng-template appTableCell="hsk"
                  let-rowIndex="rowIndex"
                  let-value>
@@ -112,13 +107,11 @@
         </ng-container>
       </ng-container>
     </ng-template>
-
     <ng-template appTableCell="date"
                  let-rowIndex="rowIndex"
                  let-value>
       <div>{{ value | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
     </ng-template>
-
     <ng-template appTableCell="ellipsis"
                  let-rowIndex="rowIndex"
                  let-value>

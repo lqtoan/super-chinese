@@ -15,7 +15,6 @@
   "ACTION.UPDATE": "Cập nhật",
   "ACTION.LOOK_UP.CHI_VIE": "Hán tự -> Việt",
   "ACTION.LOOK_UP.VIE_CHI": "Việt -> Hán tự",
-  "ACTION.SEARCH": "Tìm kiếm",
   "CONFIRM_DELETE": "Đồng ý xoá?",
   "CONFIRM_DISCARD": "Đồng ý huỷ?",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Thêm mới thành công",

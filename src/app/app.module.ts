@@ -1,4 +1,4 @@
-import { interceptorProviders } from './core/inteceptor/index';
+import { interceptorProviders } from './core/inteceptors/index';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

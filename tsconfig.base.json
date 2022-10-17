@@ -25,7 +25,8 @@
       "@services/*": ["./src/app/core/services/*"],
       "@models/*": ["./src/app/core/models/*"],
       "@data/*": ["./src/app/core/data/*"],
-      "@styles/*": ["./src/assets/scss/*"]
+      "@styles/*": ["./src/assets/scss/*"],
+      "@common/*": ["./src/app/core/common/*"]
     }
   }
 }

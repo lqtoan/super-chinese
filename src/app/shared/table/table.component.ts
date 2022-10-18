@@ -64,6 +64,18 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
     this.cdr.markForCheck();
   }
 
+  ngAfterViewInit() {
+    this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: number) => {
+        // console.log({
+        //   index: data,
+        //   totalRows: document.getElementsByTagName('tr').length,
+        //   itemSize: this.table?.nzVirtualItemSize,
+        // });
+      });
+  }
+
   isChecked(id: IdType): boolean {
     return this._checkedKeys.has(id);
   }
@@ -100,18 +112,6 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
     // this.checkedKeysChange.emit(this.checkedKeys);
     console.log('onCheckAll', this._checkedKeys);
-  }
-
-  ngAfterViewInit() {
-    this.table?.cdkVirtualScrollViewport?.scrolledIndexChange
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: number) => {
-        // console.log({
-        //   index: data,
-        //   totalRows: document.getElementsByTagName('tr').length,
-        //   itemSize: this.table?.nzVirtualItemSize,
-        // });
-      });
   }
 
   ngOnDestroy() {

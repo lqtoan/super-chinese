@@ -56,7 +56,7 @@
   }
 
   .audio-list {
-    padding-right: 0.5rem;
+    padding: 0.5rem 0.5rem 5px 2px;
     height: calc(60vh - 7rem);
     background: rgba($color: $white, $alpha: 0.1);
     display: grid;
@@ -73,18 +73,19 @@
       flex-flow: column;
       justify-content: flex-start;
       align-items: flex-start;
-      box-shadow: 1px 1px 0 0 rgba($color: $gray, $alpha: 0.1);
+      box-shadow: 0 1px 0 0 rgba($color: $gray, $alpha: 0.1);
       border-radius: 0.5rem;
       cursor: pointer;
       scroll-snap-align: start;
       transition: $transition;
       &__description {
         font-weight: 400;
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
     .audio:hover {
-      background: $second-white;
+      // background: $second-white;
+      box-shadow: 0 2px 5px 1px rgba($color: $gray, $alpha: 0.25);
     }
     .audio:nth-child(odd) {
       animation: slideToRight 0.75s ease 0s backwards;

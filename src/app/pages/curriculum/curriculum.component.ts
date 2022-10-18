@@ -11,12 +11,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class CurriculumComponent implements OnInit {
   hsk1Audio: AudioConfiguration = {
     list: [],
-    height: '10rem',
+    height: '9.5rem',
     isLoading: true,
   };
   hsk2Audio: AudioConfiguration = {
     list: [],
-    height: '12rem',
+    height: '11rem',
     isLoading: true,
   };
 

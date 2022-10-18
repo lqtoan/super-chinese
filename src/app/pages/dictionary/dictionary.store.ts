@@ -1,6 +1,6 @@
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Injectable } from '@angular/core';
 import { DictionaryService } from '@services/dictionary.service';
 import { Dictionary } from '@models/dictionary.model';
 import { DEFAULT_DEBOUNCE_TIME } from '@common/default-debounce-time.const';
@@ -200,7 +200,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
-                this.setShowForm(false);
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
@@ -210,6 +209,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
+            this.setShowForm(false);
             this.loadData();
           })
         )
@@ -225,7 +225,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
-                this.setShowForm(false);
                 this.message.success(this.translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
@@ -234,6 +233,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
+            this.setShowForm(false);
             this.loadData();
           })
         )
@@ -247,11 +247,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       switchMap((param) =>
         this.service.deleteDictionary(param).pipe(
           tapResponse(
-            (data) => {
-              if (data) {
-                // console.log(data);
-                // this.setShowForm(false);
-              }
+            () => {
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (error: HttpErrorResponse) => {

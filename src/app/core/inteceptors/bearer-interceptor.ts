@@ -10,7 +10,7 @@ export class BearerTokenInterceptor implements HttpInterceptor {
     if (!request.headers.has('Authorization')) {
       const accessToken = localStorage.getItem('accessToken');
       if (accessToken) {
-        let headers = request.headers.set('Authorization', `Bearer ${accessToken}`);
+        const headers = request.headers.set('Authorization', `Bearer ${accessToken}`);
         const reqClone = request.clone({
           headers,
         });

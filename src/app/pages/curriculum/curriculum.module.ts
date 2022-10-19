@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { AudioListModule } from '../../shared/audio-list/audio-list.module';
+import { AudioListModule } from '../../shared/modules/audio-list/audio-list.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CurriculumComponent } from './../../pages/curriculum/curriculum.component';
 import { NgModule } from '@angular/core';
@@ -22,7 +22,7 @@ const nzModules = [NzTabsModule];
     NgxPaginationModule,
     AudioListModule,
     nzModules,
-    TranslateModule
+    TranslateModule,
   ],
 })
 export class CurriculumModule {}

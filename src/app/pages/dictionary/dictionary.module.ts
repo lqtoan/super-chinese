@@ -1,4 +1,4 @@
-import { TableModule } from './../../shared/table/table.module';
+import { TableModule } from '../../shared/modules/table/table.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

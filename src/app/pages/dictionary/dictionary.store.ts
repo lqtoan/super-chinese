@@ -7,7 +7,7 @@ import { DEFAULT_DEBOUNCE_TIME } from '@common/default-debounce-time.const';
 import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { TableHeader } from 'src/app/shared/table/models';
+import { TableHeader } from 'src/app/shared/modules/table/models';
 
 export interface DictionaryState {
   isLoading: boolean;
@@ -266,7 +266,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap((text) => {
-        let utterance = new SpeechSynthesisUtterance(text);
+        const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = 0.7; //set the speed, accepts between [0.1 - 10], defaults to 1
         utterance.lang = 'zh-CN';
         speechSynthesis.speak(utterance);

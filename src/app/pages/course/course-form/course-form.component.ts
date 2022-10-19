@@ -53,7 +53,7 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    let formValue = this.courseForm.getRawValue();
+    const formValue = this.courseForm.getRawValue();
     formValue.createdDate = new Date();
     this.store.createCourse(formValue);
     this.courseForm.get('name')?.reset();

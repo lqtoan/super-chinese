@@ -11,7 +11,7 @@ export class UserProfileService {
   API = `${environment.authApi}`;
 
   getUserProfile(): Observable<UserProfile> {
-    let url = `${this.API}/userinfo`;
+    const url = `${this.API}/userinfo`;
     return this.httpClient.get<UserProfile>(url);
   }
 }

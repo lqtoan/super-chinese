@@ -3,7 +3,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ExerciseComponent } from './exercise.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AudioListModule } from 'src/app/shared/audio-list/audio-list.module';
+import { AudioListModule } from 'src/app/shared/modules/audio-list/audio-list.module';
 import { RouterModule } from '@angular/router';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
@@ -22,7 +22,7 @@ const nzModules = [NzTabsModule];
     AudioListModule,
     NgxPaginationModule,
     nzModules,
-    TranslateModule
+    TranslateModule,
   ],
 })
 export class ExerciseModule {}

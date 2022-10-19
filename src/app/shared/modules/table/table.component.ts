@@ -1,3 +1,4 @@
+import { ExcelService } from './../../helpers/excel.helper.service';
 import { TableCellContext, TableCellDirective } from './directives/table-cell.directive';
 import { Table, TableHeader } from './models/index';
 import {
@@ -52,7 +53,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly cdr: ChangeDetectorRef) {}
+  constructor(private readonly cdr: ChangeDetectorRef, private readonly excelService: ExcelService) {}
 
   ngAfterContentInit() {
     this.customCells.changes.pipe(takeUntil(this.destroy$)).subscribe(() => this.mapCustomCells());
@@ -112,6 +113,10 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
     // this.checkedKeysChange.emit(this.checkedKeys);
     console.log('onCheckAll', this._checkedKeys);
+  }
+
+  private onExportExcel() {
+    this.excelService.exportExcel(this.records);
   }
 
   ngOnDestroy() {

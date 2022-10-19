@@ -1,4 +1,4 @@
-import { TableHeader } from 'src/app/shared/table/models/index';
+import { TableHeader } from 'src/app/shared/modules/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';

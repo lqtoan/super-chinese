@@ -6,8 +6,9 @@ import { TableCellDirective } from './directives/table-cell.directive';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
-const nzModules = [NzTableModule, NzEmptyModule];
+const nzModules = [NzTableModule, NzEmptyModule, NzIconModule];
 
 @NgModule({
   declarations: [TableComponent, TableCellDirective],

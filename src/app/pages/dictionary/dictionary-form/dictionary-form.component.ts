@@ -74,19 +74,19 @@ export class DictionaryFormComponent implements OnInit {
   }
 
   isEdit(): boolean {
-    let formValue = this.dictionaryForm.getRawValue();
+    const formValue = this.dictionaryForm.getRawValue();
     return formValue._id ? true : false;
   }
 
   create() {
-    let formValue = this.dictionaryForm.getRawValue();
+    const formValue = this.dictionaryForm.getRawValue();
     formValue.createdDate = new Date();
     formValue.createdBy = this.userStore.getUserName();
     this.store.createDictionary(formValue);
   }
 
   edit() {
-    let formValue = this.dictionaryForm.getRawValue();
+    const formValue = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
     this.store.updateDictionary(formValue);
   }

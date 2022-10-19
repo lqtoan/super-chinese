@@ -12,9 +12,10 @@
           [nzShowSizeChanger]="clientPagination"
           [nzPageSize]="20"
           [nzPageSizeOptions]="[20, 100, 500]"
-          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 200px)' } : { x: 'calc(100%)', y: 'calc(75vh - 160px)'}"
+          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 200px)' } : { x: 'calc(100%)', y: 'calc(75vh - 240px)'}"
           [nzLoading]="isLoading"
           [nzNoResult]="noResult"
+          [nzFooter]="footer"
           [nzData]="records">
   <thead>
     <tr>
@@ -69,6 +70,13 @@
       </tr>
     </ng-template>
   </tbody>
+  <ng-template #footer>
+
+    <span nz-icon
+          nzType="download"
+          nzTheme="outline"
+          (click)="onExportExcel()"></span>
+  </ng-template>
 </nz-table>
 
 <ng-template #noResult>

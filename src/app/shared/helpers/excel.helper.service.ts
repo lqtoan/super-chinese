@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 export class ExcelService {
   private readonly fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   private readonly fileExtension = '.xlsx';
+  private readonly fileName = `Records_${new Date().toLocaleString(undefined, { hourCycle: 'h23' })}`;
 
   constructor() {}
 
@@ -13,8 +14,7 @@ export class ExcelService {
     const workSheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(records);
     const workBook: XLSX.WorkBook = { Sheets: { data: workSheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(workBook, { bookType: 'xlsx', type: 'array' });
-    const fileName = new Date().toLocaleString(undefined, { hour12: false });
-    this.saveExcelFile(excelBuffer, fileName);
+    this.saveExcelFile(excelBuffer, this.fileName);
   }
 
   private saveExcelFile(buffer: any, fileName: string): void {

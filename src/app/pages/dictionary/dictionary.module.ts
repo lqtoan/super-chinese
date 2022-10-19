@@ -20,6 +20,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 const nzModules = [
   NzSpinModule,
@@ -33,6 +34,7 @@ const nzModules = [
   NzSelectModule,
   NzTagModule,
   NzSwitchModule,
+  NzToolTipModule,
 ];
 
 @NgModule({

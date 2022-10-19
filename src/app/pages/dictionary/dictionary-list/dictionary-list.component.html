@@ -37,13 +37,17 @@
                  let-rowIndex="rowIndex"
                  let-value>
       <div class="actions">
-        <span nz-icon
+        <span nz-tooltip
+              [nzTooltipTitle]="'ACTION.UPDATE' | translate"
+              nz-icon
               nzType="edit"
               nzTheme="fill"
               (click)="onEdit(value)"></span>
 
         <!-- Testing delete is OK-->
-        <span nz-popconfirm
+        <span nz-tooltip
+              [nzTooltipTitle]="'ACTION.DELETE' | translate"
+              nz-popconfirm
               [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
               nzOkText="OK"
               nzCancelText="Cancel"

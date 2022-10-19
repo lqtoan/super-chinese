@@ -6,6 +6,12 @@
     .ant-table-footer {
       padding: 0.5rem;
       background: $white;
+      .download {
+        transition: $transition;
+      }
+      .download:hover {
+        cursor: pointer;
+      }
     }
   }
   .ant-table {

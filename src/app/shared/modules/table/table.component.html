@@ -71,8 +71,10 @@
     </ng-template>
   </tbody>
   <ng-template #footer>
-
-    <span nz-icon
+    <span class="download"
+          nz-tooltip
+          nzTooltipTitle="Download Excel"
+          nz-icon
           nzType="download"
           nzTheme="outline"
           (click)="onExportExcel()"></span>

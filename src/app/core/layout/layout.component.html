@@ -4,7 +4,7 @@
 <div class="main">
   <nav class="navbar">
     <div>
-      <h2 routerLink="/home"
+      <h2 routerLink="'/'"
           class="navbar__logo">
         {{ 'SUPER_CHINESE' | translate }}
       </h2>
@@ -16,6 +16,7 @@
       <app-user-menu></app-user-menu>
     </div>
   </nav>
+  <!-- <ng-content select="[slot=router-outlet]"></ng-content> -->
   <router-outlet></router-outlet>
   <footer class="footer">
     <small>

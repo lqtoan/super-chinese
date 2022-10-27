@@ -44,7 +44,7 @@
 }
 
 nz-tabset {
-  height: 75vh;
+  height: calc(100vh - 10rem);
   overflow-y: hidden;
 }
 

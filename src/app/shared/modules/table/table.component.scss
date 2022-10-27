@@ -25,7 +25,7 @@
     cdk-virtual-scroll-viewport {
       min-height: 50vh !important;
       .ant-empty-image {
-        height: 12rem;
+        height: 14rem;
       }
       .ant-empty-description {
         font-size: large;
@@ -75,5 +75,5 @@ nz-table {
 }
 
 nz-empty {
-  height: 45vh;
+  height: calc(100vh - 10rem);
 }

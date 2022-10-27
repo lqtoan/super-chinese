@@ -4,7 +4,7 @@
 
 .tab-content {
   margin-top: 0.5rem;
-  height: 65vh;
+  height: calc(100vh - 10rem);
   overflow-y: scroll;
   .wordList {
     .word {

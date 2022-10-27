@@ -2,7 +2,7 @@
 
 .page {
   padding: $small-space $big-space;
-  height: 75vh;
+  height: calc(100vh - 10rem);
 }
 
 @media screen and (max-width: $tablet) {

@@ -1,4 +1,4 @@
-<ng-container *ngIf="authService.user$ | async as user">
+<ng-container *ngIf="authService.user$ | async as user; else loadingTemplate">
   <div style="color: white"
        nz-dropdown
        [nzDropdownMenu]="menu"
@@ -36,3 +36,7 @@
     </li>
   </ul>
 </nz-dropdown-menu>
+
+<ng-template #loadingTemplate>
+  <nz-spin nzSimple></nz-spin>
+</ng-template>

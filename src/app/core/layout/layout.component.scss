@@ -6,7 +6,7 @@
   .navbar {
     background: $black;
     padding: 1.5rem 8rem;
-    height: 15vh;
+    height: 8rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -46,12 +46,11 @@
   }
 
   .footer {
-    padding: 1rem 8rem;
-    height: 10vh;
-    background: $black;
-    color: $white;
+    padding: 0.5rem 8rem;
+    height: 2rem;
+    font-weight: 500;
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
   }
 
   .facebook {
@@ -79,7 +78,7 @@
       padding: 1rem 4rem;
     }
     .footer {
-      padding: 1rem 4rem;
+      padding: 0.5rem 4rem;
     }
     .facebook {
       right: 1rem;
@@ -88,7 +87,7 @@
 
   @media screen and (max-width: $mobile) {
     .navbar {
-      padding: 1rem;
+      padding: 0 1rem;
       flex-flow: column;
       justify-content: center;
       align-items: center;
@@ -100,7 +99,7 @@
       }
     }
     .footer {
-      padding: 0.25rem 1rem;
+      padding: 0.5rem 1rem;
     }
     .facebook {
       bottom: 2.5vh;

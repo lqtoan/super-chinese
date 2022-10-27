@@ -12,7 +12,8 @@
           [nzShowSizeChanger]="clientPagination"
           [nzPageSize]="20"
           [nzPageSizeOptions]="[20, 100, 500]"
-          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(75vh - 160px)' } : { x: 'calc(100%)', y: 'calc(75vh - 200px)'}"
+          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(100vh - 20rem)' } : { x: 'calc(100%)', y: 'calc(100vh - 22.5rem)'}"
+          [nzFooter]="footer"
           [nzLoading]="isLoading"
           [nzNoResult]="noResult"
           [nzData]="records">

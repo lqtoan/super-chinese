@@ -35,7 +35,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   private allRecordsChecked = false;
   private indeterminate = false;
 
-  readonly trackByIndex: any;
+  trackByIndex() {}
   @Input() records: RecordType[] = [];
   @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
@@ -116,7 +116,7 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   }
 
   private onExportExcel() {
-    this.excelService.exportExcel(this.records);
+    this.excelService.exportExcel(this.records, this.headers);
   }
 
   ngOnDestroy() {

@@ -12,8 +12,9 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
-const nzModules = [NzAvatarModule, NzDropDownModule, NzIconModule, NzButtonModule, NzSpinModule];
+const nzModules = [NzAvatarModule, NzDropDownModule, NzIconModule, NzButtonModule, NzSpinModule, NzNotificationModule];
 
 @NgModule({
   declarations: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent],

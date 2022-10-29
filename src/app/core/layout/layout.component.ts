@@ -1,6 +1,6 @@
-import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-layout',
@@ -10,7 +10,21 @@ import { AuthenticationService } from '../authentication/authentication.service'
 })
 export class LayoutComponent implements OnInit {
   readonly year: Date = new Date();
-  constructor(public readonly authService: AuthenticationService, private readonly router: Router) {}
+  constructor(
+    public readonly authService: AuthenticationService,
+    private readonly notification: NzNotificationService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.firstNotification();
+  }
+
+  firstNotification() {
+    setTimeout(() => {
+      this.notification.blank(
+        'Notification Title',
+        'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
+      );
+    }, 400);
+  }
 }

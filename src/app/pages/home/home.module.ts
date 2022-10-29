@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 
+const nzModules = [];
+
 @NgModule({
   declarations: [HomeComponent],
   imports: [
@@ -15,6 +17,7 @@ import { RouterModule } from '@angular/router';
       },
     ]),
     TranslateModule,
+    // nzModules,
   ],
 })
 export class HomeModule {}

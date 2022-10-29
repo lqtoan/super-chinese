@@ -1,29 +1,5 @@
-@import 'src/styles.scss';
-
-.ant-dropdown {
-  margin-top: 0.25rem;
-}
-[nz-menu] {
-  border-radius: 0.5rem;
-}
-.ant-dropdown-trigger {
-  padding: 0.125rem;
-  border: 2px solid rgba($color: $gray, $alpha: 0.75);
-  border-radius: 2rem;
-  transition: $transition;
-}
-.ant-dropdown-trigger:hover {
-  background: $gray;
-}
-.ant-dropdown-menu-item {
-  padding: 0.25rem 0.5rem;
-  color: $black;
-  background: $white;
-  transition: $transition;
-}
-.ant-dropdown-menu-item:hover {
-  background: $second-white;
-}
+@import 'src/variables.scss';
+@import 'dropdown';
 
 .logout {
   color: $red;

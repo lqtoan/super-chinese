@@ -32,12 +32,12 @@ export class DictionaryListComponent implements OnInit {
   ];
 
   private readonly headers: TableHeader<Dictionary>[] = [
-    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '5.5rem', position: 'left' },
+    { label: 'DICTIONARY.DISPLAY', field: 'display', cellType: 'display', width: '6rem', position: 'left' },
     {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
       cellType: 'lowercase',
-      width: '7rem',
+      width: '8rem',
       sortOrder: null,
       sortFn: this.sortPinyin,
       sortPriority: false,

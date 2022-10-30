@@ -65,7 +65,7 @@ export class DictionaryListComponent implements OnInit {
       label: 'CREATED',
       field: 'createdDate',
       cellType: 'date',
-      width: '10rem',
+      width: '11rem',
       sortOrder: null,
       sortFn: this.sortCreatedDate,
       sortPriority: false,
@@ -74,7 +74,7 @@ export class DictionaryListComponent implements OnInit {
       label: 'UPDATED',
       field: 'updatedDate',
       cellType: 'date',
-      width: '10rem',
+      width: '11rem',
     },
     { label: 'CREATED_BY', field: 'createdBy', cellType: 'ellipsis', width: '5.75rem' },
     {

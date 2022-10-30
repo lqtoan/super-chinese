@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
@@ -20,11 +20,6 @@ export class LayoutComponent implements OnInit {
   }
 
   firstNotification() {
-    setTimeout(() => {
-      this.notification.blank(
-        'Notification Title',
-        'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
-      );
-    }, 400);
+    this.notification.blank('This is title', 'This is content');
   }
 }

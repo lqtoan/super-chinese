@@ -122,6 +122,14 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
 
+  readonly refreshData = this.effect(($) =>
+    $.pipe(
+      tap(() => {
+        this.loadData();
+      })
+    )
+  );
+
   readonly loadVietnameseWords = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
@@ -210,7 +218,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.loadData();
+            this.refreshData();
           })
         )
       )
@@ -234,7 +242,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.loadData();
+            this.refreshData();
           })
         )
       )
@@ -255,7 +263,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.loadData();
+            this.refreshData();
           })
         )
       )

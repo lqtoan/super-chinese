@@ -37,7 +37,7 @@ export class DictionaryListComponent implements OnInit {
       label: 'DICTIONARY.PINYIN',
       field: 'pinyin',
       cellType: 'lowercase',
-      width: '8rem',
+      width: '7.5rem',
       sortOrder: null,
       sortFn: this.sortPinyin,
       sortPriority: false,

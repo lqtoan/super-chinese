@@ -14,7 +14,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { InputBoolean } from 'ng-zorro-antd/core/util';
 
 @Component({
   selector: 'app-table',
@@ -41,8 +40,8 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   @Input() total: number = this.records.length;
   @Input() isLoading: boolean = true;
   @Input() headers: TableHeader<RecordType>[] = [];
-  @Input() @InputBoolean() isSelectable = false;
-  @Input() @InputBoolean() clientPagination = false;
+  @Input() isSelectable: boolean = false;
+  @Input() clientPagination: boolean = false;
 
   // @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 

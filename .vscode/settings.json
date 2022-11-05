@@ -13,5 +13,8 @@
     "spreadsheetml",
     "titlecase",
     "Twotone"
-  ]
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

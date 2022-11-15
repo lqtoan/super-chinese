@@ -43,13 +43,16 @@
         <nz-divider></nz-divider>
         <div *ngFor="let item of audio.text; even as isEven; count as total"
              class="audio__description">
-          <ng-container *ngIf="total > 1; else notText">
-            <span [style.color]="'#81A1C1'"
-                  *ngIf="isEven">A: {{ item }}</span>
-            <span [style.color]="'#A3BE8C'"
-                  *ngIf="!isEven">B: {{ item }}</span>
-          </ng-container>
-          <ng-template #notText>{{ item }}</ng-template>
+          <!-- <span>{{ item }}</span> -->
+          <ng-template [ngTemplateOutlet]="detailsTemplates[item.detailsType] || defaultListDetails"
+                       [ngTemplateOutletContext]="{ $implicit: item.detailsType, detailsType: item.detailsType }">
+          </ng-template>
+          <ng-template #defaultListDetails>
+            {{ item }}
+          </ng-template>
+          <ng-template appListDetails="a">
+            A: {{ item }}
+          </ng-template>
         </div>
       </ul>
     </div>

@@ -58,10 +58,7 @@
               [nzLeft]="header.position === 'left'"
               [nzRight]="header.position === 'right'">
             <ng-template [ngTemplateOutlet]="cellTemplates[header.cellType] || defaultCell"
-                         [ngTemplateOutletContext]="{
-                $implicit: header.field && row[header.field],
-                cellType: header.cellType
-              }">
+                         [ngTemplateOutletContext]="{ $implicit: header.field && row[header.field], cellType: header.cellType }">
             </ng-template>
             <ng-template #defaultCell
                          let-cellValue>{{ cellValue }}</ng-template>

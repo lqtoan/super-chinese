@@ -79,6 +79,7 @@
       scroll-snap-align: start;
       transition: $transition;
       &__description {
+        color: $gray;
         font-weight: 400;
         font-size: 14px;
       }

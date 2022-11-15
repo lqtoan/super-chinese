@@ -20,6 +20,6 @@ export class LayoutComponent implements OnInit {
   }
 
   firstNotification() {
-    this.notification.blank('This is title', 'This is content');
+    this.notification.blank('Bảo trì', 'Tính năng files nghe giáo trình hiện đang được bảo trì.');
   }
 }

@@ -20,24 +20,4 @@ export class AudioListComponent {
   onSelect(audio: Audio): void {
     this.selectedAudio = audio;
   }
-
-  private readonly destroy$ = new Subject<void>();
-
-  constructor(private readonly cdr: ChangeDetectorRef) {}
-
-  @ContentChildren(ListDetailsDirective) readonly customDetails!: QueryList<ListDetailsDirective<AudioConfiguration>>;
-  private detailsTemplates: Record<string, TemplateRef<ListDetailsContext<Audio>>> = {};
-
-  ngAfterContentInit() {
-    this.customDetails.changes.pipe(takeUntil(this.destroy$)).subscribe(() => this.mapCustomDetails());
-    this.mapCustomDetails();
-  }
-
-  private mapCustomDetails() {
-    this.detailsTemplates = this.customDetails.reduce(
-      (acc, item) => ({ ...acc, [item.type || '']: item.template }),
-      {}
-    );
-    this.cdr.markForCheck();
-  }
 }

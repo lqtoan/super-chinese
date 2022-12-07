@@ -41,18 +41,14 @@
           (click)="onSelect(audio)">
         <strong class="audio__title">{{ audio.title | translate }}</strong>
         <nz-divider></nz-divider>
-        <div *ngFor="let item of audio.text; even as isEven; count as total"
+        <div *ngFor="let text of audio.texts; even as isEven; count as total"
              class="audio__description">
-          <!-- <span>{{ item }}</span> -->
-          <ng-template [ngTemplateOutlet]="detailsTemplates[item.detailsType] || defaultListDetails"
-                       [ngTemplateOutletContext]="{ $implicit: item.detailsType, detailsType: item.detailsType }">
-          </ng-template>
-          <ng-template #defaultListDetails>
-            {{ item }}
-          </ng-template>
-          <ng-template appListDetails="a">
-            A: {{ item }}
-          </ng-template>
+          <ng-container *ngIf="text.character == 'a'">
+            A: {{ text.text }}
+          </ng-container>
+          <ng-container *ngIf="text.character == 'b'">
+            B: {{ text.text }}
+          </ng-container>
         </div>
       </ul>
     </div>

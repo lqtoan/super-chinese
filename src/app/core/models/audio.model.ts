@@ -1,10 +1,13 @@
 export interface Audio {
   title: string;
   url: string;
-  texts?: {
-    text: string;
-    character?: string;
-  }[];
+  texts?:
+    | {
+        text: string;
+        character?: string;
+      }[]
+    | string[]
+    | string;
 }
 
 export interface AudioConfiguration {

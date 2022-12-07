@@ -19,6 +19,11 @@ export class CurriculumComponent implements OnInit {
     height: '11rem',
     isLoading: true,
   };
+  hsk3Audio: AudioConfiguration = {
+    list: [],
+    height: '11rem',
+    isLoading: true,
+  };
 
   constructor(private readonly audioService: AudioService) {}
 
@@ -28,6 +33,9 @@ export class CurriculumComponent implements OnInit {
     });
     this.audioService.getHsk2CurriculumAudioList().subscribe((res) => {
       (this.hsk2Audio.list = res), (this.hsk2Audio.isLoading = false);
+    });
+    this.audioService.getHsk3CurriculumAudioList().subscribe((res) => {
+      (this.hsk3Audio.list = res), (this.hsk3Audio.isLoading = false);
     });
   }
 }

@@ -13,6 +13,5 @@ export const environment = {
     redirectUri: window.location.origin,
   },
   authApi: 'https://hsk-1.us.auth0.com',
-  // api: 'https://super-chinese-api.herokuapp.com/api/',
-  api: 'https://super-chinese-api.up.railway.app/api/',
+  api: 'https://super-chinese-api-production.up.railway.app/api/',
 };

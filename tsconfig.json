@@ -12,6 +12,11 @@
   "resolveJsonModule": true,
   "allowSyntheticDefaultImports": true,
   "compilerOptions": {
+    "paths": {
+      "audio": [
+        "dist/audio"
+      ]
+    },
     "types": ["jest", "node"]
   },
   "angularCompilerOptions": {

@@ -45,6 +45,39 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
 
+  //#region Updater
+  readonly setHeaders = this.updater<TableHeader<Dictionary>[]>(
+    (state, headers): DictionaryState => ({
+      ...state,
+      headers,
+    })
+  );
+  readonly setIsChineseVietnameseSearch = this.updater<boolean>(
+    (state, isChineseVietnameseSearch): DictionaryState => ({
+      ...state,
+      isChineseVietnameseSearch,
+    })
+  );
+  readonly setShowForm = this.updater<boolean>(
+    (state, isVisibleForm): DictionaryState => ({
+      ...state,
+      isVisibleForm,
+    })
+  );
+  readonly setIsCreate = this.updater<boolean>(
+    (state, isCreate): DictionaryState => ({
+      ...state,
+      isCreate,
+    })
+  );
+  readonly setFormValue = this.updater<Dictionary | undefined>(
+    (state, formValue): DictionaryState => ({
+      ...state,
+      formValue,
+    })
+  );
+  //#region
+
   readonly vm$ = this.select(
     ({ isLoading, words, total, isChineseVietnameseSearch }) => ({
       isLoading,
@@ -56,48 +89,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-
-  readonly setHeaders = this.updater<TableHeader<Dictionary>[]>(
-    (state, headers): DictionaryState => ({
-      ...state,
-      headers,
-    })
-  );
-
-  readonly setIsChineseVietnameseSearch = this.updater<boolean>(
-    (state, isChineseVietnameseSearch): DictionaryState => ({
-      ...state,
-      isChineseVietnameseSearch,
-    })
-  );
-
-  readonly setShowForm = this.updater<boolean>(
-    (state, isVisibleForm): DictionaryState => ({
-      ...state,
-      isVisibleForm,
-    })
-  );
-
-  readonly setIsCreate = this.updater<boolean>(
-    (state, isCreate): DictionaryState => ({
-      ...state,
-      isCreate,
-    })
-  );
-
-  readonly setFormValue = this.updater<Dictionary | undefined>(
-    (state, formValue): DictionaryState => ({
-      ...state,
-      formValue,
-    })
-  );
-
   readonly headers$ = this.select((state) => state.headers, { debounce: true });
   readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
 
+  //#region Effect
   readonly loadData = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
@@ -121,7 +119,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly refreshData = this.effect(($) =>
     $.pipe(
       tap(() => {
@@ -129,7 +126,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       })
     )
   );
-
   readonly loadVietnameseWords = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
@@ -153,7 +149,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly loadChineseWords = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
@@ -177,7 +172,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly loadWordById = this.effect<string>((trigger$) =>
     trigger$.pipe(
       switchMap((id) =>
@@ -199,7 +193,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly createDictionary = this.effect<Dictionary>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
@@ -224,7 +217,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly updateDictionary = this.effect<Dictionary>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
@@ -248,7 +240,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly deleteDictionary = this.effect<string>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
@@ -269,7 +260,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-
   readonly speak = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
@@ -281,4 +271,5 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       })
     )
   );
+  //#region
 }

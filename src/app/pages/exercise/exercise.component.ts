@@ -35,7 +35,7 @@ export class ExerciseComponent implements OnInit {
     this.audioService.getHsk2ExerciseAudioList().subscribe((res) => {
       (this.hsk2Audio.list = res), (this.hsk2Audio.isLoading = false);
     });
-    this.audioService.getHsk2ExerciseAudioList().subscribe((res) => {
+    this.audioService.getHsk3ExerciseAudioList().subscribe((res) => {
       (this.hsk3Audio.list = res), (this.hsk3Audio.isLoading = false);
     });
   }

@@ -14,12 +14,12 @@ html {
   font-size: $font-size;
 }
 body {
-  margin: auto;
   max-width: $max-width-container;
   background: $white;
   color: $black;
   font-family: $primary-font !important;
   font-display: fallback;
+  overflow-y: hidden;
 }
 
 h1 {

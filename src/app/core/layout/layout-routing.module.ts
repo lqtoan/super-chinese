@@ -42,14 +42,6 @@ const routes: Routes = [
         loadChildren: () => import('../../pages/course/course.module').then((m) => m.CourseModule),
       },
       {
-        path: 'new',
-        loadChildren: () => import('../../pages/new/new.module').then((m) => m.NewModule),
-      },
-      {
-        path: 'support',
-        loadChildren: () => import('../../pages/support/support.module').then((m) => m.SupportModule),
-      },
-      {
         path: '**',
         component: NotFoundComponent,
         pathMatch: 'full',

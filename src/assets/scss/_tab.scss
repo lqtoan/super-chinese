@@ -1,6 +1,5 @@
 ::ng-deep {
   .ant-tabs-nav-wrap {
-    padding: 0 $big-space;
     background: $white;
   }
   .ant-tabs-top > .ant-tabs-nav {
@@ -19,7 +18,7 @@
     text-shadow: none;
   }
   .ant-tabs-tab {
-    padding: $small-space 0;
+    padding: 0 0 0.5rem;
     color: $black;
     font-size: 1rem;
     font-weight: 600;
@@ -38,34 +37,17 @@
     transition: $transition;
   }
   .ant-tabs-content-holder {
-    padding: 0rem $big-space;
     margin-bottom: 0;
   }
 }
 
 nz-tabset {
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 11rem);
   overflow-y: hidden;
 }
 
 @media screen and (max-width: $tablet) {
-  ::ng-deep {
-    .ant-tabs-nav-wrap {
-      padding: 0 $medium-space;
-    }
-    .ant-tabs-content-holder {
-      padding: 0 $medium-space;
-    }
-  }
 }
 
 @media screen and (max-width: $mobile) {
-  ::ng-deep {
-    .ant-tabs-nav-wrap {
-      padding: 0 $small-space;
-    }
-    .ant-tabs-content-holder {
-      padding: 0 $small-space;
-    }
-  }
 }

@@ -13,11 +13,23 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
-const nzModules = [NzAvatarModule, NzDropDownModule, NzIconModule, NzButtonModule, NzSpinModule, NzNotificationModule];
+const nzModules = [
+  NzAvatarModule,
+  NzDropDownModule,
+  NzIconModule,
+  NzButtonModule,
+  NzSpinModule,
+  NzNotificationModule,
+  NzToolTipModule,
+  NzTabsModule,
+];
 
 @NgModule({
-  declarations: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent],
+  declarations: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent, NavbarComponent],
   imports: [CommonModule, TranslateModule, nzModules, LayoutRoutingModule],
   exports: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],

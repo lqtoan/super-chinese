@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(public readonly authService: AuthenticationService) {}
 
   ngOnInit(): void {}
+
+  confirm() {
+    this.authService.logout();
+  }
+
+  cancel() {}
 }

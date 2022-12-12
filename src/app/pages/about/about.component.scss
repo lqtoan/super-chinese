@@ -1,66 +1,58 @@
 @import '/src/variables.scss';
-@import 'layout';
 
-.page {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  a {
-    display: inline-block;
-    text-indent: 0;
-  }
-  .info {
-    margin-left: 1rem;
-    padding: 0.25rem 0.5rem;
-    color: $primary-color;
-    font-weight: bold;
-    border: 2px solid $primary-color;
+a {
+  display: inline-block;
+  text-indent: 0;
+}
+.info {
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  color: $primary-color;
+  font-weight: bold;
+  border: 2px solid $primary-color;
+  border-radius: 5px;
+  transition: $transition;
+}
+.info:hover {
+  color: $white;
+  background: $primary-color;
+}
+.text {
+  font-size: 1rem;
+  line-height: $line-height;
+  text-indent: 2rem;
+  text-align: justify;
+}
+.text > .text {
+  margin-bottom: 1rem;
+}
+.slider {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  box-shadow: 0 0 10px 1px rgba($color: $gray, $alpha: 0.5) inset;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  img {
+    aspect-ratio: 16/9;
+    height: 250px;
+    width: auto;
+    box-shadow: 0 0 5px 1px rgba($color: $gray, $alpha: 0.5);
     border-radius: 5px;
-    transition: $transition;
-  }
-  .info:hover {
-    color: $white;
-    background: $primary-color;
-  }
-  .text {
-    font-size: 1rem;
-    line-height: $line-height;
-    text-indent: 2rem;
-    text-align: justify;
-  }
-  .text > .text {
-    margin-bottom: 1rem;
-  }
-  .slider {
-    margin: 1rem 0;
-    padding: 0.5rem;
-    background: #fff;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: column;
-    grid-gap: 1rem;
-    box-shadow: 0 0 10px 1px rgba($color: $gray, $alpha: 0.5) inset;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    img {
-      aspect-ratio: 16/9;
-      height: 250px;
-      width: auto;
-      box-shadow: 0 0 5px 1px rgba($color: $gray, $alpha: 0.5);
-      border-radius: 5px;
-      object-fit: contain;
-      scroll-snap-align: center;
-    }
+    object-fit: contain;
+    scroll-snap-align: center;
   }
 }
 
 @media screen and (max-width: $mobile) {
-  .page {
-    padding: calc(2 * $small-space);
-    .slider {
-      img {
-        width: 75vw;
-        height: 200px;
-      }
+  .slider {
+    img {
+      width: 75vw;
+      height: 200px;
     }
   }
 }

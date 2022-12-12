@@ -20,6 +20,9 @@ export class LayoutComponent implements OnInit {
   }
 
   firstNotification() {
-    this.notification.blank('Bảo trì', 'Tính năng files nghe giáo trình hiện đang được bảo trì.');
+    this.notification.blank(
+      'Thông báo',
+      'Trang web đang trong giai đoạn đại cập nhật! Đừng bỏ lỡ những điều tốt đẹp sắp đến nhé!'
+    );
   }
 }

@@ -1,0 +1,41 @@
+@import 'src/variables.scss';
+
+.navbar {
+  background: $black;
+  padding: 1rem calc(3 * 100vw / 12);
+  height: 7.25rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  &__logo {
+    height: 2.5rem;
+    width: auto;
+    cursor: pointer;
+  }
+  &__slogan {
+    color: $white;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .navbar {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .navbar {
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    &__logo {
+      width: 100%;
+    }
+    &__slogan {
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+}

@@ -1,6 +1,12 @@
 @import 'src/variables.scss';
 
 .select {
-  padding: 0.425rem;
-  color: $white;
+  padding: 0.25rem;
+  background: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select:hover {
+  cursor: pointer;
 }

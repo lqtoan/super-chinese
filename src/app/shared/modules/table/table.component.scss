@@ -23,7 +23,7 @@
       background: $second-white;
     }
     cdk-virtual-scroll-viewport {
-      min-height: calc(100vh - 22.5rem) !important;
+      min-height: calc(100vh - 20rem) !important;
       .ant-empty-image {
         height: 12rem;
       }
@@ -75,5 +75,5 @@ nz-table {
 }
 
 nz-empty {
-  height: calc(100vh - 24rem);
+  height: calc(100vh - 22rem);
 }

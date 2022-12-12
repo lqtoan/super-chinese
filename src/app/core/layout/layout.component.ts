@@ -25,4 +25,10 @@ export class LayoutComponent implements OnInit {
       'Trang web đang trong giai đoạn đại cập nhật! Đừng bỏ lỡ những điều tốt đẹp sắp đến nhé!'
     );
   }
+
+  confirm() {
+    this.authService.logout();
+  }
+
+  cancel() {}
 }

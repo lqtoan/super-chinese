@@ -15,7 +15,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 const nzModules = [
   NzAvatarModule,
@@ -25,7 +25,7 @@ const nzModules = [
   NzSpinModule,
   NzNotificationModule,
   NzToolTipModule,
-  NzTabsModule,
+  NzPopconfirmModule,
 ];
 
 @NgModule({

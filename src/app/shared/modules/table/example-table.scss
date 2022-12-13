@@ -1,0 +1,41 @@
+.actions {
+  display: flex;
+  justify-content: center;
+}
+.actions:hover {
+  cursor: pointer;
+}
+.display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $primary-color;
+    transition: $transition;
+  }
+  span:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+nz-table {
+  .delete-button {
+    color: $red;
+    transition: $transition;
+  }
+  .delete-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  .ant-dropdown-trigger {
+    border: unset !important;
+  }
+}
+.ant-tag {
+  margin: 0;
+  padding: 0 0.25rem;
+  width: 3.5rem;
+  border-width: 1.5px;
+  border-radius: 2.5px;
+  font-weight: 400;
+}

@@ -19,7 +19,6 @@ body {
   color: $black;
   font-family: $primary-font !important;
   font-display: fallback;
-  overflow-y: hidden;
 }
 
 h1 {
@@ -82,12 +81,8 @@ li {
 
 /****************** thumbnail ******************/
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background: $white !important;
+  display: none;
 }
 ::-webkit-scrollbar-thumb {
-  height: initial;
-  background: $magenta-blue-white-linear-gradient !important;
-  border-radius: 5px;
+  display: none;
 }

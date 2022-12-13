@@ -22,7 +22,8 @@ export class LayoutComponent implements OnInit {
   firstNotification() {
     this.notification.blank(
       'Thông báo',
-      'Trang web đang trong giai đoạn đại cập nhật! Đừng bỏ lỡ những điều tốt đẹp sắp đến nhé!'
+      'Trang web đang trong giai đoạn đại cập nhật! Đừng bỏ lỡ những điều tốt đẹp sắp đến nhé!',
+      { nzDuration: 5000 }
     );
   }
 

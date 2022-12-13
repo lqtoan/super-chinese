@@ -3,7 +3,7 @@
 @import 'spinner';
 
 .tab-content {
-  margin-top: 0.5rem;
+  padding: 0.5rem 0;
   height: calc(100vh - 14rem);
   overflow-y: scroll;
   .wordList {

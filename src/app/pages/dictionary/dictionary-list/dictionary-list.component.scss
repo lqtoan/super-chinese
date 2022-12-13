@@ -4,7 +4,8 @@
   src: url('../../../../assets/fonts/pinyin.woff') format('woff');
 }
 
-.top-table {
+.top {
+  margin-bottom: 0.5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -33,49 +34,41 @@
     text-overflow: ellipsis;
   }
 }
-.actions {
-  display: flex;
-  justify-content: center;
-}
-.actions:hover {
-  cursor: pointer;
-}
 
-.display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  span {
-    color: $primary-color;
-    transition: $transition;
-  }
-  span:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-}
-
-nz-table {
-  .delete-button {
-    color: $red;
-    transition: $transition;
-  }
-  .delete-button:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
-  .ant-dropdown-trigger {
-    border: unset !important;
-  }
-}
-
-.ant-tag {
+.wordList {
   margin: 0;
-  padding: 0 0.25rem;
-  width: 3.5rem;
-  border-width: 1.5px;
-  border-radius: 2.5px;
-  font-weight: 400;
+  height: calc(100vh - 15rem);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  .word {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    scroll-snap-align: start;
+    &--name {
+      min-width: 4rem;
+      color: $black;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    &--pinyin {
+      color: $primary-color;
+    }
+    &--define {
+      color: #81a1c1;
+    }
+    .wrap {
+      margin-left: 0.5rem;
+      display: flex;
+      flex-flow: column;
+      line-height: 100%;
+    }
+  }
+  .word:not(:last-of-type) {
+    border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
+  }
 }
 
 @media screen and (max-width: $mobile) {

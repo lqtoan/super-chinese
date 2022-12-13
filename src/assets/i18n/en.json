@@ -23,6 +23,8 @@
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Create successfully",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Update successfully",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Delete successfully",
+  "NOTIFICATION.UPDATE_DECLINE": "You dont have permission to edit",
+  "NOTIFICATION.DELETE_DECLINE": "You dont have permission to delete",
   "NO_RESULT": "No result",
   "DICTIONARY.DISPLAY": "Word",
   "DICTIONARY.PINYIN": "Pinyin",

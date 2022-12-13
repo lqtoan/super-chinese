@@ -44,6 +44,24 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   ) {
     super(initialState);
   }
+  readonly vm$ = this.select(
+    this.state$,
+    ({ isLoading, words, total, isChineseVietnameseSearch }) => ({
+      isLoading,
+      words,
+      total,
+      isChineseVietnameseSearch,
+    }),
+    {
+      debounce: true,
+    }
+  );
+  readonly words$ = this.select(this.state$, ({ words }) => words);
+  readonly headers$ = this.select((state) => state.headers, { debounce: true });
+  readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
+  readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
+  readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
+  readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
   readonly setHeaders = this.updater<TableHeader<Dictionary>[]>(
@@ -52,6 +70,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       headers,
     })
   );
+  readonly addWord = this.updater<Dictionary>((state, word): DictionaryState => {
+    state.words.unshift(word);
+    return {
+      ...state,
+    };
+  });
   readonly setIsChineseVietnameseSearch = this.updater<boolean>(
     (state, isChineseVietnameseSearch): DictionaryState => ({
       ...state,
@@ -77,23 +101,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     })
   );
   //#region
-
-  readonly vm$ = this.select(
-    ({ isLoading, words, total, isChineseVietnameseSearch }) => ({
-      isLoading,
-      words,
-      total,
-      isChineseVietnameseSearch,
-    }),
-    {
-      debounce: true,
-    }
-  );
-  readonly headers$ = this.select((state) => state.headers, { debounce: true });
-  readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
-  readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
-  readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
-  readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Effect
   readonly loadData = this.effect(($) =>
@@ -201,6 +208,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
+                this.patchState({ isLoading: false });
+                this.addWord(data);
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
@@ -211,7 +220,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.refreshData();
+            this.patchState({ isLoading: false });
           })
         )
       )
@@ -251,6 +260,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);
+              console.log(error);
             }
           ),
           finalize(() => {

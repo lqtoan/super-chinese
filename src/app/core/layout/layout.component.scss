@@ -2,14 +2,14 @@
 @import 'animation';
 
 .top {
-  padding: 0.25rem;
+  padding: 0.5rem;
   height: 1.75rem;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   .facebook {
-    margin-right: 0.25rem;
+    margin-right: 0.5rem;
     color: #2374e1;
     font-size: 14.5px;
   }

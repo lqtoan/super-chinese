@@ -25,10 +25,10 @@ const routes: Routes = [
         path: 'about',
         loadChildren: () => import('../../pages/about/about.module').then((m) => m.AboutModule),
       },
-      {
-        path: 'vocabulary',
-        loadChildren: () => import('../../pages/vocabulary/vocabulary.module').then((m) => m.VocabularyModule),
-      },
+      // {
+      //   path: 'vocabulary',
+      //   loadChildren: () => import('../../pages/vocabulary/vocabulary.module').then((m) => m.VocabularyModule),
+      // },
       {
         path: 'curriculum',
         loadChildren: () => import('../../pages/curriculum/curriculum.module').then((m) => m.CurriculumModule),
@@ -37,10 +37,10 @@ const routes: Routes = [
         path: 'exercise',
         loadChildren: () => import('../../pages/exercise/exercise.module').then((m) => m.ExerciseModule),
       },
-      {
-        path: 'course',
-        loadChildren: () => import('../../pages/course/course.module').then((m) => m.CourseModule),
-      },
+      // {
+      //   path: 'course',
+      //   loadChildren: () => import('../../pages/course/course.module').then((m) => m.CourseModule),
+      // },
       {
         path: '**',
         component: NotFoundComponent,

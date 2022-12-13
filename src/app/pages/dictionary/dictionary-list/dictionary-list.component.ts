@@ -1,8 +1,11 @@
+import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from 'src/app/shared/modules/table/models/index';
 import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dictionary-list',
@@ -10,10 +13,10 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
   styleUrls: ['./dictionary-list.component.scss'],
   providers: [DictionaryStore, UserProfileStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this.store.vm$;
+  readonly destroy$ = new Subject<void>();
 
   private readonly sortPinyin = (a: Dictionary, b: Dictionary) => a.pinyin.localeCompare(b.pinyin);
   private readonly sortHsk = (a: Dictionary, b: Dictionary) => a.hsk.localeCompare(b.hsk);
@@ -85,12 +88,18 @@ export class DictionaryListComponent implements OnInit {
     },
   ];
 
-  constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
+  constructor(
+    private readonly store: DictionaryStore,
+    private readonly userStore: UserProfileStore,
+    private readonly message: NzMessageService,
+    private readonly translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.store.setHeaders(this.headers);
     this.store.loadData();
     this.userStore.loadData();
+    this.store.words$.pipe(takeUntil(this.destroy$)).subscribe();
   }
 
   onCreate() {
@@ -101,12 +110,16 @@ export class DictionaryListComponent implements OnInit {
   onEdit(id: string) {
     if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
       this.store.loadWordById(id);
+    } else {
+      this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
     }
   }
 
   onDelete(id: string) {
     if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
       this.store.deleteDictionary(id);
+    } else {
+      this.message.error(this.translateService.instant('NOTIFICATION.DELETE_DECLINE'));
     }
   }
 

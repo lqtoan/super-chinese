@@ -1,9 +1,10 @@
 import { UserProfileStore } from './../../user-profile/user-profile.store';
-import { Dictionary } from '@models/dictionary.model';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { Word } from '@models/word.model';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -26,7 +27,7 @@ export class DictionaryFormComponent implements OnInit {
   private readonly initDate: Date = new Date();
 
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
-    _id: [],
+    wordId: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     chinaVietnamWord: ['', Validators.compose([])],
@@ -50,7 +51,7 @@ export class DictionaryFormComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  setValue(data: Partial<Dictionary>) {
+  setValue(data: Partial<Word>) {
     this.dictionaryForm.patchValue({
       _id: data._id,
       display: data.display,
@@ -75,20 +76,21 @@ export class DictionaryFormComponent implements OnInit {
 
   isEdit(): boolean {
     const formValue = this.dictionaryForm.getRawValue();
-    return formValue._id ? true : false;
+    return formValue.wordId ? true : false;
   }
 
   create() {
     const formValue = this.dictionaryForm.getRawValue();
+    formValue.wordId = Guid.create().toString();
     formValue.createdDate = new Date();
     formValue.createdBy = this.userStore.getUserName();
-    this.store.createDictionary(formValue);
+    this.store.createWord(formValue);
   }
 
   edit() {
     const formValue = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
-    this.store.updateDictionary(formValue);
+    this.store.updateWord(formValue);
   }
 
   onCancel() {

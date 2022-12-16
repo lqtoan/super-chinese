@@ -15,6 +15,7 @@
   "ACTION.UPDATE": "Edit",
   "ACTION.LOOK_UP.CHI_VIE": "Chinese -> Vietnamese",
   "ACTION.LOOK_UP.VIE_CHI": "Vietnamese -> Chinese",
+  "ACTION.SEARCH": "Look up",
   "CONFIRM_DELETE": "Are you sure delete?",
   "CONFIRM_DISCARD": "Are you sure discard?",
   "CONFIRM_LOGOUT": "Are you sure logout",

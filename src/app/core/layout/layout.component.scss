@@ -2,7 +2,7 @@
 @import 'animation';
 
 .top {
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   height: 1.75rem;
   background: $linear-gradient;
   display: flex;
@@ -11,7 +11,6 @@
   .facebook {
     margin-right: 0.5rem;
     color: #2374e1;
-    font-size: 14.5px;
   }
   .logout:hover {
     cursor: pointer;

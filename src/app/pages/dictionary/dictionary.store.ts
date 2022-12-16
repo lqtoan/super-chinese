@@ -2,30 +2,30 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DictionaryService } from '@services/dictionary.service';
-import { Dictionary } from '@models/dictionary.model';
+import { Word } from '@models/word.model';
 import { DEFAULT_DEBOUNCE_TIME } from '@common/default-debounce-time.const';
 import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { TableHeader } from 'src/app/shared/modules/table/models';
+import { forkJoin } from 'rxjs';
 
 export interface DictionaryState {
   isLoading: boolean;
-  headers: TableHeader<Dictionary>[];
-  words: Dictionary[];
+  words: Word[];
+  newWords: Word[];
   keyword: string;
   total: number;
   isChineseVietnameseSearch: boolean;
   isVisibleForm: boolean;
   isCreate: boolean;
-  formValue: Partial<Dictionary> | undefined;
+  formValue: Partial<Word> | undefined;
   // pageInfo: PageInfo;
 }
 
 const initialState = {
   isLoading: false,
-  headers: [],
   words: [],
+  newWords: [],
   keyword: '',
   total: 0,
   isChineseVietnameseSearch: false,
@@ -46,9 +46,10 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   }
   readonly vm$ = this.select(
     this.state$,
-    ({ isLoading, words, total, isChineseVietnameseSearch }) => ({
+    ({ isLoading, words, newWords, total, isChineseVietnameseSearch }) => ({
       isLoading,
       words,
+      newWords,
       total,
       isChineseVietnameseSearch,
     }),
@@ -56,22 +57,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-  readonly words$ = this.select(this.state$, ({ words }) => words);
-  readonly headers$ = this.select((state) => state.headers, { debounce: true });
+  // readonly words$ = this.select(this.state$, ({ words }) => words);
   readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly setHeaders = this.updater<TableHeader<Dictionary>[]>(
-    (state, headers): DictionaryState => ({
-      ...state,
-      headers,
-    })
-  );
-  readonly addWord = this.updater<Dictionary>((state, word): DictionaryState => {
-    state.words.unshift(word);
+  readonly addWord = this.updater<Word>((state, word): DictionaryState => {
+    state.newWords.unshift(word);
     return {
       ...state,
     };
@@ -94,7 +88,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       isCreate,
     })
   );
-  readonly setFormValue = this.updater<Dictionary | undefined>(
+  readonly setFormValue = this.updater<Word | undefined>(
     (state, formValue): DictionaryState => ({
       ...state,
       formValue,
@@ -110,9 +104,10 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.patchState({ isLoading: true });
       }),
       switchMap(() =>
-        this.service.getDictionaries().pipe(
+        this.service.getWords().pipe(
           tapResponse(
             (data) => {
+              console.log(data);
               this.patchState({ words: data, total: data.length });
             },
             (error: HttpErrorResponse) => {
@@ -133,56 +128,37 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       })
     )
   );
-  readonly loadVietnameseWords = this.effect<string>(($) =>
+  readonly loadSearchResults = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => {
         this.patchState({ isLoading: true });
       }),
-      switchMap((param) =>
-        this.service.getVietnameseWords(param).pipe(
+      switchMap((param) => {
+        return forkJoin([this.service.getChineseWords(param), this.service.getVietnameseWords(param)]).pipe(
           tapResponse(
             (data) => {
-              this.patchState({ words: data, total: data.length });
+              const words: Word[] = [];
+              data[0].forEach((word) => words.push(word));
+              data[1].forEach((word) => words.push(word));
+              this.patchState({ words: words, total: words.length });
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);
+              this.refreshData();
             }
           ),
           finalize(() => {
             this.patchState({ isLoading: false });
           })
-        )
-      )
-    )
-  );
-  readonly loadChineseWords = this.effect<string>(($) =>
-    $.pipe(
-      debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => {
-        this.patchState({ isLoading: true });
-      }),
-      switchMap((param) =>
-        this.service.getChineseWords(param).pipe(
-          tapResponse(
-            (data) => {
-              this.patchState({ words: data, total: data.length });
-            },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
-            }
-          ),
-          finalize(() => {
-            this.patchState({ isLoading: false });
-          })
-        )
-      )
+        );
+      })
     )
   );
   readonly loadWordById = this.effect<string>((trigger$) =>
     trigger$.pipe(
       switchMap((id) =>
-        this.service.getDictionaryById(id).pipe(
+        this.service.getWordById(id).pipe(
           tapResponse(
             (data) => {
               if (data) {
@@ -200,16 +176,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly createDictionary = this.effect<Dictionary>((params$) =>
+  readonly createWord = this.effect<Word>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
       switchMap((param) =>
-        this.service.createDictionary(param).pipe(
+        this.service.createWord(param).pipe(
           tapResponse(
-            (data) => {
-              if (data) {
-                this.patchState({ isLoading: false });
-                this.addWord(data);
+            (res) => {
+              if (res) {
+                this.addWord(res);
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
@@ -220,17 +195,17 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.patchState({ isLoading: false });
+            this.refreshData();
           })
         )
       )
     )
   );
-  readonly updateDictionary = this.effect<Dictionary>((params$) =>
+  readonly updateWord = this.effect<Word>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
       switchMap((param) =>
-        this.service.updateDictionary(param).pipe(
+        this.service.updateWord(param).pipe(
           tapResponse(
             (data) => {
               if (data) {
@@ -249,11 +224,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly deleteDictionary = this.effect<string>((params$) =>
+  readonly deleteWord = this.effect<string>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ isLoading: true })),
       switchMap((param) =>
-        this.service.deleteDictionary(param).pipe(
+        this.service.deleteWord(param).pipe(
           tapResponse(
             () => {
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));

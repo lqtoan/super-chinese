@@ -21,6 +21,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { DictionaryItemComponent } from './dictionary-item/dictionary-item.component';
 
 const nzModules = [
   NzSpinModule,
@@ -38,7 +39,7 @@ const nzModules = [
 ];
 
 @NgModule({
-  declarations: [DictionaryComponent, DictionaryListComponent, DictionaryFormComponent],
+  declarations: [DictionaryComponent, DictionaryListComponent, DictionaryFormComponent, DictionaryItemComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([

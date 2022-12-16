@@ -15,6 +15,7 @@
   "ACTION.UPDATE": "Cập nhật",
   "ACTION.LOOK_UP.CHI_VIE": "Hán tự -> Việt",
   "ACTION.LOOK_UP.VIE_CHI": "Việt -> Hán tự",
+  "ACTION.SEARCH": "Tra từ",
   "CONFIRM_DELETE": "Đồng ý xoá?",
   "CONFIRM_DISCARD": "Đồng ý huỷ?",
   "CONFIRM_LOGOUT": "Nhấn xác nhận để đăng xuất.",

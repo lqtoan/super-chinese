@@ -35,40 +35,11 @@
   }
 }
 
-.wordList {
+.list {
   margin: 0;
   height: calc(100vh - 15rem);
-  overflow-y: scroll;
+  overflow: scroll;
   scroll-snap-type: y mandatory;
-  .word {
-    padding: 0.5rem 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    scroll-snap-align: start;
-    &--name {
-      min-width: 4rem;
-      color: $black;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-    &--pinyin {
-      color: $primary-color;
-    }
-    &--define {
-      color: #81a1c1;
-    }
-    .wrap {
-      margin-left: 0.5rem;
-      display: flex;
-      flex-flow: column;
-      line-height: 100%;
-    }
-  }
-  .word:not(:last-of-type) {
-    border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
-  }
 }
 
 @media screen and (max-width: $mobile) {

@@ -5,7 +5,7 @@
             (click)="onCreate()"><span nz-icon
             nzType="plus"
             nzTheme="outline"></span>{{ 'ACTION.CREATE' | translate }}</button>
-    <nz-input-group class="search-input"
+    <!-- <nz-input-group class="search-input"
                     [nzSuffix]="switch">
       <input *ngIf="vm.isChineseVietnameseSearch"
              nz-input
@@ -19,7 +19,12 @@
     <ng-template #switch>
       <nz-switch [ngModel]="vm.isChineseVietnameseSearch"
                  (ngModelChange)="onChange($event)"></nz-switch>
-    </ng-template>
+    </ng-template> -->
+    <input class="search-input"
+           nz-input
+           [placeholder]="'ACTION.SEARCH' | translate"
+           [(ngModel)]="value"
+           (keydown.enter)="onSearch($event)" />
     <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
   </div>
   <ng-container *ngIf="vm.isLoading; else wordListTemplate">
@@ -29,15 +34,14 @@
     </div>
   </ng-container>
   <ng-template #wordListTemplate>
-    <ul class="wordList">
-      <li *ngFor="let word of vm.words"
-          class="word">
-        <span class="word--name">{{ word.display }}</span>
-        <div class="wrap">
-          <span class="word--pinyin">{{ word.pinyin }}</span>
-          <span class="word--define">{{ word.define | translate }}</span>
-        </div>
-      </li>
+    <ng-container *ngIf="vm.words.length === 0">
+      {{'NO_RESULT' | translate}}
+    </ng-container>
+    <ul class="list">
+      <app-dictionary-item *ngFor="let word of vm.words; index as i"
+                           [word]="word">
+        <span slot="index">{{ i+1 }}</span>
+      </app-dictionary-item>
     </ul>
   </ng-template>
 </ng-container>

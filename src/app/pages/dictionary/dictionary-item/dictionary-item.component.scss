@@ -1,0 +1,52 @@
+@import '/src/variables.scss';
+
+.word {
+  padding: 0.5rem 0;
+  height: 4rem;
+  border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
+  // display: grid;
+  // grid-template-columns: repeat(24, 1fr);
+  // grid-template-rows: repeat(24, 1fr);
+  // grid-auto-flow: row;
+  // grid-gap: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  scroll-snap-align: start;
+  &--index {
+    margin-right: 0.5rem;
+    width: 1rem;
+    font-size: 10px;
+  }
+  &--name {
+    margin-right: 0.5rem;
+    width: 4rem;
+    color: $red;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  &--chivi {
+    margin-right: 0.5rem;
+  }
+  &--pinyin {
+    margin-right: 0.5rem;
+    color: $primary-color;
+  }
+  &--define {
+    color: #81a1c1;
+  }
+  .actions {
+    margin-left: auto;
+    .delete-button {
+      color: $red;
+      transition: $transition;
+    }
+    .delete-button:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
+// .word:not(:last-of-type) {
+// }

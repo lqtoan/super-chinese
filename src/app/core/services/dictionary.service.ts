@@ -1,4 +1,4 @@
-import { Dictionary } from '@models/dictionary.model';
+import { Word } from '@models/word.model';
 import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -10,31 +10,31 @@ export class DictionaryService {
 
   API = `${environment.api}words`;
 
-  getDictionaries(): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(`${this.API}`);
+  getWords(): Observable<Word[]> {
+    return this.httpClient.get<Word[]>(`${this.API}`);
   }
 
-  getDictionaryById(id: string): Observable<Dictionary> {
-    return this.httpClient.get<Dictionary>(`${this.API}/${id}`);
+  getWordById(id: string): Observable<Word> {
+    return this.httpClient.get<Word>(`${this.API}/${id}`);
   }
 
-  createDictionary(dictionary: Dictionary) {
-    return this.httpClient.post<Dictionary>(this.API, dictionary);
+  createWord(word: Word) {
+    return this.httpClient.post<Word>(this.API, word);
   }
 
-  updateDictionary(body: Dictionary) {
-    return this.httpClient.patch<Dictionary>(`${this.API}/${body._id}`, body);
+  updateWord(body: Word) {
+    return this.httpClient.patch<Word>(`${this.API}/${body._id}`, body);
   }
 
-  deleteDictionary(id: string) {
-    return this.httpClient.delete<Dictionary>(`${this.API}/${id}`);
+  deleteWord(id: string) {
+    return this.httpClient.delete<Word>(`${this.API}/${id}`);
   }
 
-  getVietnameseWords(keyword?: string): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(`${this.API}/vietnamese?keyword=${keyword}`);
+  getVietnameseWords(keyword?: string): Observable<Word[]> {
+    return this.httpClient.get<Word[]>(`${this.API}/vietnamese?keyword=${keyword}`);
   }
 
-  getChineseWords(keyword?: string): Observable<Dictionary[]> {
-    return this.httpClient.get<Dictionary[]>(`${this.API}/chinese?keyword=${keyword}`);
+  getChineseWords(keyword?: string): Observable<Word[]> {
+    return this.httpClient.get<Word[]>(`${this.API}/chinese?keyword=${keyword}`);
   }
 }

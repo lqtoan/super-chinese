@@ -8,32 +8,29 @@ import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { forkJoin } from 'rxjs';
+import { state } from '@angular/animations';
 
 export interface DictionaryState {
   isLoading: boolean;
   words: Word[];
-  newWords: Word[];
+  recently: Word[];
   keyword: string;
   total: number;
-  isChineseVietnameseSearch: boolean;
   isVisibleForm: boolean;
   isCreate: boolean;
   formValue: Partial<Word> | undefined;
   // pageInfo: PageInfo;
-  recently: Word[];
 }
 
 const initialState = {
   isLoading: false,
   words: [],
-  newWords: [],
+  recently: [],
   keyword: '',
   total: 0,
-  isChineseVietnameseSearch: false,
   isVisibleForm: false,
   isCreate: true,
   formValue: undefined,
-  recently: [],
   // pageInfo: { page: DEFAULT_PAGE, pageSize: DEFAULT_PAGE_SIZE, total: 0 },
 };
 
@@ -48,19 +45,17 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   }
   readonly vm$ = this.select(
     this.state$,
-    ({ isLoading, words, newWords, total, isChineseVietnameseSearch }) => ({
+    ({ isLoading, words, recently, total }) => ({
       isLoading,
       words,
-      newWords,
+      recently,
       total,
-      isChineseVietnameseSearch,
     }),
     {
       debounce: true,
     }
   );
-  // readonly words$ = this.select(this.state$, ({ words }) => words);
-  readonly isChineseVietnameseSearch = (): boolean => this.get().isChineseVietnameseSearch;
+  readonly getRecently = (): Word[] => this.get().recently;
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
@@ -72,12 +67,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       ...state,
     };
   });
-  readonly setIsChineseVietnameseSearch = this.updater<boolean>(
-    (state, isChineseVietnameseSearch): DictionaryState => ({
-      ...state,
-      isChineseVietnameseSearch,
-    })
-  );
   readonly setShowForm = this.updater<boolean>(
     (state, isVisibleForm): DictionaryState => ({
       ...state,
@@ -135,29 +124,21 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       tap(() => {
         this.patchState({ isLoading: true });
       }),
-      switchMap((param) => {
-        return forkJoin([this.service.getChineseWords(param), this.service.getVietnameseWords(param)]).pipe(
+      switchMap((param) =>
+        this.service.search(param).pipe(
           tapResponse(
             (data) => {
-              const words: Word[] = [];
-              data[0].forEach((word) => {
-                words.push(word), this.addRecently(word);
-              });
-              data[1].forEach((word) => {
-                words.push(word), this.addRecently(word);
-              });
-              this.patchState({ words: words, total: words.length });
+              this.patchState({ words: data, total: data.length });
             },
             (error: HttpErrorResponse) => {
               this.message.error(error.error.message);
-              this.refreshData();
             }
           ),
           finalize(() => {
             this.patchState({ isLoading: false });
           })
-        );
-      })
+        )
+      )
     )
   );
   readonly loadWordById = this.effect<string>((trigger$) =>

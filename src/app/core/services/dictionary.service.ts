@@ -30,11 +30,7 @@ export class DictionaryService {
     return this.httpClient.delete<Word>(`${this.API}/${id}`);
   }
 
-  getVietnameseWords(keyword?: string): Observable<Word[]> {
-    return this.httpClient.get<Word[]>(`${this.API}/vietnamese?keyword=${keyword}`);
-  }
-
-  getChineseWords(keyword?: string): Observable<Word[]> {
-    return this.httpClient.get<Word[]>(`${this.API}/chinese?keyword=${keyword}`);
+  search(keyword?: string) {
+    return this.httpClient.get<Word[]>(`${this.API}/search?keyword=${keyword}`);
   }
 }

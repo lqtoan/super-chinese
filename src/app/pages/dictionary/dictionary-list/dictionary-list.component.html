@@ -19,13 +19,14 @@
     </div>
   </ng-container>
   <ng-template #wordListTemplate>
-    <ng-container *ngIf="vm.words.length === 0">
-      {{'NO_RESULT' | translate}}
-    </ng-container>
     <ul class="list">
+      <ng-container *ngIf="vm.words.length === 0">
+        <h4 [style.text-align]="'center'"
+            [style.margin-top.rem]="'2'">{{'NO_RESULT' | translate}}</h4>
+      </ng-container>
       <app-dictionary-item *ngFor="let word of vm.words; index as i"
                            [word]="word">
-        <span [style.width.rem]="'1'"
+        <span [style.width.%]="'100'"
               [style.font-size.px]="'10'"
               [style.font-weight]="'500'"
               slot="index">{{ i+1 }}:</span>

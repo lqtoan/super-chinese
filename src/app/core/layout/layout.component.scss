@@ -3,7 +3,7 @@
 
 .top {
   padding: 0 0.5rem;
-  height: 2rem;
+  height: 1.5rem;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
@@ -11,7 +11,7 @@
   .facebook {
     // margin-right: 0.5rem;
     color: #2374e1;
-    font-size: 24px;
+    font-size: 18px;
   }
   .logout:hover {
     cursor: pointer;

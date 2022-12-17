@@ -30,13 +30,25 @@ export class ExerciseComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioService.getHsk1ExerciseAudioList().subscribe((res) => {
-      (this.hsk1Audio.list = res), (this.hsk1Audio.isLoading = false);
+      this.hsk1Audio.list = res;
+      this.hsk1Audio.list.forEach((audio) => {
+        audio.type = 'EXERCISE';
+      });
+      this.hsk1Audio.isLoading = false;
     });
     this.audioService.getHsk2ExerciseAudioList().subscribe((res) => {
-      (this.hsk2Audio.list = res), (this.hsk2Audio.isLoading = false);
+      this.hsk2Audio.list = res;
+      this.hsk2Audio.list.forEach((audio) => {
+        audio.type = 'EXERCISE';
+      });
+      this.hsk2Audio.isLoading = false;
     });
     this.audioService.getHsk3ExerciseAudioList().subscribe((res) => {
-      (this.hsk3Audio.list = res), (this.hsk3Audio.isLoading = false);
+      this.hsk3Audio.list = res;
+      this.hsk3Audio.list.forEach((audio) => {
+        audio.type = 'EXERCISE';
+      });
+      this.hsk3Audio.isLoading = false;
     });
   }
 }

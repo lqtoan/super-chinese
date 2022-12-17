@@ -6,22 +6,22 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-curriculum',
   templateUrl: './curriculum.component.html',
   styleUrls: ['./curriculum.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurriculumComponent implements OnInit {
   hsk1Audio: AudioConfiguration = {
     list: [],
-    height: '9.5rem',
+    height: '6rem',
     isLoading: true,
   };
   hsk2Audio: AudioConfiguration = {
     list: [],
-    height: '11rem',
+    height: '6rem',
     isLoading: true,
   };
   hsk3Audio: AudioConfiguration = {
     list: [],
-    height: '11rem',
+    height: '6rem',
     isLoading: true,
   };
 
@@ -29,13 +29,25 @@ export class CurriculumComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioService.getHsk1CurriculumAudioList().subscribe((res) => {
-      (this.hsk1Audio.list = res), (this.hsk1Audio.isLoading = false);
+      this.hsk1Audio.list = res;
+      this.hsk1Audio.list.forEach((audio) => {
+        audio.type = 'CURRICULUM';
+      });
+      this.hsk1Audio.isLoading = false;
     });
     this.audioService.getHsk2CurriculumAudioList().subscribe((res) => {
-      (this.hsk2Audio.list = res), (this.hsk2Audio.isLoading = false);
+      this.hsk2Audio.list = res;
+      this.hsk2Audio.list.forEach((audio) => {
+        audio.type = 'CURRICULUM';
+      });
+      this.hsk2Audio.isLoading = false;
     });
     this.audioService.getHsk3CurriculumAudioList().subscribe((res) => {
-      (this.hsk3Audio.list = res), (this.hsk3Audio.isLoading = false);
+      this.hsk3Audio.list = res;
+      this.hsk3Audio.list.forEach((audio) => {
+        audio.type = 'CURRICULUM';
+      });
+      this.hsk3Audio.isLoading = false;
     });
   }
 }

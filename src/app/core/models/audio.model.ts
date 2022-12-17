@@ -8,6 +8,7 @@ export interface Audio {
       }[]
     | string[]
     | string;
+  type: string;
 }
 
 export interface AudioConfiguration {

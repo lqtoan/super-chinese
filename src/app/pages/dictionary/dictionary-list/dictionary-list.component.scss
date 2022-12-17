@@ -22,9 +22,9 @@
     cursor: pointer;
   }
   .search-input {
-    padding: 0.25;
+    padding: 0 0.25;
     margin: 0 0.5rem;
-    width: calc(25vw + 5rem);
+    width: calc(20vw + 4rem);
     border-radius: 0.5rem;
   }
   .totals {
@@ -38,6 +38,9 @@
 .list {
   margin: 0;
   height: calc(100vh - 17rem);
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 1px 0 2px 1px rgba($color: $gray, $alpha: 0.3) inset;
   overflow: scroll;
   scroll-snap-type: y mandatory;
 }

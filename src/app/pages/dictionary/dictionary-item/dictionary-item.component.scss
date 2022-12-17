@@ -1,28 +1,36 @@
 @import '/src/variables.scss';
 
 .word {
-  padding: 0.5rem 0;
+  padding: 0 0.5rem 0.5rem;
   border-top: 1px solid rgba($color: $gray, $alpha: 0.3);
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
   scroll-snap-align: start;
   &--name {
     width: 6rem;
     color: $red;
-    font-size: 24px;
+    font-size: 26px;
     line-height: 100%;
-    font-weight: 400;
     letter-spacing: 1px;
   }
-  &--chivi {
-    // width: 7rem;
-    color: #81a1c1;
-  }
-  &--pinyin {
-    // width: calc(100% - 14rem);
-    color: $primary-color;
+  &--wrap {
+    display: flex;
+    flex-flow: row wrap;
+    width: calc(100% - 9rem);
+    &--chivi {
+      color: #81a1c1;
+    }
+    &--pinyin {
+      margin-left: 0.25rem;
+      color: $primary-color;
+    }
+    &--define {
+      width: 100%;
+      color: $gray;
+      font-size: 15px;
+    }
   }
   &--hsk {
     margin-left: auto;
@@ -30,15 +38,8 @@
       margin: 0;
       padding: 0 0.25rem;
       width: 3rem;
-      border-width: 1.5px;
-      border-radius: 12.5px;
-      font-weight: 400;
+      border-radius: 7.5px;
     }
-  }
-  &--define {
-    width: 100%;
-    color: $gray;
-    font-size: larger;
   }
   .actions {
     margin-left: auto;

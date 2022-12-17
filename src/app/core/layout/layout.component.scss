@@ -26,7 +26,7 @@
 
 .copy-right {
   padding: 0 calc(3 * 100vw / 12);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 @media screen and (max-width: $tablet) {
@@ -34,17 +34,15 @@
     padding: 1rem calc(1 * 100vw / 12);
   }
   .copy-right {
-    padding: 0 1rem;
+    padding: 0 calc(1 * 100vw / 12);
   }
 }
 
 @media screen and (max-width: $mobile) {
-  .top {
-    .copy-right {
-      font-size: 10px;
-    }
-  }
   .main {
     padding: 0.5rem;
+  }
+  .copy-right {
+    padding: 0 0.5rem;
   }
 }

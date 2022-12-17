@@ -20,6 +20,7 @@ export interface DictionaryState {
   isCreate: boolean;
   formValue: Partial<Word> | undefined;
   // pageInfo: PageInfo;
+  recently: Word[];
 }
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
   isVisibleForm: false,
   isCreate: true,
   formValue: undefined,
+  recently: [],
   // pageInfo: { page: DEFAULT_PAGE, pageSize: DEFAULT_PAGE_SIZE, total: 0 },
 };
 
@@ -64,8 +66,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly addWord = this.updater<Word>((state, word): DictionaryState => {
-    state.newWords.unshift(word);
+  readonly addRecently = this.updater<Word>((state, word): DictionaryState => {
+    state.recently.unshift(word);
     return {
       ...state,
     };
@@ -107,7 +109,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this.service.getWords().pipe(
           tapResponse(
             (data) => {
-              console.log(data);
               this.patchState({ words: data, total: data.length });
             },
             (error: HttpErrorResponse) => {
@@ -139,8 +140,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               const words: Word[] = [];
-              data[0].forEach((word) => words.push(word));
-              data[1].forEach((word) => words.push(word));
+              data[0].forEach((word) => {
+                words.push(word), this.addRecently(word);
+              });
+              data[1].forEach((word) => {
+                words.push(word), this.addRecently(word);
+              });
               this.patchState({ words: words, total: words.length });
             },
             (error: HttpErrorResponse) => {
@@ -184,7 +189,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (res) => {
               if (res) {
-                this.addWord(res);
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },

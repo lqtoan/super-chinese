@@ -40,7 +40,10 @@
     <ul class="list">
       <app-dictionary-item *ngFor="let word of vm.words; index as i"
                            [word]="word">
-        <span slot="index">{{ i+1 }}</span>
+        <span [style.width.rem]="'1'"
+              [style.font-size.px]="'10'"
+              [style.font-weight]="'500'"
+              slot="index">{{ i+1 }}:</span>
       </app-dictionary-item>
     </ul>
   </ng-template>

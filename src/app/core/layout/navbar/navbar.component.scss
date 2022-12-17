@@ -3,7 +3,7 @@
 .navbar {
   background: $black;
   padding: 1rem calc(3 * 100vw / 12);
-  height: 7.25rem;
+  height: 9rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 
 @media screen and (max-width: $tablet) {
   .navbar {
-    padding: 1rem;
+    padding: 1rem calc(1 * 100vw / 12);
   }
 }
 

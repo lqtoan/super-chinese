@@ -2,11 +2,9 @@
 
 .playground {
   text-indent: 0;
-  margin-bottom: 0.5rem;
 }
 
 .cards {
-  padding: 0.5rem 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-flow: row;
@@ -35,11 +33,11 @@
   &--star {
     margin: 0.5rem 0;
     grid-template-columns: repeat(1, 1fr);
-    height: 14rem;
+    height: 13rem;
     text-align: center;
     .card {
       padding: 1rem 0;
-      height: 14rem;
+      height: 13rem;
       display: flex;
       flex-flow: column wrap;
       justify-content: center;

@@ -3,14 +3,15 @@
 
 .top {
   padding: 0 0.5rem;
-  height: 1.75rem;
+  height: 2rem;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   .facebook {
-    margin-right: 0.5rem;
+    // margin-right: 0.5rem;
     color: #2374e1;
+    font-size: 24px;
   }
   .logout:hover {
     cursor: pointer;
@@ -19,7 +20,7 @@
 
 .main {
   padding: 1rem calc(3 * 100vw / 12);
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 12rem);
   overflow-y: scroll;
 }
 
@@ -30,7 +31,7 @@
 
 @media screen and (max-width: $tablet) {
   .main {
-    padding: 1rem;
+    padding: 1rem calc(1 * 100vw / 12);
   }
   .copy-right {
     padding: 0 1rem;

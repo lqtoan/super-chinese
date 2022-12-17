@@ -4,7 +4,6 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { Word } from '@models/word.model';
-import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -81,7 +80,6 @@ export class DictionaryFormComponent implements OnInit {
 
   create() {
     const formValue = this.dictionaryForm.getRawValue();
-    formValue.wordId = Guid.create().toString();
     formValue.createdDate = new Date();
     formValue.createdBy = this.userStore.getUserName();
     this.store.createWord(formValue);

@@ -26,7 +26,7 @@ export class DictionaryFormComponent implements OnInit {
   private readonly initDate: Date = new Date();
 
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
-    wordId: [],
+    _id: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     chinaVietnamWord: ['', Validators.compose([])],
@@ -75,7 +75,7 @@ export class DictionaryFormComponent implements OnInit {
 
   isEdit(): boolean {
     const formValue = this.dictionaryForm.getRawValue();
-    return formValue.wordId ? true : false;
+    return formValue._id ? true : false;
   }
 
   create() {

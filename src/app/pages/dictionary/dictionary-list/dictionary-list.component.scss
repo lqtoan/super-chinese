@@ -22,9 +22,13 @@
     cursor: pointer;
   }
   .search-input {
-    padding: 0 0.25;
-    margin: 0 0.5rem;
-    width: calc(20vw + 4rem);
+    margin: 0 0.25rem;
+    width: calc(25% + 1rem);
+    border-radius: 0.5rem;
+  }
+  .scroll-input {
+    margin-right: 0.25rem;
+    width: calc(25% + 1rem);
     border-radius: 0.5rem;
   }
   .totals {
@@ -46,10 +50,11 @@
 }
 
 @media screen and (max-width: $mobile) {
-  .top-table {
-    .search-input {
-      margin-left: 0.25rem;
-      padding: 0.25rem;
+  .top {
+    .create-button {
+      span:last-child {
+        display: none;
+      }
     }
   }
 }

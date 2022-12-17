@@ -2,8 +2,8 @@
   <ng-content select="[slot=index]"></ng-content>
   <span class="word--name">{{ word.display }}</span>
   <div class="word--wrap">
-    <span class="word--wrap--chivi">[{{ word.chinaVietnamWord | titlecase }}]</span>
     <span class="word--wrap--pinyin">[{{ word.pinyin }}]</span>
+    <span class="word--wrap--chivi">[{{ word.chinaVietnamWord | titlecase }}]</span>
     <span class="word--wrap--define">{{ word.define | translate }}</span>
   </div>
   <span class="word--hsk">

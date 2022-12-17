@@ -32,4 +32,11 @@ export class DictionaryListComponent implements OnInit {
   onSpeak(text: string) {
     this.store.speak(text);
   }
+
+  onScrollToIndex(event: any) {
+    console.log(event.target.value);
+    document
+      .getElementsByTagName('app-dictionary-item')
+      [event.target.value - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
 }

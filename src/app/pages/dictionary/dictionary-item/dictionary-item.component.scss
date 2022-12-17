@@ -20,10 +20,10 @@
     flex-flow: row wrap;
     width: calc(100% - 9rem);
     &--chivi {
+      margin-left: 0.25rem;
       color: #81a1c1;
     }
     &--pinyin {
-      margin-left: 0.25rem;
       color: $primary-color;
     }
     &--define {

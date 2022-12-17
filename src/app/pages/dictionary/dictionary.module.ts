@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DictionaryComponent } from './dictionary.component';
 import { DictionaryListComponent } from './dictionary-list/dictionary-list.component';
 import { DictionaryFormComponent } from './dictionary-form/dictionary-form.component';
+import { DictionaryItemComponent } from './dictionary-item/dictionary-item.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -21,7 +22,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { DictionaryItemComponent } from './dictionary-item/dictionary-item.component';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 
 const nzModules = [
   NzSpinModule,
@@ -36,6 +37,7 @@ const nzModules = [
   NzTagModule,
   NzSwitchModule,
   NzToolTipModule,
+  NzInputNumberModule,
 ];
 
 @NgModule({

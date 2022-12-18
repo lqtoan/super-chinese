@@ -33,8 +33,6 @@ export class DictionaryItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onEdit(id: string) {
-    console.log(id);
-
     if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
       this.store.loadWordById(id);
     } else {

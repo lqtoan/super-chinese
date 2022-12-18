@@ -8,7 +8,7 @@
   "HOME": "Trang chủ",
   "DICTIONARY": "Từ điển Hán Việt",
   "STAR": "tính năng nổi bật",
-  "TOTALS": "Tất cả: {{ totals }} từ vựng",
+  "TOTALS": "Hiện có {{ totals }} từ",
   "ACTION.CREATE": "Tạo mới",
   "ACTION.DELETE": "Xoá",
   "ACTION.DISCARD": "Huỷ",

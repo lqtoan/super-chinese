@@ -25,9 +25,11 @@
     margin: 0 0.25rem;
     width: calc(25% + 1rem);
     border-radius: 0.5rem;
+    span:hover {
+      cursor: pointer;
+    }
   }
   .scroll-input {
-    margin-right: 0.25rem;
     width: calc(25% + 1rem);
     border-radius: 0.5rem;
   }
@@ -55,6 +57,9 @@
       span:last-child {
         display: none;
       }
+    }
+    .scroll-input {
+      margin-right: 0.25rem;
     }
   }
 }

@@ -9,17 +9,24 @@
       </span>
       <span>{{ 'ACTION.CREATE' | translate }}</span>
     </button>
-    <input class="search-input"
-           nz-input
-           [placeholder]="'ACTION.SEARCH' | translate"
-           (keydown.enter)="onSearch($event)" />
+    <nz-input-group class="search-input"
+                    [nzSuffix]="suffixIconSearch">
+      <input nz-input
+             [placeholder]="'ACTION.SEARCH' | translate"
+             (keydown.enter)="onSearch($event)" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+      <span nz-icon
+            nzType="search"
+            (click)="onSearch($event)"></span>
+    </ng-template>
     <nz-input-number class="scroll-input"
                      [nzPlaceHolder]="'Scroll to index'"
                      (keydown.enter)="onScrollToIndex($event)"
                      [nzMin]="1"
                      [nzMax]="vm.words.length"
                      [nzStep]="1"></nz-input-number>
-    <strong class="totals"><i>{{ 'TOTALS' | translate: { totals: vm.total } }}</i></strong>
+    <strong class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
   </div>
   <ul class="list">
     <ng-container *ngIf="vm.isLoading; else wordListTemplate">

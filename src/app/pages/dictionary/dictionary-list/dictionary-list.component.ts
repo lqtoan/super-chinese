@@ -17,7 +17,7 @@ export class DictionaryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.loadData();
-    this.userStore.loadData();
+    // this.userStore.loadData();
   }
 
   onCreate() {
@@ -34,7 +34,6 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onScrollToIndex(event: any) {
-    console.log(event.target.value);
     document
       .getElementsByTagName('app-dictionary-item')
       [event.target.value - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });

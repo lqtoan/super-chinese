@@ -21,8 +21,10 @@
             (click)="onSearch($event)"></span>
     </ng-template>
     <nz-input-number class="scroll-input"
+                     [(ngModel)]="index"
                      [nzPlaceHolder]="'Scroll to index'"
-                     (keydown.enter)="onScrollToIndex($event)"
+                     (keydown.enter)="onScrollToIndex(index)"
+                     (ngModelChange)="onScrollToIndex(index)"
                      [nzMin]="1"
                      [nzMax]="vm.words.length"
                      [nzStep]="1"></nz-input-number>

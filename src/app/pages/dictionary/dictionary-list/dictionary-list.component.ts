@@ -12,6 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this.store.vm$;
+  index: number = 1;
 
   constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
 
@@ -33,9 +34,9 @@ export class DictionaryListComponent implements OnInit {
     this.store.speak(text);
   }
 
-  onScrollToIndex(event: any) {
+  onScrollToIndex() {
     document
       .getElementsByTagName('app-dictionary-item')
-      [event.target.value - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
+      [this.index - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 }

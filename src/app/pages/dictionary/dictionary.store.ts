@@ -1,3 +1,4 @@
+import { RequestStatus } from '@enums/request-status.enum';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -7,31 +8,27 @@ import { DEFAULT_DEBOUNCE_TIME } from '@common/default-debounce-time.const';
 import { debounceTime, finalize, switchMap, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { forkJoin } from 'rxjs';
-import { state } from '@angular/animations';
 
 export interface DictionaryState {
-  isLoading: boolean;
+  requestStatus: RequestStatus | null;
   words: Word[];
-  recently: Word[];
   keyword: string;
+  index: number;
   total: number;
   isVisibleForm: boolean;
   isCreate: boolean;
   formValue: Partial<Word> | undefined;
-  // pageInfo: PageInfo;
 }
 
 const initialState = {
-  isLoading: false,
+  requestStatus: null,
   words: [],
-  recently: [],
   keyword: '',
+  index: 1,
   total: 0,
   isVisibleForm: false,
   isCreate: true,
   formValue: undefined,
-  // pageInfo: { page: DEFAULT_PAGE, pageSize: DEFAULT_PAGE_SIZE, total: 0 },
 };
 
 @Injectable()
@@ -44,30 +41,39 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
   readonly vm$ = this.select(
-    this.state$,
-    ({ isLoading, words, recently, total }) => ({
-      isLoading,
+    ({ requestStatus, words, keyword, index, total }) => ({
+      isLoading: requestStatus === 'loading',
+      isSuccess: requestStatus === 'success',
+      isFail: requestStatus === 'fail',
       words,
-      recently,
+      keyword,
+      index,
       total,
     }),
     {
       debounce: true,
     }
   );
-  readonly getRecently = (): Word[] => this.get().recently;
+  readonly requestStatus$ = this.select((state) => state.requestStatus, { debounce: true });
+  readonly words$ = this.select((state) => state.words, { debounce: true });
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly addRecently = this.updater<Word>((state, word): DictionaryState => {
-    state.recently.unshift(word);
-    return {
+  readonly setRequestStatus = this.updater<RequestStatus | null>(
+    (state, requestStatus): DictionaryState => ({
       ...state,
-    };
-  });
-  readonly setShowForm = this.updater<boolean>(
+      requestStatus,
+    })
+  );
+  readonly setKeyword = this.updater<string>(
+    (state, keyword): DictionaryState => ({
+      ...state,
+      keyword,
+    })
+  );
+  setShowForm = this.updater<boolean>(
     (state, isVisibleForm): DictionaryState => ({
       ...state,
       isVisibleForm,
@@ -91,9 +97,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadData = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => {
-        this.patchState({ isLoading: true });
-      }),
+      tap(() => this.setRequestStatus('loading')),
       switchMap(() =>
         this.service.getWords().pipe(
           tapResponse(
@@ -104,26 +108,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.message.error(error.error.message);
             }
           ),
-          finalize(() => {
-            this.patchState({ isLoading: false });
-          })
+          finalize(() => this.setRequestStatus('success'))
         )
       )
-    )
-  );
-  readonly refreshData = this.effect(($) =>
-    $.pipe(
-      tap(() => {
-        this.loadData();
-      })
     )
   );
   readonly loadSearchResults = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => {
-        this.patchState({ isLoading: true });
-      }),
+      tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
         this.service.search(param).pipe(
           tapResponse(
@@ -135,10 +128,19 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            this.setRequestStatus('success');
           })
         )
       )
+    )
+  );
+  readonly scrollToIndex = this.effect<number>(($) =>
+    $.pipe(
+      tap((index) => {
+        document
+          .getElementsByTagName('app-dictionary-item')
+          [index - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
+      })
     )
   );
   readonly loadWordById = this.effect<string>((trigger$) =>
@@ -164,7 +166,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly createWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ isLoading: true })),
+      tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
         this.service.createWord(param).pipe(
           tapResponse(
@@ -180,7 +182,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.refreshData();
+            this.loadData();
           })
         )
       )
@@ -188,7 +190,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly updateWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ isLoading: true })),
+      tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
         this.service.updateWord(param).pipe(
           tapResponse(
@@ -203,7 +205,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.refreshData();
+            this.loadData();
           })
         )
       )
@@ -211,7 +213,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly deleteWord = this.effect<string>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ isLoading: true })),
+      tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
         this.service.deleteWord(param).pipe(
           tapResponse(
@@ -224,7 +226,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.refreshData();
+            this.loadData();
           })
         )
       )

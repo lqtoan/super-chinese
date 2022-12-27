@@ -2,16 +2,16 @@
 
 .word {
   padding: 0 0.5rem 0.5rem;
-  border-top: 1px solid rgba($color: $gray, $alpha: 0.3);
+  border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
   scroll-snap-align: start;
   &--name {
-    width: 6rem;
+    width: 4.5rem;
     color: $red;
-    font-size: 26px;
+    font-size: 18px;
     line-height: 100%;
     letter-spacing: 1px;
   }
@@ -20,7 +20,7 @@
     flex-flow: row wrap;
     width: calc(100% - 9rem);
     &--chivi {
-      margin-left: 0.25rem;
+      margin-left: 0.125rem;
       color: #81a1c1;
     }
     &--pinyin {
@@ -53,5 +53,6 @@
     }
   }
 }
-// .word:not(:last-of-type) {
+// .word:last-child {
+//   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
 // }

@@ -23,6 +23,7 @@ export class DictionaryItemComponent implements OnInit {
     createdBy: '',
     updatedDate: new Date(),
   };
+
   constructor(
     private readonly store: DictionaryStore,
     private readonly userStore: UserProfileStore,

@@ -26,7 +26,8 @@
       "@models/*": ["./src/app/core/models/*"],
       "@data/*": ["./src/app/core/data/*"],
       "@styles/*": ["./src/assets/scss/*"],
-      "@common/*": ["./src/app/core/common/*"]
+      "@common/*": ["./src/app/core/common/*"],
+      "@enums/*": ["./src/app/core/enums/*"]
     }
   }
 }

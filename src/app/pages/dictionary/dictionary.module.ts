@@ -1,4 +1,3 @@
-import { TableModule } from '../../shared/modules/table/table.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -54,7 +53,6 @@ const nzModules = [
     nzModules,
     FormsModule,
     ReactiveFormsModule,
-    TableModule,
   ],
 })
 export class DictionaryModule {}

@@ -12,22 +12,23 @@
     <nz-input-group class="search-input"
                     [nzSuffix]="suffixIconSearch">
       <input nz-input
+             [(ngModel)]="vm.keyword"
              [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="onSearch($event)" />
+             (keydown.enter)="onSearch(vm.keyword)" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
       <span nz-icon
             nzType="search"
-            (click)="onSearch($event)"></span>
+            (click)="onSearch(keyword)"></span>
     </ng-template>
-    <nz-input-number class="scroll-input"
-                     [(ngModel)]="index"
-                     [nzPlaceHolder]="'Scroll to index'"
-                     (keydown.enter)="onScrollToIndex(index)"
-                     (ngModelChange)="onScrollToIndex(index)"
+    <!-- <nz-input-number class="scroll-input"
+                     [(ngModel)]="vm.index"
+                     [nzPlaceHolder]="'Scroll to'"
+                     (keydown.enter)="onScrollToIndex(vm.index)"
+                     (ngModelChange)="onScrollToIndex(vm.index)"
                      [nzMin]="1"
                      [nzMax]="vm.words.length"
-                     [nzStep]="1"></nz-input-number>
+                     [nzStep]="1"></nz-input-number> -->
     <strong class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
   </div>
   <ul class="list">
@@ -39,12 +40,16 @@
     </ng-container>
     <ng-template #wordListTemplate>
       <ng-container *ngIf="vm.words.length === 0">
-        <h4 [style.text-align]="'center'"
-            [style.margin-top.rem]="'2'">{{'NO_RESULT' | translate}}</h4>
+        <img [style.padding.rem]="'0.25'"
+             src="assets/images/no_result.png"
+             alt="">
+        <p [style.font-size.px]="'20'"
+           [style.text-align]="'center'">{{'NO_RESULT' | translate}}</p>
       </ng-container>
       <app-dictionary-item *ngFor="let word of vm.words; index as i"
                            [word]="word">
         <span [style.width.%]="'100'"
+              [style.color]="'#bf616a'"
               [style.font-size.px]="'10'"
               [style.font-weight]="'500'"
               slot="index">{{ i+1 }}:</span>

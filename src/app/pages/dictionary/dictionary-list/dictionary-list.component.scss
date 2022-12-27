@@ -23,16 +23,16 @@
   }
   .search-input {
     margin: 0 0.25rem;
-    width: calc(25% + 1rem);
+    width: calc(25% + 2rem);
     border-radius: 0.5rem;
     span:hover {
       cursor: pointer;
     }
   }
-  .scroll-input {
-    width: calc(25% + 1rem);
-    border-radius: 0.5rem;
-  }
+  // .scroll-input {
+  //   width: calc(25%);
+  //   border-radius: 0.5rem;
+  // }
   .totals {
     margin-left: auto;
     white-space: nowrap;
@@ -46,7 +46,7 @@
   height: calc(100vh - 17rem);
   background: #fff;
   border-radius: 0.5rem;
-  box-shadow: 1px 0 2px 1px rgba($color: $gray, $alpha: 0.3) inset;
+  box-shadow: 0 0 2px 0.5px rgba($color: $gray, $alpha: 0.3) inset;
   overflow: scroll;
   scroll-snap-type: y mandatory;
 }
@@ -58,8 +58,11 @@
         display: none;
       }
     }
-    .scroll-input {
-      margin-right: 0.25rem;
+    .search-input {
+      width: calc(50%);
     }
+    // .scroll-input {
+    //   margin-right: 0.25rem;
+    // }
   }
 }

@@ -51,7 +51,7 @@
 }
 
 .audio-list {
-  padding-bottom: 0.5rem;
+  padding: 0 1px 0.5rem;
   height: calc(95vh - 24rem);
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
@@ -71,7 +71,7 @@
   }
   .audio:hover {
     cursor: pointer;
-    box-shadow: 0 2px 5px 1px rgba($color: $gray, $alpha: 0.25);
+    box-shadow: 0 2px 5px 0 rgba($color: $gray, $alpha: 0.25);
   }
   .audio:nth-child(odd) {
     animation: slideToRight 0.75s ease 0s backwards;

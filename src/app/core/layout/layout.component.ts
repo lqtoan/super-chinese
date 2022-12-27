@@ -16,7 +16,7 @@ export class LayoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.firstNotification();
+    // this.firstNotification();
   }
 
   firstNotification() {

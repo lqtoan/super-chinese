@@ -1,6 +1,6 @@
 import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -12,13 +12,12 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this.store.vm$;
-  index: number = 1;
+  readonly words$ = this.store.words$;
 
-  constructor(private readonly store: DictionaryStore, private readonly userStore: UserProfileStore) {}
+  constructor(private readonly store: DictionaryStore) {}
 
   ngOnInit(): void {
-    this.store.loadData();
-    // this.userStore.loadData();
+    // this.store.loadData();
   }
 
   onCreate() {
@@ -26,17 +25,16 @@ export class DictionaryListComponent implements OnInit {
     this.store.setShowForm(true);
   }
 
-  onSearch(event: any) {
-    event.target.value ? this.store.loadSearchResults(event.target.value) : this.store.loadData();
+  onSearch(keyword: string) {
+    this.store.setKeyword(keyword);
+    keyword ? this.store.loadSearchResults(keyword) : null;
   }
 
   onSpeak(text: string) {
     this.store.speak(text);
   }
 
-  onScrollToIndex() {
-    document
-      .getElementsByTagName('app-dictionary-item')
-      [this.index - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
+  onScrollToIndex(index: number) {
+    this.store.scrollToIndex(index);
   }
 }

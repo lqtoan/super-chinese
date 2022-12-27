@@ -21,7 +21,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 const nzModules = [
   NzSpinModule,
@@ -36,7 +37,8 @@ const nzModules = [
   NzTagModule,
   NzSwitchModule,
   NzToolTipModule,
-  NzInputNumberModule,
+  NzDropDownModule,
+  NzModalModule,
 ];
 
 @NgModule({

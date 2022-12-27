@@ -19,16 +19,36 @@
     <ng-template #suffixIconSearch>
       <span nz-icon
             nzType="search"
-            (click)="onSearch(keyword)"></span>
+            (click)="onSearch(vm.keyword)"></span>
     </ng-template>
-    <!-- <nz-input-number class="scroll-input"
-                     [(ngModel)]="vm.index"
-                     [nzPlaceHolder]="'Scroll to'"
-                     (keydown.enter)="onScrollToIndex(vm.index)"
-                     (ngModelChange)="onScrollToIndex(vm.index)"
-                     [nzMin]="1"
-                     [nzMax]="vm.words.length"
-                     [nzStep]="1"></nz-input-number> -->
+    <div class="filter"
+         nz-button
+         nz-dropdown
+         nzTrigger="click"
+         [nzDropdownMenu]="menu">
+      <p>{{ currentFilter }}</p>
+      <span nz-icon
+            nzType="down">
+      </span>
+    </div>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li [nzDisabled]="vm.filterType === 'latest'"
+            (click)="onView8Latest()"
+            nz-menu-item>8 latest words</li>
+        <li [nzDisabled]="vm.filterType === 'all'"
+            (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
+            nz-menu-item>View all</li>
+        <nz-modal (nzOnCancel)="handleCancel()"
+                  (nzOnOk)="handleOk()">
+          <ng-container *nzModalContent>
+            <p>Content one</p>
+            <p>Content two</p>
+            <p>Content three</p>
+          </ng-container>
+        </nz-modal>
+      </ul>
+    </nz-dropdown-menu>
     <strong class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
   </div>
   <ul class="list">

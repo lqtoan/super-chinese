@@ -1,3 +1,4 @@
+import { FilterType } from './interfaces/dictionary.type';
 import { RequestStatus } from '@enums/request-status.enum';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +12,7 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 
 export interface DictionaryState {
   requestStatus: RequestStatus | null;
+  filterType: FilterType | null;
   words: Word[];
   keyword: string;
   index: number;
@@ -22,6 +24,7 @@ export interface DictionaryState {
 
 const initialState = {
   requestStatus: null,
+  filterType: null,
   words: [],
   keyword: '',
   index: 1,
@@ -41,10 +44,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
   readonly vm$ = this.select(
-    ({ requestStatus, words, keyword, index, total }) => ({
+    ({ requestStatus, filterType, words, keyword, index, total }) => ({
       isLoading: requestStatus === 'loading',
       isSuccess: requestStatus === 'success',
       isFail: requestStatus === 'fail',
+      filterType,
       words,
       keyword,
       index,
@@ -54,17 +58,22 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-  readonly requestStatus$ = this.select((state) => state.requestStatus, { debounce: true });
-  readonly words$ = this.select((state) => state.words, { debounce: true });
+  readonly filterType$ = this.select((state) => state.filterType, { debounce: true });
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly setRequestStatus = this.updater<RequestStatus | null>(
+  readonly setRequestStatus = this.updater<RequestStatus>(
     (state, requestStatus): DictionaryState => ({
       ...state,
       requestStatus,
+    })
+  );
+  readonly setFilterType = this.updater<FilterType>(
+    (state, filterType): DictionaryState => ({
+      ...state,
+      filterType,
     })
   );
   readonly setKeyword = this.updater<string>(

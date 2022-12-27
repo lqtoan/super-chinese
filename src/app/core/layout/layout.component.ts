@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 

@@ -23,10 +23,6 @@
     border-radius: 0.5rem;
     transition: $transition;
   }
-  .create-button:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
   .search-input {
     margin-left: 0.5rem;
     width: calc(25% + 2rem);
@@ -36,10 +32,6 @@
       color: $primary-color;
     }
   }
-  // .scroll-input {
-  //   width: calc(25%);
-  //   border-radius: 0.5rem;
-  // }
   .filter {
     margin-left: 0.5rem;
     padding: 0.25rem 0.5rem;
@@ -50,6 +42,11 @@
     background: #fff;
     border: 1px solid rgba($color: $gray, $alpha: 0.3);
     border-radius: 0.5rem;
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .filter:hover {
     cursor: pointer;
@@ -88,15 +85,7 @@
     }
     .filter {
       width: calc(25% + 1.5rem);
-      p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
     }
-    // .scroll-input {
-    //   margin-right: 0.25rem;
-    // }
     .totals {
       margin-left: 0.5rem;
     }

@@ -1,6 +1,8 @@
 <ng-container *ngIf="(vm$ | async) as vm">
   <div class="top">
-    <button nz-button
+    <button [disabled]="!vm.isSuccess"
+            [nzLoading]="vm.isLoading"
+            nz-button
             class="create-button"
             (click)="onCreate()">
       <span nz-icon
@@ -12,6 +14,7 @@
     <nz-input-group class="search-input"
                     [nzSuffix]="suffixIconSearch">
       <input nz-input
+             [disabled]="!vm.isSuccess"
              [(ngModel)]="vm.keyword"
              [placeholder]="'ACTION.SEARCH' | translate"
              (keydown.enter)="onSearch(vm.keyword)" />

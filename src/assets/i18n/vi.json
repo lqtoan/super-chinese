@@ -33,7 +33,7 @@
   "NOTIFICATION.UPDATE_DECLINE": "Bạn không có quyền để chỉnh sửa!",
   "NOTIFICATION.DELETE_DECLINE": "Bạn không có quyền để xoá!",
   "NO_RESULT": "Không có dữ liệu",
-  "AFTER_NO_RESULT": "Bạn có thể chọn lựa chọn hoặc tìm kiếm từ khoá khác.",
+  "AFTER_NO_RESULT": "Bạn có thể tìm kiếm với từ khoá khác.",
   "DICTIONARY.DISPLAY": "Hán tự",
   "DICTIONARY.PINYIN": "Phiên âm",
   "DICTIONARY.CHINA_VIETNAM_WORD": "Hán Việt",

@@ -68,6 +68,10 @@
     border-radius: 0.5rem;
     scroll-snap-align: start;
     transition: $transition;
+    &__type {
+      color: rgba($color: $gray, $alpha: 0.5);
+      font-size: smaller;
+    }
   }
   .audio:hover {
     cursor: pointer;

@@ -65,12 +65,11 @@
       </div>
     </ng-container>
     <ng-template #wordListTemplate>
-      <ng-container *ngIf="vm.words.length === 0">
+      <ng-container *ngIf="vm.words.length === 0 && vm.filterType === 'search'">
         <img [style.margin]="'auto'"
              [style.padding.rem]="'0.25'"
              [style.width.%]="'75'"
-             src="assets/images/no_result.png"
-             alt="">
+             src="assets/images/no_result.png">
         <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
         <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
       </ng-container>

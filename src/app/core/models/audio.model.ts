@@ -1,14 +1,9 @@
+import { Grade } from '@enums/grade.enum';
 export interface Audio {
   title: string;
   url: string;
-  texts?:
-    | {
-        text: string;
-        character?: string;
-      }[]
-    | string[]
-    | string;
   type: string;
+  grade: Grade;
 }
 
 export interface AudioConfiguration {

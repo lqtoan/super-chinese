@@ -33,7 +33,7 @@
   "NOTIFICATION.UPDATE_DECLINE": "You dont have permission to edit",
   "NOTIFICATION.DELETE_DECLINE": "You dont have permission to delete",
   "NO_RESULT": "No result",
-  "AFTER_NO_RESULT": "You could select another option or search another word.",
+  "AFTER_NO_RESULT": "You could search another word.",
   "DICTIONARY.DISPLAY": "Word",
   "DICTIONARY.PINYIN": "Pinyin",
   "DICTIONARY.CHINA_VIETNAM_WORD": "CN-VI word",

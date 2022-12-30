@@ -33,6 +33,7 @@ export class ExerciseComponent implements OnInit {
       this.hsk1Audio.list = res;
       this.hsk1Audio.list.forEach((audio) => {
         audio.type = 'EXERCISE';
+        audio.grade = 'hsk 1';
       });
       this.hsk1Audio.isLoading = false;
     });
@@ -40,6 +41,7 @@ export class ExerciseComponent implements OnInit {
       this.hsk2Audio.list = res;
       this.hsk2Audio.list.forEach((audio) => {
         audio.type = 'EXERCISE';
+        audio.grade = 'hsk 2';
       });
       this.hsk2Audio.isLoading = false;
     });
@@ -47,6 +49,7 @@ export class ExerciseComponent implements OnInit {
       this.hsk3Audio.list = res;
       this.hsk3Audio.list.forEach((audio) => {
         audio.type = 'EXERCISE';
+        audio.grade = 'hsk 3';
       });
       this.hsk3Audio.isLoading = false;
     });

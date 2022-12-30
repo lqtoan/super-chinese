@@ -38,7 +38,7 @@
     <ul *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
         class="audio"
         (click)="onSelect(audio)">
-      <p class="audio__type">{{ audio.type | translate }}</p>
+      <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
       <strong class="audio__title">{{ audio.title | translate }}</strong>
       <nz-divider></nz-divider>
       <div *ngFor="let text of audio.texts; even as isEven; count as total"

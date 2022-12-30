@@ -15,7 +15,6 @@ export interface DictionaryState {
   filterType: FilterType | null;
   words: Word[];
   keyword: string;
-  index: number;
   total: number;
   isVisibleForm: boolean;
   isCreate: boolean;
@@ -27,7 +26,6 @@ const initialState = {
   filterType: null,
   words: [],
   keyword: '',
-  index: 1,
   total: 0,
   isVisibleForm: false,
   isCreate: true,
@@ -44,14 +42,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
   readonly vm$ = this.select(
-    ({ requestStatus, filterType, words, keyword, index, total }) => ({
+    ({ requestStatus, filterType, words, keyword, total }) => ({
       isLoading: requestStatus === 'loading',
       isSuccess: requestStatus === 'success',
       isFail: requestStatus === 'fail',
       filterType,
       words,
       keyword,
-      index,
       total,
     }),
     {
@@ -82,7 +79,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       keyword,
     })
   );
-  setShowForm = this.updater<boolean>(
+  readonly setShowForm = this.updater<boolean>(
     (state, isVisibleForm): DictionaryState => ({
       ...state,
       isVisibleForm,
@@ -160,15 +157,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           })
         )
       )
-    )
-  );
-  readonly scrollToIndex = this.effect<number>(($) =>
-    $.pipe(
-      tap((index) => {
-        document
-          .getElementsByTagName('app-dictionary-item')
-          [index - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
-      })
     )
   );
   readonly loadWordById = this.effect<string>((trigger$) =>

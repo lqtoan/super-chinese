@@ -28,6 +28,8 @@ export class DictionaryListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.onView8Latest();
+
     this.languageService.currentLanguage$.subscribe((res) => {
       switch (res) {
         case 'en':
@@ -54,7 +56,6 @@ export class DictionaryListComponent implements OnInit {
           break;
       }
     });
-    this.onView8Latest();
   }
 
   onCreate() {

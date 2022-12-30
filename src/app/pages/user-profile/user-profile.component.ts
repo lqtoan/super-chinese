@@ -1,5 +1,4 @@
 import { UserProfileStore } from './user-profile.store';
-import { UserProfileService } from '@services/user-profile.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({

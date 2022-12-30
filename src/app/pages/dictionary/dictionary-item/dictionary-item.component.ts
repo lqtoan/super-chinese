@@ -34,19 +34,19 @@ export class DictionaryItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onEdit(id: string) {
-    if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
-      this.store.loadWordById(id);
-    } else {
-      this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
-    }
+    // if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
+    this.store.loadWordById(id);
+    // } else {
+    //   this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
+    // }
   }
 
   onDelete(id: string) {
-    if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
-      this.store.deleteWord(id);
-    } else {
-      this.message.error(this.translateService.instant('NOTIFICATION.DELETE_DECLINE'));
-    }
+    // if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
+    this.store.deleteWord(id);
+    // } else {
+    //   this.message.error(this.translateService.instant('NOTIFICATION.DELETE_DECLINE'));
+    // }
   }
 
   onCancel() {}

@@ -34,11 +34,18 @@
       </ng-container>
     </ng-container>
   </span>
+  <span *ngIf="word.updatedDate; else createdDate"
+        class="word--date">
+    {{'CREATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span>
   <div class="actions">
+    <ng-template #createdDate>
+      <span class="word--date">
+        {{'UPDATED' |translate}}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
+    </ng-template>
     <!-- <span nz-tooltip
-          [nzTooltipTitle]="'ACTION.UPDATE' | translate"
-          nz-icon
-          nzType="edit"
+      [nzTooltipTitle]="'ACTION.UPDATE' | translate"
+      nz-icon
+      nzType="edit"
           nzTheme="fill"
           (click)="onEdit(word._id)"></span> -->
     <!-- <span nz-tooltip

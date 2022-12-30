@@ -64,7 +64,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly setRequestStatus = this.updater<RequestStatus>(
+  readonly setRequestStatus = this.updater<RequestStatus | null>(
     (state, requestStatus): DictionaryState => ({
       ...state,
       requestStatus,
@@ -103,12 +103,31 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   //#region
 
   //#region Effect
-  readonly loadData = this.effect(($) =>
+  readonly loadAllWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.setRequestStatus('loading')),
       switchMap(() =>
-        this.service.getWords().pipe(
+        this.service.getAllWords().pipe(
+          tapResponse(
+            (data) => {
+              this.patchState({ words: data, total: data.length });
+            },
+            (error: HttpErrorResponse) => {
+              this.message.error(error.error.message);
+            }
+          ),
+          finalize(() => this.setRequestStatus('success'))
+        )
+      )
+    )
+  );
+  readonly loadLatestWords = this.effect(($) =>
+    $.pipe(
+      debounceTime(DEFAULT_DEBOUNCE_TIME),
+      tap(() => this.setRequestStatus('loading')),
+      switchMap(() =>
+        this.service.getLatestWords().pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });
@@ -191,7 +210,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.loadData();
+            this.loadLatestWords();
           })
         )
       )
@@ -214,7 +233,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           ),
           finalize(() => {
             this.setShowForm(false);
-            this.loadData();
+            this.loadLatestWords();
           })
         )
       )
@@ -235,7 +254,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.loadData();
+            this.loadLatestWords();
           })
         )
       )

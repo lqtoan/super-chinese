@@ -26,7 +26,17 @@
          nz-dropdown
          nzTrigger="click"
          [nzDropdownMenu]="menu">
-      <p>{{ currentFilter }}</p>
+      <ng-container [ngSwitch]="vm.filterType">
+        <ng-container *ngSwitchCase="'all'">
+          <p>{{'VIEW_ALL' |translate}}</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="'latest'">
+          <p>{{'LATEST' |translate}}</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="'search'">
+          <p>{{'SEARCH_RESULTS' |translate}}</p>
+        </ng-container>
+      </ng-container>
       <span nz-icon
             nzType="down">
       </span>
@@ -35,21 +45,17 @@
       <ul nz-menu>
         <li [nzDisabled]="vm.filterType === 'latest'"
             (click)="onView8Latest()"
-            nz-menu-item>8 latest words</li>
+            nz-menu-item>{{'LATEST' |translate}}</li>
         <li [nzDisabled]="vm.filterType === 'all'"
             (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
-            nz-menu-item>View all</li>
+            nz-menu-item>{{ 'VIEW_ALL' | translate }}</li>
         <nz-modal (nzOnCancel)="handleCancel()"
                   (nzOnOk)="handleOk()">
-          <ng-container *nzModalContent>
-            <p>Content one</p>
-            <p>Content two</p>
-            <p>Content three</p>
-          </ng-container>
         </nz-modal>
       </ul>
     </nz-dropdown-menu>
-    <strong class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
+    <strong *ngIf="vm.isSuccess && vm.filterType !== 'latest'"
+            class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
   </div>
   <ul class="list">
     <ng-container *ngIf="vm.isLoading; else wordListTemplate">
@@ -60,11 +66,13 @@
     </ng-container>
     <ng-template #wordListTemplate>
       <ng-container *ngIf="vm.words.length === 0">
-        <img [style.padding.rem]="'0.25'"
+        <img [style.margin]="'auto'"
+             [style.padding.rem]="'0.25'"
+             [style.width.%]="'75'"
              src="assets/images/no_result.png"
              alt="">
-        <p [style.font-size.px]="'20'"
-           [style.text-align]="'center'">{{'NO_RESULT' | translate}}</p>
+        <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
+        <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
       </ng-container>
       <app-dictionary-item *ngFor="let word of vm.words; index as i"
                            [word]="word">

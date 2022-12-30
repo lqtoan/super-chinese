@@ -10,8 +10,12 @@ export class DictionaryService {
 
   API = `${environment.api}words`;
 
-  getWords(): Observable<Word[]> {
+  getAllWords(): Observable<Word[]> {
     return this.httpClient.get<Word[]>(`${this.API}`);
+  }
+
+  getLatestWords(): Observable<Word[]> {
+    return this.httpClient.get<Word[]>(`${this.API}/latest`);
   }
 
   getWordById(id: string): Observable<Word> {

@@ -1,7 +1,7 @@
 @import '/src/variables.scss';
 
 .word {
-  padding: 0 0.5rem 0.5rem;
+  padding: 0 0.5rem;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
   display: flex;
   flex-flow: row wrap;
@@ -22,13 +22,15 @@
     &--chivi {
       margin-left: 0.125rem;
       color: #81a1c1;
+      font-size: smaller;
     }
     &--pinyin {
       color: $primary-color;
+      font-size: smaller;
     }
     &--define {
       width: 100%;
-      color: $gray;
+      color: $black;
       font-size: 15px;
     }
   }
@@ -40,6 +42,12 @@
       width: 3rem;
       border-radius: 7.5px;
     }
+  }
+  &--date {
+    width: 100%;
+    color: $gray;
+    font-size: 10px;
+    text-align: right;
   }
   .actions {
     margin-left: auto;

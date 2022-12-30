@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './../../../core/layout/change-language/language.service';
 import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';
@@ -15,7 +16,6 @@ import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
 })
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this.store.vm$;
-  // readonly words$ = this.store.words$;
   currentFilter: string = '';
   confirmModal?: NzModalRef; // For testing by now
 
@@ -23,31 +23,32 @@ export class DictionaryListComponent implements OnInit {
     private readonly store: DictionaryStore,
     private readonly modal: NzModalService,
     private readonly languageService: LanguageService,
-    private readonly i18n: NzI18nService
+    private readonly i18n: NzI18nService,
+    private readonly translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.languageService.currentLanguage$.subscribe((val) => {
-      switch (val) {
+    this.languageService.currentLanguage$.subscribe((res) => {
+      switch (res) {
         case 'en':
           this.i18n.setLocale(en_US);
           break;
         case 'zh':
           this.i18n.setLocale(zh_CN);
           break;
-        default:
+        case 'vi':
           this.i18n.setLocale(vi_VN);
           break;
       }
     });
 
-    this.store.filterType$.subscribe((val) => {
-      switch (val) {
+    this.store.filterType$.subscribe((res) => {
+      switch (res) {
         case 'all':
           this.onViewAll();
           break;
         case 'search':
-          this.currentFilter = 'Search results';
+          this.currentFilter = this.translateService.instant('SEARCH_RESULTS');
           break;
         default:
           break;
@@ -62,21 +63,27 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onSearch(keyword: string) {
-    this.store.setFilterType('search');
-    this.store.setKeyword(keyword);
-    keyword ? this.store.loadSearchResults(keyword) : null;
+    if (keyword) {
+      this.store.setRequestStatus(null);
+      this.store.setKeyword(keyword);
+      this.store.setFilterType('search');
+      this.store.loadSearchResults(keyword);
+    }
   }
 
   onView8Latest() {
-    this.currentFilter = '8 latest words';
+    this.currentFilter = this.translateService.instant('LATEST');
+    this.store.setRequestStatus(null);
     this.store.setKeyword('');
     this.store.setFilterType('latest');
+    this.store.loadLatestWords();
   }
 
   showConfirm(): void {
     this.confirmModal = this.modal.confirm({
-      nzTitle: 'Do you want to view all?',
-      nzContent: 'View all can take many time to load data',
+      nzTitle: this.translateService.instant('MODAL.CONFIRM_VIEW_ALL'),
+      nzContent: this.translateService.instant('MODAL.CONFIRM_VIEW_ALL.CONTENT'),
+      nzOkText: this.translateService.instant('CONFIRM_VIEW_ALL'),
       nzOnOk: () => {
         this.onViewAll();
       },
@@ -84,9 +91,10 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onViewAll() {
-    this.currentFilter = 'View all';
+    this.currentFilter = this.translateService.instant('VIEW_ALL');
+    this.store.setRequestStatus(null);
     this.store.setKeyword('');
     this.store.setFilterType('all');
-    this.store.loadData();
+    this.store.loadAllWords();
   }
 }

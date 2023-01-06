@@ -39,17 +39,8 @@
         class="audio"
         (click)="onSelect(audio)">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
-      <strong class="audio__title">{{ audio.title | translate }}</strong>
       <nz-divider></nz-divider>
-      <div *ngFor="let text of audio.texts; even as isEven; count as total"
-           class="audio__description">
-        <ng-container *ngIf="text.character == 'a'">
-          A: {{ text.text }}
-        </ng-container>
-        <ng-container *ngIf="text.character == 'b'">
-          B: {{ text.text }}
-        </ng-container>
-      </div>
+      <strong class="audio__title">{{ audio.title | translate }}</strong>
     </ul>
   </div>
 </ng-template>

@@ -21,6 +21,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const nzModules = [
   NzSpinModule,
@@ -51,6 +52,7 @@ const nzModules = [
     nzModules,
     FormsModule,
     ReactiveFormsModule,
+    ScrollingModule,
   ],
 })
 export class DictionaryModule {}

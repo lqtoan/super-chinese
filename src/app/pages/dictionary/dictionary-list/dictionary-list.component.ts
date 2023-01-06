@@ -2,7 +2,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './../../../core/layout/change-language/language.service';
 import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';
-import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';

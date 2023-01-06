@@ -1,13 +1,14 @@
 @import '/src/variables.scss';
 
 .word {
+  height: 72px;
   padding: 0 0.5rem;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
   &--name {
     width: 4.5rem;
     color: $red;
@@ -42,13 +43,15 @@
       margin: 0;
       padding: 0 0.25rem;
       width: 3rem;
+      font-weight: 500;
       border-radius: 7.5px;
+      border-width: 1.5px;
     }
   }
   &--date {
     width: 100%;
     color: rgba($color: $gray, $alpha: 0.5);
-    font-size: 10px;
+    font-size: 9px;
     text-align: right;
   }
   .actions {

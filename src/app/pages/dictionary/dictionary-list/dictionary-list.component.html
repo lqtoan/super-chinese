@@ -1,91 +1,94 @@
 <ng-container *ngIf="(vm$ | async) as vm">
-  <div class="top">
-    <button [disabled]="!vm.isSuccess"
-            [nzLoading]="vm.isLoading"
-            nz-button
-            class="create-button"
-            (click)="onCreate()">
-      <span nz-icon
-            nzType="plus"
-            nzTheme="outline">
-      </span>
-      <span>{{ 'ACTION.CREATE' | translate }}</span>
-    </button>
-    <nz-input-group class="search-input"
-                    [nzSuffix]="suffixIconSearch">
-      <input nz-input
-             [disabled]="!vm.isSuccess"
-             [(ngModel)]="vm.keyword"
-             [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="onSearch(vm.keyword)" />
-    </nz-input-group>
-    <ng-template #suffixIconSearch>
-      <span nz-icon
-            nzType="search"
-            (click)="onSearch(vm.keyword)"></span>
-    </ng-template>
-    <div class="filter"
-         nz-button
-         nz-dropdown
-         nzTrigger="click"
-         [nzDropdownMenu]="menu">
-      <ng-container [ngSwitch]="vm.filterType">
-        <ng-container *ngSwitchCase="'all'">
-          <p>{{'VIEW_ALL' |translate}}</p>
+  <div style="height: 100%; overflow-y: hidden;">
+    <div class="top">
+      <button [nzLoading]="vm.isLoading"
+              [disabled]="vm.isLoading"
+              nz-button
+              class="create-button"
+              (click)="onCreate()">
+        <span nz-icon
+              nzType="plus"
+              nzTheme="outline">
+        </span>
+        <span>{{ 'ACTION.CREATE' | translate }}</span>
+      </button>
+      <nz-input-group class="search-input"
+                      [nzSuffix]="suffixIconSearch">
+        <input nz-input
+               [disabled]="vm.isLoading"
+               [(ngModel)]="vm.keyword"
+               [placeholder]="'ACTION.SEARCH' | translate"
+               (keydown.enter)="onSearch(vm.keyword)" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon
+              nzType="search"
+              (click)="onSearch(vm.keyword)"></span>
+      </ng-template>
+      <div class="filter"
+           nz-button
+           nz-dropdown
+           nzTrigger="click"
+           [nzDropdownMenu]="menu">
+        <ng-container [ngSwitch]="vm.filterType">
+          <ng-container *ngSwitchCase="'all'">
+            <p>{{'VIEW_ALL' |translate}}</p>
+          </ng-container>
+          <ng-container *ngSwitchCase="'latest'">
+            <p>{{'LATEST' |translate}}</p>
+          </ng-container>
+          <ng-container *ngSwitchCase="'search'">
+            <p>{{'SEARCH_RESULTS' |translate}}</p>
+          </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="'latest'">
-          <p>{{'LATEST' |translate}}</p>
-        </ng-container>
-        <ng-container *ngSwitchCase="'search'">
-          <p>{{'SEARCH_RESULTS' |translate}}</p>
-        </ng-container>
-      </ng-container>
-      <span nz-icon
-            nzType="down">
-      </span>
-    </div>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu>
-        <li [nzDisabled]="vm.filterType === 'latest'"
-            (click)="onView8Latest()"
-            nz-menu-item>{{'LATEST' |translate}}</li>
-        <li [nzDisabled]="vm.filterType === 'all'"
-            (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
-            nz-menu-item>{{ 'VIEW_ALL' | translate }}</li>
-        <nz-modal (nzOnCancel)="handleCancel()"
-                  (nzOnOk)="handleOk()">
-        </nz-modal>
-      </ul>
-    </nz-dropdown-menu>
-    <strong *ngIf="vm.isSuccess && vm.filterType !== 'latest'"
-            class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
-  </div>
-  <ul class="list">
-    <ng-container *ngIf="vm.isLoading; else wordListTemplate">
-      <div style="display: flex; justify-content: center; margin-top: 2rem;">
-        <nz-spin nzSimple
-                 [nzSize]="'large'"></nz-spin>
+        <span nz-icon
+              nzType="down">
+        </span>
       </div>
-    </ng-container>
-    <ng-template #wordListTemplate>
-      <ng-container *ngIf="vm.words.length === 0 && vm.filterType === 'search'">
-        <img [style.margin]="'auto'"
-             [style.padding.rem]="'0.25'"
-             [style.width.%]="'75'"
-             src="assets/images/no_result.png">
-        <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
-        <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
-      </ng-container>
-      <app-dictionary-item *ngFor="let word of vm.words; index as i"
-                           [word]="word">
-        <span [style.width.%]="'100'"
-              [style.color]="'#bf616a'"
-              [style.font-size.px]="'10'"
-              [style.font-weight]="'500'"
-              slot="index">{{ i+1 }}:</span>
-      </app-dictionary-item>
-    </ng-template>
-  </ul>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li [nzDisabled]="vm.filterType === 'latest'"
+              (click)="onView8Latest()"
+              nz-menu-item>{{'LATEST' |translate}}</li>
+          <li [nzDisabled]="vm.filterType === 'all'"
+              (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
+              nz-menu-item>{{ 'VIEW_ALL' | translate }}</li>
+          <nz-modal (nzOnCancel)="handleCancel()"
+                    (nzOnOk)="handleOk()">
+          </nz-modal>
+        </ul>
+      </nz-dropdown-menu>
+      <strong *ngIf="vm.isSuccess && vm.filterType !== 'latest'"
+              class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
+    </div>
+    <cdk-virtual-scroll-viewport class="list"
+                                 itemSize="72">
+      <div *ngIf="vm.isLoading; else wordListTemplate">
+        <div style="display: flex; justify-content: center; margin-top: 2rem;">
+          <nz-spin nzSimple
+                   [nzSize]="'large'"></nz-spin>
+        </div>
+      </div>
+      <ng-template #wordListTemplate>
+        <ng-container *ngIf="vm.words.length === 0 && vm.filterType === 'search'">
+          <img [style.margin]="'auto'"
+               [style.padding.rem]="'0.25'"
+               [style.width.%]="'75'"
+               src="assets/images/no_result.png">
+          <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
+          <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
+        </ng-container>
+        <app-dictionary-item *cdkVirtualFor="let word of vm.words; index as i"
+                             [word]="word">
+          <span [style.width.%]="'100'"
+                [style.color]="'#bf616a'"
+                [style.font-size.px]="'10'"
+                [style.font-weight]="'500'"
+                slot="index">{{ i+1 }}:</span>
+        </app-dictionary-item>
+      </ng-template>
+    </cdk-virtual-scroll-viewport>
+  </div>
 </ng-container>
 
 <app-dictionary-form></app-dictionary-form>

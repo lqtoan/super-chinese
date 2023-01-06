@@ -1,6 +1,5 @@
-import { DictionaryService } from '@services/dictionary.service';
 import { AuthenticationService } from './core/authentication/authentication.service';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -17,21 +16,11 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Super Chinese';
 
-  constructor(
-    public readonly authService: AuthenticationService,
-    private readonly translateService: TranslateService,
-    private readonly dictionaryService: DictionaryService
-  ) {
+  constructor(public readonly authService: AuthenticationService, private readonly translateService: TranslateService) {
     this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
-  }
-
-  ngOnInit(): void {
-    setInterval(() => {
-      this.dictionaryService.getLatestWords();
-    }, 600000);
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import { Observable, tap, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Observable, Subject, tap } from 'rxjs';
 export class AudioService {
   constructor(private readonly httpClient: HttpClient) {}
 
-  private _audios$ = new Subject();
+  private _audios$ = new BehaviorSubject<Audio[]>([]);
   audios$ = this._audios$.asObservable();
 
   getHsk1CurriculumAudioList(): Observable<Audio[]> {

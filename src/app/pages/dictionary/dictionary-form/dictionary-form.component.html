@@ -73,7 +73,8 @@
             <nz-form-label nzRequired
                            nzFor="hsk">HSK</nz-form-label>
             <nz-form-control [nzErrorTip]="errorHsk">
-              <nz-select formControlName="hsk"
+              <nz-select [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
+                         formControlName="hsk"
                          required>
                 <nz-option nzValue="hsk1"
                            nzLabel="HSK 1"></nz-option>

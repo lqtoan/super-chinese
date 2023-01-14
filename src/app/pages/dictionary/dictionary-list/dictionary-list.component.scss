@@ -65,12 +65,12 @@
 
 .list {
   margin: 0;
-  height: calc(100vh - 17rem);
+  height: calc(80vh - 8rem);
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 0.5px rgba($color: $gray, $alpha: 0.3) inset;
   overflow: scroll;
-  // scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
 }
 
 @media screen and (max-width: $mobile) {

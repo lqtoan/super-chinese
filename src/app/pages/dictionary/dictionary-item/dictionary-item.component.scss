@@ -8,7 +8,7 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
-  // scroll-snap-align: start;
+  scroll-snap-align: start;
   &--name {
     width: 4.5rem;
     color: $red;

@@ -52,7 +52,7 @@
 
 .audio-list {
   padding: 0 1px 0.5rem;
-  height: calc(95vh - 24.5rem);
+  height: calc(75vh - 15.5rem);
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -112,7 +112,6 @@
 
 @media screen and (max-width: $mobile) {
   .audio-list {
-    padding: 2px;
     grid-template-columns: repeat(1, 1fr);
     .audio {
       border: 2px solid $white;

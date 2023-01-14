@@ -1,14 +1,13 @@
 <ng-container *ngIf="audio.isLoading; else audioList">
-  <nz-spin *ngIf="!canReload; else reloadTemplate"
-           nzSimple></nz-spin>
-  <div style="text-align: center; margin-top: 5%;"
-       (click)="onReload()"
-       *ngIf="canReload">
+  <div style="text-align: center; margin-top: 5%;">
     <p>{{'NOTI.RELOAD' | translate}}</p>
-    <button style="margin-top: 5%; padding: 0 0.5rem;"
+    <button (click)="this.ngOnInit()"
+            style="margin-top: 2.5%; padding: 0 0.5rem; border-radius: 0.5rem;"
             nz-button
             nzType="primary">
-      Reload
+      Reload<span nz-icon
+            nzType="reload"
+            nzTheme="outline"></span>
     </button>
   </div>
 </ng-container>

@@ -15,23 +15,11 @@ export class AudioListComponent implements OnInit {
   currentPage: number = 1;
   selectedAudio?: Audio;
   isPlaying: boolean = false;
-  canReload: boolean = false;
 
-  ngOnInit() {
-    this.canReload = false;
-    setTimeout(() => {
-      this.canReload = true;
-    }, 5000);
-  }
+  ngOnInit() {}
 
   onSelect(audio: Audio): void {
-    if (this.selectedAudio === audio && this.isPlaying) {
-      this.onPause();
-      this.isPlaying = false;
-    } else {
-      this.onPlay(audio);
-      this.isPlaying = true;
-    }
+    this.selectedAudio === audio && this.isPlaying ? this.onPause() : this.onPlay(audio);
   }
 
   onPause() {
@@ -45,10 +33,5 @@ export class AudioListComponent implements OnInit {
     const controls = <HTMLVideoElement>document.querySelector('#audioControls');
     controls.play();
     this.isPlaying = true;
-  }
-
-  onReload() {
-    window.location.reload();
-    this.canReload = false;
   }
 }

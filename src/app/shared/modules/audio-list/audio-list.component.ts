@@ -14,8 +14,28 @@ export class AudioListComponent {
   };
   currentPage: number = 1;
   selectedAudio?: Audio;
+  isPlaying: boolean = false;
 
   onSelect(audio: Audio): void {
+    if (this.selectedAudio === audio && this.isPlaying) {
+      this.onPause();
+      this.isPlaying = false;
+    } else {
+      this.onPlay(audio);
+      this.isPlaying = true;
+    }
+  }
+
+  onPause() {
+    const controls = <HTMLVideoElement>document.querySelector('#audioControls');
+    controls.pause();
+    this.isPlaying = false;
+  }
+
+  onPlay(audio: Audio) {
     this.selectedAudio = audio;
+    const controls = <HTMLVideoElement>document.querySelector('#audioControls');
+    controls.play();
+    this.isPlaying = true;
   }
 }

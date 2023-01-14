@@ -5,7 +5,8 @@
   <div class="controls"
        *ngIf="selectedAudio">
     <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
-    <audio controls
+    <audio id="audioControls"
+           controls
            autoplay
            preload="none"
            [attr.src]="selectedAudio.url">
@@ -19,7 +20,8 @@
     <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon
          nzType="heart"
          nzTheme="outline"></i></h4>
-    <audio controls>
+    <audio id="audioControls"
+           controls>
       <source type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
@@ -35,12 +37,25 @@
   </div>
   <div class="audio-list"
        [ngStyle]="{ 'grid-auto-rows': audio.height }">
-    <ul *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
-        class="audio"
-        (click)="onSelect(audio)">
+    <div *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
+         class="audio"
+         (click)="onSelect(audio)">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
       <nz-divider></nz-divider>
-      <strong class="audio__title">{{ audio.title | translate }}</strong>
-    </ul>
+      <strong class="audio__title">{{ audio.title | translate }}
+      </strong>
+      <div class="actions">
+        <span *ngIf="selectedAudio === audio && isPlaying; else play"
+              nz-icon
+              nzType="pause-circle"
+              nzTheme="fill"></span>
+        <ng-template #play>
+          <span class="actions--play"
+                nz-icon
+                nzType="play-circle"
+                nzTheme="fill"></span>
+        </ng-template>
+      </div>
+    </div>
   </div>
 </ng-template>

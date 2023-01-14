@@ -60,6 +60,7 @@
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   .audio {
+    position: relative;
     padding: 1rem;
     background: #fff;
     display: flex;
@@ -72,10 +73,33 @@
       color: rgba($color: $gray, $alpha: 0.5);
       font-size: smaller;
     }
+    &__title {
+      color: $black;
+    }
+    .actions {
+      position: absolute;
+      right: 10px;
+      top: calc(50% - 1rem);
+      color: $primary-color;
+      font-size: 2rem;
+      transition: $transition;
+      &--play {
+        opacity: 0;
+      }
+    }
+    .actions:hover {
+      color: rgba($color: $primary-color, $alpha: 0.75);
+      text-shadow: 1px 1px 1px 1px $black;
+    }
   }
   .audio:hover {
     cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba($color: $gray, $alpha: 0.25);
+    .actions {
+      &--play {
+        opacity: 1;
+      }
+    }
   }
   .audio:nth-child(odd) {
     animation: slideToRight 0.75s ease 0s backwards;

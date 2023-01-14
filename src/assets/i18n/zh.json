@@ -59,6 +59,7 @@
   "SETTING": "设置",
   "LOGOUT": "登出",
   "COMING_SOON": "快来了。。。",
+  "NOTI.RELOAD": "Cant load data this time. You maybe reload.",
   "SELECT": "选择 一个 文件",
   "INPUT.PLACE_HOLDER": "请 输入",
   "SELECT.PLACE_HOLDER": "请 选择",

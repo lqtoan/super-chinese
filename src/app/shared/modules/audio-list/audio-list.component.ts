@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Audio, AudioConfiguration } from '@models/audio.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Audio, AudioConfiguration } from '@models/audio.model';
   templateUrl: './audio-list.component.html',
   styleUrls: ['./audio-list.component.scss'],
 })
-export class AudioListComponent {
+export class AudioListComponent implements OnInit {
   @Input() audio: AudioConfiguration = {
     list: [],
     height: '6rem',
@@ -15,6 +15,14 @@ export class AudioListComponent {
   currentPage: number = 1;
   selectedAudio?: Audio;
   isPlaying: boolean = false;
+  canReload: boolean = false;
+
+  ngOnInit() {
+    this.canReload = false;
+    setTimeout(() => {
+      this.canReload = true;
+    }, 5000);
+  }
 
   onSelect(audio: Audio): void {
     if (this.selectedAudio === audio && this.isPlaying) {
@@ -37,5 +45,10 @@ export class AudioListComponent {
     const controls = <HTMLVideoElement>document.querySelector('#audioControls');
     controls.play();
     this.isPlaying = true;
+  }
+
+  onReload() {
+    window.location.reload();
+    this.canReload = false;
   }
 }

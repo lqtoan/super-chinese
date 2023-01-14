@@ -1,5 +1,16 @@
 <ng-container *ngIf="audio.isLoading; else audioList">
-  <nz-spin nzSimple></nz-spin>
+  <nz-spin *ngIf="!canReload; else reloadTemplate"
+           nzSimple></nz-spin>
+  <div style="text-align: center; margin-top: 5%;"
+       (click)="onReload()"
+       *ngIf="canReload">
+    <p>{{'NOTI.RELOAD' | translate}}</p>
+    <button style="margin-top: 5%; padding: 0 0.5rem;"
+            nz-button
+            nzType="primary">
+      Reload
+    </button>
+  </div>
 </ng-container>
 <ng-template #audioList>
   <div class="controls"
@@ -39,9 +50,9 @@
        [ngStyle]="{ 'grid-auto-rows': audio.height }">
     <div *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
          class="audio"
+         [class.selected]="selectedAudio === audio"
          (click)="onSelect(audio)">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
-      <nz-divider></nz-divider>
       <strong class="audio__title">{{ audio.title | translate }}
       </strong>
       <div class="actions">

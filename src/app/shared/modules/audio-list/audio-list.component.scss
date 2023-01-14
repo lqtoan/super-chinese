@@ -72,6 +72,7 @@
     &__type {
       color: rgba($color: $gray, $alpha: 0.5);
       font-size: smaller;
+      border-bottom: 0.5px solid rgba($color: $gray, $alpha: 0.5);
     }
     &__title {
       color: $black;
@@ -111,6 +112,19 @@
 
 @media screen and (max-width: $mobile) {
   .audio-list {
+    padding: 2px;
     grid-template-columns: repeat(1, 1fr);
+    .audio {
+      border: 2px solid $white;
+      .actions {
+        &--play {
+          opacity: 1;
+        }
+      }
+    }
+    .audio:hover,
+    .selected {
+      border: 2px solid $primary-color;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AudioListComponent } from './audio-list.component';
 import { TranslateModule } from '@ngx-translate/core';
 
-const nzModules = [NzIconModule, NzDividerModule, NzSpinModule];
+const nzModules = [NzIconModule, NzButtonModule, NzSpinModule];
 
 @NgModule({
   declarations: [AudioListComponent],

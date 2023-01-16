@@ -1,11 +1,15 @@
 <li class="word">
   <ng-content select="[slot=index]"></ng-content>
+  <span *ngIf="word.updatedDate; else createdDate"
+        class="word--date">
+    {{'UPDATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span>
+  <ng-template #createdDate>
+    <span class="word--date">
+      {{'CREATED' |translate}}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
+  </ng-template>
   <span class="word--name">{{ word.display }}</span>
-  <div class="word--wrap">
-    <span class="word--wrap--pinyin">[{{ word.pinyin }}]</span>
-    <span class="word--wrap--chivi">({{ word.chinaVietnamWord | titlecase }})</span>
-    <span class="word--wrap--define">{{ word.define | translate }}</span>
-  </div>
+  <span class="word--pinyin">[{{ word.pinyin }}]</span>
+  <span class="word--chivi">({{ word.chinaVietnamWord | titlecase }})</span>
   <span class="word--hsk">
     <ng-container [ngSwitch]="word.hsk">
       <ng-container *ngSwitchCase="'hsk1'">
@@ -34,24 +38,20 @@
       </ng-container>
     </ng-container>
   </span>
-  <span *ngIf="word.updatedDate; else createdDate"
-        class="word--date">
-    {{'CREATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span>
-  <ng-template #createdDate>
-    <span class="word--date">
-      {{'UPDATED' |translate}}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
-  </ng-template>
+  <span class="word--define">{{ word.define | translate }}</span>
+
+
   <div class="actions">
     <!-- <span nz-tooltip
-      [nzTooltipTitle]="'ACTION.UPDATE' | translate"
-      nz-icon
-      nzType="edit"
+          [nzTooltipTitle]="'ACTION.UPDATE' | translate"
+          nz-icon
+          nzType="edit"
           nzTheme="fill"
           (click)="onEdit(word._id)"></span> -->
     <!-- <span nz-tooltip
           [nzTooltipTitle]="'ACTION.DELETE' | translate"
           nz-popconfirm
-          [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate"
+          [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate: { word: word.display + '[' + word.pinyin + ']' }"
           nzOkText="OK"
           nzCancelText="Cancel"
           (nzOnConfirm)="onDelete(word._id)"

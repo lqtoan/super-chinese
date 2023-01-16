@@ -78,10 +78,11 @@
       </ng-container>
       <app-dictionary-item *ngFor="let word of vm.words; index as i"
                            [word]="word">
-        <span [style.width.%]="'100'"
-              [style.color]="'#bf616a'"
-              [style.font-size.px]="'10'"
+        <span [style.width.%]="'10'"
+              [style.color]="'#4c566a80'"
+              [style.font-size.px]="'9'"
               [style.font-weight]="'500'"
+              [style.line-height.%]="'100'"
               slot="index">{{ i+1 }}:</span>
       </app-dictionary-item>
     </ng-template>

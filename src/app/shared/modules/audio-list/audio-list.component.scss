@@ -60,7 +60,7 @@
   scroll-snap-type: y mandatory;
   .audio {
     position: relative;
-    padding: 1rem;
+    padding: 1rem 3rem 1rem 1rem;
     background: #fff;
     display: flex;
     flex-flow: column;
@@ -81,10 +81,13 @@
       right: 1rem;
       top: calc(50% - 1rem);
       color: rgba($color: $primary-color, $alpha: 0.8);
-      font-size: 2rem;
       transition: $transition;
       &--play {
+        font-size: 2rem;
         opacity: 0;
+      }
+      &--pause {
+        font-size: 2rem;
       }
     }
     .actions:hover {

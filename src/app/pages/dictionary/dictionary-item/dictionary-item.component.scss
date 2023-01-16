@@ -1,41 +1,32 @@
 @import '/src/variables.scss';
 
 .word {
-  height: 72px;
-  padding: 0 0.5rem;
-  border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
+  min-height: 63.77px;
+  height: calc(100% / 8);
+  padding: 0.25rem 0.5rem 0;
+  border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: center;
+  align-items: baseline;
   scroll-snap-align: start;
   &--name {
-    width: 4.5rem;
-    color: $red;
+    color: $primary-color;
     font-size: 18px;
     letter-spacing: 1px;
   }
-  &--wrap {
-    display: flex;
-    flex-flow: row wrap;
-    width: calc(100% - 8rem);
-    &--chivi {
-      margin-left: 0.125rem;
-      color: #81a1c1;
-      font-size: smaller;
-      font-weight: 500;
-    }
-    &--pinyin {
-      color: $primary-color;
-      font-size: smaller;
-      font-weight: 500;
-    }
-    &--define {
-      width: 100%;
-      color: $gray;
-      font-size: 15px;
-      font-weight: 500;
-    }
+  &--pinyin {
+    margin-left: 0.25rem;
+    color: #81a1c1;
+  }
+  &--chivi {
+    margin-left: 0.125rem;
+    color: $blue;
+  }
+  &--define {
+    width: 100%;
+    color: $gray;
+    font-weight: 500;
+    word-wrap: break-word;
   }
   &--hsk {
     margin-left: auto;
@@ -49,10 +40,11 @@
     }
   }
   &--date {
-    width: 100%;
+    width: 90%;
     color: rgba($color: $gray, $alpha: 0.5);
     font-size: 9px;
     text-align: right;
+    line-height: 100%;
   }
   .actions {
     margin-left: auto;

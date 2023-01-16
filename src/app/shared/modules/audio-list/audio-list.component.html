@@ -56,6 +56,7 @@
       </strong>
       <div class="actions">
         <span *ngIf="selectedAudio === audio && isPlaying; else play"
+              class="actions--pause"
               nz-icon
               nzType="pause-circle"
               nzTheme="fill"></span>

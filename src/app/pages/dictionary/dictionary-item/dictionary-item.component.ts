@@ -1,9 +1,6 @@
 import { Word } from '@models/word.model';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { DictionaryStore } from '../dictionary.store';
-import { UserProfileStore } from '../../user-profile/user-profile.store';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dictionary-item',
@@ -24,12 +21,7 @@ export class DictionaryItemComponent implements OnInit {
     updatedDate: new Date(),
   };
 
-  constructor(
-    private readonly store: DictionaryStore,
-    private readonly userStore: UserProfileStore,
-    private readonly message: NzMessageService,
-    private readonly translateService: TranslateService
-  ) {}
+  constructor(private readonly store: DictionaryStore) {}
 
   ngOnInit(): void {}
 

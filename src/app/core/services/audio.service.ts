@@ -1,23 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
-import { Observable, tap, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AudioService {
   constructor(private readonly httpClient: HttpClient) {}
+  private _currentTab$ = new BehaviorSubject<number>(0);
+  currentTab$ = this._currentTab$.asObservable();
 
-  private _audios$ = new BehaviorSubject<Audio[]>([]);
-  audios$ = this._audios$.asObservable();
+  changeTabIndex(index: number) {
+    this._currentTab$.next(index);
+  }
 
   getHsk1CurriculumAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk1.curriculum.json').pipe(tap((res) => this._audios$.next(res)));
+    return this.httpClient.get<Audio[]>('assets/mock/hsk1.curriculum.json');
   }
 
   getHsk1ExerciseAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk1.exercise.json').pipe(tap((res) => this._audios$.next(res)));
+    return this.httpClient.get<Audio[]>('assets/mock/hsk1.exercise.json');
   }
 
   getHsk2CurriculumAudioList(): Observable<Audio[]> {

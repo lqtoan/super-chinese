@@ -71,10 +71,13 @@
     &__type {
       color: rgba($color: $gray, $alpha: 0.5);
       font-size: smaller;
-      border-bottom: 0.5px solid rgba($color: $gray, $alpha: 0.5);
+      border-bottom: 0.5px solid rgba($color: $gray, $alpha: 0.35);
     }
     &__title {
       color: $gray;
+      &--selected {
+        color: $primary-color;
+      }
     }
     .actions {
       position: absolute;
@@ -82,24 +85,23 @@
       top: calc(50% - 1rem);
       color: rgba($color: $primary-color, $alpha: 0.8);
       transition: $transition;
-      &--play {
+      .play {
         font-size: 2rem;
         opacity: 0;
       }
-      &--pause {
+      .pause {
         font-size: 2rem;
       }
     }
     .actions:hover {
       color: rgba($color: $primary-color, $alpha: 0.65);
-      text-shadow: 1px 1px 1px 1px $black;
     }
   }
   .audio:hover {
     cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba($color: $gray, $alpha: 0.25);
     .actions {
-      &--play {
+      .play {
         opacity: 1;
       }
     }
@@ -118,15 +120,17 @@
     .audio {
       border: 2px solid $white;
       .actions {
-        color: rgba($color: $primary-color, $alpha: 0.75);
-        &--play {
+        color: rgba($color: $primary-color, $alpha: 0.65);
+        .play {
           opacity: 1;
         }
       }
+      &--selected {
+        border: 2px solid rgba($color: $primary-color, $alpha: 0.65);
+      }
     }
-    .audio:hover,
-    .selected {
-      border: 2px solid rgba($color: $primary-color, $alpha: 0.75);
+    .audio:hover {
+      border: 2px solid rgba($color: $primary-color, $alpha: 0.65);
     }
   }
 }

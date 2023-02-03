@@ -29,9 +29,9 @@ export class AudioListComponent implements OnInit {
   }
 
   onPlay(audio: Audio) {
-    this.selectedAudio = audio;
     const controls = <HTMLVideoElement>document.querySelector('#audioControls');
-    controls.play();
+    this.selectedAudio = audio;
+    if (!this.isPlaying) controls.play();
     this.isPlaying = true;
   }
 }

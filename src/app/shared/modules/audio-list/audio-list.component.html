@@ -1,5 +1,6 @@
-<!-- <ng-container *ngIf="audio.isLoading; else audioList">
-  <div style="text-align: center; margin-top: 5%;">
+<ng-container *ngIf="audio.isLoading; else audioList">
+  <div class="delay"
+       style="text-align: center; margin-top: 5%;">
     <p>{{'NOTI.RELOAD' | translate}}</p>
     <button (click)="this.ngOnInit()"
             style="margin-top: 2.5%; padding: 0 0.5rem; border-radius: 0.5rem;"
@@ -10,64 +11,64 @@
             nzTheme="outline"></span>
     </button>
   </div>
-</ng-container> -->
-<!-- <ng-template #audioList> -->
-<div class="controls"
-     *ngIf="selectedAudio">
-  <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
-  <audio id="audioControls"
-         controls
-         autoplay
-         preload="none"
-         [attr.src]="selectedAudio.url">
-    <source [src]="[selectedAudio.url]"
-            type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
-<div class="controls"
-     *ngIf="!selectedAudio">
-  <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon
-       nzType="heart"
-       nzTheme="outline"></i></h4>
-  <audio id="audioControls"
-         controls>
-    <source type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-</div>
-<div class="pagination">
-  <pagination-controls (pageChange)="currentPage = $event"
-                       previousLabel="<"
-                       nextLabel=">"
-                       [maxSize]="6"
-                       [directionLinks]="false"
-                       [autoHide]="true"
-                       [responsive]="false"></pagination-controls>
-</div>
-<div class="audio-list"
-     [ngStyle]="{ 'grid-auto-rows': audio.height }">
-  <div *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
-       class="audio"
-       [class.audio--selected]="selectedAudio === audio"
-       (click)="onSelect(audio)">
-    <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
-    <strong [class.audio__title--selected]="selectedAudio === audio"
-            class="audio__title">{{ audio.title | translate }}
-    </strong>
-    <div class="actions">
-      <span *ngIf="selectedAudio === audio && isPlaying; else play"
-            class="pause"
-            nz-icon
-            nzType="pause-circle"
-            nzTheme="fill"></span>
-      <ng-template #play>
-        <span class="play"
+</ng-container>
+<ng-template #audioList>
+  <div class="controls"
+       *ngIf="selectedAudio">
+    <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
+    <audio id="audioControls"
+           controls
+           autoplay
+           preload="none"
+           [attr.src]="selectedAudio.url">
+      <source [src]="[selectedAudio.url]"
+              type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  <div class="controls"
+       *ngIf="!selectedAudio">
+    <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon
+         nzType="heart"
+         nzTheme="outline"></i></h4>
+    <audio id="audioControls"
+           controls>
+      <source type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event"
+                         previousLabel="<"
+                         nextLabel=">"
+                         [maxSize]="6"
+                         [directionLinks]="false"
+                         [autoHide]="true"
+                         [responsive]="false"></pagination-controls>
+  </div>
+  <div class="audio-list"
+       [ngStyle]="{ 'grid-auto-rows': audio.height }">
+    <div *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
+         class="audio"
+         [class.audio--selected]="selectedAudio === audio"
+         (click)="onSelect(audio)">
+      <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
+      <strong [class.audio__title--selected]="selectedAudio === audio"
+              class="audio__title">{{ audio.title | translate }}
+      </strong>
+      <div class="actions">
+        <span *ngIf="selectedAudio === audio && isPlaying; else play"
+              class="pause"
               nz-icon
-              nzType="play-circle"
+              nzType="pause-circle"
               nzTheme="fill"></span>
-      </ng-template>
+        <ng-template #play>
+          <span class="play"
+                nz-icon
+                nzType="play-circle"
+                nzTheme="fill"></span>
+        </ng-template>
+      </div>
     </div>
   </div>
-</div>
-<!-- </ng-template> -->
+</ng-template>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { AudioType } from '@enums/audio-type.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,9 @@ export class AudioService {
   constructor(private readonly httpClient: HttpClient) {}
   private _currentTab$ = new BehaviorSubject<number>(0);
   currentTab$ = this._currentTab$.asObservable();
+
+  private _currentGrade$ = new BehaviorSubject<AudioType>('CURRICULUM');
+  currentGrade$ = this._currentGrade$.asObservable();
 
   changeTabIndex(index: number) {
     this._currentTab$.next(index);

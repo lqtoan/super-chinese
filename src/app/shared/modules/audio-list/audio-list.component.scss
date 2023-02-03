@@ -1,6 +1,10 @@
 @import '/src/styles.scss';
 @import 'animation';
 
+.delay {
+  animation: appearance 0.25s ease 0.4s backwards;
+}
+
 .controls {
   margin-top: 0.5rem;
   position: sticky;

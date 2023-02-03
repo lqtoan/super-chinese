@@ -33,7 +33,7 @@ export class ExerciseComponent implements OnInit {
   ngOnInit(): void {
     this.audioService.currentTab$.pipe(takeUntil(this.destroy$)).subscribe((tabIndex) => {
       switch (tabIndex) {
-        case 0:
+        case 1:
           this.audioService.getHsk1ExerciseAudioList().subscribe((res) => {
             this.hsk1Audio.list = res;
             this.hsk1Audio.list.forEach((audio) => {
@@ -43,7 +43,7 @@ export class ExerciseComponent implements OnInit {
             this.hsk1Audio.isLoading = false;
           });
           break;
-        case 1:
+        case 2:
           this.audioService.getHsk2ExerciseAudioList().subscribe((res) => {
             this.hsk2Audio.list = res;
             this.hsk2Audio.list.forEach((audio) => {
@@ -53,7 +53,7 @@ export class ExerciseComponent implements OnInit {
             this.hsk2Audio.isLoading = false;
           });
           break;
-        case 2:
+        case 3:
           this.audioService.getHsk3ExerciseAudioList().subscribe((res) => {
             this.hsk3Audio.list = res;
             this.hsk3Audio.list.forEach((audio) => {
@@ -64,14 +64,6 @@ export class ExerciseComponent implements OnInit {
           });
           break;
         default:
-          this.audioService.getHsk1ExerciseAudioList().subscribe((res) => {
-            this.hsk1Audio.list = res;
-            this.hsk1Audio.list.forEach((audio) => {
-              audio.type = 'EXERCISE';
-              audio.grade = 'hsk 1';
-            });
-            this.hsk1Audio.isLoading = false;
-          });
           break;
       }
     });

@@ -1,6 +1,9 @@
 <nz-tabset [nzAnimated]="false"
            [nzSelectedIndex]="tabIndex$ | async"
            (nzSelectedIndexChange)="onSelectTab($event)">
+  <nz-tab [nzTitle]="'ABOUT'| translate">
+    {{ 'COMING_SOON' | translate }}
+  </nz-tab>
   <nz-tab [nzTitle]="'HSK 1' | translate">
     <ng-container class="tab-content">
       <app-audio-list [audio]="hsk1Audio"></app-audio-list>

@@ -12,9 +12,6 @@ export class AudioService {
   private _currentTab$ = new BehaviorSubject<number>(0);
   currentTab$ = this._currentTab$.asObservable();
 
-  private _currentGrade$ = new BehaviorSubject<AudioType>('CURRICULUM');
-  currentGrade$ = this._currentGrade$.asObservable();
-
   changeTabIndex(index: number) {
     this._currentTab$.next(index);
   }

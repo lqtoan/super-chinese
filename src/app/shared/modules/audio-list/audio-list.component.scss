@@ -59,6 +59,7 @@
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 6rem;
   grid-gap: 0.5rem;
   overflow-y: auto;
   scroll-snap-type: y mandatory;

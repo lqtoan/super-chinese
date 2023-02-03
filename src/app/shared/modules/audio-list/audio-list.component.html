@@ -1,4 +1,4 @@
-<ng-container *ngIf="audio.isLoading; else audioList">
+<ng-container *ngIf="isLoading; else audioList">
   <div class="delay"
        style="text-align: center; margin-top: 5%;">
     <p>{{'NOTI.RELOAD' | translate}}</p>
@@ -46,9 +46,8 @@
                          [autoHide]="true"
                          [responsive]="false"></pagination-controls>
   </div>
-  <div class="audio-list"
-       [ngStyle]="{ 'grid-auto-rows': audio.height }">
-    <div *ngFor="let audio of audio.list | paginate: { itemsPerPage: 16, currentPage: currentPage }"
+  <div class="audio-list">
+    <div *ngFor="let audio of audios | paginate: { itemsPerPage: 16, currentPage: currentPage }"
          class="audio"
          [class.audio--selected]="selectedAudio === audio"
          (click)="onSelect(audio)">

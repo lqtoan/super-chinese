@@ -6,9 +6,3 @@ export interface Audio {
   type: AudioType;
   grade: Grade;
 }
-
-export interface AudioConfiguration {
-  list: Audio[];
-  height: string;
-  isLoading: boolean;
-}

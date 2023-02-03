@@ -1,52 +1,54 @@
-<nz-tabset [nzAnimated]="false"
-           [nzSelectedIndex]="tabIndex$ | async"
-           (nzSelectedIndexChange)="onSelectTab($event)">
-  <nz-tab [nzTitle]="'ABOUT'| translate">
-    {{ 'COMING_SOON' | translate }}
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 1' | translate">
-    <ng-template nz-tab>
-      <app-audio-list [audio]="hsk1Audio"></app-audio-list>
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 2' | translate">
-    <ng-template nz-tab>
-      <app-audio-list [audio]="hsk2Audio"></app-audio-list>
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 3' | translate">
-    <ng-template nz-tab>
-      <app-audio-list [audio]="hsk3Audio"></app-audio-list>
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 4' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 5' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 6' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 7' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 8' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-  <nz-tab [nzTitle]="'HSK 9' | translate">
-    <ng-template nz-tab>
-      {{ 'COMING_SOON' | translate }}
-    </ng-template>
-  </nz-tab>
-</nz-tabset>
+<ng-container *ngIf="vm$ | async as vm">
+  <nz-tabset [nzAnimated]="false"
+             [nzSelectedIndex]="tabIndex$ | async"
+             (nzSelectedIndexChange)="onSelectTab($event)">
+    <nz-tab [nzTitle]="'HSK 1' | translate">
+      <ng-template nz-tab>
+        <app-audio-list [audios]="vm.hsk1"
+                        [isLoading]="vm.isLoading"></app-audio-list>
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 2' | translate">
+      <ng-template nz-tab>
+        <app-audio-list [audios]="vm.hsk2"
+                        [isLoading]="vm.isLoading"></app-audio-list>
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 3' | translate">
+      <ng-template nz-tab>
+        <app-audio-list [audios]="vm.hsk3"
+                        [isLoading]="vm.isLoading"></app-audio-list>
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 4' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 5' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 6' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 7' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 8' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+    <nz-tab [nzTitle]="'HSK 9' | translate">
+      <ng-template nz-tab>
+        {{ 'COMING_SOON' | translate }}
+      </ng-template>
+    </nz-tab>
+  </nz-tabset>
+</ng-container>

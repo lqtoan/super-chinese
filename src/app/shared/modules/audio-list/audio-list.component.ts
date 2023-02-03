@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Audio, AudioConfiguration } from '@models/audio.model';
+import { Audio } from '@models/audio.model';
 
 @Component({
   selector: 'app-audio-list',
@@ -7,11 +7,8 @@ import { Audio, AudioConfiguration } from '@models/audio.model';
   styleUrls: ['./audio-list.component.scss'],
 })
 export class AudioListComponent implements OnInit {
-  @Input() audio: AudioConfiguration = {
-    list: [],
-    height: '6rem',
-    isLoading: true,
-  };
+  @Input() audios: Audio[] = [];
+  @Input() isLoading: boolean = false;
   currentPage: number = 1;
   selectedAudio?: Audio;
   isPlaying: boolean = false;

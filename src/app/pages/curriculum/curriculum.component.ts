@@ -1,7 +1,7 @@
 import { AudioService } from '@services/audio.service';
 import { AudioConfiguration } from '@models/audio.model';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { skip, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-curriculum',
@@ -64,6 +64,14 @@ export class CurriculumComponent implements OnInit, OnDestroy {
           });
           break;
         default:
+          this.audioService.getHsk1CurriculumAudioList().subscribe((res) => {
+            this.hsk1Audio.list = res;
+            this.hsk1Audio.list.forEach((audio) => {
+              audio.type = 'CURRICULUM';
+              audio.grade = 'hsk 1';
+            });
+            this.hsk1Audio.isLoading = false;
+          });
           break;
       }
     });

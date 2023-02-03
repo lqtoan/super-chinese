@@ -64,6 +64,14 @@ export class ExerciseComponent implements OnInit {
           });
           break;
         default:
+          this.audioService.getHsk1ExerciseAudioList().subscribe((res) => {
+            this.hsk1Audio.list = res;
+            this.hsk1Audio.list.forEach((audio) => {
+              audio.type = 'EXERCISE';
+              audio.grade = 'hsk 1';
+            });
+            this.hsk1Audio.isLoading = false;
+          });
           break;
       }
     });

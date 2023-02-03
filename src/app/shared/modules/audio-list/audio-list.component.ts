@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Audio } from '@models/audio.model';
 
 @Component({
   selector: 'app-audio-list',
   templateUrl: './audio-list.component.html',
   styleUrls: ['./audio-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AudioListComponent implements OnInit {
   @Input() audios: Audio[] = [];
@@ -22,6 +23,7 @@ export class AudioListComponent implements OnInit {
   onPause() {
     const controls = <HTMLVideoElement>document.querySelector('#audioControls');
     controls.pause();
+    controls.currentTime = 0;
     this.isPlaying = false;
   }
 

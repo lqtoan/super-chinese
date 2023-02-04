@@ -7,13 +7,11 @@ import { Audio } from '@models/audio.model';
 export interface ExerciseState {
   isLoading: boolean;
   data: Audio[];
-  index: number;
 }
 
 const initialState = {
   isLoading: false,
   data: [],
-  index: 0,
 };
 
 @Injectable()
@@ -25,15 +23,12 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
   readonly vm$ = this.select(({ isLoading, data }) => ({ isLoading, data }), {
     debounce: true,
   });
-  readonly tabIndex$ = this.select((state) => state.index);
+  readonly tabIndex$ = this.service.currentTab$;
 
   //#region Updater
-  readonly setTabIndex = this.updater<number>(
-    (state, index): ExerciseState => ({
-      ...state,
-      index,
-    })
-  );
+  setTabIndex(index: number) {
+    this.service.changeTabIndex(index);
+  }
   //#endregion
 
   //#region Effect

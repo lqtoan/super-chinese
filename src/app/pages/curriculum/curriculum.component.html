@@ -1,5 +1,6 @@
 <ng-container *ngIf="vm$ | async as vm">
   <nz-tabset [nzAnimated]="false"
+             [nzSelectedIndex]="tabIndex$ | async"
              (nzSelectedIndexChange)="onSelectTab($event)">
     <nz-tab [nzTitle]="'HSK 1' | translate">
       <ng-template nz-tab>

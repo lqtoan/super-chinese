@@ -10,11 +10,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ExerciseComponent implements OnInit {
   readonly vm$ = this.store.vm$;
+  readonly tabIndex$ = this.store.tabIndex$;
 
   constructor(private readonly store: ExerciseStore) {}
 
   ngOnInit(): void {
-    this.store.tabIndex$.subscribe((res) => {
+    this.tabIndex$.subscribe((res) => {
       this.store.loadData(res);
     });
   }

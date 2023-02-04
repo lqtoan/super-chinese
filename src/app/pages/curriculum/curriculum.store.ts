@@ -25,15 +25,12 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
   readonly vm$ = this.select(({ isLoading, data }) => ({ isLoading, data }), {
     debounce: true,
   });
-  readonly tabIndex$ = this.select((state) => state.index);
+  readonly tabIndex$ = this.service.currentTab$;
 
   //#region Updater
-  readonly setTabIndex = this.updater<number>(
-    (state, index): CurriculumState => ({
-      ...state,
-      index,
-    })
-  );
+  setTabIndex(index: number) {
+    this.service.changeTabIndex(index);
+  }
   //#endregion
 
   //#region Effect

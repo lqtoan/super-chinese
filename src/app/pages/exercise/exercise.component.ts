@@ -1,7 +1,5 @@
 import { ExerciseStore } from './exercise.store';
-import { AudioService } from '@services/audio.service';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-exercise',
@@ -12,19 +10,13 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class ExerciseComponent implements OnInit {
   readonly vm$ = this.store.vm$;
-  readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly store: ExerciseStore, private readonly audioService: AudioService) {}
+  constructor(private readonly store: ExerciseStore) {}
 
   ngOnInit(): void {
-    this.store.tabIndex$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+    this.store.tabIndex$.subscribe((res) => {
       this.store.loadData(res);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   onSelectTab(tabIndex: number) {

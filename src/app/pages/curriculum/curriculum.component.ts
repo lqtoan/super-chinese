@@ -1,7 +1,5 @@
 import { CurriculumStore } from './curriculum.store';
-import { AudioService } from '@services/audio.service';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-curriculum',
@@ -10,21 +8,16 @@ import { Subject, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CurriculumStore],
 })
-export class CurriculumComponent implements OnInit, OnDestroy {
+export class CurriculumComponent implements OnInit {
   readonly vm$ = this.store.vm$;
-  readonly destroy$ = new Subject<void>();
+  readonly tabIndex$ = this.store.tabIndex$;
 
   constructor(private readonly store: CurriculumStore) {}
 
   ngOnInit(): void {
-    this.store.tabIndex$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+    this.tabIndex$.subscribe((res) => {
       this.store.loadData(res);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   onSelectTab(tabIndex: number) {

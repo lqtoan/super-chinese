@@ -6,16 +6,14 @@ import { Audio } from '@models/audio.model';
 
 export interface ExerciseState {
   isLoading: boolean;
-  hsk1?: Audio[];
-  hsk2?: Audio[];
-  hsk3?: Audio[];
+  data: Audio[];
+  index: number;
 }
 
 const initialState = {
   isLoading: false,
-  hsk1: undefined,
-  hsk2: undefined,
-  hsk3: undefined,
+  data: [],
+  index: 0,
 };
 
 @Injectable()
@@ -24,74 +22,40 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, hsk1, hsk2, hsk3 }) => ({ isLoading, hsk1, hsk2, hsk3 }), {
+  readonly vm$ = this.select(({ isLoading, data }) => ({ isLoading, data }), {
     debounce: true,
   });
+  readonly tabIndex$ = this.select((state) => state.index);
 
-  readonly loadHsk1 = this.effect(($) =>
+  //#region Updater
+  readonly setTabIndex = this.updater<number>(
+    (state, index): ExerciseState => ({
+      ...state,
+      index,
+    })
+  );
+  //#endregion
+
+  //#region Effect
+  readonly loadData = this.effect<number>(($) =>
     $.pipe(
       tap(() => this.patchState({ isLoading: true })),
-      switchMap(() =>
-        this.service.getHsk1ExerciseAudioList().pipe(
+      switchMap((index) =>
+        this.service.getAllExercises(index).pipe(
           tapResponse(
-            (data: Audio[]) => {
+            (data) => {
               data.forEach((audio) => {
                 audio.type = 'EXERCISE';
-                audio.grade = 'hsk 1';
+                audio.grade = `hsk ${index + 1}`;
               });
-              this.patchState({ hsk1: data });
+              this.patchState({ data: data });
             },
-            (error) => {
-              // TODO
-            }
+            (error) => {}
           ),
           finalize(() => this.patchState({ isLoading: false }))
         )
       )
     )
   );
-  readonly loadHsk2 = this.effect(($) =>
-    $.pipe(
-      tap(() => this.patchState({ isLoading: true })),
-      switchMap(() =>
-        this.service.getHsk2ExerciseAudioList().pipe(
-          tapResponse(
-            (data: Audio[]) => {
-              data.forEach((audio) => {
-                audio.type = 'EXERCISE';
-                audio.grade = 'hsk 2';
-              });
-              this.patchState({ hsk2: data });
-            },
-            (error) => {
-              // TODO
-            }
-          ),
-          finalize(() => this.patchState({ isLoading: false }))
-        )
-      )
-    )
-  );
-  readonly loadHsk3 = this.effect(($) =>
-    $.pipe(
-      tap(() => this.patchState({ isLoading: true })),
-      switchMap(() =>
-        this.service.getHsk3ExerciseAudioList().pipe(
-          tapResponse(
-            (data: Audio[]) => {
-              data.forEach((audio) => {
-                audio.type = 'EXERCISE';
-                audio.grade = 'hsk 3';
-              });
-              this.patchState({ hsk3: data });
-            },
-            (error) => {
-              // TODO
-            }
-          ),
-          finalize(() => this.patchState({ isLoading: false }))
-        )
-      )
-    )
-  );
+  //#endregion
 }

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { AudioType } from '@enums/audio-type.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -16,27 +15,11 @@ export class AudioService {
     this._currentTab$.next(index);
   }
 
-  getHsk1CurriculumAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk1.curriculum.json');
+  getAllCurriculums(index: number): Observable<Audio[]> {
+    return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.curriculum.json`);
   }
 
-  getHsk1ExerciseAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk1.exercise.json');
-  }
-
-  getHsk2CurriculumAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk2.curriculum.json');
-  }
-
-  getHsk2ExerciseAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk2.exercise.json');
-  }
-
-  getHsk3CurriculumAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk3.curriculum.json');
-  }
-
-  getHsk3ExerciseAudioList(): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>('assets/mock/hsk3.exercise.json');
+  getAllExercises(index: number): Observable<Audio[]> {
+    return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
   }
 }

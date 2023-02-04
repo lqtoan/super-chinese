@@ -12,27 +12,13 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class CurriculumComponent implements OnInit, OnDestroy {
   readonly vm$ = this.store.vm$;
-  readonly tabIndex$ = this.audioService.currentTab$;
   readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly store: CurriculumStore, private readonly audioService: AudioService) {}
+  constructor(private readonly store: CurriculumStore) {}
 
   ngOnInit(): void {
-    this.audioService.currentTab$.pipe(takeUntil(this.destroy$)).subscribe((tabIndex) => {
-      switch (tabIndex) {
-        case 0:
-          this.store.loadHsk1();
-          break;
-        case 1:
-          this.store.loadHsk2();
-          break;
-        case 2:
-          this.store.loadHsk3();
-          break;
-        default:
-          this.store.loadHsk1();
-          break;
-      }
+    this.store.tabIndex$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      this.store.loadData(res);
     });
   }
 
@@ -42,6 +28,6 @@ export class CurriculumComponent implements OnInit, OnDestroy {
   }
 
   onSelectTab(tabIndex: number) {
-    this.audioService.changeTabIndex(tabIndex);
+    this.store.setTabIndex(tabIndex);
   }
 }

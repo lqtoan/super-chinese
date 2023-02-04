@@ -59,7 +59,7 @@
                      formControlName="chinaVietnamWord">
               <ng-template #errorChinaVietnamWord
                            let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
+                <ng-container *ngIf="control.touched && control.hasError('required') || control.untouched">
                   {{ 'INPUT.PLACE_HOLDER' | translate }}
                 </ng-container>
               </ng-template>

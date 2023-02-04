@@ -1,22 +1,21 @@
 <ng-container *ngIf="vm$ | async as vm">
   <nz-tabset [nzAnimated]="false"
-             [nzSelectedIndex]="tabIndex$ | async"
              (nzSelectedIndexChange)="onSelectTab($event)">
     <nz-tab [nzTitle]="'HSK 1' | translate">
       <ng-template nz-tab>
-        <app-audio-list [audios]="vm.hsk1"
+        <app-audio-list [audios]="vm.data"
                         [isLoading]="vm.isLoading"></app-audio-list>
       </ng-template>
     </nz-tab>
     <nz-tab [nzTitle]="'HSK 2' | translate">
       <ng-template nz-tab>
-        <app-audio-list [audios]="vm.hsk2"
+        <app-audio-list [audios]="vm.data"
                         [isLoading]="vm.isLoading"></app-audio-list>
       </ng-template>
     </nz-tab>
     <nz-tab [nzTitle]="'HSK 3' | translate">
       <ng-template nz-tab>
-        <app-audio-list [audios]="vm.hsk3"
+        <app-audio-list [audios]="vm.data"
                         [isLoading]="vm.isLoading"></app-audio-list>
       </ng-template>
     </nz-tab>

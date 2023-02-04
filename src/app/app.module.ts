@@ -43,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: createTranslateLoader,
         deps: [HttpClient],
       },
-      defaultLanguage: 'vi',
+      defaultLanguage: localStorage.getItem('language')?.toString() || 'vi',
     }),
     NzSpinModule,
   ],

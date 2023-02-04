@@ -7,13 +7,11 @@ import { Audio } from '@models/audio.model';
 export interface CurriculumState {
   isLoading: boolean;
   data: Audio[];
-  index: number;
 }
 
 const initialState = {
   isLoading: false,
   data: [],
-  index: 0,
 };
 
 @Injectable()

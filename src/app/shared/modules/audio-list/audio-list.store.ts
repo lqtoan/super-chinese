@@ -1,10 +1,7 @@
-import { AudioService } from '@services/audio.service';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { TranslateService } from '@ngx-translate/core';
 
 export interface AudioListState {
   selectedAudio?: Audio;
@@ -47,7 +44,7 @@ export class AudioListStore extends ComponentStore<AudioListState> {
   readonly play = this.effect(($) =>
     $.pipe(
       tap(() => {
-        const controls = <HTMLVideoElement>document.querySelector('#audioControls');
+        const controls = <HTMLAudioElement>document.querySelector('#audioControls');
         if (!this.getIsPlaying())
           controls
             .play()
@@ -62,7 +59,7 @@ export class AudioListStore extends ComponentStore<AudioListState> {
   readonly stop = this.effect(($) =>
     $.pipe(
       tap(() => {
-        const controls = <HTMLVideoElement>document.querySelector('#audioControls');
+        const controls = <HTMLAudioElement>document.querySelector('#audioControls');
         controls.pause();
         controls.currentTime = 0;
         this.patchState({ isPlaying: false });

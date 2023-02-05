@@ -5,8 +5,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AudioListComponent } from './audio-list.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
-const nzModules = [NzIconModule, NzButtonModule];
+const nzModules = [NzIconModule, NzButtonModule, NzSpinModule];
 
 @NgModule({
   declarations: [AudioListComponent],

@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { AuthenticationService } from './core/authentication/authentication.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -5,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   template: `
-    <ng-container *ngIf="authService.loading$ | async">
+    <ng-container *ngIf="isLogging$ | async">
       <div class="loading-page">
         <span><nz-spin nzSize="large"></nz-spin></span>
         <h4 class="slogan">{{ 'SLOGAN' | translate }}</h4>
@@ -18,9 +19,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'Super Chinese';
+  isLogging$ = new BehaviorSubject<boolean>(true);
 
   constructor(public readonly authService: AuthenticationService, private readonly translateService: TranslateService) {
     this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
+    setTimeout(() => {
+      this.isLogging$.next(false);
+    }, 1000);
   }
 }

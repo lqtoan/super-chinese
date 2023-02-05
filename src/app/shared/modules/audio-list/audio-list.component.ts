@@ -11,6 +11,7 @@ import { Audio } from '@models/audio.model';
 })
 export class AudioListComponent implements OnInit {
   @Input() audios: Audio[] = [];
+  @Input() isLoading: boolean = false;
   currentPage: number = 1;
 
   readonly vm$ = this.store.vm$;

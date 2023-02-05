@@ -2,7 +2,6 @@ import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
 import { Word } from '@models/word.model';
 
 @Component({
@@ -18,11 +17,8 @@ export class DictionaryFormComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly userStore: UserProfileStore
   ) {}
-  readonly destroy$ = new Subject<void>();
   readonly isVisibleForm$ = this.store.isVisibleForm$;
   readonly isCreate$ = this.store.isCreate$;
-
-  private readonly initDate: Date = new Date();
 
   readonly dictionaryForm: FormGroup = this.formBuilder.group({
     _id: [],
@@ -31,22 +27,17 @@ export class DictionaryFormComponent implements OnInit {
     chinaVietnamWord: ['', Validators.compose([])],
     define: ['', Validators.compose([Validators.required])],
     hsk: ['', Validators.compose([Validators.required])],
-    createdDate: [this.initDate, Validators.compose([])],
+    createdDate: ['', Validators.compose([])],
     updatedDate: ['', Validators.compose([])],
     createdBy: ['', Validators.compose([])],
   });
 
   ngOnInit(): void {
-    this.store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
+    this.store.formValue$.subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   setValue(data: Partial<Word>) {

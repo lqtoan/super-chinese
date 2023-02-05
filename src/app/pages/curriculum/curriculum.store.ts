@@ -1,14 +1,16 @@
 import { AudioService } from '@services/audio.service';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { switchMap } from 'rxjs/operators';
+import { finalize, switchMap, tap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
 
 export interface CurriculumState {
+  isLoading: boolean;
   data: Audio[];
 }
 
 const initialState = {
+  isLoading: true,
   data: [],
 };
 
@@ -18,7 +20,7 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ data }) => ({ data }), {
+  readonly vm$ = this.select(({ data, isLoading }) => ({ data, isLoading }), {
     debounce: true,
   });
   readonly tabIndex$ = this.service.currentTab$;
@@ -32,6 +34,7 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
   //#region Effect
   readonly loadData = this.effect<number>(($) =>
     $.pipe(
+      tap(() => this.patchState({ isLoading: true })),
       switchMap((index) =>
         this.service.getAllCurriculums(index).pipe(
           tapResponse(
@@ -43,7 +46,8 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
               this.patchState({ data: data });
             },
             (error) => {}
-          )
+          ),
+          finalize(() => this.patchState({ isLoading: false }))
         )
       )
     )

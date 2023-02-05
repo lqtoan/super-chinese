@@ -1,16 +1,14 @@
 import { AudioService } from '@services/audio.service';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { finalize, switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
 
 export interface ExerciseState {
-  isLoading: boolean;
   data: Audio[];
 }
 
 const initialState = {
-  isLoading: false,
   data: [],
 };
 
@@ -20,7 +18,7 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, data }) => ({ isLoading, data }), {
+  readonly vm$ = this.select(({ data }) => ({ data }), {
     debounce: true,
   });
   readonly tabIndex$ = this.service.currentTab$;
@@ -34,7 +32,6 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
   //#region Effect
   readonly loadData = this.effect<number>(($) =>
     $.pipe(
-      tap(() => this.patchState({ isLoading: true })),
       switchMap((index) =>
         this.service.getAllExercises(index).pipe(
           tapResponse(
@@ -46,8 +43,7 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
               this.patchState({ data: data });
             },
             (error) => {}
-          ),
-          finalize(() => this.patchState({ isLoading: false }))
+          )
         )
       )
     )

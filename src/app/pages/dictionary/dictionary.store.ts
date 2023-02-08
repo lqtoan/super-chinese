@@ -130,6 +130,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
+              console.log(err);
               this.message.error(err.error.message);
             }
           ),

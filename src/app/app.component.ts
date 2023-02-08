@@ -24,10 +24,10 @@ export class AppComponent {
   isLogging$ = new BehaviorSubject<boolean>(true);
 
   constructor(public readonly authService: AuthenticationService, private readonly translateService: TranslateService) {
-    this.authService.getAccessToken();
+    // this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
     setTimeout(() => {
       this.isLogging$.next(false);
-    }, 2500);
+    }, 2000);
   }
 }

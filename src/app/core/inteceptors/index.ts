@@ -1,6 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NoCacheHeadersInterceptor } from './no-cache-interceptor';
 import { BearerTokenInterceptor } from './bearer-interceptor';
+import { NoCacheHeadersInterceptor } from './no-cache-interceptor';
+import { PerformanceInterceptor } from './performance-interceptor';
 
 export const interceptorProviders = [
   {
@@ -11,6 +12,11 @@ export const interceptorProviders = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: NoCacheHeadersInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: PerformanceInterceptor,
     multi: true,
   },
 ];

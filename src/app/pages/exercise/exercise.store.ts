@@ -45,7 +45,7 @@ export class ExerciseStore extends ComponentStore<ExerciseState> {
               });
               this.patchState({ data: data });
             },
-            (error) => {}
+            (err) => {}
           ),
           finalize(() => this.patchState({ isLoading: false }))
         )

@@ -110,8 +110,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => this.setRequestStatus('success'))
@@ -129,8 +129,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => this.setRequestStatus('success'))
@@ -148,8 +148,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              console.log(err);
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -171,8 +172,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 this.setShowForm(true);
               }
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => {})
@@ -191,9 +192,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
-            (error: HttpErrorResponse) => {
-              console.log(error.error.message);
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              console.log(err.error.message);
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -215,8 +216,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
                 this.message.success(this.translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -236,9 +237,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             () => {
               this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
-            (error: HttpErrorResponse) => {
-              this.message.error(error.error.message);
-              console.log(error);
+            (err: HttpErrorResponse) => {
+              this.message.error(err.error.message);
+              console.log(err);
             }
           ),
           finalize(() => {

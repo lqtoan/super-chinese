@@ -45,7 +45,7 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
               });
               this.patchState({ data: data });
             },
-            (error) => {}
+            (err) => {}
           ),
           finalize(() => this.patchState({ isLoading: false }))
         )

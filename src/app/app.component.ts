@@ -6,13 +6,15 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   template: `
-    <ng-container *ngIf="isLogging$ | async">
+    <ng-container *ngIf="isLogging$ | async; else homePage">
       <div class="loading-page">
         <span><nz-spin nzSize="large"></nz-spin></span>
         <h4 class="slogan">{{ 'SLOGAN' | translate }}</h4>
       </div>
     </ng-container>
-    <router-outlet></router-outlet>
+    <ng-template #homePage>
+      <router-outlet></router-outlet>
+    </ng-template>
   `,
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +28,6 @@ export class AppComponent {
     this.translateService.addLangs(['en', 'vi', 'zh']);
     setTimeout(() => {
       this.isLogging$.next(false);
-    }, 1000);
+    }, 2500);
   }
 }

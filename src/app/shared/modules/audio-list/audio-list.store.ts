@@ -1,7 +1,8 @@
+import { DEFAULT_DEBOUNCE_TIME } from './../../../core/common/default-debounce-time.const';
 import { HttpProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap, switchMap, delay } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
 import { AudioService } from '@services/audio.service';
 
@@ -77,6 +78,8 @@ export class AudioListStore extends ComponentStore<AudioListState> {
         this._audioService.load(audio).pipe(
           tapResponse(
             (event) => {
+              fetch(`${audio.url}`).then((res) => (event.total = res.headers.get('content-length')));
+              console.log(event);
               this.patchState({
                 progress: {
                   type: event.type,

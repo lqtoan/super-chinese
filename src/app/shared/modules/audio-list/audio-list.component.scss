@@ -6,6 +6,21 @@
   animation: appearance 0.25s ease 0.4s backwards;
 }
 
+::ng-deep {
+  .ant-progress-status-success .ant-progress-bg {
+    background: unset;
+  }
+  .ant-progress-bg {
+    background: unset;
+  }
+  .ant-progress-status-success .ant-progress-text {
+    color: $primary-color;
+  }
+  .ant-progress-text {
+    font-family: Roboto, sans-serif;
+  }
+}
+
 .controls {
   margin-top: 0.5rem;
   position: sticky;

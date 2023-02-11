@@ -22,4 +22,12 @@ export class AudioService {
   getAllExercises(index: number): Observable<Audio[]> {
     return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
   }
+
+  load(audio: Audio): Observable<any> {
+    return this.httpClient.get(`${audio.url}`, {
+      reportProgress: true,
+      observe: 'events',
+      responseType: 'blob',
+    });
+  }
 }

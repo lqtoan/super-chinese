@@ -18,7 +18,9 @@ export class AudioListComponent implements OnInit {
 
   constructor(private readonly store: AudioListStore) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.vm$.subscribe((res) => console.log(res.progress));
+  }
 
   onSelect(audio: Audio): void {
     this.store.selectAudio(audio);

@@ -1,32 +1,33 @@
+import { HttpProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
-import { tap } from 'rxjs/operators';
+import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { tap, switchMap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
+import { AudioService } from '@services/audio.service';
 
 export interface AudioListState {
   selectedAudio?: Audio;
   isPlaying: boolean;
-  isLoading: boolean;
+  progress: { type: number; loaded: number; total: number; percent: number };
 }
 
 const initialState = {
   selectedAudio: undefined,
   isPlaying: false,
-  isLoading: false,
+  progress: { type: 0, loaded: 0, total: 0, percent: 0 },
 };
 
 @Injectable()
 export class AudioListStore extends ComponentStore<AudioListState> {
-  constructor() {
+  constructor(private readonly _audioService: AudioService) {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ selectedAudio, isPlaying }) => ({ selectedAudio, isPlaying }), {
+  readonly vm$ = this.select(({ selectedAudio, isPlaying, progress }) => ({ selectedAudio, isPlaying, progress }), {
     debounce: true,
   });
   readonly getSelectedAudio = (): Audio | undefined => this.get().selectedAudio;
   readonly getIsPlaying = (): boolean => this.get().isPlaying;
-  readonly getIsLoading = (): boolean => this.get().isLoading;
 
   //#region Updater
 
@@ -36,7 +37,12 @@ export class AudioListStore extends ComponentStore<AudioListState> {
   readonly selectAudio = this.effect<Audio>(($) =>
     $.pipe(
       tap((audio) => {
-        this.getSelectedAudio() === audio && this.getIsPlaying() ? this.stop() : this.play();
+        if (this.getSelectedAudio() === audio && this.getIsPlaying()) {
+          this.stop();
+        } else {
+          this.load(audio);
+          this.play();
+        }
         this.patchState({ selectedAudio: audio });
       })
     )
@@ -61,9 +67,29 @@ export class AudioListStore extends ComponentStore<AudioListState> {
       tap(() => {
         const controls = <HTMLAudioElement>document.querySelector('#audioControls');
         controls.pause();
-        controls.currentTime = 0;
         this.patchState({ isPlaying: false });
       })
+    )
+  );
+  readonly load = this.effect<Audio>(($) =>
+    $.pipe(
+      switchMap((audio) =>
+        this._audioService.load(audio).pipe(
+          tapResponse(
+            (event) => {
+              this.patchState({
+                progress: {
+                  type: event.type,
+                  loaded: event.loaded,
+                  total: event.total,
+                  percent: event.type === 4 ? 100 : Math.round((100 * (100.0 * event.loaded)) / event.total) / 100,
+                },
+              });
+            },
+            (err) => {}
+          )
+        )
+      )
     )
   );
   //#endregion

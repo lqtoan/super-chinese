@@ -45,7 +45,9 @@
         <strong [class.audio__title--selected]="vm.selectedAudio === audio"
                 class="audio__title">{{ audio.title | translate }}
         </strong>
-        <p *ngIf="vm.selectedAudio === audio && vm.progress.type === 0">{{'FILE_LOADING' | translate }}</p>
+        <p *ngIf="vm.selectedAudio === audio && (vm.progress.type === 0 || vm.progress.percent === 0)">
+          {{'FILE_LOADING'| translate }}
+        </p>
         <nz-progress *ngIf="vm.selectedAudio === audio && vm.isPlaying && vm.progress.type !== 0"
                      [nzStrokeWidth]="4"
                      [nzStrokeColor]="{ '0%': '#b48eadbf', '100%': '#88c0d0bf' }"

@@ -9,7 +9,7 @@
       <audio id="audioControls"
              controls
              autoplay
-             preload="auto"
+             preload="none"
              [attr.src]="vm.selectedAudio.url">
         <source [src]="[vm.selectedAudio.url]"
                 type="audio/mpeg" />
@@ -45,9 +45,10 @@
         <strong [class.audio__title--selected]="vm.selectedAudio === audio"
                 class="audio__title">{{ audio.title | translate }}
         </strong>
-        <p *ngIf="vm.selectedAudio === audio && vm.isPlaying && vm.progress.type === 0">{{'FILE_LOADING' | translate }}
+        <p *ngIf="vm.selectedAudio === audio && vm.isPlaying && (vm.progress.type === 0 || !vm.progress.percent)">
+          {{'FILE_LOADING' | translate }}
         </p>
-        <nz-progress *ngIf="vm.selectedAudio === audio && vm.progress.type !== 0"
+        <nz-progress *ngIf="vm.selectedAudio === audio && vm.isPlaying && vm.progress.type !== 0"
                      [nzStrokeWidth]="4"
                      [nzStrokeColor]="{ '0%': '#b48eadbf', '100%': '#88c0d0bf' }"
                      [nzPercent]="vm.progress.percent"></nz-progress>

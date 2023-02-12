@@ -1,8 +1,6 @@
-import { DEFAULT_DEBOUNCE_TIME } from './../../../core/common/default-debounce-time.const';
-import { HttpProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { tap, switchMap, delay } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
 import { AudioService } from '@services/audio.service';
 
@@ -15,7 +13,7 @@ export interface AudioListState {
 const initialState = {
   selectedAudio: undefined,
   isPlaying: false,
-  progress: { type: 0, loaded: 0, total: 0, percent: 0 },
+  progress: { type: 0, loaded: 0, total: 1, percent: 0 },
 };
 
 @Injectable()
@@ -41,8 +39,8 @@ export class AudioListStore extends ComponentStore<AudioListState> {
         if (this.getSelectedAudio() === audio && this.getIsPlaying()) {
           this.stop();
         } else {
-          this.load(audio);
           this.play();
+          this.load(audio);
         }
         this.patchState({ selectedAudio: audio });
       })
@@ -74,18 +72,23 @@ export class AudioListStore extends ComponentStore<AudioListState> {
   );
   readonly load = this.effect<Audio>(($) =>
     $.pipe(
+      // tap(() => this.patchState({ progress: { total: 1, loaded: 0, percent: 0, type: 0 } })),
       switchMap((audio) =>
-        this._audioService.load(audio).pipe(
+        this._audioService.getAudioSize(audio).pipe(
           tapResponse(
             (event) => {
-              fetch(`${audio.url}`).then((res) => (event.total = res.headers.get('content-length')));
-              console.log(event);
               this.patchState({
+                selectedAudio: audio,
                 progress: {
                   type: event.type,
                   loaded: event.loaded,
-                  total: event.total,
-                  percent: event.type === 4 ? 100 : Math.round((100 * (100.0 * event.loaded)) / event.total) / 100,
+                  total: event.total ? event.total : audio.size,
+                  percent:
+                    event.type === 0
+                      ? 0
+                      : event.type === 4
+                      ? 100
+                      : Math.round((100 * (100.0 * event.loaded)) / event.total) / 100,
                 },
               });
             },

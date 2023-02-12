@@ -5,4 +5,5 @@ export interface Audio {
   url: string;
   type: AudioType;
   grade: Grade | string;
+  size?: number;
 }

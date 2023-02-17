@@ -21,13 +21,13 @@ export class DictionaryItemComponent implements OnInit {
     updatedDate: new Date(),
   };
 
-  constructor(private readonly store: DictionaryStore) {}
+  constructor(private readonly _store: DictionaryStore) {}
 
   ngOnInit(): void {}
 
   onEdit(id: string) {
     // if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
-    this.store.loadWordById(id);
+    this._store.loadWordById(id);
     // } else {
     //   this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
     // }
@@ -35,7 +35,7 @@ export class DictionaryItemComponent implements OnInit {
 
   onDelete(id: string) {
     // if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
-    this.store.deleteWord(id);
+    this._store.deleteWord(id);
     // } else {
     //   this.message.error(this.translateService.instant('NOTIFICATION.DELETE_DECLINE'));
     // }

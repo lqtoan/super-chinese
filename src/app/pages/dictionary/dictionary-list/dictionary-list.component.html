@@ -14,14 +14,14 @@
     <nz-input-group class="search-input"
                     [nzSuffix]="suffixIconSearch">
       <input nz-input
-             [(ngModel)]="vm.keyword"
+             [(ngModel)]="keyword"
              [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="onSearch(vm.keyword)" />
+             (keydown.enter)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
       <span nz-icon
             nzType="search"
-            (click)="onSearch(vm.keyword)"></span>
+            (click)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()"></span>
     </ng-template>
     <div class="filter"
          nz-button

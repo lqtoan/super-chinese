@@ -13,14 +13,14 @@ import { Word } from '@models/word.model';
 })
 export class DictionaryFormComponent implements OnInit {
   constructor(
-    private readonly store: DictionaryStore,
-    private readonly formBuilder: FormBuilder,
-    private readonly userStore: UserProfileStore
+    private readonly _store: DictionaryStore,
+    private readonly _formBuilder: FormBuilder,
+    private readonly _userStore: UserProfileStore
   ) {}
-  readonly isVisibleForm$ = this.store.isVisibleForm$;
-  readonly isCreate$ = this.store.isCreate$;
+  readonly isVisibleForm$ = this._store.isVisibleForm$;
+  readonly isCreate$ = this._store.isCreate$;
 
-  readonly dictionaryForm: FormGroup = this.formBuilder.group({
+  readonly dictionaryForm: FormGroup = this._formBuilder.group({
     _id: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
@@ -33,7 +33,7 @@ export class DictionaryFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.store.formValue$.subscribe((formValue) => {
+    this._store.formValue$.subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
       }
@@ -71,19 +71,19 @@ export class DictionaryFormComponent implements OnInit {
   create() {
     const formValue = this.dictionaryForm.getRawValue();
     formValue.createdDate = new Date();
-    formValue.createdBy = this.userStore.getUserName();
-    this.store.createWord(formValue);
+    formValue.createdBy = this._userStore.getUserName();
+    this._store.createWord(formValue);
   }
 
   edit() {
     const formValue = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
-    this.store.updateWord(formValue);
+    this._store.updateWord(formValue);
   }
 
   onCancel() {
-    this.store.setShowForm(false);
+    this._store.setShowForm(false);
     this.dictionaryForm.reset();
-    this.store.setFormValue(undefined);
+    this._store.setFormValue(undefined);
   }
 }

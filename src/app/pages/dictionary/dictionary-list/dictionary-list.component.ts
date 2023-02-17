@@ -15,42 +15,43 @@ import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DictionaryListComponent implements OnInit {
-  readonly vm$ = this.store.vm$;
+  readonly vm$ = this._store.vm$;
   currentFilter: string = '';
+  keyword: string = '';
   confirmModal?: NzModalRef; // For testing by now
 
   constructor(
-    private readonly store: DictionaryStore,
-    private readonly modal: NzModalService,
-    private readonly languageService: LanguageService,
-    private readonly i18n: NzI18nService,
-    private readonly translateService: TranslateService
+    private readonly _store: DictionaryStore,
+    private readonly _modal: NzModalService,
+    private readonly _languageService: LanguageService,
+    private readonly _i18n: NzI18nService,
+    private readonly _translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.onView8Latest();
 
-    this.languageService.currentLanguage$.subscribe((res) => {
+    this._languageService.currentLanguage$.subscribe((res) => {
       switch (res) {
         case 'en':
-          this.i18n.setLocale(en_US);
+          this._i18n.setLocale(en_US);
           break;
         case 'zh':
-          this.i18n.setLocale(zh_CN);
+          this._i18n.setLocale(zh_CN);
           break;
         case 'vi':
-          this.i18n.setLocale(vi_VN);
+          this._i18n.setLocale(vi_VN);
           break;
       }
     });
 
-    this.store.filterType$.subscribe((res) => {
+    this._store.filterType$.subscribe((res) => {
       switch (res) {
         case 'all':
           this.onViewAll();
           break;
         case 'search':
-          this.currentFilter = this.translateService.instant('SEARCH_RESULTS');
+          this.currentFilter = this._translateService.instant('SEARCH_RESULTS');
           break;
         default:
           break;
@@ -59,32 +60,29 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onCreate() {
-    this.store.setIsCreate(true);
-    this.store.setShowForm(true);
+    this._store.setIsCreate(true);
+    this._store.setShowForm(true);
   }
 
   onSearch(keyword: string) {
     if (keyword) {
-      this.store.setRequestStatus(null);
-      this.store.setKeyword(keyword);
-      this.store.setFilterType('search');
-      this.store.loadSearchResults(keyword);
+      this._store.patchState({ keyword: keyword, requestStatus: null, filterType: 'search' });
+      this._store.loadSearchResults(keyword);
     }
   }
 
   onView8Latest() {
-    this.currentFilter = this.translateService.instant('LATEST');
-    this.store.setRequestStatus(null);
-    this.store.setKeyword('');
-    this.store.setFilterType('latest');
-    this.store.loadLatestWords();
+    this.keyword = '';
+    this.currentFilter = this._translateService.instant('LATEST');
+    this._store.patchState({ keyword: '', requestStatus: null, filterType: 'latest' });
+    this._store.loadLatestWords();
   }
 
   showConfirm(): void {
-    this.confirmModal = this.modal.confirm({
-      nzTitle: this.translateService.instant('MODAL.CONFIRM_VIEW_ALL'),
-      nzContent: this.translateService.instant('MODAL.CONFIRM_VIEW_ALL.CONTENT'),
-      nzOkText: this.translateService.instant('CONFIRM_VIEW_ALL'),
+    this.confirmModal = this._modal.confirm({
+      nzTitle: this._translateService.instant('MODAL.CONFIRM_VIEW_ALL'),
+      nzContent: this._translateService.instant('MODAL.CONFIRM_VIEW_ALL.CONTENT'),
+      nzOkText: this._translateService.instant('CONFIRM_VIEW_ALL'),
       nzOnOk: () => {
         this.onViewAll();
       },
@@ -92,10 +90,9 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onViewAll() {
-    this.currentFilter = this.translateService.instant('VIEW_ALL');
-    this.store.setRequestStatus(null);
-    this.store.setKeyword('');
-    this.store.setFilterType('all');
-    this.store.loadAllWords();
+    this.keyword = '';
+    this.currentFilter = this._translateService.instant('VIEW_ALL');
+    this._store.patchState({ keyword: '', requestStatus: null, filterType: 'all' });
+    this._store.loadAllWords();
   }
 }

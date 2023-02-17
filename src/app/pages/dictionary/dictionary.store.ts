@@ -55,30 +55,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-  readonly filterType$ = this.select((state) => state.filterType, { debounce: true });
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
 
   //#region Updater
-  readonly setRequestStatus = this.updater<RequestStatus | null>(
-    (state, requestStatus): DictionaryState => ({
-      ...state,
-      requestStatus,
-    })
-  );
-  readonly setFilterType = this.updater<FilterType>(
-    (state, filterType): DictionaryState => ({
-      ...state,
-      filterType,
-    })
-  );
-  readonly setKeyword = this.updater<string>(
-    (state, keyword): DictionaryState => ({
-      ...state,
-      keyword,
-    })
-  );
   readonly setShowForm = this.updater<boolean>(
     (state, isVisibleForm): DictionaryState => ({
       ...state,
@@ -103,7 +84,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadAllWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap(() =>
         this._service.getAllWords().pipe(
           tapResponse(
@@ -114,7 +95,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this._message.error(err.error.message);
             }
           ),
-          finalize(() => this.setRequestStatus('success'))
+          finalize(() => this.patchState({ requestStatus: 'success' }))
         )
       )
     )
@@ -122,7 +103,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadLatestWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap(() =>
         this._service.getLatestWords().pipe(
           tapResponse(
@@ -130,11 +111,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              console.log(err);
+              this.patchState({ requestStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
-          finalize(() => this.setRequestStatus('success'))
+          finalize(() => this.patchState({ requestStatus: 'success' }))
         )
       )
     )
@@ -142,7 +123,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadSearchResults = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap((param) =>
         this._service.search(param).pipe(
           tapResponse(
@@ -150,12 +131,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              console.log(err);
+              this.patchState({ requestStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
           finalize(() => {
-            this.setRequestStatus('success');
+            this.patchState({ requestStatus: 'success' });
           })
         )
       )
@@ -184,7 +165,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly createWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap((param) =>
         this._service.createWord(param).pipe(
           tapResponse(
@@ -208,7 +189,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly updateWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap((param) =>
         this._service.updateWord(param).pipe(
           tapResponse(
@@ -231,7 +212,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly deleteWord = this.effect<string>((params$) =>
     params$.pipe(
-      tap(() => this.setRequestStatus('loading')),
+      tap(() => this.patchState({ requestStatus: 'loading' })),
       switchMap((param) =>
         this._service.deleteWord(param).pipe(
           tapResponse(
@@ -240,7 +221,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);
-              console.log(err);
+              this.patchState({ requestStatus: 'fail' });
             }
           ),
           finalize(() => {

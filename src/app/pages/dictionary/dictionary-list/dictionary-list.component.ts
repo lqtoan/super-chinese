@@ -16,7 +16,6 @@ import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
 })
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this._store.vm$;
-  currentFilter: string = '';
   keyword: string = '';
   confirmModal?: NzModalRef; // For testing by now
 
@@ -44,19 +43,6 @@ export class DictionaryListComponent implements OnInit {
           break;
       }
     });
-
-    this._store.filterType$.subscribe((res) => {
-      switch (res) {
-        case 'all':
-          this.onViewAll();
-          break;
-        case 'search':
-          this.currentFilter = this._translateService.instant('SEARCH_RESULTS');
-          break;
-        default:
-          break;
-      }
-    });
   }
 
   onCreate() {
@@ -66,15 +52,14 @@ export class DictionaryListComponent implements OnInit {
 
   onSearch(keyword: string) {
     if (keyword) {
-      this._store.patchState({ keyword: keyword, requestStatus: null, filterType: 'search' });
+      this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'search' });
       this._store.loadSearchResults(keyword);
     }
   }
 
   onView8Latest() {
     this.keyword = '';
-    this.currentFilter = this._translateService.instant('LATEST');
-    this._store.patchState({ keyword: '', requestStatus: null, filterType: 'latest' });
+    this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'latest' });
     this._store.loadLatestWords();
   }
 
@@ -91,8 +76,7 @@ export class DictionaryListComponent implements OnInit {
 
   onViewAll() {
     this.keyword = '';
-    this.currentFilter = this._translateService.instant('VIEW_ALL');
-    this._store.patchState({ keyword: '', requestStatus: null, filterType: 'all' });
+    this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'all' });
     this._store.loadAllWords();
   }
 }

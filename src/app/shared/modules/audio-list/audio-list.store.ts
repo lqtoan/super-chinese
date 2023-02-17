@@ -42,6 +42,7 @@ export class AudioListStore extends ComponentStore<AudioListState> {
           this.play();
           this.load(audio);
         }
+
         this.patchState({ selectedAudio: audio });
       })
     )
@@ -72,23 +73,21 @@ export class AudioListStore extends ComponentStore<AudioListState> {
   );
   readonly load = this.effect<Audio>(($) =>
     $.pipe(
-      // tap(() => this.patchState({ progress: { total: 1, loaded: 0, percent: 0, type: 0 } })),
       switchMap((audio) =>
-        this._audioService.getAudioSize(audio).pipe(
+        this._audioService.getAudioEvent(audio).pipe(
           tapResponse(
             (event) => {
               this.patchState({
-                selectedAudio: audio,
                 progress: {
                   type: event.type,
                   loaded: event.loaded,
-                  total: event.total ? event.total : audio.size,
+                  total: audio.size,
                   percent:
                     event.type === 0
                       ? 0
                       : event.type === 4
                       ? 100
-                      : Math.round((100 * (100.0 * event.loaded)) / event.total) / 100,
+                      : Math.round((100 * (100.0 * event.loaded)) / audio.size) / 100,
                 },
               });
             },

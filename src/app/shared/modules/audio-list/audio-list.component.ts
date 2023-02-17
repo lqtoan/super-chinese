@@ -1,5 +1,5 @@
 import { AudioListStore } from './audio-list.store';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Audio } from '@models/audio.model';
 
 @Component({
@@ -9,7 +9,7 @@ import { Audio } from '@models/audio.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AudioListStore],
 })
-export class AudioListComponent implements OnInit {
+export class AudioListComponent {
   @Input() audios: Audio[] = [];
   @Input() isLoading: boolean = false;
   currentPage: number = 1;
@@ -17,12 +17,6 @@ export class AudioListComponent implements OnInit {
   readonly vm$ = this.store.vm$;
 
   constructor(private readonly store: AudioListStore) {}
-
-  ngOnInit() {
-    this.vm$.subscribe((res) => {
-      console.log(res.progress);
-    });
-  }
 
   onSelect(audio: Audio): void {
     this.store.selectAudio(audio);

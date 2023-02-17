@@ -9,11 +9,11 @@ export const interceptorProviders = [
     useClass: BearerTokenInterceptor,
     multi: true,
   },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: NoCacheHeadersInterceptor,
-    multi: true,
-  },
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: NoCacheHeadersInterceptor,
+  //   multi: true,
+  // },
   {
     provide: HTTP_INTERCEPTORS,
     useClass: PerformanceInterceptor,

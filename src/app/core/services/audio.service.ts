@@ -23,11 +23,11 @@ export class AudioService {
     return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
   }
 
-  getAudioSize(audio: Audio): Observable<any> {
+  getAudioEvent(audio: Audio): Observable<any> {
     return this.httpClient.get(`${audio.url}`, {
       reportProgress: true,
       observe: 'events',
-      responseType: 'blob',
+      // responseType: 'blob',
     });
   }
 }

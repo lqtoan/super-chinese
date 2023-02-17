@@ -58,6 +58,10 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
+  readonly requestStatus$ = this.select(({ requestStatus }) => ({
+    isRequesting: requestStatus === 'loading',
+    isSuccess: requestStatus === 'success',
+  }));
 
   //#region Updater
   readonly setShowForm = this.updater<boolean>(
@@ -84,14 +88,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadAllWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'all' })),
       switchMap(() =>
         this._service.getAllWords().pipe(
           tapResponse(
             (data) => {
-              this.patchState({ words: data, total: data.length });
+              this.patchState({ keyword: '', words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
+              this.patchState({ requestStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
@@ -103,12 +108,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadLatestWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'latest' })),
       switchMap(() =>
         this._service.getLatestWords().pipe(
           tapResponse(
             (data) => {
-              this.patchState({ words: data, total: data.length });
+              this.patchState({ keyword: '', words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
               this.patchState({ requestStatus: 'fail' });
@@ -123,12 +128,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadSearchResults = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'search' })),
       switchMap((param) =>
         this._service.search(param).pipe(
           tapResponse(
             (data) => {
-              this.patchState({ words: data, total: data.length });
+              this.patchState({ keyword: param, words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
               this.patchState({ requestStatus: 'fail' });
@@ -171,11 +176,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (res) => {
               if (res) {
+                this.patchState({ requestStatus: 'success' });
                 this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
             (err: HttpErrorResponse) => {
-              console.log(err.error.message);
+              this.patchState({ requestStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
@@ -195,6 +201,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
+                this.patchState({ requestStatus: 'success' });
                 this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },

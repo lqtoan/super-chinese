@@ -19,6 +19,7 @@ export class DictionaryFormComponent implements OnInit {
   ) {}
   readonly isVisibleForm$ = this._store.isVisibleForm$;
   readonly isCreate$ = this._store.isCreate$;
+  readonly requestStatus$ = this._store.requestStatus$;
 
   readonly dictionaryForm: FormGroup = this._formBuilder.group({
     _id: [],

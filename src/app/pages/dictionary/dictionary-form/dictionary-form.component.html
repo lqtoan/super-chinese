@@ -59,7 +59,7 @@
                      formControlName="chinaVietnamWord">
               <ng-template #errorChinaVietnamWord
                            let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required') || control.untouched">
+                <ng-container *ngIf="control.touched && control.hasError('required')">
                   {{ 'INPUT.PLACE_HOLDER' | translate }}
                 </ng-container>
               </ng-template>
@@ -126,7 +126,8 @@
       </div>
     </form>
     <button class="create-button"
-            [disabled]="dictionaryForm.invalid"
+            [nzLoading]="(requestStatus$ |async).isRequesting"
+            [disabled]="dictionaryForm.invalid || (requestStatus$ |async).isRequesting"
             nz-button
             (click)="onSubmit()">
       {{ (isCreate$ | async) ? ("ACTION.CREATE" | translate) : ("ACTION.UPDATE" | translate) }}</button>

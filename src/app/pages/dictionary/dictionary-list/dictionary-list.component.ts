@@ -4,7 +4,7 @@ import { DictionaryStore } from './../dictionary.store';
 import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
 
 @Component({
@@ -17,7 +17,6 @@ import { NzI18nService, vi_VN, en_US, zh_CN } from 'ng-zorro-antd/i18n';
 export class DictionaryListComponent implements OnInit {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
-  confirmModal?: NzModalRef; // For testing by now
 
   constructor(
     private readonly _store: DictionaryStore,
@@ -28,6 +27,7 @@ export class DictionaryListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this._store.patchState({ filterType: 'latest' });
     this.onView8Latest();
 
     this._languageService.currentLanguage$.subscribe((res) => {
@@ -52,19 +52,17 @@ export class DictionaryListComponent implements OnInit {
 
   onSearch(keyword: string) {
     if (keyword) {
-      this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'search' });
       this._store.loadSearchResults(keyword);
     }
   }
 
   onView8Latest() {
     this.keyword = '';
-    this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'latest' });
     this._store.loadLatestWords();
   }
 
   showConfirm(): void {
-    this.confirmModal = this._modal.confirm({
+    this._modal.confirm({
       nzTitle: this._translateService.instant('MODAL.CONFIRM_VIEW_ALL'),
       nzContent: this._translateService.instant('MODAL.CONFIRM_VIEW_ALL.CONTENT'),
       nzOkText: this._translateService.instant('CONFIRM_VIEW_ALL'),
@@ -76,7 +74,6 @@ export class DictionaryListComponent implements OnInit {
 
   onViewAll() {
     this.keyword = '';
-    this._store.patchState({ keyword: this.keyword, requestStatus: null, filterType: 'all' });
     this._store.loadAllWords();
   }
 }

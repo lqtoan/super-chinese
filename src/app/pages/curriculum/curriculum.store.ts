@@ -16,18 +16,18 @@ const initialState = {
 
 @Injectable()
 export class CurriculumStore extends ComponentStore<CurriculumState> {
-  constructor(private readonly service: AudioService) {
+  constructor(private readonly _service: AudioService) {
     super(initialState);
   }
 
   readonly vm$ = this.select(({ data, isLoading }) => ({ data, isLoading }), {
     debounce: true,
   });
-  readonly tabIndex$ = this.service.currentTab$;
+  readonly tabIndex$ = this._service.currentTab$;
 
   //#region Updater
   setTabIndex(index: number) {
-    this.service.changeTabIndex(index);
+    this._service.changeTabIndex(index);
   }
   //#endregion
 
@@ -36,7 +36,7 @@ export class CurriculumStore extends ComponentStore<CurriculumState> {
     $.pipe(
       tap(() => this.patchState({ isLoading: true })),
       switchMap((index) =>
-        this.service.getAllCurriculums(index).pipe(
+        this._service.getAllCurriculums(index).pipe(
           tapResponse(
             (data) => {
               data.forEach((audio) => {

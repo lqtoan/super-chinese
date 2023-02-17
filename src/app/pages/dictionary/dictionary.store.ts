@@ -1,4 +1,4 @@
-import { FilterType } from './interfaces/dictionary.type';
+import { FilterType } from '@enums/dictionary.enum';
 import { RequestStatus } from '@enums/request-status.enum';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -35,9 +35,9 @@ const initialState = {
 @Injectable()
 export class DictionaryStore extends ComponentStore<DictionaryState> {
   constructor(
-    private readonly service: DictionaryService,
-    private readonly message: NzMessageService,
-    private readonly translateService: TranslateService
+    private readonly _service: DictionaryService,
+    private readonly _message: NzMessageService,
+    private readonly _translateService: TranslateService
   ) {
     super(initialState);
   }
@@ -105,13 +105,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.setRequestStatus('loading')),
       switchMap(() =>
-        this.service.getAllWords().pipe(
+        this._service.getAllWords().pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => this.setRequestStatus('success'))
@@ -124,14 +124,14 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.setRequestStatus('loading')),
       switchMap(() =>
-        this.service.getLatestWords().pipe(
+        this._service.getLatestWords().pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
               console.log(err);
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => this.setRequestStatus('success'))
@@ -144,14 +144,14 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
-        this.service.search(param).pipe(
+        this._service.search(param).pipe(
           tapResponse(
             (data) => {
               this.patchState({ words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
               console.log(err);
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -164,7 +164,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadWordById = this.effect<string>((trigger$) =>
     trigger$.pipe(
       switchMap((id) =>
-        this.service.getWordById(id).pipe(
+        this._service.getWordById(id).pipe(
           tapResponse(
             (data) => {
               if (data) {
@@ -174,7 +174,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               }
             },
             (err: HttpErrorResponse) => {
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => {})
@@ -186,16 +186,16 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     params$.pipe(
       tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
-        this.service.createWord(param).pipe(
+        this._service.createWord(param).pipe(
           tapResponse(
             (res) => {
               if (res) {
-                this.message.success(this.translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
+                this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
             (err: HttpErrorResponse) => {
               console.log(err.error.message);
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -210,15 +210,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     params$.pipe(
       tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
-        this.service.updateWord(param).pipe(
+        this._service.updateWord(param).pipe(
           tapResponse(
             (data) => {
               if (data) {
-                this.message.success(this.translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
+                this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
             (err: HttpErrorResponse) => {
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
             }
           ),
           finalize(() => {
@@ -233,13 +233,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     params$.pipe(
       tap(() => this.setRequestStatus('loading')),
       switchMap((param) =>
-        this.service.deleteWord(param).pipe(
+        this._service.deleteWord(param).pipe(
           tapResponse(
             () => {
-              this.message.success(this.translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
+              this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {
-              this.message.error(err.error.message);
+              this._message.error(err.error.message);
               console.log(err);
             }
           ),

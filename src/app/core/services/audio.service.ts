@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AudioService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly _httpClient: HttpClient) {}
   private _currentTab$ = new BehaviorSubject<number>(0);
   currentTab$ = this._currentTab$.asObservable();
 
@@ -16,15 +16,15 @@ export class AudioService {
   }
 
   getAllCurriculums(index: number): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.curriculum.json`);
+    return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.curriculum.json`);
   }
 
   getAllExercises(index: number): Observable<Audio[]> {
-    return this.httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
+    return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
   }
 
   getAudioEvent(audio: Audio): Observable<any> {
-    return this.httpClient.get(`${audio.url}`, {
+    return this._httpClient.get(`${audio.url}`, {
       reportProgress: true,
       observe: 'events',
       // responseType: 'blob',

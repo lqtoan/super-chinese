@@ -6,17 +6,17 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly _httpClient: HttpClient) {}
 
-  API = `${environment.authApi}`;
+  private API = `${environment.authApi}`;
 
   getUserProfile(): Observable<UserProfile> {
     const url = `${this.API}/userinfo`;
-    return this.httpClient.get<UserProfile>(url);
+    return this._httpClient.get<UserProfile>(url);
   }
 
   sendToken(): any {
     const url = `${this.API}/tokeninfo`;
-    return this.httpClient.post(url, { id_token: localStorage.getItem('accessToken') });
+    return this._httpClient.post(url, { id_token: localStorage.getItem('accessToken') });
   }
 }

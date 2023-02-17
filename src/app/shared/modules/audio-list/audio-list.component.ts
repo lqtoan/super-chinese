@@ -14,11 +14,11 @@ export class AudioListComponent {
   @Input() isLoading: boolean = false;
   currentPage: number = 1;
 
-  readonly vm$ = this.store.vm$;
+  readonly vm$ = this._store.vm$;
 
-  constructor(private readonly store: AudioListStore) {}
+  constructor(private readonly _store: AudioListStore) {}
 
   onSelect(audio: Audio): void {
-    this.store.selectAudio(audio);
+    this._store.selectAudio(audio);
   }
 }

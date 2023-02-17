@@ -3,14 +3,15 @@ import { UserProfile } from '@models/user-profile.model';
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { finalize, switchMap, tap } from 'rxjs/operators';
+import { RequestStatus } from '@enums/request-status.enum';
 
 export interface UserProfileState {
-  isLoading: boolean;
+  requestStatus: RequestStatus | null;
   profile: UserProfile;
 }
 
 const initialState = {
-  isLoading: false,
+  requestStatus: null,
   profile: {
     email: '',
     email_verified: false,
@@ -25,29 +26,29 @@ const initialState = {
 
 @Injectable()
 export class UserProfileStore extends ComponentStore<UserProfileState> {
-  constructor(private readonly service: UserProfileService) {
+  constructor(private readonly _service: UserProfileService) {
     super(initialState);
   }
 
-  readonly vm$ = this.select(({ isLoading, profile }) => ({ isLoading, profile }), { debounce: true });
+  readonly vm$ = this.select(({ requestStatus, profile }) => ({ requestStatus, profile }), { debounce: true });
 
   readonly loadData = this.effect(($) =>
     $.pipe(
       tap(() => {
-        this.patchState({ isLoading: true });
+        this.patchState({ requestStatus: 'loading' });
       }),
       switchMap(() =>
-        this.service.getUserProfile().pipe(
+        this._service.getUserProfile().pipe(
           tapResponse(
             (data: UserProfile) => {
               this.patchState({ profile: data });
             },
             (error) => {
-              // TODO
+              this.patchState({ requestStatus: 'fail' });
             }
           ),
           finalize(() => {
-            this.patchState({ isLoading: false });
+            this.patchState({ requestStatus: 'success' });
           })
         )
       )

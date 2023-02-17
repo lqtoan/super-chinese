@@ -6,35 +6,35 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class DictionaryService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly _httpClient: HttpClient) {}
 
-  API = `${environment.api}words`;
+  private API = `${environment.api}words`;
 
   getAllWords(): Observable<Word[]> {
-    return this.httpClient.get<Word[]>(`${this.API}`);
+    return this._httpClient.get<Word[]>(`${this.API}`);
   }
 
   getLatestWords(): Observable<Word[]> {
-    return this.httpClient.get<Word[]>(`${this.API}/latest`);
+    return this._httpClient.get<Word[]>(`${this.API}/latest`);
   }
 
   getWordById(id: string): Observable<Word> {
-    return this.httpClient.get<Word>(`${this.API}/${id}`);
+    return this._httpClient.get<Word>(`${this.API}/${id}`);
   }
 
   createWord(word: Word) {
-    return this.httpClient.post<Word>(this.API, word);
+    return this._httpClient.post<Word>(this.API, word);
   }
 
   updateWord(body: Word) {
-    return this.httpClient.patch<Word>(`${this.API}/${body._id}`, body);
+    return this._httpClient.patch<Word>(`${this.API}/${body._id}`, body);
   }
 
   deleteWord(id: string) {
-    return this.httpClient.delete<Word>(`${this.API}/${id}`);
+    return this._httpClient.delete<Word>(`${this.API}/${id}`);
   }
 
   search(keyword?: string) {
-    return this.httpClient.get<Word[]>(`${this.API}/search?keyword=${keyword}`);
+    return this._httpClient.get<Word[]>(`${this.API}/search?keyword=${keyword}`);
   }
 }

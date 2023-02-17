@@ -9,18 +9,18 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   providers: [CurriculumStore],
 })
 export class CurriculumComponent implements OnInit {
-  readonly vm$ = this.store.vm$;
-  readonly tabIndex$ = this.store.tabIndex$;
+  readonly vm$ = this._store.vm$;
+  readonly tabIndex$ = this._store.tabIndex$;
 
-  constructor(private readonly store: CurriculumStore) {}
+  constructor(private readonly _store: CurriculumStore) {}
 
   ngOnInit(): void {
     this.tabIndex$.subscribe((res) => {
-      this.store.loadData(res);
+      this._store.loadData(res);
     });
   }
 
   onSelectTab(tabIndex: number) {
-    this.store.setTabIndex(tabIndex);
+    this._store.setTabIndex(tabIndex);
   }
 }

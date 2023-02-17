@@ -83,8 +83,7 @@ export class DictionaryFormComponent implements OnInit {
   }
 
   onCancel() {
-    this._store.setShowForm(false);
     this.dictionaryForm.reset();
-    this._store.setFormValue(undefined);
+    this._store.patchState({ isVisibleForm: false, formValue: undefined });
   }
 }

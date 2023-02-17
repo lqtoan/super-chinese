@@ -46,8 +46,7 @@ export class DictionaryListComponent implements OnInit {
   }
 
   onCreate() {
-    this._store.setIsCreate(true);
-    this._store.setShowForm(true);
+    this._store.patchState({ isCreate: true, isVisibleForm: true });
   }
 
   onSearch(keyword: string) {

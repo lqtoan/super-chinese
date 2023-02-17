@@ -64,24 +64,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   }));
 
   //#region Updater
-  readonly setShowForm = this.updater<boolean>(
-    (state, isVisibleForm): DictionaryState => ({
-      ...state,
-      isVisibleForm,
-    })
-  );
-  readonly setIsCreate = this.updater<boolean>(
-    (state, isCreate): DictionaryState => ({
-      ...state,
-      isCreate,
-    })
-  );
-  readonly setFormValue = this.updater<Word | undefined>(
-    (state, formValue): DictionaryState => ({
-      ...state,
-      formValue,
-    })
-  );
   //#region
 
   //#region Effect
@@ -154,9 +136,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             (data) => {
               if (data) {
-                this.setFormValue(data);
-                this.setIsCreate(false);
-                this.setShowForm(true);
+                this.patchState({ formValue: data, isCreate: false, isVisibleForm: true });
               }
             },
             (err: HttpErrorResponse) => {
@@ -186,7 +166,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.setShowForm(false);
+            this.patchState({ isVisibleForm: false });
             this.loadLatestWords();
           })
         )
@@ -210,7 +190,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.setShowForm(false);
+            this.patchState({ isVisibleForm: false });
             this.loadLatestWords();
           })
         )

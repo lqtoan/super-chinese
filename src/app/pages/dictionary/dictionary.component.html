@@ -1,1 +1,68 @@
-<app-dictionary-list></app-dictionary-list>
+<ng-container *ngIf="(vm$ | async) as vm">
+  <div class="top">
+    <button [nzLoading]="vm.isLoading"
+            [disabled]="vm.isLoading"
+            nz-button
+            class="create-button"
+            (click)="onCreate()">
+      <span nz-icon
+            nzType="plus"
+            nzTheme="outline">
+      </span>
+      <span>{{ 'ACTION.CREATE' | translate }}</span>
+    </button>
+    <nz-input-group class="search-input"
+                    [nzSuffix]="suffixIconSearch">
+      <input nz-input
+             [(ngModel)]="keyword"
+             [placeholder]="'ACTION.SEARCH' | translate"
+             (keydown.enter)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+      <span nz-icon
+            nzType="search"
+            (click)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()"></span>
+    </ng-template>
+    <div class="filter"
+         nz-button
+         nz-dropdown
+         nzTrigger="click"
+         [nzDropdownMenu]="menu">
+      <ng-container [ngSwitch]="vm.filterType">
+        <ng-container *ngSwitchCase="'all'">
+          <p>{{'VIEW_ALL' |translate}}</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="'latest'">
+          <p>{{'LATEST' |translate}}</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="'search'">
+          <p>{{'SEARCH_RESULTS' |translate}}</p>
+        </ng-container>
+      </ng-container>
+      <span nz-icon
+            nzType="down">
+      </span>
+    </div>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li [nzDisabled]="vm.filterType === 'latest'"
+            (click)="onView8Latest()"
+            nz-menu-item>{{'LATEST' |translate}}</li>
+        <li [nzDisabled]="vm.filterType === 'all'"
+            (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
+            nz-menu-item>{{ 'VIEW_ALL' | translate }}</li>
+        <nz-modal (nzOnCancel)="handleCancel()"
+                  (nzOnOk)="handleOk()">
+        </nz-modal>
+      </ul>
+    </nz-dropdown-menu>
+    <strong *ngIf="vm.isSuccess && vm.filterType !== 'latest'"
+            class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
+  </div>
+  <app-dictionary-list [isLoading]="vm.isLoading"
+                       [words]="vm.words"
+                       [filterType]="vm.filterType"></app-dictionary-list>
+</ng-container>
+
+
+<app-dictionary-form></app-dictionary-form>

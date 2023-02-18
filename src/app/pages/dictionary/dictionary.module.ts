@@ -21,6 +21,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const nzModules = [
@@ -36,6 +37,7 @@ const nzModules = [
   NzToolTipModule,
   NzDropDownModule,
   NzModalModule,
+  NzProgressModule,
 ];
 
 @NgModule({

@@ -1,91 +1,27 @@
-<ng-container *ngIf="(vm$ | async) as vm">
-  <div class="top">
-    <button [nzLoading]="vm.isLoading"
-            [disabled]="vm.isLoading"
-            nz-button
-            class="create-button"
-            (click)="onCreate()">
-      <span nz-icon
-            nzType="plus"
-            nzTheme="outline">
-      </span>
-      <span>{{ 'ACTION.CREATE' | translate }}</span>
-    </button>
-    <nz-input-group class="search-input"
-                    [nzSuffix]="suffixIconSearch">
-      <input nz-input
-             [(ngModel)]="keyword"
-             [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()" />
-    </nz-input-group>
-    <ng-template #suffixIconSearch>
-      <span nz-icon
-            nzType="search"
-            (click)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()"></span>
-    </ng-template>
-    <div class="filter"
-         nz-button
-         nz-dropdown
-         nzTrigger="click"
-         [nzDropdownMenu]="menu">
-      <ng-container [ngSwitch]="vm.filterType">
-        <ng-container *ngSwitchCase="'all'">
-          <p>{{'VIEW_ALL' |translate}}</p>
-        </ng-container>
-        <ng-container *ngSwitchCase="'latest'">
-          <p>{{'LATEST' |translate}}</p>
-        </ng-container>
-        <ng-container *ngSwitchCase="'search'">
-          <p>{{'SEARCH_RESULTS' |translate}}</p>
-        </ng-container>
-      </ng-container>
-      <span nz-icon
-            nzType="down">
-      </span>
+<div class="list">
+  <ng-container *ngIf="isLoading; else wordListTemplate">
+    <div style="height: 100%; display: flex; justify-content: center; align-items: center;">
+      <nz-progress nzType="circle"
+                   [nzPercent]="fakeProgress"></nz-progress>
     </div>
-    <nz-dropdown-menu #menu="nzDropdownMenu">
-      <ul nz-menu>
-        <li [nzDisabled]="vm.filterType === 'latest'"
-            (click)="onView8Latest()"
-            nz-menu-item>{{'LATEST' |translate}}</li>
-        <li [nzDisabled]="vm.filterType === 'all'"
-            (click)="vm.filterType === 'all' ? $event.preventDefault() : showConfirm()"
-            nz-menu-item>{{ 'VIEW_ALL' | translate }}</li>
-        <nz-modal (nzOnCancel)="handleCancel()"
-                  (nzOnOk)="handleOk()">
-        </nz-modal>
-      </ul>
-    </nz-dropdown-menu>
-    <strong *ngIf="vm.isSuccess && vm.filterType !== 'latest'"
-            class="totals">{{ 'TOTALS' | translate: { totals: vm.total } }}</strong>
-  </div>
-  <div class="list">
-    <div *ngIf="vm.isLoading; else wordListTemplate">
-      <div style="display: flex; justify-content: center; margin-top: 2rem;">
-        <nz-spin nzSimple
-                 [nzSize]="'large'"></nz-spin>
-      </div>
-    </div>
-    <ng-template #wordListTemplate>
-      <ng-container *ngIf="vm.words.length === 0 && vm.filterType === 'search'">
-        <img [style.margin]="'auto'"
-             [style.padding.rem]="'0.25'"
-             [style.width.%]="'75'"
-             src="assets/images/no_result.png">
-        <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
-        <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
-      </ng-container>
-      <app-dictionary-item *ngFor="let word of vm.words; index as i"
-                           [word]="word">
-        <span [style.width.%]="'10'"
-              [style.color]="'#4c566a80'"
-              [style.font-size.px]="'9'"
-              [style.font-weight]="'500'"
-              [style.line-height.%]="'100'"
-              slot="index">{{ i+1 }}:</span>
-      </app-dictionary-item>
-    </ng-template>
-  </div>
-</ng-container>
-
-<app-dictionary-form></app-dictionary-form>
+  </ng-container>
+  <ng-template #wordListTemplate>
+    <ng-container *ngIf="words.length === 0 && filterType === 'search'">
+      <img [style.margin]="'auto'"
+           [style.padding.rem]="'0.25'"
+           [style.width.%]="'75'"
+           src="assets/images/no_result.png">
+      <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
+      <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
+    </ng-container>
+    <app-dictionary-item *ngFor="let word of words; index as i"
+                         [word]="word">
+      <span [style.width.%]="'10'"
+            [style.color]="'#4c566a80'"
+            [style.font-size.px]="'9'"
+            [style.font-weight]="'500'"
+            [style.line-height.%]="'100'"
+            slot="index">{{ i+1 }}:</span>
+    </app-dictionary-item>
+  </ng-template>
+</div>

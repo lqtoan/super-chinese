@@ -22,6 +22,7 @@
     "@ngrx/component-store": "^14.3.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "@nrwl/angular": "15.7.2",
     "@types/file-saver": "^2.0.5",
     "ng-zorro-antd": "^13.4.0",
     "ngx-pagination": "^6.0.2",
@@ -31,8 +32,13 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.5",
+    "@angular-devkit/core": "~14.0.5",
+    "@angular-devkit/schematics": "~14.0.5",
     "@angular/cli": "~14.0.5",
     "@angular/compiler-cli": "^14.0.0",
+    "@nrwl/nx-cloud": "15.0.3",
+    "@nrwl/workspace": "15.7.2",
+    "@schematics/angular": "~14.0.5",
     "@types/jasmine": "~4.0.0",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",
@@ -42,6 +48,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "nx": "15.7.2",
+    "prettier": "^2.6.2",
     "typescript": "~4.7.2"
   }
 }

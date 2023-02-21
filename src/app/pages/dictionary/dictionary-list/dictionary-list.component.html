@@ -1,8 +1,7 @@
 <div class="list">
   <ng-container *ngIf="isLoading; else wordListTemplate">
-    <div style="height: 100%; display: flex; justify-content: center; align-items: center;">
-      <nz-progress nzType="circle"
-                   [nzPercent]="fakeProgress"></nz-progress>
+    <div style="height: 100%; display: flex; justify-content: center; align-items: center">
+      <nz-spin [nzSize]="'large'"></nz-spin>
     </div>
   </ng-container>
   <ng-template #wordListTemplate>
@@ -10,9 +9,9 @@
       <img [style.margin]="'auto'"
            [style.padding.rem]="'0.25'"
            [style.width.%]="'75'"
-           src="assets/images/no_result.png">
-      <h4 [style.text-align]="'center'">{{'NO_RESULT' | translate}}</h4>
-      <p [style.text-align]="'center'">{{'AFTER_NO_RESULT' |translate}}</p>
+           src="assets/images/no_result.png" />
+      <h4 [style.text-align]="'center'">{{ 'NO_RESULT' | translate }}</h4>
+      <p [style.text-align]="'center'">{{ 'AFTER_NO_RESULT' | translate }}</p>
     </ng-container>
     <app-dictionary-item *ngFor="let word of words; index as i"
                          [word]="word">
@@ -21,7 +20,7 @@
             [style.font-size.px]="'9'"
             [style.font-weight]="'500'"
             [style.line-height.%]="'100'"
-            slot="index">{{ i+1 }}:</span>
+            slot="index">{{ i + 1 }}:</span>
     </app-dictionary-item>
   </ng-template>
 </div>

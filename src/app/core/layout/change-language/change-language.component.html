@@ -5,23 +5,23 @@
      [nzDropdownMenu]="languageMenu"
      nz-tooltip
      [nzTooltipTitle]="'CHOOSE_LANGUAGE' | translate">
-    <img src="../../assets/images/{{currentLanguage}}.png"
-         height="13"
-         width="22">
-    <span [style.margin-left.rem]="'0.25'"
-          nz-icon
-          nzType="down"
-          nzTheme="outline"></span>
+  <img src="../../assets/images/{{ currentLanguage }}.png"
+       height="13"
+       width="22" />
+  <span [style.margin-left.rem]="'0.25'"
+        nz-icon
+        nzType="down"
+        nzTheme="outline"></span>
 </div>
 <nz-dropdown-menu #languageMenu="nzDropdownMenu">
-    <ul nz-menu
-        nzSelectable>
-        <li nz-menu-item
-            *ngFor="let item of languages"
-            (click)="changeLanguage(item)">
-            <img src="../../assets/images/{{item}}.png"
-                 height="13"
-                 width="22">
-        </li>
-    </ul>
+  <ul nz-menu
+      nzSelectable>
+    <li nz-menu-item
+        *ngFor="let item of languages"
+        (click)="changeLanguage(item)">
+      <img src="../../assets/images/{{ item }}.png"
+           height="13"
+           width="22" />
+    </li>
+  </ul>
 </nz-dropdown-menu>

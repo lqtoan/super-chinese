@@ -3,66 +3,61 @@
     <nz-spin nzSimple></nz-spin>
   </ng-container>
   <ng-template #audioListTemplate>
-    <div class="controls"
-         *ngIf="vm.selectedAudio">
+    <div class="controls" *ngIf="vm.selectedAudio">
       <h4 class="audio__title">{{ vm.selectedAudio.title | translate }}</h4>
-      <audio id="audioControls"
-             controls
-             autoplay
-             preload="none"
-             [attr.src]="vm.selectedAudio.url">
-        <source [src]="[vm.selectedAudio.url]"
-                type="audio/mpeg" />
+      <audio id="audioControls" controls autoplay preload="none" [attr.src]="vm.selectedAudio.url">
+        <source [src]="[vm.selectedAudio.url]" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
-    <div class="controls"
-         *ngIf="!vm.selectedAudio">
-      <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon
-           nzType="heart"
-           nzTheme="outline"></i></h4>
-      <audio id="audioControls"
-             controls>
+    <div class="controls" *ngIf="!vm.selectedAudio">
+      <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon nzType="heart" nzTheme="outline"></i></h4>
+      <audio id="audioControls" controls>
         <source type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
     <div class="pagination">
-      <pagination-controls (pageChange)="currentPage = $event"
-                           previousLabel="<"
-                           nextLabel=">"
-                           [maxSize]="6"
-                           [directionLinks]="false"
-                           [autoHide]="true"
-                           [responsive]="false"></pagination-controls>
+      <pagination-controls
+        (pageChange)="currentPage = $event"
+        previousLabel="<"
+        nextLabel=">"
+        [maxSize]="6"
+        [directionLinks]="false"
+        [autoHide]="true"
+        [responsive]="false"
+      ></pagination-controls>
     </div>
     <div class="audio-list">
-      <div *ngFor="let audio of audios | paginate: { itemsPerPage: 16, currentPage: currentPage }"
-           class="audio"
-           [class.audio--selected]="vm.selectedAudio === audio"
-           (click)="onSelect(audio)">
+      <div
+        *ngFor="let audio of audios | paginate : { itemsPerPage: 16, currentPage: currentPage }"
+        class="audio"
+        [class.audio--selected]="vm.selectedAudio === audio"
+        (click)="onSelect(audio)"
+      >
         <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
-        <strong [class.audio__title--selected]="vm.selectedAudio === audio"
-                class="audio__title">{{ audio.title | translate }}
+        <strong [class.audio__title--selected]="vm.selectedAudio === audio" class="audio__title"
+          >{{ audio.title | translate }}
         </strong>
         <p *ngIf="vm.selectedAudio === audio && vm.isPlaying && (vm.progress.type === 0 || !vm.progress.percent)">
-          {{'FILE_LOADING' | translate }}
+          {{ 'FILE_LOADING' | translate }}
         </p>
-        <nz-progress *ngIf="vm.selectedAudio === audio && vm.isPlaying && vm.progress.type !== 0"
-                     [nzStrokeWidth]="4"
-                     [nzStrokeColor]="{ '0%': '#b48eadbf', '100%': '#88c0d0bf' }"
-                     [nzPercent]="vm.progress.percent"></nz-progress>
+        <nz-progress
+          *ngIf="vm.selectedAudio === audio && vm.isPlaying && vm.progress.type !== 0"
+          [nzStrokeWidth]="4"
+          [nzStrokeColor]="{ '0%': '#b48eadbf', '100%': '#88c0d0bf' }"
+          [nzPercent]="vm.progress.percent"
+        ></nz-progress>
         <div class="actions">
-          <span *ngIf="vm.selectedAudio === audio && vm.isPlaying; else play"
-                class="pause"
-                nz-icon
-                nzType="pause-circle"
-                nzTheme="fill"></span>
+          <span
+            *ngIf="vm.selectedAudio === audio && vm.isPlaying; else play"
+            class="pause"
+            nz-icon
+            nzType="pause-circle"
+            nzTheme="fill"
+          ></span>
           <ng-template #play>
-            <span class="play"
-                  nz-icon
-                  nzType="play-circle"
-                  nzTheme="fill"></span>
+            <span class="play" nz-icon nzType="play-circle" nzTheme="fill"></span>
           </ng-template>
         </div>
       </div>

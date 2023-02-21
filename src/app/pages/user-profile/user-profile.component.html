@@ -1,4 +1,4 @@
-<ng-container *ngIf="(vm$ | async) as vm">
+<ng-container *ngIf="vm$ | async as vm">
   <ng-container *ngIf="vm.isLoading; else profileTemplate">
     <nz-spin nzSimple></nz-spin>
   </ng-container>
@@ -17,6 +17,6 @@
          [src]="vm.profile.picture"
          alt="Avatar" />
     <br />
-    <ng-container>Updated at: {{ vm.profile.updated_at | date: 'hh:mm dd/MM/yyyy' }}</ng-container>
+    <ng-container>Updated at: {{ vm.profile.updated_at | date : 'hh:mm dd/MM/yyyy' }}</ng-container>
   </ng-template>
 </ng-container>

@@ -1,11 +1,10 @@
 <li class="word">
   <ng-content select="[slot=index]"></ng-content>
-  <span *ngIf="word.updatedDate; else createdDate"
-        class="word--date">
-    {{'UPDATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span>
+  <span *ngIf="word.updatedDate; else createdDate" class="word--date">
+    {{ 'UPDATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span
+  >
   <ng-template #createdDate>
-    <span class="word--date">
-      {{'CREATED' |translate}}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
+    <span class="word--date"> {{ 'CREATED' | translate }}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
   </ng-template>
   <span class="word--name">{{ word.display }}</span>
   <span class="word--pinyin">[{{ word.pinyin }}]</span>

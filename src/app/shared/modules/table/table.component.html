@@ -12,7 +12,9 @@
           [nzShowSizeChanger]="clientPagination"
           [nzPageSize]="20"
           [nzPageSizeOptions]="[20, 100, 500]"
-          [nzScroll]="clientPagination ? { x: 'calc(100%)', y: 'calc(100vh - 20rem)' } : { x: 'calc(100%)', y: 'calc(100vh - 22rem)'}"
+          [nzScroll]="
+    clientPagination ? { x: 'calc(100%)', y: 'calc(100vh - 20rem)' } : { x: 'calc(100%)', y: 'calc(100vh - 22rem)' }
+  "
           [nzFooter]="footer"
           [nzLoading]="isLoading"
           [nzNoResult]="noResult"
@@ -25,8 +27,7 @@
           [nzDisabled]="!(isSelectable && records.length)"
           (nzCheckedChange)="onCheckAll($event)"
           nzWidth="2rem"
-          nzLeft>
-      </th>
+          nzLeft></th>
 
       <ng-container *ngFor="let header of headers; let i = index">
         <th [nzWidth]="headers[i].width"

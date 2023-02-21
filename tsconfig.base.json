@@ -22,13 +22,13 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@constants/*": ["./src/app/core/constants/*"],
-      "@services/*": ["./src/app/core/services/*"],
-      "@models/*": ["./src/app/core/models/*"],
-      "@data/*": ["./src/app/core/data/*"],
-      "@styles/*": ["./src/assets/scss/*"],
       "@common/*": ["./src/app/core/common/*"],
-      "@enums/*": ["./src/app/core/enums/*"]
+      "@constants/*": ["./src/app/core/constants/*"],
+      "@data/*": ["./src/app/core/data/*"],
+      "@enums/*": ["./src/app/core/enums/*"],
+      "@models/*": ["./src/app/core/models/*"],
+      "@services/*": ["./src/app/core/services/*"],
+      "@styles/*": ["./src/assets/scss/*"]
     }
   }
 }

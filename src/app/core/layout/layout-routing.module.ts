@@ -25,17 +25,9 @@ const routes: Routes = [
         path: 'about',
         loadChildren: () => import('../../pages/about/about.module').then((m) => m.AboutModule),
       },
-      // {
-      //   path: 'vocabulary',
-      //   loadChildren: () => import('../../pages/vocabulary/vocabulary.module').then((m) => m.VocabularyModule),
-      // },
       {
-        path: 'curriculum',
-        loadChildren: () => import('../../pages/curriculum/curriculum.module').then((m) => m.CurriculumModule),
-      },
-      {
-        path: 'exercise',
-        loadChildren: () => import('../../pages/exercise/exercise.module').then((m) => m.ExerciseModule),
+        path: 'listening',
+        loadChildren: () => import('../../pages/listening/listening.module').then((m) => m.CurriculumModule),
       },
       {
         path: '**',
@@ -50,4 +42,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class LayoutRoutingModule {}
+export class LayoutRoutingModule { }

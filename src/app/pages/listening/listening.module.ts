@@ -1,28 +1,29 @@
 import { TranslateModule } from '@ngx-translate/core';
+import { AudioListModule } from '../../shared/modules/audio-list/audio-list.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ExerciseComponent } from './exercise.component';
+import { ListeningComponent } from './listening.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AudioListModule } from 'src/app/shared/modules/audio-list/audio-list.module';
 import { RouterModule } from '@angular/router';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 const nzModules = [NzTabsModule];
 
 @NgModule({
-  declarations: [ExerciseComponent],
+  declarations: [ListeningComponent],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: ExerciseComponent,
+        component: ListeningComponent,
       },
     ]),
     CommonModule,
-    AudioListModule,
     NgxPaginationModule,
+    AudioListModule,
     nzModules,
     TranslateModule,
   ],
 })
-export class ExerciseModule {}
+export class CurriculumModule { }

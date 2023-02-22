@@ -2,11 +2,11 @@
   "name": "super-chinese",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve --port 4400",
-    "build": "ng build --output-hashing=all",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "ng": "nx",
+    "start": "nx serve --port 4400",
+    "build": "nx build --output-hashing=all",
+    "watch": "nx build --watch --configuration development",
+    "test": "nx test"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AudioService } from '@services/audio.service';
 import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 
 @Component({
@@ -8,13 +9,13 @@ import { AuthenticationService } from 'src/app/core/authentication/authenticatio
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  constructor(public readonly authService: AuthenticationService) {}
+  constructor(public readonly authService: AuthenticationService, public readonly audioService: AudioService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   confirm() {
     this.authService.logout();
   }
 
-  cancel() {}
+  cancel() { }
 }

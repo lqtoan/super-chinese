@@ -13,7 +13,6 @@ export class ListeningComponent implements OnInit {
   readonly vm$ = this._store.vm$;
   readonly tabIndex$ = this._store.tabIndex$;
   readonly typeIndex$ = this._store.typeIndex$;
-  readonly tabIndex = localStorage.getItem('current');
 
   constructor(private readonly _store: ListeningStore) { }
 

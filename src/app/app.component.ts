@@ -23,7 +23,7 @@ export class AppComponent {
   title = 'Super Chinese';
   isLogging$ = new BehaviorSubject<boolean>(true);
 
-  constructor(public readonly authService: AuthenticationService, private readonly translateService: TranslateService) {
+  constructor(private readonly translateService: TranslateService) {
     // this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
     setTimeout(() => {

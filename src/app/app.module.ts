@@ -34,9 +34,9 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AuthModule.forRoot({
-      ...env.auth,
-    }),
+    // AuthModule.forRoot({
+    //   ...env.auth,
+    // }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -54,4 +54,4 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

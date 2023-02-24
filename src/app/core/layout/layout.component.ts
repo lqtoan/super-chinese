@@ -11,9 +11,9 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 export class LayoutComponent implements OnInit {
   readonly year: Date = new Date();
   constructor(
-    public readonly authService: AuthenticationService,
+    // public readonly authService: AuthenticationService,
     private readonly notification: NzNotificationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // this.firstNotification();
@@ -28,8 +28,8 @@ export class LayoutComponent implements OnInit {
   }
 
   confirm() {
-    this.authService.logout();
+    // this.authService.logout();
   }
 
-  cancel() {}
+  cancel() { }
 }

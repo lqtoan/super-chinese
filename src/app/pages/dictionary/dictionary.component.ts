@@ -17,7 +17,6 @@ import { DictionaryStore } from './dictionary.store';
 export class DictionaryComponent implements OnInit {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
-  fakeProgress: number = 0;
 
   constructor(
     private readonly _store: DictionaryStore,
@@ -25,7 +24,7 @@ export class DictionaryComponent implements OnInit {
     private readonly _languageService: LanguageService,
     private readonly _i18n: NzI18nService,
     private readonly _translateService: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._store.patchState({ filterType: 'latest' });
@@ -43,15 +42,6 @@ export class DictionaryComponent implements OnInit {
           this._i18n.setLocale(vi_VN);
           break;
       }
-    });
-
-    this._store.vm$.subscribe((res) => {
-      if (!res.isSuccess) {
-        setInterval(() => {
-          this.fakeProgress > 80 ? 80 : this.fakeProgress++;
-        }, 100);
-      } else this.fakeProgress = 100;
-      console.log(this.fakeProgress);
     });
   }
 

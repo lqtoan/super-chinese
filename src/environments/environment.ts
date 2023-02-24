@@ -2,20 +2,20 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import config from '../../auth_config.json';
+// import config from '../../auth_config.json';
 
-const { domain, clientId } = config as {
-  domain: string;
-  clientId: string;
-};
+// const { domain, clientId } = config as {
+//   domain: string;
+//   clientId: string;
+// };
 
 export const environment = {
   production: false,
-  auth: {
-    domain,
-    clientId,
-    redirectUri: window.location.origin,
-  },
+  // auth: {
+  //   domain,
+  //   clientId,
+  //   redirectUri: window.location.origin,
+  // },
   authApi: 'https://hsk-1.us.auth0.com',
   // api: 'http://localhost:3000/api/', // .NET core
   api: 'http://localhost:8000/api/', // NodeJs

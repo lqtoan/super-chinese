@@ -1,9 +1,11 @@
 @import '/src/variables.scss';
 
 .ant-modal-header,
-.ant-modal-body,
+.ant-modal-body {
+  padding: 1rem;
+}
 .ant-modal-footer {
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
 }
 
 @media (max-width: 767px) {

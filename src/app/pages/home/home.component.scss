@@ -47,10 +47,11 @@
       border-radius: 0.5rem;
       transition: $transition;
       span {
+        white-space: pre-line;
         color: $white;
         text-shadow: 0 1px 10px rgba($color: $black, $alpha: 0.75);
         line-height: 110%;
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 600;
       }
       .sub-title {

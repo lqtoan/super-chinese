@@ -2,53 +2,19 @@
   <nz-tabset [nzAnimated]="false"
              [nzSelectedIndex]="tabIndex$ | async"
              (nzSelectedIndexChange)="onSelectTab($event)">
-    <nz-tab [nzTitle]="'HSK 1' | translate">
+    <nz-tab *ngFor="let i of [1,2,3]"
+            [nzTitle]="'HSK ' + i | translate">
       <ng-template nz-tab>
         <app-audio-list [audios]="vm.data"
                         [isLoading]="vm.isLoading"></app-audio-list>
       </ng-template>
     </nz-tab>
-    <nz-tab [nzTitle]="'HSK 2' | translate">
+    <nz-tab *ngFor="let i of [4,5,6]"
+            [nzTitle]="'HSK ' + i | translate">
       <ng-template nz-tab>
-        <app-audio-list [audios]="vm.data"
-                        [isLoading]="vm.isLoading"></app-audio-list>
+        {{'COMING_SOON' | translate}}
       </ng-template>
     </nz-tab>
-    <nz-tab [nzTitle]="'HSK 3' | translate">
-      <ng-template nz-tab>
-        <app-audio-list [audios]="vm.data"
-                        [isLoading]="vm.isLoading"></app-audio-list>
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 4' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 5' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 6' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 7' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 8' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
-    <nz-tab [nzTitle]="'HSK 9' | translate">
-      <ng-template nz-tab>
-        {{ 'COMING_SOON' | translate }}
-      </ng-template>
-    </nz-tab>
+
   </nz-tabset>
 </ng-container>

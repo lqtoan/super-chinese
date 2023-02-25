@@ -24,14 +24,6 @@ export class AudioService {
     this._currentType$.next(type);
   }
 
-  getAllCurriculumAudiosByGrade(index: number): Observable<Audio[]> {
-    return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.curriculum.json`);
-  }
-
-  getAllExerciseAudiosByGrade(index: number): Observable<Audio[]> {
-    return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.exercise.json`);
-  }
-
   getAllAudios(index: number, audioType: AudioType): Observable<Audio[]> {
     let type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise'
     return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.${type}.json`);

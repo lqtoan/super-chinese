@@ -128,10 +128,10 @@
     }
   }
   .audio:nth-child(odd) {
-    animation: slideToRight 0.75s ease 0s backwards;
+    animation: slideToRight 1s ease 0s backwards;
   }
   .audio:nth-child(even) {
-    animation: slideToLeft 0.75s ease 0s backwards;
+    animation: slideToLeft 1s ease 0s backwards;
   }
 }
 

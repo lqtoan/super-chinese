@@ -10,7 +10,6 @@ import { DictionaryItemComponent } from './dictionary-item/dictionary-item.compo
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -26,7 +25,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const nzModules = [
   NzSpinModule,
-  NzDrawerModule,
   NzFormModule,
   NzInputModule,
   NzButtonModule,
@@ -57,4 +55,4 @@ const nzModules = [
     ScrollingModule,
   ],
 })
-export class DictionaryModule {}
+export class DictionaryModule { }

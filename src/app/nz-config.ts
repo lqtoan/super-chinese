@@ -4,4 +4,7 @@ export const nzConfig: NzConfig = {
   notification: {
     nzTop: '2rem',
   },
+  // modal: {
+
+  // }
 };

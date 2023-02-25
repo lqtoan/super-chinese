@@ -50,9 +50,7 @@ export class DictionaryComponent implements OnInit {
   }
 
   onSearch(keyword: string) {
-    if (keyword) {
-      this._store.loadSearchResults(keyword);
-    }
+    keyword ? this._store.loadSearchResults(keyword) : this._store.loadLatestWords();
   }
 
   onView8Latest() {

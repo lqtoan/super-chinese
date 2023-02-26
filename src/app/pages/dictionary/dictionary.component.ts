@@ -24,7 +24,7 @@ export class DictionaryComponent implements OnInit {
     private readonly _languageService: LanguageService,
     private readonly _i18n: NzI18nService,
     private readonly _translateService: TranslateService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._store.patchState({ filterType: 'latest' });

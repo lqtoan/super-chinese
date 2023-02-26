@@ -8,9 +8,9 @@ import { AudioService } from '@services/audio.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  constructor(public readonly audioService: AudioService) { }
+  constructor(public readonly audioService: AudioService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  cancel() { }
+  cancel() {}
 }

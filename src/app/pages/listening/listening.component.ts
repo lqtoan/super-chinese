@@ -14,7 +14,7 @@ export class ListeningComponent implements OnInit {
   readonly tabIndex$ = this._store.tabIndex$;
   readonly typeIndex$ = this._store.typeIndex$;
 
-  constructor(private readonly _store: ListeningStore) { }
+  constructor(private readonly _store: ListeningStore) {}
 
   ngOnInit(): void {
     combineLatest([this.tabIndex$, this.typeIndex$]).subscribe(res => {

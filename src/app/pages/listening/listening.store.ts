@@ -50,7 +50,7 @@ export class ListeningStore extends ComponentStore<ListeningState> {
               });
               this.patchState({ data: data });
             },
-            (err) => { }
+            (err) => {}
           ),
           finalize(() => this.patchState({ isLoading: false }))
         )

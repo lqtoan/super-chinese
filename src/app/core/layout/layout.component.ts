@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
   constructor(
     // public readonly authService: AuthenticationService,
     private readonly notification: NzNotificationService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // this.firstNotification();
@@ -31,5 +31,5 @@ export class LayoutComponent implements OnInit {
     // this.authService.logout();
   }
 
-  cancel() { }
+  cancel() {}
 }

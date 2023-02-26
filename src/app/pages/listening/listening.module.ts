@@ -26,4 +26,4 @@ const nzModules = [NzTabsModule];
     TranslateModule,
   ],
 })
-export class CurriculumModule { }
+export class CurriculumModule {}

@@ -9,7 +9,7 @@ import { AudioType } from '@enums/audio-type.enum';
   providedIn: 'root',
 })
 export class AudioService {
-  constructor(private readonly _httpClient: HttpClient) { }
+  constructor(private readonly _httpClient: HttpClient) {}
   private _currentTab$ = new BehaviorSubject<number>(0);
   currentTab$ = this._currentTab$.asObservable();
   private _currentType$ = new BehaviorSubject<AudioType>('CURRICULUM');

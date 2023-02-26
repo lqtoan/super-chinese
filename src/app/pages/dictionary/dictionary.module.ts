@@ -55,4 +55,4 @@ const nzModules = [
     ScrollingModule,
   ],
 })
-export class DictionaryModule { }
+export class DictionaryModule {}

@@ -1,15 +1,5 @@
 <div class="top">
   <app-change-language></app-change-language>
-  <!-- <a class="facebook"
-       nz-tooltip
-       nzTooltipTitle="Facebook"
-       nzTooltipPlacement="left"
-       target="_blank"
-       href="https://www.facebook.com/lqtoann">
-      <i nz-icon
-         nzType="facebook"
-         nzTheme="fill"></i>
-    </a> -->
   <ng-container *ngIf="authService.user$ | async as user">
     <div style="white-space: pre-wrap;">{{ 'WELCOME' | translate }}</div>
     <div class="user">{{ user.name }}</div>
@@ -33,3 +23,14 @@
   <router-outlet></router-outlet>
 </div>
 <p class="copy-right">Copyright 2022 - {{ year | date : 'yyyy' }} &copy; {{ 'FOOTER' | translate }}</p>
+
+<a class="facebook"
+   nz-tooltip
+   nzTooltipTitle="Toan's Facebook"
+   nzTooltipPlacement="left"
+   target="_blank"
+   href="https://www.facebook.com/lqtoann">
+  <i nz-icon
+     nzType="facebook"
+     nzTheme="fill"></i>
+</a>

@@ -1,20 +1,6 @@
 @import 'src/variables.scss';
 @import 'animation';
 
-@import 'spinner';
-
-.loading-page {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  .slogan {
-    margin-top: 1rem;
-  }
-}
-
 .top {
   padding: 0 calc(3 * 100vw / 12);
   height: 1.5rem;
@@ -25,11 +11,6 @@
   app-change-language {
     margin-right: auto;
   }
-  // .facebook {
-  //   margin-right: auto;
-  //   color: #2374e1;
-  //   font-size: 18px;
-  // }
   .user {
     color: $gray;
     margin-right: 0.5rem;
@@ -52,6 +33,13 @@
 .copy-right {
   padding: 0 calc(3 * 100vw / 12);
   font-size: 10px;
+}
+
+.facebook {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 24px;
 }
 
 @media screen and (max-width: $tablet) {

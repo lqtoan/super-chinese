@@ -1,16 +1,20 @@
 <div class="top">
   <app-change-language></app-change-language>
-  <a class="facebook"
-     nz-tooltip
-     nzTooltipTitle="Facebook"
-     nzTooltipPlacement="left"
-     target="_blank"
-     href="https://www.facebook.com/lqtoann">
-    <i nz-icon
-       nzType="facebook"
-       nzTheme="fill"></i>
-  </a>
-  <!-- <span class="logout"
+  <!-- <a class="facebook"
+       nz-tooltip
+       nzTooltipTitle="Facebook"
+       nzTooltipPlacement="left"
+       target="_blank"
+       href="https://www.facebook.com/lqtoann">
+      <i nz-icon
+         nzType="facebook"
+         nzTheme="fill"></i>
+    </a> -->
+  <ng-container *ngIf="authService.user$ | async as user">
+    <div style="white-space: pre-wrap;">{{ 'WELCOME' | translate }}</div>
+    <div class="user">{{ user.name }}</div>
+  </ng-container>
+  <span class="logout"
         nz-icon
         nzType="logout"
         nzTheme="outline"
@@ -21,7 +25,7 @@
         [nzOkText]="'CONFIRM' | translate"
         [nzCancelText]="'CANCEL' | translate"
         (nzOnConfirm)="confirm()"
-        (nzOnCancel)="cancel()"></span> -->
+        (nzOnCancel)="cancel()"></span>
   <!-- <app-user-menu></app-user-menu> -->
 </div>
 <app-navbar></app-navbar>

@@ -26,6 +26,7 @@ const nzModules = [
   NzNotificationModule,
   NzToolTipModule,
   NzPopconfirmModule,
+  NzSpinModule
 ];
 
 @NgModule({

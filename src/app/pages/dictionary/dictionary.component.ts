@@ -1,3 +1,4 @@
+import { DictionaryService } from '@services/dictionary.service';
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN, vi_VN } from 'ng-zorro-antd/i18n';
@@ -11,7 +12,7 @@ import { DictionaryStore } from './dictionary.store';
   selector: 'app-dictionary',
   templateUrl: './dictionary.component.html',
   styleUrls: ['./dictionary.component.scss'],
-  providers: [NzMessageService, DictionaryStore, UserProfileStore],
+  providers: [NzMessageService, DictionaryStore, UserProfileStore, DictionaryService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DictionaryComponent implements OnInit {

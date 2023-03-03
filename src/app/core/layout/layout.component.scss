@@ -1,17 +1,42 @@
 @import 'src/variables.scss';
 @import 'animation';
 
+@import 'spinner';
+
+.loading-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  .slogan {
+    margin-top: 1rem;
+  }
+}
+
 .top {
-  padding: 0 0.5rem;
+  padding: 0 calc(3 * 100vw / 12);
   height: 1.5rem;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  .facebook {
-    // margin-right: 0.5rem;
-    color: #2374e1;
-    font-size: 18px;
+  app-change-language {
+    margin-right: auto;
+  }
+  // .facebook {
+  //   margin-right: auto;
+  //   color: #2374e1;
+  //   font-size: 18px;
+  // }
+  .user {
+    color: $gray;
+    margin-right: 0.5rem;
+    font-weight: 600;
+  }
+  .logout {
+    color: $red;
   }
   .logout:hover {
     cursor: pointer;
@@ -30,6 +55,9 @@
 }
 
 @media screen and (max-width: $tablet) {
+  .top {
+    padding: 0 calc(1 * 100vw / 12);
+  }
   .main {
     padding: 1rem calc(1 * 100vw / 12);
   }
@@ -39,6 +67,9 @@
 }
 
 @media screen and (max-width: $mobile) {
+  .top {
+    padding: 0 0.5rem;
+  }
   .main {
     padding: 1rem 0.5rem;
   }

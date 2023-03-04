@@ -27,7 +27,7 @@
   "MODAL.CONFIRM_VIEW_ALL": "Do you want to view all?",
   "MODAL.CONFIRM_VIEW_ALL.CONTENT": "View all could take 4 - 5 seconds.",
   "CONFIRM_VIEW_ALL": "View all",
-  "CANCEL": "Cancel",
+  "CANCEL": "取消",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "创建成功",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "更新成功",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "删除成功",

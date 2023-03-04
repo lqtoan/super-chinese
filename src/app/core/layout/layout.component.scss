@@ -36,13 +36,18 @@
 }
 
 .facebook {
-  position: absolute;
-  bottom: 0.5rem;
+  position: fixed;
+  bottom: 0;
   right: 1rem;
-  font-size: 24px;
+  font-size: 2rem;
 }
 
 @media screen and (max-width: $tablet) {
+  ::ng-deep {
+    .ant-tooltip {
+      display: none;
+    }
+  }
   .top {
     padding: 0 calc(1 * 100vw / 12);
   }

@@ -34,6 +34,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     createdBy: ['', Validators.compose([])],
   });
   shouldStay: boolean = true;
+  canEdit: boolean = false;
 
   readonly destroy$ = new Subject<void>();
 

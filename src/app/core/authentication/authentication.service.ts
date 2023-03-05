@@ -23,7 +23,7 @@ export class AuthenticationService {
   getAccessToken() {
     this.authService.getAccessTokenSilently().subscribe((accessToken) => {
       this.accessTokenSubject$.next(accessToken);
-      // localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('accessToken', accessToken);
     });
   }
 }

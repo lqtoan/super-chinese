@@ -1,5 +1,6 @@
+import { Subject, takeUntil } from 'rxjs';
 import { DictionaryService } from '@services/dictionary.service';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN, vi_VN } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -15,12 +16,16 @@ import { DictionaryStore } from './dictionary.store';
   providers: [NzMessageService, DictionaryStore, UserProfileStore, DictionaryService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DictionaryComponent implements OnInit {
+export class DictionaryComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
+  readonly destroy$ = new Subject<void>();
+  canEdit: boolean = false;
+  canDelete: boolean = false;
 
   constructor(
     private readonly _store: DictionaryStore,
+    private readonly _userStore: UserProfileStore,
     private readonly _modal: NzModalService,
     private readonly _languageService: LanguageService,
     private readonly _i18n: NzI18nService,
@@ -28,10 +33,17 @@ export class DictionaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this._userStore.loadData();
+    this._userStore.vm$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.canEdit = this._userStore.getEmail() === 'lqtoan37@gmail.com';
+      this.canDelete = this._userStore.getEmail() === 'lqtoan37@gmail.com';
+    }
+    );
+    
     this._store.patchState({ filterType: 'latest' });
     this.onView8Latest();
 
-    this._languageService.currentLanguage$.subscribe((res) => {
+    this._languageService.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       switch (res) {
         case 'en':
           this._i18n.setLocale(en_US);
@@ -44,6 +56,11 @@ export class DictionaryComponent implements OnInit {
           break;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onCreate() {

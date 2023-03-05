@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfileService } from '@services/user-profile.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,11 +6,11 @@ import { UserProfileService } from '@services/user-profile.service';
   styleUrls: ['./not-found.component.scss'],
 })
 export class NotFoundComponent implements OnInit {
-  constructor(private readonly service: UserProfileService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   onClick() {
-    this.service.sendToken();
+    // this.service.sendToken();
   }
 }

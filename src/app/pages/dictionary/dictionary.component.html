@@ -62,8 +62,8 @@
       'TOTALS' | translate : { totals: vm.total }
       }}</strong>
   </div>
-  <app-dictionary-list [editable]="true"
-                       [deletable]="true"
+  <app-dictionary-list [editable]="canEdit"
+                       [deletable]="canDelete"
                        [isLoading]="vm.isLoading"
                        [words]="vm.words"
                        [filterType]="vm.filterType"></app-dictionary-list>

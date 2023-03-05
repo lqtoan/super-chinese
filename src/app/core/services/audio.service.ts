@@ -17,7 +17,6 @@ export class AudioService {
 
   changeTabIndex(index: number) {
     this._currentTab$.next(index);
-    localStorage.setItem('current', index.toString());
   }
 
   changeAudioType(type: AudioType) {

@@ -14,9 +14,4 @@ export class UserProfileService {
     const url = `${this.API}/userinfo`;
     return this._httpClient.get<UserProfile>(url);
   }
-
-  sendToken(): any {
-    const url = `${this.API}/tokeninfo`;
-    return this._httpClient.post(url, { id_token: localStorage.getItem('accessToken') });
-  }
 }

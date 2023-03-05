@@ -130,14 +130,18 @@
   <ng-container *nzModalFooter>
     <label style="margin-right: auto;"
            nz-checkbox
-           [(ngModel)]="shouldStay">{{ 'SHOULD_STAY' | translate }}</label>
+           [(ngModel)]="shouldStay">
+      {{ 'SHOULD_STAY' | translate: { action: (isCreate$ | async)
+      ? ('ACTION.CREATE' | translate )
+      : ('ACTION.UPDATE' | translate )} }}
+    </label>
     <button nz-button
             nzType="default"
             (click)="onCancel()">{{ 'CANCEL' | translate }}</button>
     <button nz-button
             nzType="primary"
             (click)="onSubmit()"
-            [disabled]="dictionaryForm.invalid || (requestStatus$ | async).isRequesting"
+            [disabled]="((isCreate$ | async) ? dictionaryForm.invalid : dictionaryForm.changed) || (requestStatus$ | async).isRequesting"
             [nzLoading]="(requestStatus$ | async).isSubmitting">
       {{ (isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
     </button>

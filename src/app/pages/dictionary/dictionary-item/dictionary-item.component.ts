@@ -29,7 +29,7 @@ export class DictionaryItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onEdit(id: string) {
-    // if (this.userStore.getEmail() === 'lqtoan37@gmail.com') {
+    // if (this._userStore.getEmail() === 'lqtoan37@gmail.com') {
     this._store.loadWordById(id);
     // } else {
     //   this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));

@@ -22,6 +22,7 @@ export class AppComponent {
   title = 'Super Chinese';
 
   constructor(private readonly translateService: TranslateService, public readonly authService: AuthenticationService) {
+    this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
   }
 }

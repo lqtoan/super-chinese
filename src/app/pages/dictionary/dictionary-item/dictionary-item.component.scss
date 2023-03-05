@@ -49,12 +49,11 @@
     line-height: 100%;
   }
   .actions {
-    opacity: 0;
     position: absolute;
     bottom: 0;
     right: 0.5rem;
     .edit-button {
-      margin-right: 0.25rem;
+      margin-right: 0.125rem;
       transition: $transition;
     }
     .delete-button {
@@ -77,9 +76,4 @@
 }
 
 @media screen and (max-width: $tablet) {
-  .word {
-    .actions {
-      opacity: 1;
-    }
-  }
 }

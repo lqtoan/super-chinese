@@ -128,7 +128,8 @@
     </form>
   </ng-container>
   <ng-container *nzModalFooter>
-    <label style="margin-right: auto;"
+    <label *ngIf="(isCreate$ | async)"
+           style="margin-right: auto;"
            nz-checkbox
            [(ngModel)]="shouldStay">
       {{ 'SHOULD_STAY' | translate: { action: (isCreate$ | async)
@@ -141,7 +142,7 @@
     <button nz-button
             nzType="primary"
             (click)="onSubmit()"
-            [disabled]="((isCreate$ | async) ? dictionaryForm.invalid : dictionaryForm.changed) || (requestStatus$ | async).isRequesting"
+            [disabled]="((isCreate$ | async) ? dictionaryForm.invalid : !dictionaryForm.dirty) || (requestStatus$ | async).isSubmitting"
             [nzLoading]="(requestStatus$ | async).isSubmitting">
       {{ (isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
     </button>

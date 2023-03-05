@@ -7,7 +7,19 @@
 .ant-modal-footer {
   padding: 0.5rem 1rem;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  .ant-btn-primary:hover, .ant-btn-primary:focus {
+    background: $primary-color;
+    opacity: 0.8;
+  }
+  .ant-btn[disabled] {
+    background: #f5f5f5;
+  }
+  .ant-btn[disabled]:hover {
+    background: #f5f5f5;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 767px) {

@@ -195,7 +195,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ submittingStatus: null });
+            this.patchState({ isVisibleForm: false, submittingStatus: null });
           })
         )
       )

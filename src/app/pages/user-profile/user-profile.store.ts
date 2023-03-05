@@ -41,15 +41,15 @@ export class UserProfileStore extends ComponentStore<UserProfileState> {
         this._service.getUserProfile().pipe(
           tapResponse(
             (data: UserProfile) => {
-              console.log(data);
-              this.patchState({ profile: data });
+              // console.log(data);
+              this.patchState({ profile: data, requestStatus: 'success' });
             },
             (error) => {
               this.patchState({ requestStatus: 'fail' });
             }
           ),
           finalize(() => {
-            this.patchState({ requestStatus: 'success' });
+            this.patchState({ requestStatus: null });
           })
         )
       )

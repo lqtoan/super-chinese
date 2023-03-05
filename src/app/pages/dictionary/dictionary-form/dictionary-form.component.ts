@@ -75,6 +75,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       } 
     }
     this.shouldStay = true;
+    this.dictionaryForm.markAsDirty();
   }
 
   isEdit(): boolean {

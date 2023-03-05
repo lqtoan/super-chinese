@@ -7,23 +7,22 @@ import { Subject } from 'rxjs';
 export class AuthenticationService {
   user$ = this.authService.user$;
   loading$ = this.authService.isLoading$;
-  private accessTokenSubject$ = new Subject();
-  accessToken$ = this.accessTokenSubject$.asObservable();
+  private _accessTokenSubject$ = new Subject<string>();
+  accessToken$ = this._accessTokenSubject$.asObservable();
 
   constructor(private authService: AuthService, @Inject(DOCUMENT) private doc: Document) {}
 
-  async loginWithRedirect() {
+  loginWithRedirect() {
     this.authService.loginWithRedirect();
   }
 
-  async logout() {
+  logout() {
     this.authService.logout({ returnTo: this.doc.location.origin });
   }
 
   getAccessToken() {
     this.authService.getAccessTokenSilently().subscribe((accessToken) => {
-      this.accessTokenSubject$.next(accessToken);
-      localStorage.setItem('accessToken', accessToken);
+      this._accessTokenSubject$.next(accessToken);
     });
   }
 }

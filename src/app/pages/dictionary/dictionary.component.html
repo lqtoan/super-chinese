@@ -15,12 +15,12 @@
       <input nz-input
              [(ngModel)]="keyword"
              [placeholder]="'ACTION.SEARCH' | translate"
-             (keydown.enter)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()" />
+             (keydown.enter)="keyword !== vm.keyword && !vm.isLoading ? onSearch(keyword) : $event.preventDefault()" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
       <span nz-icon
             nzType="search"
-            (click)="keyword !== vm.keyword ? onSearch(keyword) : $event.preventDefault()"></span>
+            (click)="keyword !== vm.keyword && !vm.isLoading ? onSearch(keyword) : $event.preventDefault()"></span>
     </ng-template>
     <div class="filter"
          nz-button
@@ -62,7 +62,9 @@
       'TOTALS' | translate : { totals: vm.total }
       }}</strong>
   </div>
-  <app-dictionary-list [isLoading]="vm.isLoading"
+  <app-dictionary-list [editable]="true"
+                       [deletable]="true"
+                       [isLoading]="vm.isLoading"
                        [words]="vm.words"
                        [filterType]="vm.filterType"></app-dictionary-list>
 </ng-container>

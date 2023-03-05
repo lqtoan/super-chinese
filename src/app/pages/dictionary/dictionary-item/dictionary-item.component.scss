@@ -53,10 +53,15 @@
     position: absolute;
     bottom: 0;
     right: 0.5rem;
+    .edit-button {
+      margin-right: 0.25rem;
+      transition: $transition;
+    }
     .delete-button {
       color: $red;
       transition: $transition;
     }
+    .edit-button:hover,
     .delete-button:hover {
       opacity: 0.8;
       cursor: pointer;
@@ -70,6 +75,11 @@
     opacity: 1;
   }
 }
-// .word:last-child {
-//   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.3);
-// }
+
+@media screen and (max-width: $tablet) {
+  .word {
+    .actions {
+      opacity: 1;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { UserProfileStore } from './../../user-profile/user-profile.store';
 import { DictionaryStore } from './../dictionary.store';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -11,7 +12,7 @@ import { Word } from '@models/word.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class DictionaryFormComponent implements OnInit {
+export class DictionaryFormComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _store: DictionaryStore,
     private readonly _formBuilder: FormBuilder,
@@ -33,12 +34,19 @@ export class DictionaryFormComponent implements OnInit {
     createdBy: ['', Validators.compose([])],
   });
 
+  readonly destroy$ = new Subject<void>();
+
   ngOnInit(): void {
-    this._store.formValue$.subscribe((formValue) => {
+    this._store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   setValue(data: Partial<Word>) {
@@ -60,8 +68,14 @@ export class DictionaryFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isEdit() ? this.edit() : this.create();
-    this.dictionaryForm.reset();
+    if(!this.dictionaryForm.invalid) {
+      if(this.isEdit()) {
+        this.edit();
+      } else {
+        this.create();
+        this.dictionaryForm.reset();
+      } 
+    }
   }
 
   isEdit(): boolean {

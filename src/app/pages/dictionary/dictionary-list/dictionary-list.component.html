@@ -13,7 +13,9 @@
       <h4 [style.text-align]="'center'">{{ 'NO_RESULT' | translate }}</h4>
       <p [style.text-align]="'center'">{{ 'AFTER_NO_RESULT' | translate }}</p>
     </ng-container>
-    <app-dictionary-item *ngFor="let word of words; index as i"
+    <app-dictionary-item [editable]="editable"
+                         [deletable]="deletable"
+                         *ngFor="let word of words; index as i"
                          [word]="word">
       <span [style.width.%]="'10'"
             [style.color]="'#4c566a80'"

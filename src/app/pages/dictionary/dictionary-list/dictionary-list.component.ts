@@ -11,4 +11,6 @@ export class DictionaryListComponent {
   @Input() isLoading: boolean;
   @Input() words: boolean;
   @Input() filterType: FilterType;
+  @Input() editable: boolean;
+  @Input() deletable: boolean;
 }

@@ -21,6 +21,9 @@ export class DictionaryItemComponent implements OnInit {
     updatedDate: new Date(),
   };
 
+  @Input() editable: boolean = false;
+  @Input() deletable: boolean = false;
+
   constructor(private readonly _store: DictionaryStore) {}
 
   ngOnInit(): void {}

@@ -2,10 +2,6 @@
           [nzMaskClosable]="false"
           [nzStyle]="{ top: 'calc(20vh + 2.5rem)' }"
           [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
-          [nzOkText]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
-          [nzOkDisabled]="dictionaryForm.invalid || (requestStatus$ | async).isRequesting"
-          (nzOnOk)="onSubmit()"
-          [nzOkLoading]="(requestStatus$ | async).isRequesting"
           (nzOnCancel)="onClose()">
   <ng-container *nzModalContent>
     <form nz-form
@@ -130,5 +126,17 @@
         </div>
       </div>
     </form>
+  </ng-container>
+  <ng-container *nzModalFooter>
+    <button nz-button
+            nzType="default"
+            (click)="onClose()">{{ 'CANCEL' | translate }}</button>
+    <button nz-button
+            nzType="primary"
+            (click)="onSubmit()"
+            [disabled]="dictionaryForm.invalid || (requestStatus$ | async).isRequesting"
+            [nzLoading]="(requestStatus$ | async).isSubmitting">
+      {{ (isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
+    </button>
   </ng-container>
 </nz-modal>

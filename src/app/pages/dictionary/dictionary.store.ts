@@ -11,7 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 
 export interface DictionaryState {
-  requestStatus: RequestStatus | null;
+  gettingStatus: RequestStatus | null;
+  submittingStatus: RequestStatus | null;
   filterType: FilterType | null;
   words: Word[];
   keyword: string;
@@ -22,7 +23,8 @@ export interface DictionaryState {
 }
 
 const initialState = {
-  requestStatus: null,
+  gettingStatus: null,
+  submittingStatus: null,
   filterType: null,
   words: [],
   keyword: '',
@@ -42,10 +44,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
   readonly vm$ = this.select(
-    ({ requestStatus, filterType, words, keyword, total }) => ({
-      isLoading: requestStatus === 'loading',
-      isSuccess: requestStatus === 'success',
-      isFail: requestStatus === 'fail',
+    ({ gettingStatus, submittingStatus, filterType, words, keyword, total }) => ({
+      isLoading: gettingStatus === 'loading',
+      isSuccess: gettingStatus === 'success',
+      isFail: gettingStatus === 'fail',
+      isSubmitting: submittingStatus === 'loading',
+      isSubmitted: submittingStatus === 'success',
+      isSubmitFail: submittingStatus === 'fail',
       filterType,
       words,
       keyword,
@@ -58,9 +63,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
-  readonly requestStatus$ = this.select(({ requestStatus }) => ({
-    isRequesting: requestStatus === 'loading',
-    isSuccess: requestStatus === 'success',
+  readonly requestStatus$ = this.select(({ gettingStatus, submittingStatus }) => ({
+    isLoading: gettingStatus === 'loading',
+    isSuccess: gettingStatus === 'success',
+    isFail: gettingStatus === 'fail',
+    isSubmitting: submittingStatus === 'loading',
+    isSubmitted: submittingStatus === 'success',
+    isSubmitFail: submittingStatus === 'fail',
   }));
 
   //#region Updater
@@ -70,7 +79,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadAllWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'all' })),
+      tap(() => this.patchState({ gettingStatus: 'loading', filterType: 'all' })),
       switchMap(() =>
         this._service.getAllWords().pipe(
           tapResponse(
@@ -78,11 +87,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ keyword: '', words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              this.patchState({ requestStatus: 'fail' });
+              this.patchState({ gettingStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
-          finalize(() => this.patchState({ requestStatus: 'success' }))
+          finalize(() => this.patchState({ gettingStatus: 'success' }))
         )
       )
     )
@@ -90,7 +99,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadLatestWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'latest' })),
+      tap(() => this.patchState({ gettingStatus: 'loading', filterType: 'latest' })),
       switchMap(() =>
         this._service.getLatestWords().pipe(
           tapResponse(
@@ -98,11 +107,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ keyword: '', words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              this.patchState({ requestStatus: 'fail' });
+              this.patchState({ gettingStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
-          finalize(() => this.patchState({ requestStatus: 'success' }))
+          finalize(() => this.patchState({ gettingStatus: 'success' }))
         )
       )
     )
@@ -110,7 +119,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly loadSearchResults = this.effect<string>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
-      tap(() => this.patchState({ requestStatus: 'loading', filterType: 'search' })),
+      tap(() => this.patchState({ gettingStatus: 'loading', filterType: 'search' })),
       switchMap((param) =>
         this._service.search(param).pipe(
           tapResponse(
@@ -118,12 +127,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this.patchState({ keyword: param, words: data, total: data.length });
             },
             (err: HttpErrorResponse) => {
-              this.patchState({ requestStatus: 'fail' });
+              this.patchState({ gettingStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
           finalize(() => {
-            this.patchState({ requestStatus: 'success' });
+            this.patchState({ gettingStatus: 'success' });
           })
         )
       )
@@ -150,23 +159,23 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly createWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.createWord(param).pipe(
           tapResponse(
             (res) => {
               if (res) {
-                this.patchState({ requestStatus: 'success' });
+                this.patchState({ submittingStatus: 'success' });
                 this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
               }
             },
             (err: HttpErrorResponse) => {
-              this.patchState({ requestStatus: 'fail' });
+              this.patchState({ submittingStatus: 'fail' });
               this._message.error(err.error.message);
             }
           ),
           finalize(() => {
-            this.patchState({ isVisibleForm: false });
+            // this.patchState({ submittingStatus: null });
             this.loadLatestWords();
           })
         )
@@ -175,13 +184,13 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly updateWord = this.effect<Word>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.updateWord(param).pipe(
           tapResponse(
             (data) => {
               if (data) {
-                this.patchState({ requestStatus: 'success' });
+                this.patchState({ submittingStatus: 'success' });
                 this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               }
             },
@@ -190,7 +199,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisibleForm: false });
+            // this.patchState({ submittingStatus: null });
             this.loadLatestWords();
           })
         )
@@ -199,7 +208,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly deleteWord = this.effect<string>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ requestStatus: 'loading' })),
+      tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.deleteWord(param).pipe(
           tapResponse(
@@ -208,7 +217,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);
-              this.patchState({ requestStatus: 'fail' });
+              this.patchState({ submittingStatus: 'fail' });
             }
           ),
           finalize(() => {

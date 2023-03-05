@@ -2,7 +2,7 @@
           [nzMaskClosable]="false"
           [nzStyle]="{ top: 'calc(20vh + 2.5rem)' }"
           [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
-          (nzOnCancel)="onClose()">
+          (nzOnCancel)="onCancel()">
   <ng-container *nzModalContent>
     <form nz-form
           autocomplete="off"
@@ -128,9 +128,12 @@
     </form>
   </ng-container>
   <ng-container *nzModalFooter>
+    <label style="margin-right: auto;"
+           nz-checkbox
+           [(ngModel)]="shouldStay">{{ 'SHOULD_STAY' | translate }}</label>
     <button nz-button
             nzType="default"
-            (click)="onClose()">{{ 'CANCEL' | translate }}</button>
+            (click)="onCancel()">{{ 'CANCEL' | translate }}</button>
     <button nz-button
             nzType="primary"
             (click)="onSubmit()"

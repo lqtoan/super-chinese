@@ -208,7 +208,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   );
   readonly deleteWord = this.effect<string>((params$) =>
     params$.pipe(
-      tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.deleteWord(param).pipe(
           tapResponse(
@@ -217,7 +216,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);
-              this.patchState({ submittingStatus: 'fail' });
             }
           ),
           finalize(() => {

@@ -28,6 +28,7 @@
   "MODAL.CONFIRM_VIEW_ALL.CONTENT": "Xem tất cả có thể mất 4 đến 5 giây để load dữ liệu.",
   "CONFIRM_VIEW_ALL": "Vẫn xem tất cả",
   "CANCEL": "Huỷ",
+  "SHOULD_STAY": "Tiếp tục",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Thêm mới thành công",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Cập nhật thành công",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Xoá thành công",

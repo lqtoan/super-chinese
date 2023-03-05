@@ -33,6 +33,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     updatedDate: ['', Validators.compose([])],
     createdBy: ['', Validators.compose([])],
   });
+  shouldStay: boolean = true;
 
   readonly destroy$ = new Subject<void>();
 
@@ -63,10 +64,6 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  onClose() {
-    this.onCancel();
-  }
-
   onSubmit() {
     if(!this.dictionaryForm.invalid) {
       if(this.isEdit()) {
@@ -76,6 +73,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
         this.dictionaryForm.reset();
       } 
     }
+    this.shouldStay = true;
   }
 
   isEdit(): boolean {
@@ -88,16 +86,19 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     formValue.createdDate = new Date();
     formValue.createdBy = this._userStore.getUserName();
     this._store.createWord(formValue);
+    this._store.patchState({ isVisibleForm: this.shouldStay });
   }
 
   edit() {
     const formValue = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
     this._store.updateWord(formValue);
+    this._store.patchState({ isVisibleForm: this.shouldStay });
   }
 
   onCancel() {
     this.dictionaryForm.reset();
     this._store.patchState({ isVisibleForm: false, formValue: undefined });
+    this.shouldStay = true;
   }
 }

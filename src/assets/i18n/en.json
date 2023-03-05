@@ -28,6 +28,7 @@
   "MODAL.CONFIRM_VIEW_ALL.CONTENT": "View all could take 4 - 5 seconds.",
   "CONFIRM_VIEW_ALL": "View all",
   "CANCEL": "Cancel",
+  "SHOULD_STAY": "Keep this form open",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Create successfully",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Update successfully",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Delete successfully",

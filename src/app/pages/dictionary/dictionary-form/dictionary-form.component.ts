@@ -3,7 +3,7 @@ import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
-import { Subject, takeUntil } from 'rxjs';
+import { skip, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -20,7 +20,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   ) {}
   readonly isVisibleForm$ = this._store.isVisibleForm$;
   readonly isCreate$ = this._store.isCreate$;
-  readonly requestStatus$ = this._store.requestStatus$;
+  readonly requestStatus$ = this._store.submittingStatus$;
 
   readonly dictionaryForm: FormGroup = this._formBuilder.group({
     _id: [],
@@ -34,6 +34,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     createdBy: ['', Validators.compose([])],
   });
   shouldStay: boolean = true;
+  private _formValue: Partial<Word>;
   canEdit: boolean = false;
 
   readonly destroy$ = new Subject<void>();
@@ -42,8 +43,19 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     this._store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
       if (formValue) {
         this.setValue(formValue);
+        if(formValue.chinaVietnamWord === null || formValue.chinaVietnamWord === '') formValue.chinaVietnamWord = undefined;
+        this._formValue = formValue;
       }
     });
+
+    this.dictionaryForm.valueChanges.pipe(takeUntil(this.destroy$), skip(1)).subscribe((res: Partial<Word>) => {
+      if(res.chinaVietnamWord === '') res.chinaVietnamWord = undefined;
+      if(res.display !== this._formValue.display || 
+        res.pinyin !== this._formValue.pinyin || 
+        res.define !== this._formValue.define ||
+        res.chinaVietnamWord !== this._formValue.chinaVietnamWord ||
+        res.hsk !== this._formValue.hsk) this.canEdit = true; else this.canEdit = false;
+    })
   }
 
   ngOnDestroy(): void {
@@ -75,7 +87,14 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       } 
     }
     this.shouldStay = true;
-    this.dictionaryForm.markAsDirty();
+    this.canEdit = false;
+  }
+
+
+  onCancel() {
+    this.dictionaryForm.reset();
+    this._store.patchState({ isVisibleForm: false, formValue: undefined });
+    this.shouldStay = true;
   }
 
   isEdit(): boolean {
@@ -95,12 +114,6 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     const formValue = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
     this._store.updateWord(formValue);
-    this._store.patchState({ isVisibleForm: this.shouldStay });
-  }
-
-  onCancel() {
-    this.dictionaryForm.reset();
-    this._store.patchState({ isVisibleForm: false, formValue: undefined });
-    this.shouldStay = true;
+    this._store.patchState({ isVisibleForm: this.shouldStay, formValue: formValue });
   }
 }

@@ -63,10 +63,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
   readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
   readonly formValue$ = this.select((state) => state.formValue);
-  readonly requestStatus$ = this.select(({ gettingStatus, submittingStatus }) => ({
+  readonly gettingStatus$ = this.select(({ gettingStatus }) => ({
     isLoading: gettingStatus === 'loading',
     isSuccess: gettingStatus === 'success',
     isFail: gettingStatus === 'fail',
+  }));
+  readonly submittingStatus$ = this.select(({ submittingStatus }) => ({
     isSubmitting: submittingStatus === 'loading',
     isSubmitted: submittingStatus === 'success',
     isSubmitFail: submittingStatus === 'fail',
@@ -195,7 +197,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             }
           ),
           finalize(() => {
-            this.patchState({ isVisibleForm: false, submittingStatus: null });
+            this.patchState({ submittingStatus: null });
           })
         )
       )

@@ -34,7 +34,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     createdBy: ['', Validators.compose([])],
   });
   shouldStay: boolean = true;
-  private _formValue: Partial<Word>;
+  private _currentWord: Partial<Word>;
   canEdit: boolean = false;
 
   readonly destroy$ = new Subject<void>();
@@ -44,17 +44,17 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       if (formValue) {
         this.setValue(formValue);
         if(formValue.chinaVietnamWord === null || formValue.chinaVietnamWord === '') formValue.chinaVietnamWord = undefined;
-        this._formValue = formValue;
+        this._currentWord = formValue;
       }
     });
 
     this.dictionaryForm.valueChanges.pipe(takeUntil(this.destroy$), skip(1)).subscribe((res: Partial<Word>) => {
       if(res.chinaVietnamWord === '') res.chinaVietnamWord = undefined;
-      if(res.display !== this._formValue.display || 
-        res.pinyin !== this._formValue.pinyin || 
-        res.define !== this._formValue.define ||
-        res.chinaVietnamWord !== this._formValue.chinaVietnamWord ||
-        res.hsk !== this._formValue.hsk) this.canEdit = true; else this.canEdit = false;
+      if(res.display !== this._currentWord.display || 
+        res.pinyin !== this._currentWord.pinyin || 
+        res.define !== this._currentWord.define ||
+        res.chinaVietnamWord !== this._currentWord.chinaVietnamWord ||
+        res.hsk !== this._currentWord.hsk) this.canEdit = true; else this.canEdit = false;
     })
   }
 
@@ -103,7 +103,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   }
 
   create() {
-    const formValue = this.dictionaryForm.getRawValue();
+    const formValue: Word = this.dictionaryForm.getRawValue();
     formValue.createdDate = new Date();
     formValue.createdBy = this._userStore.getUserName();
     this._store.createWord(formValue);
@@ -111,7 +111,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   }
 
   edit() {
-    const formValue = this.dictionaryForm.getRawValue();
+    const formValue: Word = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
     this._store.updateWord(formValue);
     this._store.patchState({ isVisibleForm: this.shouldStay, formValue: formValue });

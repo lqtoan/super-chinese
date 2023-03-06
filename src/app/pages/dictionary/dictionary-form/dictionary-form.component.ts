@@ -80,7 +80,6 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       this.edit();
     } else {
       this.create();
-      this.dictionaryForm.reset();
     }
     this.shouldStay = true;
     this.canEdit = false;
@@ -104,7 +103,8 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     formValue.createdDate = new Date();
     formValue.createdBy = this._userStore.getUserName();
     this._store.createWord(formValue);
-    this._store.patchState({ isVisible: this.shouldStay });
+    this.dictionaryForm.reset();
+    this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
   }
 
   edit() {

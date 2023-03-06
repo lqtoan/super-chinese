@@ -147,23 +147,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly loadWordById = this.effect<string>((trigger$) =>
-    trigger$.pipe(
-      switchMap((id) =>
-        this._service.getWordById(id).pipe(
-          tapResponse(
-            (data) => {
-              this.patchState({ formValue: data, isCreate: false, isVisible: true });
-            },
-            (err: HttpErrorResponse) => {
-              this._message.error(err.error.message);
-            }
-          ),
-          finalize(() => {})
-        )
-      )
-    )
-  );
   readonly createWord = this.effect<Word>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ submittingStatus: 'loading' })),

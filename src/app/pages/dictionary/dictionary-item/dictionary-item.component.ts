@@ -28,9 +28,9 @@ export class DictionaryItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onEdit(id: string) {
+  onEdit(word: Word) {
     // if (this._userStore.getEmail() === 'lqtoan37@gmail.com') {
-    this._store.loadWordById(id);
+    this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
     // } else {
     //   this.message.error(this.translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
     // }

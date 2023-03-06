@@ -18,10 +18,6 @@ export class DictionaryService {
     return this._httpClient.get<Word[]>(`${this.API}/latest`);
   }
 
-  getWordById(id: string): Observable<Word> {
-    return this._httpClient.get<Word>(`${this.API}/${id}`);
-  }
-
   createWord(word: Word) {
     return this._httpClient.post<Word>(this.API, word);
   }

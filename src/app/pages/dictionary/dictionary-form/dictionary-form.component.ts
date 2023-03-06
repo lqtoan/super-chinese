@@ -77,7 +77,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formValue: Word = this.dictionaryForm.getRawValue();
-    if(this.isEdit()) {
+    if(formValue._id) {
       formValue.updatedDate = new Date();
       this._store.updateWord(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
@@ -90,15 +90,10 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     }
     this.shouldStay = true;
   }
-  
+
   onCancel() {
     this.dictionaryForm.reset();
     this._store.patchState({ isVisible: false, formValue: undefined });
     this.shouldStay = true;
-  }
-
-  isEdit(): boolean {
-    const formValue = this.dictionaryForm.getRawValue();
-    return formValue._id ? true : false;
   }
 }

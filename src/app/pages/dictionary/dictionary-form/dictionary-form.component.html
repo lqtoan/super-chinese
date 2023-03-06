@@ -1,149 +1,151 @@
-<nz-modal [nzVisible]="isVisibleForm$ | async"
-          [nzMaskClosable]="false"
-          [nzStyle]="{ top: 'calc(20vh + 2.5rem)' }"
-          [nzTitle]="(isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
-          (nzOnCancel)="onCancel()">
-  <ng-container *nzModalContent>
-    <form nz-form
-          autocomplete="off"
-          [formGroup]="dictionaryForm"
-          [nzLayout]="'vertical'">
-      <div nz-row
-           [nzGutter]="16">
-        <div nz-col
-             nzSpan="12">
-          <nz-form-item>
-            <nz-form-label nzRequired
-                           nzFor="display">{{ 'DICTIONARY.DISPLAY' | translate }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorDisplay">
-              <input nz-input
-                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="display"
-                     formControlName="display" />
-              <ng-template #errorDisplay
-                           let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
-                  {{ 'INPUT.PLACE_HOLDER' | translate }}
-                </ng-container>
-              </ng-template>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+<ng-container *ngIf="formVm$ | async as formVm">
+  <nz-modal [nzVisible]="formVm.isVisible"
+            [nzMaskClosable]="false"
+            [nzStyle]="{ top: 'calc(20vh + 2.5rem)' }"
+            [nzTitle]="formVm.isCreate ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate)"
+            (nzOnCancel)="onCancel()">
+    <ng-container *nzModalContent>
+      <form nz-form
+            autocomplete="off"
+            [formGroup]="dictionaryForm"
+            [nzLayout]="'vertical'">
+        <div nz-row
+             [nzGutter]="16">
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired
+                             nzFor="display">{{ 'DICTIONARY.DISPLAY' | translate }}</nz-form-label>
+              <nz-form-control [nzErrorTip]="errorDisplay">
+                <input nz-input
+                       placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                       id="display"
+                       formControlName="display" />
+                <ng-template #errorDisplay
+                             let-control>
+                  <ng-container *ngIf="control.touched && control.hasError('required')">
+                    {{ 'INPUT.PLACE_HOLDER' | translate }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
 
-        <div nz-col
-             nzSpan="12">
-          <nz-form-item>
-            <nz-form-label nzRequired
-                           nzFor="pinyin">{{ 'DICTIONARY.PINYIN' | translate }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorPinyin">
-              <input nz-input
-                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="pinyin"
-                     formControlName="pinyin" />
-              <ng-template #errorPinyin
-                           let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
-                  {{ 'INPUT.PLACE_HOLDER' | translate }}
-                </ng-container>
-              </ng-template>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired
+                             nzFor="pinyin">{{ 'DICTIONARY.PINYIN' | translate }}</nz-form-label>
+              <nz-form-control [nzErrorTip]="errorPinyin">
+                <input nz-input
+                       placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                       id="pinyin"
+                       formControlName="pinyin" />
+                <ng-template #errorPinyin
+                             let-control>
+                  <ng-container *ngIf="control.touched && control.hasError('required')">
+                    {{ 'INPUT.PLACE_HOLDER' | translate }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
 
-        <div nz-col
-             nzSpan="12">
-          <nz-form-item>
-            <nz-form-label nzFor="chinaVietnamWord">{{ 'DICTIONARY.CHINA_VIETNAM_WORD' | translate }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorChinaVietnamWord">
-              <input nz-input
-                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="chinaVietnamWord"
-                     formControlName="chinaVietnamWord" />
-              <ng-template #errorChinaVietnamWord
-                           let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
-                  {{ 'INPUT.PLACE_HOLDER' | translate }}
-                </ng-container>
-              </ng-template>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="chinaVietnamWord">{{ 'DICTIONARY.CHINA_VIETNAM_WORD' | translate }}</nz-form-label>
+              <nz-form-control [nzErrorTip]="errorChinaVietnamWord">
+                <input nz-input
+                       placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                       id="chinaVietnamWord"
+                       formControlName="chinaVietnamWord" />
+                <ng-template #errorChinaVietnamWord
+                             let-control>
+                  <ng-container *ngIf="control.touched && control.hasError('required')">
+                    {{ 'INPUT.PLACE_HOLDER' | translate }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
 
-        <div nz-col
-             nzSpan="12">
-          <nz-form-item>
-            <nz-form-label nzRequired
-                           nzFor="hsk">HSK</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorHsk">
-              <nz-select [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
-                         formControlName="hsk"
-                         required>
-                <nz-option nzValue="hsk1"
-                           nzLabel="HSK 1"></nz-option>
-                <nz-option nzValue="hsk2"
-                           nzLabel="HSK 2"></nz-option>
-                <nz-option nzValue="hsk3"
-                           nzLabel="HSK 3"></nz-option>
-                <nz-option nzValue="hsk4"
-                           nzLabel="HSK 4"></nz-option>
-                <nz-option nzValue="hsk5"
-                           nzLabel="HSK 5"></nz-option>
-                <nz-option nzValue="hsk6"
-                           nzLabel="HSK 6"></nz-option>
-                <nz-option nzValue="hsk79"
-                           nzLabel="HSK 7-9"></nz-option>
-                <nz-option nzValue="z---"
-                           nzLabel="-------"></nz-option>
-              </nz-select>
-              <ng-template #errorHsk
-                           let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
-                  {{ 'SELECT.PLACE_HOLDER' | translate }}
-                </ng-container>
-              </ng-template>
-            </nz-form-control>
-          </nz-form-item>
-        </div>
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzRequired
+                             nzFor="hsk">HSK</nz-form-label>
+              <nz-form-control [nzErrorTip]="errorHsk">
+                <nz-select [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
+                           formControlName="hsk"
+                           required>
+                  <nz-option nzValue="hsk1"
+                             nzLabel="HSK 1"></nz-option>
+                  <nz-option nzValue="hsk2"
+                             nzLabel="HSK 2"></nz-option>
+                  <nz-option nzValue="hsk3"
+                             nzLabel="HSK 3"></nz-option>
+                  <nz-option nzValue="hsk4"
+                             nzLabel="HSK 4"></nz-option>
+                  <nz-option nzValue="hsk5"
+                             nzLabel="HSK 5"></nz-option>
+                  <nz-option nzValue="hsk6"
+                             nzLabel="HSK 6"></nz-option>
+                  <nz-option nzValue="hsk79"
+                             nzLabel="HSK 7-9"></nz-option>
+                  <nz-option nzValue="z---"
+                             nzLabel="-------"></nz-option>
+                </nz-select>
+                <ng-template #errorHsk
+                             let-control>
+                  <ng-container *ngIf="control.touched && control.hasError('required')">
+                    {{ 'SELECT.PLACE_HOLDER' | translate }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
 
-        <div nz-col
-             nzSpan="24">
-          <nz-form-item>
-            <nz-form-label nzRequired
-                           nzFor="define">{{ 'DICTIONARY.DEFINE' | translate }}</nz-form-label>
-            <nz-form-control [nzErrorTip]="errorDefine">
-              <input nz-input
-                     placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
-                     id="define"
-                     formControlName="define" />
-              <ng-template #errorDefine
-                           let-control>
-                <ng-container *ngIf="control.touched && control.hasError('required')">
-                  {{ 'INPUT.PLACE_HOLDER' | translate }}
-                </ng-container>
-              </ng-template>
-            </nz-form-control>
-          </nz-form-item>
+          <div nz-col
+               nzSpan="24">
+            <nz-form-item>
+              <nz-form-label nzRequired
+                             nzFor="define">{{ 'DICTIONARY.DEFINE' | translate }}</nz-form-label>
+              <nz-form-control [nzErrorTip]="errorDefine">
+                <input nz-input
+                       placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                       id="define"
+                       formControlName="define" />
+                <ng-template #errorDefine
+                             let-control>
+                  <ng-container *ngIf="control.touched && control.hasError('required')">
+                    {{ 'INPUT.PLACE_HOLDER' | translate }}
+                  </ng-container>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
         </div>
-      </div>
-    </form>
-  </ng-container>
-  <ng-container *nzModalFooter>
-    <label style="margin-right: auto;"
-           nz-checkbox
-           [(ngModel)]="shouldStay">
-      {{ 'SHOULD_STAY' | translate: { action: (isCreate$ | async)
-      ? ('ACTION.CREATE' | translate )
-      : ('ACTION.UPDATE' | translate )} }}
-    </label>
-    <button nz-button
-            nzType="default"
-            (click)="onCancel()">{{ 'CANCEL' | translate }}</button>
-    <button nz-button
-            nzType="primary"
-            (click)="onSubmit()"
-            [disabled]="((isCreate$ | async) ? dictionaryForm.invalid : !canEdit) || (requestStatus$ | async).isSubmitting"
-            [nzLoading]="(requestStatus$ | async).isSubmitting">
-      {{ (isCreate$ | async) ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
-    </button>
-  </ng-container>
-</nz-modal>
+      </form>
+    </ng-container>
+    <ng-container *nzModalFooter>
+      <label style="margin-right: auto;"
+             nz-checkbox
+             [(ngModel)]="shouldStay">
+        {{ 'SHOULD_STAY' | translate: { action: formVm.isCreate
+        ? ('ACTION.CREATE' | translate )
+        : ('ACTION.UPDATE' | translate )} }}
+      </label>
+      <button nz-button
+              nzType="default"
+              (click)="onCancel()">{{ 'CANCEL' | translate }}</button>
+      <button nz-button
+              nzType="primary"
+              (click)="onSubmit()"
+              [disabled]="(formVm.isCreate ? dictionaryForm.invalid : !canEdit) || formVm.isSubmitting"
+              [nzLoading]="formVm.isSubmitting">
+        {{ formVm.isCreate ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
+      </button>
+    </ng-container>
+  </nz-modal>
+</ng-container>

@@ -17,7 +17,7 @@ export interface DictionaryState {
   words: Word[];
   keyword: string;
   total: number;
-  isVisibleForm: boolean;
+  isVisible: boolean;
   isCreate: boolean;
   formValue: Partial<Word> | undefined;
 }
@@ -29,7 +29,7 @@ const initialState = {
   words: [],
   keyword: '',
   total: 0,
-  isVisibleForm: false,
+  isVisible: false,
   isCreate: true,
   formValue: undefined,
 };
@@ -60,21 +60,28 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-  readonly isVisibleForm$ = this.select((state) => state.isVisibleForm, { debounce: true });
-  readonly isCreate$ = this.select((state) => state.isCreate, { debounce: true });
-  readonly formValue$ = this.select((state) => state.formValue);
+  readonly formVm$ = this.select(({ isVisible, isCreate, formValue, submittingStatus }) => ({
+    isVisible,
+    isCreate,
+    formValue,
+    isSubmitting: submittingStatus === 'loading',
+    isSubmitted: submittingStatus === 'success',
+    isSubmitFail: submittingStatus === 'fail',
+  }))
+
   readonly gettingStatus$ = this.select(({ gettingStatus }) => ({
     isLoading: gettingStatus === 'loading',
     isSuccess: gettingStatus === 'success',
     isFail: gettingStatus === 'fail',
   }));
-  readonly submittingStatus$ = this.select(({ submittingStatus }) => ({
-    isSubmitting: submittingStatus === 'loading',
-    isSubmitted: submittingStatus === 'success',
-    isSubmitFail: submittingStatus === 'fail',
-  }));
 
   //#region Updater
+  // readonly updateCanEdit = this.updater<boolean>(
+  //   (state, isCanEdit): DictionaryState => ({
+  //     ...state,
+  //     isCanEdit
+  //   })
+  // );
   //#region
 
   //#region Effect
@@ -146,7 +153,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this._service.getWordById(id).pipe(
           tapResponse(
             (data) => {
-              this.patchState({ formValue: data, isCreate: false, isVisibleForm: true });
+              this.patchState({ formValue: data, isCreate: false, isVisible: true });
             },
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);

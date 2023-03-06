@@ -18,9 +18,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     private readonly _formBuilder: FormBuilder,
     private readonly _userStore: UserProfileStore
   ) {}
-  readonly isVisibleForm$ = this._store.isVisibleForm$;
-  readonly isCreate$ = this._store.isCreate$;
-  readonly requestStatus$ = this._store.submittingStatus$;
+  readonly formVm$ = this._store.formVm$;
 
   readonly dictionaryForm: FormGroup = this._formBuilder.group({
     _id: [],
@@ -36,15 +34,14 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   shouldStay: boolean = true;
   private _currentWord: Partial<Word> | undefined;
   canEdit: boolean = false;
-
   readonly destroy$ = new Subject<void>();
 
   ngOnInit(): void {
-    this._store.formValue$.pipe(takeUntil(this.destroy$)).subscribe((formValue) => {
-      if (formValue) {
-        if(formValue?.chinaVietnamWord === null || formValue?.chinaVietnamWord === '') formValue.chinaVietnamWord = undefined;
-        this.setValue(formValue);
-        this._currentWord = formValue;
+    this.formVm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      if (res.formValue) {
+        if(res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === '') res.formValue.chinaVietnamWord = undefined;
+        this.setValue(res.formValue);
+        this._currentWord = res.formValue;
       }
     });
 
@@ -54,7 +51,8 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
         res?.pinyin !== this._currentWord?.pinyin || 
         res?.define !== this._currentWord?.define ||
         res?.chinaVietnamWord !== this._currentWord?.chinaVietnamWord ||
-        res?.hsk !== this._currentWord?.hsk) this.canEdit = true; else this.canEdit = false;
+        res?.hsk !== this._currentWord?.hsk)
+        this.canEdit = true; else this.canEdit = false
     })
   }
 
@@ -78,13 +76,11 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if(!this.dictionaryForm.invalid) {
-      if(this.isEdit()) {
-        this.edit();
-      } else {
-        this.create();
-        this.dictionaryForm.reset();
-      } 
+    if(this.isEdit()) {
+      this.edit();
+    } else {
+      this.create();
+      this.dictionaryForm.reset();
     }
     this.shouldStay = true;
     this.canEdit = false;
@@ -93,7 +89,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onCancel() {
     this.dictionaryForm.reset();
-    this._store.patchState({ isVisibleForm: false, formValue: undefined });
+    this._store.patchState({ isVisible: false, formValue: undefined });
     this.shouldStay = true;
     this.canEdit = false;
   }
@@ -108,13 +104,13 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     formValue.createdDate = new Date();
     formValue.createdBy = this._userStore.getUserName();
     this._store.createWord(formValue);
-    this._store.patchState({ isVisibleForm: this.shouldStay, formValue: formValue });
+    this._store.patchState({ isVisible: this.shouldStay });
   }
 
   edit() {
     const formValue: Word = this.dictionaryForm.getRawValue();
     formValue.updatedDate = new Date();
     this._store.updateWord(formValue);
-    this._store.patchState({ isVisibleForm: this.shouldStay, formValue: formValue });
+    this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
   }
 }

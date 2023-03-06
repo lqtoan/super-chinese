@@ -34,11 +34,11 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._userStore.loadData();
-    this._userStore.vm$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+    this._userStore.vm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      console.log(res);    
       this.canEdit = this._userStore.getEmail() === 'lqtoan37@gmail.com';
       this.canDelete = this._userStore.getEmail() === 'lqtoan37@gmail.com';
-    }
-    );
+    });
     
     this._store.patchState({ filterType: 'latest' });
     this.onView8Latest();
@@ -64,7 +64,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onCreate() {
-    this._store.patchState({ isCreate: true, isVisibleForm: true });
+    this._store.patchState({ isCreate: true, isVisible: true });
   }
 
   onSearch(keyword: string) {

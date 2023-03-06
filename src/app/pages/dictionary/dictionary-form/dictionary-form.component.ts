@@ -76,41 +76,29 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    const formValue: Word = this.dictionaryForm.getRawValue();
     if(this.isEdit()) {
-      this.edit();
+      formValue.updatedDate = new Date();
+      this._store.updateWord(formValue);
+      this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
     } else {
-      this.create();
+      formValue.createdDate = new Date();
+      formValue.createdBy = this._userStore.getUserName();
+      this._store.createWord(formValue);
+      this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
+      this.dictionaryForm.reset();
     }
     this.shouldStay = true;
-    this.canEdit = false;
   }
-
-
+  
   onCancel() {
     this.dictionaryForm.reset();
     this._store.patchState({ isVisible: false, formValue: undefined });
     this.shouldStay = true;
-    this.canEdit = false;
   }
 
   isEdit(): boolean {
     const formValue = this.dictionaryForm.getRawValue();
     return formValue._id ? true : false;
-  }
-
-  create() {
-    const formValue: Word = this.dictionaryForm.getRawValue();
-    formValue.createdDate = new Date();
-    formValue.createdBy = this._userStore.getUserName();
-    this._store.createWord(formValue);
-    this.dictionaryForm.reset();
-    this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
-  }
-
-  edit() {
-    const formValue: Word = this.dictionaryForm.getRawValue();
-    formValue.updatedDate = new Date();
-    this._store.updateWord(formValue);
-    this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
   }
 }

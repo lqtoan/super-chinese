@@ -76,7 +76,8 @@
               <nz-form-label nzRequired
                              nzFor="hsk">HSK</nz-form-label>
               <nz-form-control [nzErrorTip]="errorHsk">
-                <nz-select [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
+                <nz-select nzAllowClear
+                           [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
                            formControlName="hsk"
                            required>
                   <nz-option nzValue="hsk1"
@@ -142,7 +143,7 @@
       <button nz-button
               nzType="primary"
               (click)="onSubmit()"
-              [disabled]="(formVm.isCreate ? dictionaryForm.invalid : !canEdit) || formVm.isSubmitting"
+              [disabled]="dictionaryForm.invalid || !dictionaryForm.dirty || !canEdit || formVm.isSubmitting"
               [nzLoading]="formVm.isSubmitting">
         {{ formVm.isCreate ? ('ACTION.CREATE' | translate) : ('ACTION.UPDATE' | translate) }}
       </button>

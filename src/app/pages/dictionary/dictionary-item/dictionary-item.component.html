@@ -52,7 +52,7 @@
           nz-popconfirm
           [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate: { word: word.display + '[' + word.pinyin + ']' }"
           nzOkText="OK"
-          nzCancelText="Cancel"
+          [nzCancelText]="'CANCEL' | translate"
           (nzOnConfirm)="delete.emit(word._id)"
           (nzOnCancel)="onCancel()"
           class="delete-button"

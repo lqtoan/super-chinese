@@ -178,8 +178,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           tapResponse(
             () => {
                 this.patchState({ submittingStatus: 'success' });
-                this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
                 this.loadLatestWords();
+                this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
               },
               (err: HttpErrorResponse) => {
               this.patchState({ submittingStatus: 'fail' });
@@ -199,8 +199,8 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this._service.deleteWord(param).pipe(
           tapResponse(
             () => {
-              this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
               this.loadLatestWords();
+              this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);

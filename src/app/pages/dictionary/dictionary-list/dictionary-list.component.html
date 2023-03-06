@@ -15,6 +15,8 @@
     </ng-container>
     <app-dictionary-item [editable]="editable"
                          [deletable]="deletable"
+                         (edit)="edit.emit(word)"
+                         (delete)="delete.emit(word._id)"
                          *ngFor="let word of words; index as i"
                          [word]="word">
       <span [style.width.%]="'10'"

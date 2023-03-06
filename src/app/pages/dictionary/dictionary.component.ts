@@ -8,6 +8,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { LanguageService } from 'src/app/core/layout/change-language/language.service';
 import { UserProfileStore } from '../user-profile/user-profile.store';
 import { DictionaryStore } from './dictionary.store';
+import { Word } from '@models/word.model';
 
 @Component({
   selector: 'app-dictionary',
@@ -20,8 +21,6 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
   readonly destroy$ = new Subject<void>();
-  canEdit: boolean = false;
-  canDelete: boolean = false;
 
   constructor(
     private readonly _store: DictionaryStore,
@@ -29,17 +28,13 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     private readonly _modal: NzModalService,
     private readonly _languageService: LanguageService,
     private readonly _i18n: NzI18nService,
-    private readonly _translateService: TranslateService
-  ) {}
+    private readonly _translateService: TranslateService,
+    private readonly _messageService: NzMessageService
+  ) { }
 
   ngOnInit(): void {
     this._userStore.loadData();
-    this._userStore.vm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
-      console.log(res);    
-      this.canEdit = this._userStore.getEmail() === 'lqtoan37@gmail.com';
-      this.canDelete = this._userStore.getEmail() === 'lqtoan37@gmail.com';
-    });
-    
+
     this._store.patchState({ filterType: 'latest' });
     this.onView8Latest();
 
@@ -90,5 +85,17 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   onViewAll() {
     this.keyword = '';
     this._store.loadAllWords();
+  }
+
+  onEdit(word: Word) {
+    this._userStore.getEmail() === 'lqtoan37@gmail.com' 
+    ? this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
+    : this._messageService.error(this._translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
+  }
+
+  onDelete(id: string) {
+    this._userStore.getEmail() === 'lqtoan37@gmail.com' 
+    ? this._store.deleteWord(id) 
+    : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
   }
 }

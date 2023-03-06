@@ -32,8 +32,9 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     createdBy: ['', Validators.compose([])],
   });
   shouldStay: boolean = true;
-  private _currentWord: Partial<Word> | undefined;
   canEdit: boolean = false;
+  private _currentWord: Partial<Word> | undefined;
+
   readonly destroy$ = new Subject<void>();
 
   ngOnInit(): void {

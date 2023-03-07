@@ -44,13 +44,10 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     super(initialState);
   }
   readonly vm$ = this.select(
-    ({ gettingStatus, submittingStatus, filterType, words, keyword, total }) => ({
+    ({ gettingStatus, filterType, words, keyword, total }) => ({
       isLoading: gettingStatus === 'loading',
       isSuccess: gettingStatus === 'success',
       isFail: gettingStatus === 'fail',
-      isSubmitting: submittingStatus === 'loading',
-      isSubmitted: submittingStatus === 'success',
-      isSubmitFail: submittingStatus === 'fail',
       filterType,
       words,
       keyword,
@@ -68,12 +65,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     isSubmitted: submittingStatus === 'success',
     isSubmitFail: submittingStatus === 'fail',
   }))
-
-  readonly gettingStatus$ = this.select(({ gettingStatus }) => ({
-    isLoading: gettingStatus === 'loading',
-    isSuccess: gettingStatus === 'success',
-    isFail: gettingStatus === 'fail',
-  }));
 
   //#region Updater
   // readonly updateCanEdit = this.updater<boolean>(

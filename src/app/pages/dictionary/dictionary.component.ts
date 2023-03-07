@@ -88,7 +88,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onEdit(word: Word) {
-    this._userStore.getEmail() === 'lqtoan37@gmail.com' 
+    this._userStore.getEmail() === 'lqtoan37@gmail.com' || this._userStore.getUserName() === word.createdBy
     ? this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
     : this._messageService.error(this._translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
   }

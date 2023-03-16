@@ -10,8 +10,8 @@ export class DictionaryService {
 
   private API = `${environment.api}words`;
 
-  getAllWords(): Observable<Word[]> {
-    return this._httpClient.get<Word[]>(`${this.API}`);
+  getAllWords(page: number): Observable<Word[]> {
+    return this._httpClient.get<Word[]>(`${this.API}?page=${page}`);
   }
 
   getLatestWords(): Observable<Word[]> {

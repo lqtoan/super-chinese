@@ -14,4 +14,5 @@ export const environment = {
   },
   authApi: 'https://hsk-1.us.auth0.com',
   api: 'https://super-chinese.cyclic.app/api/',
+  // webSocket: 'http://localhost:8080/api/',
 };

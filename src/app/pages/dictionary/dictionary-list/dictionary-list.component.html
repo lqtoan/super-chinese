@@ -1,4 +1,7 @@
-<div class="list">
+<div id="list"
+     #wordListViewport
+     (scroll)="onScroll()"
+     class="list">
   <ng-container *ngIf="isLoading; else wordListTemplate">
     <div style="height: 100%; display: flex; justify-content: center; align-items: center">
       <nz-spin [nzSize]="'large'"></nz-spin>

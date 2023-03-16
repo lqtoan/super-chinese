@@ -20,6 +20,7 @@ import { Word } from '@models/word.model';
 export class DictionaryComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
+  private _page: number = 1;
   readonly destroy$ = new Subject<void>();
 
   constructor(
@@ -30,7 +31,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     private readonly _i18n: NzI18nService,
     private readonly _translateService: TranslateService,
     private readonly _messageService: NzMessageService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._userStore.loadData();
@@ -84,18 +85,18 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   onViewAll() {
     this.keyword = '';
-    this._store.loadAllWords();
+    this._store.loadAllWords(1);
   }
 
   onEdit(word: Word) {
     this._userStore.getEmail() === 'lqtoan37@gmail.com' || this._userStore.getUserName() === word.createdBy
-    ? this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
-    : this._messageService.error(this._translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
+      ? this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
+      : this._messageService.error(this._translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
   }
 
   onDelete(id: string) {
-    this._userStore.getEmail() === 'lqtoan37@gmail.com' 
-    ? this._store.deleteWord(id) 
-    : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
+    this._userStore.getEmail() === 'lqtoan37@gmail.com'
+      ? this._store.deleteWord(id)
+      : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
   }
 }

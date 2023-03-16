@@ -64,8 +64,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     isSubmitting: submittingStatus === 'loading',
     isSubmitted: submittingStatus === 'success',
     isSubmitFail: submittingStatus === 'fail',
-  }))
+  }));
 
+  private _finalWords: Word[] = [];
   //#region Updater
   // readonly updateCanEdit = this.updater<boolean>(
   //   (state, isCanEdit): DictionaryState => ({
@@ -76,15 +77,22 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   //#region
 
   //#region Effect
-  readonly loadAllWords = this.effect(($) =>
+  readonly loadAllWords = this.effect<number>(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.patchState({ gettingStatus: 'loading', filterType: 'all' })),
-      switchMap(() =>
-        this._service.getAllWords().pipe(
+      switchMap((page) =>
+        this._service.getAllWords(page).pipe(
           tapResponse(
             (data) => {
-              this.patchState({ keyword: '', words: data, total: data.length, gettingStatus: 'success' });
+              if (page === 1) this._finalWords = [];
+              this._finalWords = this._finalWords.concat(data);
+              this.patchState({
+                keyword: '',
+                words: this._finalWords,
+                total: this._finalWords.length,
+                gettingStatus: 'success',
+              });
             },
             (err: HttpErrorResponse) => {
               this.patchState({ gettingStatus: 'fail' });
@@ -168,11 +176,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this._service.updateWord(param).pipe(
           tapResponse(
             () => {
-                this.patchState({ submittingStatus: 'success' });
-                this.loadLatestWords();
-                this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
-              },
-              (err: HttpErrorResponse) => {
+              this.patchState({ submittingStatus: 'success' });
+              this.loadLatestWords();
+              this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
+            },
+            (err: HttpErrorResponse) => {
               this.patchState({ submittingStatus: 'fail' });
               this._message.error(err.error.message);
             }
@@ -196,7 +204,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (err: HttpErrorResponse) => {
               this._message.error(err.error.message);
             }
-          ),
+          )
         )
       )
     )

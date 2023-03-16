@@ -2,7 +2,7 @@
 
 .word {
   position: relative;
-  min-height: 63.77px;
+  min-height: 69.77px;
   height: calc(100% / 8);
   padding: 0.25rem 0.5rem 0;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
@@ -12,7 +12,8 @@
   scroll-snap-align: start;
   &--name {
     color: $red;
-    font-size: 18px;
+    font-size: 24px;
+    line-height: 100%;
     letter-spacing: 1px;
     font-family: 'Noto Serif SC', serif;
   }

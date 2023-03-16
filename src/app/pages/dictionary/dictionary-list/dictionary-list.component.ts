@@ -1,5 +1,5 @@
 import { FilterType } from '@enums/dictionary.enum';
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-dictionary-list',
@@ -13,4 +13,14 @@ export class DictionaryListComponent {
 
   @Output() edit = new EventEmitter();
   @Output() delete = new EventEmitter();
+  // @Output() loadMore = new EventEmitter();
+
+  @ViewChild('wordListViewport', { static: false }) wordListTemplate: ElementRef<HTMLDivElement>;
+
+  onScroll(): void {
+    let element = this.wordListTemplate.nativeElement;
+    if (element.scrollTop >= element.scrollHeight - element.offsetHeight) {
+      // this.loadMore.emit();
+    }
+  }
 }

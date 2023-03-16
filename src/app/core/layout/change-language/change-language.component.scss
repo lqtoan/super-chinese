@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1.5px solid $white;
+  border: 1.25px solid rgba($color: $white, $alpha: 0.6);
   border-radius: 0.25rem;
 }
 .select:hover {

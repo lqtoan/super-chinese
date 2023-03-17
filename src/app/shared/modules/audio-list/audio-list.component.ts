@@ -1,7 +1,5 @@
-import { Subject, takeUntil } from 'rxjs';
-import { ChangeDetectionStrategy, Component, Input, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, EventEmitter, Output } from '@angular/core';
 import { Audio } from '@models/audio.model';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-audio-list',
@@ -14,6 +12,8 @@ export class AudioListComponent {
   @Input() isLoading: boolean = false;
   @Input() currentPage: number = 1;
   @Input() selectedAudio: Audio;
+  @Input() url: string;
+  @Input() title: string;
   @Input() isPlaying: boolean = false;
   @Input() progress: any;
 

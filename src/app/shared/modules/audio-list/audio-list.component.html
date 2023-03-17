@@ -16,7 +16,7 @@
     </audio>
   </div>
   <div class="controls"
-       *ngIf="!url && title">
+       *ngIf="!(url && title)">
     <h4 class="audio__title">{{ 'SELECT' | translate }} <i nz-icon
          nzType="heart"
          nzTheme="outline"></i></h4>

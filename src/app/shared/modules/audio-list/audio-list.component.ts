@@ -22,11 +22,5 @@ export class AudioListComponent {
   @Output() playing = new EventEmitter();
   @Output() pause = new EventEmitter();
 
-  constructor() {
-    document.getElementById('audioControls')?.addEventListener('click', this.myFunction);
-  }
-
-  myFunction() {
-    console.log('hello');
-  }
+  constructor() {}
 }

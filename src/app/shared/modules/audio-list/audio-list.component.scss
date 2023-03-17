@@ -1,10 +1,5 @@
 @import '/src/variables.scss';
-@import 'animation';
 @import 'spinner';
-
-.delay {
-  animation: appearance 0.25s ease 0.4s backwards;
-}
 
 ::ng-deep {
   .ant-progress-status-success .ant-progress-bg {

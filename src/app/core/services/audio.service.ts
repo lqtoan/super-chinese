@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Grade } from '@enums/grade.enum';
 import { AudioType } from '@enums/audio-type.enum';
 
 @Injectable({
@@ -24,7 +23,7 @@ export class AudioService {
   }
 
   getAllAudios(index: number, audioType: AudioType): Observable<Audio[]> {
-    let type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise'
+    let type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise';
     return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.${type}.json`);
   }
 

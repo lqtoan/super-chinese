@@ -6,7 +6,15 @@
             [nzTitle]="'HSK ' + i | translate">
       <ng-template nz-tab>
         <app-audio-list [audios]="vm.data"
-                        [isLoading]="vm.isLoading"></app-audio-list>
+                        [selectedAudio]="vm.selectedAudio"
+                        [isLoading]="vm.isLoading"
+                        [isPlaying]="vm.isPlaying"
+                        [progress]="vm.progress"
+                        [currentPage]="currentPage"
+                        (selectAudio)="onSelectAudio($event)"
+                        (pageChange)="onPageChange($event)"
+                        (playing)="onPlaying()"
+                        (pause)="onPause()"></app-audio-list>
       </ng-template>
     </nz-tab>
     <nz-tab *ngFor="let i of [4,5,6]"

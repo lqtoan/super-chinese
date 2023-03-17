@@ -1,24 +1,32 @@
-import { AudioListStore } from './audio-list.store';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { Audio } from '@models/audio.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-audio-list',
   templateUrl: './audio-list.component.html',
   styleUrls: ['./audio-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [AudioListStore],
 })
 export class AudioListComponent {
   @Input() audios: Audio[] = [];
   @Input() isLoading: boolean = false;
-  currentPage: number = 1;
+  @Input() currentPage: number = 1;
+  @Input() selectedAudio: Audio;
+  @Input() isPlaying: boolean = false;
+  @Input() progress: any;
 
-  readonly vm$ = this._store.vm$;
+  @Output() selectAudio = new EventEmitter<Audio>();
+  @Output() pageChange = new EventEmitter<number>();
+  @Output() playing = new EventEmitter();
+  @Output() pause = new EventEmitter();
 
-  constructor(private readonly _store: AudioListStore) {}
+  constructor() {
+    document.getElementById('audioControls')?.addEventListener('click', this.myFunction);
+  }
 
-  onSelect(audio: Audio): void {
-    this._store.selectAudio(audio);
+  myFunction() {
+    console.log('hello');
   }
 }

@@ -119,8 +119,6 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onShare(audio: Audio) {
-    console.log(audio);
-
     let url = `${window.location.host}/listening?type=${this._type}&tab=${this.tabIndex}&page=${this.currentPage}&title=${audio.title}&url=${audio.url}`;
     navigator.clipboard.writeText(url);
     this._messageService.success(this._translateService.instant('NOTIFICATION.COPIED'));

@@ -69,14 +69,14 @@
   height: calc(75vh - 15.5rem);
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 6rem;
   grid-gap: 0.5rem;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   .audio {
     position: relative;
-    padding: 1rem 3rem 1rem 1rem;
+    padding: 1rem 4.5rem 1rem 1rem;
     background: #fff;
     display: flex;
     flex-flow: column;
@@ -91,7 +91,6 @@
     }
     &__title {
       color: $gray;
-      font-size: 18px;
       &--selected {
         color: $primary-color;
       }
@@ -130,7 +129,6 @@
 
 @media screen and (max-width: $mobile) {
   .audio-list {
-    grid-template-columns: repeat(1, 1fr);
     .audio {
       border: 2px solid $white;
       .actions {

@@ -82,6 +82,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   onView8Latest() {
     this._store.patchState({ filterType: 'latest' });
     this.keyword = '';
+    this._router.navigate([]);
     this._store.loadLatestWords();
   }
 
@@ -98,6 +99,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   onViewAll() {
     this.keyword = '';
+    this._router.navigate([]);
     this._store.loadAllWords(1);
   }
 

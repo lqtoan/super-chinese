@@ -11,14 +11,12 @@ export class AudioListComponent {
   @Input() audios: Audio[] = [];
   @Input() isLoading: boolean = false;
   @Input() currentPage: number = 1;
-  @Input() selectedAudio: Audio;
   @Input() url: string;
   @Input() title: string;
   @Input() isPlaying: boolean = false;
-  @Input() progress: any;
+  @Input() progress: { type: number; loaded: number; total: number; percent: number };
 
   @Output() pageChange = new EventEmitter<number>();
-  @Output() selectAudio = new EventEmitter<Audio>();
   @Output() playAudio = new EventEmitter<Audio>();
   @Output() pauseAudio = new EventEmitter();
   @Output() playing = new EventEmitter();

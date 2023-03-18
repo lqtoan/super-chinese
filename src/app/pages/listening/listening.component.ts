@@ -1,6 +1,6 @@
 import { ListeningStore } from './listening.store';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest, Subject, takeUntil, zip } from 'rxjs';
+import { combineLatest, Subject, takeUntil } from 'rxjs';
 import { Audio } from '@models/audio.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AudioType } from '@enums/audio-type.enum';
@@ -19,11 +19,12 @@ export class ListeningComponent implements OnInit, OnDestroy {
   readonly destroy$ = new Subject<void>();
 
   private _type: AudioType = 'CURRICULUM';
+  private _selectedAudio?: Audio;
+
   tabIndex: number = 0;
   currentPage: number = 1;
   url: string;
   title: string;
-  private _selectedAudio?: Audio;
 
   constructor(
     private readonly _store: ListeningStore,
@@ -49,13 +50,9 @@ export class ListeningComponent implements OnInit, OnDestroy {
           this.title = res[1]['title'];
           this._selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
         }
-        if (document.querySelector('.audio--selected')) {
+        setTimeout(() => {
           document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        } else {
-          setTimeout(() => {
-            document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-          }, 400);
-        }
+        }, 0);
       });
   }
 
@@ -87,6 +84,16 @@ export class ListeningComponent implements OnInit, OnDestroy {
       // Merge current type, tab, current audio
       queryParamsHandling: 'merge',
     });
+    if (pageIndex > this.currentPage)
+      setTimeout(() => {
+        document.querySelectorAll('.audio')[0].scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }, 0);
+    else
+      setTimeout(() => {
+        document
+          .querySelectorAll('.audio')
+          [document.querySelectorAll('.audio').length - 1].scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }, 0);
   }
 
   onSelectAudio(audio: Audio) {

@@ -5,40 +5,31 @@ import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { finalize, switchMap, tap } from 'rxjs/operators';
 import { Audio } from '@models/audio.model';
 import { AudioType } from '@enums/audio-type.enum';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { TranslateService } from '@ngx-translate/core';
 
 export interface ListeningState {
-  isLoading: boolean | null;
   data: Audio[];
-  selectedAudio: Audio | null;
+  isLoading: boolean | null;
   isPlaying: boolean;
   progress: { type: number; loaded: number; total: number; percent: number };
 }
 
 const initialState = {
-  isLoading: true,
   data: [],
-  selectedAudio: null,
+  isLoading: true,
   isPlaying: false,
   progress: { type: 0, loaded: 0, total: 1, percent: 0 },
 };
 
 @Injectable()
 export class ListeningStore extends ComponentStore<ListeningState> {
-  constructor(
-    private readonly _service: AudioService,
-    private readonly _message: NzMessageService,
-    private readonly _translateService: TranslateService
-  ) {
+  constructor(private readonly _service: AudioService) {
     super(initialState);
   }
 
   readonly vm$ = this.select(
-    ({ data, isLoading, selectedAudio, isPlaying, progress }) => ({
+    ({ data, isLoading, isPlaying, progress }) => ({
       data,
       isLoading,
-      selectedAudio,
       isPlaying,
       progress,
     }),
@@ -65,7 +56,7 @@ export class ListeningStore extends ComponentStore<ListeningState> {
               this.patchState({ data: data, isLoading: false });
             },
             (err: HttpErrorResponse) => {
-              this._message.error(err.message);
+              console.log(err.message);
             }
           ),
           finalize(() => this.patchState({ isLoading: null }))
@@ -83,11 +74,12 @@ export class ListeningStore extends ComponentStore<ListeningState> {
               .play()
               .then()
               .catch((err) => {
+                console.log(err.message);
                 // this._message.error(err + '\nPlease contact admin!');
               })
               .finally();
           controls.src = audio.url;
-          this.patchState({ isPlaying: true, selectedAudio: audio });
+          this.patchState({ isPlaying: true });
         }
       })
     )
@@ -101,29 +93,26 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       })
     )
   );
-  readonly loadAudio = this.effect<Audio | undefined>(($) =>
+  readonly loadAudio = this.effect<Audio>(($) =>
     $.pipe(
       switchMap((audio) =>
         this._service.getAudioEvent(audio).pipe(
           tapResponse(
             (event) => {
-              if (audio) {
-                console.log(event.total);
-
-                this.patchState({
-                  progress: {
-                    type: event.type,
-                    loaded: event.loaded,
-                    total: audio.size,
-                    percent:
-                      event.type === 0
-                        ? 0
-                        : event.type === 4
-                        ? 100
-                        : Math.round((100 * (100.0 * event.loaded)) / audio.size) / 100,
-                  },
-                });
-              }
+              if (event.total) console.log(audio.title, event.total);
+              this.patchState({
+                progress: {
+                  type: event.type,
+                  loaded: event.loaded,
+                  total: audio.size,
+                  percent:
+                    event.type === 0
+                      ? 0
+                      : event.type === 4
+                      ? 100
+                      : Math.round((10 * (100.0 * event.loaded)) / audio.size) / 10,
+                },
+              });
             },
             (err) => {}
           )

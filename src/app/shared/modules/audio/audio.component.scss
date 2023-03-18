@@ -85,7 +85,7 @@
     scroll-snap-align: start;
     transition: $transition;
     &__type {
-      color: rgba($color: $gray, $alpha: 0.5);
+      color: rgba($color: $gray, $alpha: 0.75);
       font-size: smaller;
       border-bottom: 0.5px solid rgba($color: $gray, $alpha: 0.35);
     }

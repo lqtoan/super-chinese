@@ -8,11 +8,11 @@ import { finalize } from 'rxjs/operators';
 export class PerformanceInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return defer(() => {
-      const key = req.urlWithParams;
-      console.time(key);
+      // const key = req.urlWithParams;
+      // console.time(key);
       return next.handle(req).pipe(
         finalize(() => {
-          console.timeEnd(key);
+          // console.timeEnd(key);
         })
       );
     });

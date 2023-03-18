@@ -76,7 +76,7 @@
   scroll-snap-type: y mandatory;
   .audio {
     position: relative;
-    padding: 1rem 4.5rem 1rem 1rem;
+    padding: 1rem 5.5rem 1rem 1rem;
     background: #fff;
     display: flex;
     flex-flow: column;
@@ -91,6 +91,7 @@
     }
     &__title {
       color: $gray;
+      font-size: 1rem;
       &--selected {
         color: $primary-color;
       }
@@ -98,8 +99,8 @@
     .actions {
       position: absolute;
       right: 1rem;
-      top: calc(50% - 1rem);
-      font-size: 1.5rem;
+      top: calc(50% - 1.25rem);
+      font-size: 2rem;
       color: rgba($color: $primary-color, $alpha: 0.8);
       transition: $transition;
       .share {

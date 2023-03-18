@@ -3,8 +3,8 @@ import { Audio } from '@models/audio.model';
 
 @Component({
   selector: 'app-audio-list',
-  templateUrl: './audio-list.component.html',
-  styleUrls: ['./audio-list.component.scss'],
+  templateUrl: './audio.component.html',
+  styleUrls: ['./audio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AudioListComponent {

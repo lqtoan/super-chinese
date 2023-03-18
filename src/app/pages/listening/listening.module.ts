@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { AudioListModule } from '../../shared/modules/audio-list/audio-list.module';
+import { AudioListModule } from '../../shared/modules/audio/audio.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListeningComponent } from './listening.component';
 

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { combineLatest, Subject, takeUntil, zip } from 'rxjs';
 import { Audio } from '@models/audio.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AudioType } from '@enums/audio-type.enum';
 
 @Component({
   selector: 'app-listening',
@@ -14,8 +15,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ListeningComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
   readonly destroy$ = new Subject<void>();
+
+  private _type: AudioType = 'CURRICULUM';
   tabIndex: number = 0;
-  currentPage: number;
+  currentPage: number = 1;
   url: string;
   title: string;
   private _selectedAudio?: Audio;
@@ -28,9 +31,12 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
-      this._store.loadData([res['tab'] ? parseInt(res['tab']) : 0, res['type']]);
-      this.tabIndex = res['tab'];
       this.currentPage = res['page'];
+      if (res['tab'] !== this.tabIndex || res['type'] !== this._type) {
+        this._store.loadData([res['tab'] ? parseInt(res['tab']) : 0, res['type']]);
+        this._type = res['type'];
+        this.tabIndex = res['tab'];
+      }
     });
 
     combineLatest([this.vm$, this._activatedRoute.queryParams])
@@ -53,6 +59,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
     this._router.navigate([], {
       queryParams: {
         tab: tabIndex,
+        page: 1,
       },
       queryParamsHandling: 'merge',
     });
@@ -85,6 +92,5 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
   onPause() {
     this._store.patchState({ isPlaying: false });
-    this._store.stop();
   }
 }

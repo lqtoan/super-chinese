@@ -39,18 +39,10 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       debounce: true,
     }
   );
-  readonly tabIndex$ = this._service.currentTab$;
-  readonly typeIndex$ = this._service.currentType$;
   readonly getSelectedAudio = (): Audio | null => this.get().selectedAudio;
   readonly getIsPlaying = (): boolean => this.get().isPlaying;
 
   //#region Updater
-  setTabIndex(index: number) {
-    this._service.changeTabIndex(index);
-  }
-  setType(type: AudioType) {
-    this._service.changeAudioType(type);
-  }
   //#endregion
 
   //#region Effect

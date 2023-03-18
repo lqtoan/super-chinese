@@ -9,18 +9,6 @@ import { AudioType } from '@enums/audio-type.enum';
 })
 export class AudioService {
   constructor(private readonly _httpClient: HttpClient) {}
-  private _currentTab$ = new BehaviorSubject<number>(0);
-  currentTab$ = this._currentTab$.asObservable();
-  private _currentType$ = new BehaviorSubject<AudioType>('CURRICULUM');
-  currentType$ = this._currentType$.asObservable();
-
-  changeTabIndex(index: number) {
-    this._currentTab$.next(index);
-  }
-
-  changeAudioType(type: AudioType) {
-    this._currentType$.next(type);
-  }
 
   getAllAudios(index: number, audioType: AudioType): Observable<Audio[]> {
     let type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise';

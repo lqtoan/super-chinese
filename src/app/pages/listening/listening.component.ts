@@ -13,9 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListeningComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
-  readonly tabIndex$ = this._store.tabIndex$;
-  readonly typeIndex$ = this._store.typeIndex$;
   readonly destroy$ = new Subject<void>();
+  tabIndex: number = 0;
   currentPage: number;
   url: string;
   title: string;
@@ -28,11 +27,11 @@ export class ListeningComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    combineLatest([this.tabIndex$, this.typeIndex$])
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-        this._store.loadData([res[0], res[1]]);
-      });
+    this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      this._store.loadData([res['tab'] ? parseInt(res['tab']) : 0, res['type']]);
+      this.tabIndex = res['tab'];
+      this.currentPage = res['page'];
+    });
 
     combineLatest([this.vm$, this._activatedRoute.queryParams])
       .pipe(takeUntil(this.destroy$))
@@ -51,22 +50,11 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onSelectTab(tabIndex: number) {
-    this._store.setTabIndex(tabIndex);
     this._router.navigate([], {
       queryParams: {
-        page: 1,
+        tab: tabIndex,
       },
-    });
-  }
-
-  onSelectAudio(audio: Audio) {
-    this._store.selectAudio(audio);
-    this._router.navigate([], {
-      queryParams: {
-        page: this.currentPage,
-        url: audio.url,
-        title: audio.title,
-      },
+      queryParamsHandling: 'merge',
     });
   }
 
@@ -75,6 +63,18 @@ export class ListeningComponent implements OnInit, OnDestroy {
       queryParams: {
         page: pageIndex,
       },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  onSelectAudio(audio: Audio) {
+    this._store.selectAudio(audio);
+    this._router.navigate([], {
+      queryParams: {
+        url: audio.url,
+        title: audio.title,
+      },
+      queryParamsHandling: 'merge',
     });
   }
 

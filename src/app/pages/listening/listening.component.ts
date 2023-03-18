@@ -38,7 +38,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
         this.currentPage = res[1]['page'];
-        // Dont re-load if type or tab no change
+        // Don't re-load if type or tab no change
         if (res[1]['tab'] !== this.tabIndex || res[1]['type'] !== this._type) {
           this._store.loadData([res[1]['tab'] ? parseInt(res[1]['tab']) : 0, res[1]['type']]);
           this._type = res[1]['type'];
@@ -101,7 +101,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onPlayAudio(audio: Audio) {
-    this._store.play(audio);
+    this._store.playAudio(audio);
     this._router.navigate([], {
       queryParams: {
         url: audio.url,
@@ -113,12 +113,12 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onPlaying() {
-    if (this._selectedAudio) this._store.load(this._selectedAudio);
+    if (this._selectedAudio) this._store.loadAudio(this._selectedAudio);
     this._store.patchState({ isPlaying: true });
   }
 
   onPauseAudio() {
-    this._store.stop();
+    this._store.stopAudio();
   }
 
   onPause() {

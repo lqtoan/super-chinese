@@ -2,111 +2,432 @@
   {
     "title": "00",
     "url": "assets/audio/hsk4/exercise/00.mp3",
+    "texts": [""],
+    "size": 698628
+  },
+  {
+    "title": "01-1",
+    "url": "assets/audio/hsk4/exercise/01-1.mp3",
+    "size": 3583800
+  },
+  {
+    "title": "01-2",
+    "url": "assets/audio/hsk4/exercise/01-2.mp3",
+    "size": 4427660
+  },
+  {
+    "title": "01-3",
+    "url": "assets/audio/hsk4/exercise/01-3.mp3",
+    "size": 7018171
+  },
+  {
+    "title": "02-1",
+    "url": "assets/audio/hsk4/exercise/02-1.mp3",
     "size": 1
   },
   {
-    "title": "01",
-    "url": "assets/audio/hsk4/exercise/01.mp3",
+    "title": "02-2",
+    "url": "assets/audio/hsk4/exercise/02-2.mp3",
     "size": 1
   },
   {
-    "title": "02",
-    "url": "assets/audio/hsk4/exercise/02.mp3",
+    "title": "02-3",
+    "url": "assets/audio/hsk4/exercise/02-3.mp3",
     "size": 1
   },
   {
-    "title": "03",
-    "url": "assets/audio/hsk4/exercise/03.mp3",
+    "title": "03-1",
+    "url": "assets/audio/hsk4/exercise/03-1.mp3",
     "size": 1
   },
   {
-    "title": "04",
-    "url": "assets/audio/hsk4/exercise/04.mp3",
+    "title": "03-2",
+    "url": "assets/audio/hsk4/exercise/03-2.mp3",
     "size": 1
   },
   {
-    "title": "05",
-    "url": "assets/audio/hsk4/exercise/05.mp3",
+    "title": "03-3",
+    "url": "assets/audio/hsk4/exercise/03-3.mp3",
     "size": 1
   },
   {
-    "title": "06",
-    "url": "assets/audio/hsk4/exercise/06.mp3",
+    "title": "04-1",
+    "url": "assets/audio/hsk4/exercise/04-1.mp3",
     "size": 1
   },
   {
-    "title": "07",
-    "url": "assets/audio/hsk4/exercise/07.mp3",
+    "title": "04-2",
+    "url": "assets/audio/hsk4/exercise/04-2.mp3",
     "size": 1
   },
   {
-    "title": "08",
-    "url": "assets/audio/hsk4/exercise/08.mp3",
+    "title": "04-3",
+    "url": "assets/audio/hsk4/exercise/04-3.mp3",
     "size": 1
   },
   {
-    "title": "09",
-    "url": "assets/audio/hsk4/exercise/09.mp3",
+    "title": "05-1",
+    "url": "assets/audio/hsk4/exercise/05-1.mp3",
     "size": 1
   },
   {
-    "title": "10",
-    "url": "assets/audio/hsk4/exercise/10.mp3",
+    "title": "05-2",
+    "url": "assets/audio/hsk4/exercise/05-2.mp3",
     "size": 1
   },
   {
-    "title": "11",
-    "url": "assets/audio/hsk4/exercise/11.mp3",
+    "title": "05-3",
+    "url": "assets/audio/hsk4/exercise/05-3.mp3",
     "size": 1
   },
   {
-    "title": "12",
-    "url": "assets/audio/hsk4/exercise/12.mp3",
+    "title": "06-1",
+    "url": "assets/audio/hsk4/exercise/06-1.mp3",
     "size": 1
   },
   {
-    "title": "13",
-    "url": "assets/audio/hsk4/exercise/13.mp3",
+    "title": "06-2",
+    "url": "assets/audio/hsk4/exercise/06-2.mp3",
     "size": 1
   },
   {
-    "title": "14",
-    "url": "assets/audio/hsk4/exercise/14.mp3",
+    "title": "06-3",
+    "url": "assets/audio/hsk4/exercise/06-3.mp3",
     "size": 1
   },
   {
-    "title": "15",
-    "url": "assets/audio/hsk4/exercise/15.mp3",
+    "title": "07-1",
+    "url": "assets/audio/hsk4/exercise/07-1.mp3",
     "size": 1
   },
   {
-    "title": "16",
-    "url": "assets/audio/hsk4/exercise/16.mp3",
+    "title": "07-2",
+    "url": "assets/audio/hsk4/exercise/07-2.mp3",
     "size": 1
   },
   {
-    "title": "17",
-    "url": "assets/audio/hsk4/exercise/17.mp3",
+    "title": "07-3",
+    "url": "assets/audio/hsk4/exercise/07-3.mp3",
     "size": 1
   },
   {
-    "title": "18",
-    "url": "assets/audio/hsk4/exercise/18.mp3",
+    "title": "08-1",
+    "url": "assets/audio/hsk4/exercise/08-1.mp3",
     "size": 1
   },
   {
-    "title": "19",
-    "url": "assets/audio/hsk4/exercise/19.mp3",
+    "title": "08-2",
+    "url": "assets/audio/hsk4/exercise/08-2.mp3",
     "size": 1
   },
   {
-    "title": "20",
-    "url": "assets/audio/hsk4/exercise/20.mp3",
+    "title": "08-3",
+    "url": "assets/audio/hsk4/exercise/08-3.mp3",
     "size": 1
   },
   {
-    "title": "21",
-    "url": "assets/audio/hsk4/exercise/21.mp3",
+    "title": "09-1",
+    "url": "assets/audio/hsk4/exercise/09-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-2",
+    "url": "assets/audio/hsk4/exercise/09-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-3",
+    "url": "assets/audio/hsk4/exercise/09-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-4",
+    "url": "assets/audio/hsk4/exercise/09-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-5",
+    "url": "assets/audio/hsk4/exercise/09-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-1",
+    "url": "assets/audio/hsk4/exercise/10-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-2",
+    "url": "assets/audio/hsk4/exercise/10-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-3",
+    "url": "assets/audio/hsk4/exercise/10-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-4",
+    "url": "assets/audio/hsk4/exercise/10-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-5",
+    "url": "assets/audio/hsk4/exercise/10-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-0",
+    "url": "assets/audio/hsk4/exercise/11-0.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-1",
+    "url": "assets/audio/hsk4/exercise/11-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-2",
+    "url": "assets/audio/hsk4/exercise/11-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-3",
+    "url": "assets/audio/hsk4/exercise/11-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-4",
+    "url": "assets/audio/hsk4/exercise/11-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-5",
+    "url": "assets/audio/hsk4/exercise/11-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-1",
+    "url": "assets/audio/hsk4/exercise/12-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-2",
+    "url": "assets/audio/hsk4/exercise/12-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-3",
+    "url": "assets/audio/hsk4/exercise/12-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-4",
+    "url": "assets/audio/hsk4/exercise/12-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-5",
+    "url": "assets/audio/hsk4/exercise/12-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-1",
+    "url": "assets/audio/hsk4/exercise/13-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-2",
+    "url": "assets/audio/hsk4/exercise/13-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-3",
+    "url": "assets/audio/hsk4/exercise/13-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-4",
+    "url": "assets/audio/hsk4/exercise/13-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-5",
+    "url": "assets/audio/hsk4/exercise/13-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-1",
+    "url": "assets/audio/hsk4/exercise/14-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-2",
+    "url": "assets/audio/hsk4/exercise/14-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-3",
+    "url": "assets/audio/hsk4/exercise/14-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-4",
+    "url": "assets/audio/hsk4/exercise/14-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-5",
+    "url": "assets/audio/hsk4/exercise/14-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-1",
+    "url": "assets/audio/hsk4/exercise/15-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-2",
+    "url": "assets/audio/hsk4/exercise/15-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-3",
+    "url": "assets/audio/hsk4/exercise/15-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-4",
+    "url": "assets/audio/hsk4/exercise/15-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-5",
+    "url": "assets/audio/hsk4/exercise/15-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-1",
+    "url": "assets/audio/hsk4/exercise/16-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-2",
+    "url": "assets/audio/hsk4/exercise/16-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-3",
+    "url": "assets/audio/hsk4/exercise/16-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-4",
+    "url": "assets/audio/hsk4/exercise/16-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-5",
+    "url": "assets/audio/hsk4/exercise/16-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-1",
+    "url": "assets/audio/hsk4/exercise/17-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-2",
+    "url": "assets/audio/hsk4/exercise/17-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-3",
+    "url": "assets/audio/hsk4/exercise/17-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-4",
+    "url": "assets/audio/hsk4/exercise/17-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-5",
+    "url": "assets/audio/hsk4/exercise/17-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-1",
+    "url": "assets/audio/hsk4/exercise/18-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-2",
+    "url": "assets/audio/hsk4/exercise/18-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-3",
+    "url": "assets/audio/hsk4/exercise/18-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-4",
+    "url": "assets/audio/hsk4/exercise/18-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-5",
+    "url": "assets/audio/hsk4/exercise/18-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-1",
+    "url": "assets/audio/hsk4/exercise/19-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-2",
+    "url": "assets/audio/hsk4/exercise/19-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-3",
+    "url": "assets/audio/hsk4/exercise/19-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-4",
+    "url": "assets/audio/hsk4/exercise/19-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-5",
+    "url": "assets/audio/hsk4/exercise/19-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-1",
+    "url": "assets/audio/hsk4/exercise/20-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-2",
+    "url": "assets/audio/hsk4/exercise/20-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-3",
+    "url": "assets/audio/hsk4/exercise/20-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-4",
+    "url": "assets/audio/hsk4/exercise/20-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-5",
+    "url": "assets/audio/hsk4/exercise/20-5.mp3",
     "size": 1
   }
 ]

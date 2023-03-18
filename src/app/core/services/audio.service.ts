@@ -19,7 +19,7 @@ export class AudioService {
     return this._httpClient.get(`${audio?.url}`, {
       reportProgress: true,
       observe: 'events',
-      // responseType: 'blob',
+      responseType: 'blob',
     });
   }
 }

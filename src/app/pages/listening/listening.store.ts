@@ -73,7 +73,7 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       )
     )
   );
-  readonly play = this.effect<Audio | undefined>(($) =>
+  readonly playAudio = this.effect<Audio | undefined>(($) =>
     $.pipe(
       tap((audio) => {
         if (audio) {
@@ -83,7 +83,6 @@ export class ListeningStore extends ComponentStore<ListeningState> {
               .play()
               .then()
               .catch((err) => {
-                console.log(err);
                 // this._message.error(err + '\nPlease contact admin!');
               })
               .finally();
@@ -93,7 +92,7 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       })
     )
   );
-  readonly stop = this.effect(($) =>
+  readonly stopAudio = this.effect(($) =>
     $.pipe(
       tap(() => {
         const controls = <HTMLAudioElement>document.querySelector('#audioControls');
@@ -102,13 +101,15 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       })
     )
   );
-  readonly load = this.effect<Audio | undefined>(($) =>
+  readonly loadAudio = this.effect<Audio | undefined>(($) =>
     $.pipe(
       switchMap((audio) =>
         this._service.getAudioEvent(audio).pipe(
           tapResponse(
             (event) => {
               if (audio) {
+                console.log(event.total);
+
                 this.patchState({
                   progress: {
                     type: event.type,

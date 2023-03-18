@@ -66,6 +66,7 @@
   <app-dictionary-list (edit)="onEdit($event)"
                        (delete)="onDelete($event)"
                        [isLoading]="vm.isLoading"
+                       [isSuccess]="vm.isSuccess"
                        [words]="vm.words"
                        [filterType]="vm.filterType"></app-dictionary-list>
 </ng-container>

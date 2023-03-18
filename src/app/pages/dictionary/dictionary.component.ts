@@ -37,13 +37,14 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._userStore.loadData();
-    this._store.patchState({ filterType: 'latest' });
-    this.onView8Latest();
 
     this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       if (res['ref']) {
-        this._store.patchState({ filterType: 'search' });
         this.onSearch(res['ref']);
+        this._store.patchState({ filterType: 'search' });
+      } else {
+        this.onView8Latest();
+        this._store.patchState({ filterType: 'latest' });
       }
     });
 

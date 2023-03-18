@@ -8,6 +8,7 @@ import { Component, Input, EventEmitter, Output, ViewChild, ElementRef } from '@
 })
 export class DictionaryListComponent {
   @Input() isLoading: boolean;
+  @Input() isSuccess: boolean;
   @Input() words: boolean;
   @Input() filterType: FilterType;
 

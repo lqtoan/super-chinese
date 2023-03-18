@@ -15,8 +15,8 @@ export class AudioService {
     return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.${type}.json`);
   }
 
-  getAudioEvent(audio: Audio): Observable<any> {
-    return this._httpClient.get(`${audio.url}`, {
+  getAudioEvent(audio: Audio | undefined): Observable<any> {
+    return this._httpClient.get(`${audio?.url}`, {
       reportProgress: true,
       observe: 'events',
       // responseType: 'blob',

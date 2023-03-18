@@ -37,10 +37,14 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._userStore.loadData();
+    this._store.patchState({ filterType: 'latest' });
+    this.onView8Latest();
 
     this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
-      if (res['ref']) this.onSearch(res['ref']);
-      else this.onView8Latest();
+      if (res['ref']) {
+        this._store.patchState({ filterType: 'search' });
+        this.onSearch(res['ref']);
+      }
     });
 
     this._languageService.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
@@ -68,7 +72,6 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onSearch(keyword: string) {
-    this._store.patchState({ filterType: 'search' });
     if (keyword) {
       this._store.loadSearchResults(keyword);
       this.keyword = keyword;
@@ -80,7 +83,6 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onView8Latest() {
-    this._store.patchState({ filterType: 'latest' });
     this.keyword = '';
     this._router.navigate([]);
     this._store.loadLatestWords();
@@ -100,7 +102,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   onViewAll() {
     this.keyword = '';
     this._router.navigate([]);
-    this._store.loadAllWords(1);
+    this._store.loadAllWords();
   }
 
   onEdit(word: Word) {

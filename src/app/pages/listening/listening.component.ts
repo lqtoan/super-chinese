@@ -49,6 +49,13 @@ export class ListeningComponent implements OnInit, OnDestroy {
           this.title = res[1]['title'];
           this._selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
         }
+        if (document.querySelector('.audio--selected')) {
+          document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        } else {
+          setTimeout(() => {
+            document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+          }, 400);
+        }
       });
   }
 

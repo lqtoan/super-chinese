@@ -1,0 +1,513 @@
+[
+  {
+    "title": "00",
+    "url": "assets/audio/hsk4/curriculum/00.mp3",
+    "texts": [""],
+    "size": 1
+  },
+  {
+    "title": "01-1",
+    "url": "assets/audio/hsk4/curriculum/01-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "01-2",
+    "url": "assets/audio/hsk4/curriculum/01-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "01-3",
+    "url": "assets/audio/hsk4/curriculum/01-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "01-4",
+    "url": "assets/audio/hsk4/curriculum/01-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "01-5",
+    "url": "assets/audio/hsk4/curriculum/01-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "02-1",
+    "url": "assets/audio/hsk4/curriculum/02-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "02-2",
+    "url": "assets/audio/hsk4/curriculum/02-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "02-3",
+    "url": "assets/audio/hsk4/curriculum/02-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "02-4",
+    "url": "assets/audio/hsk4/curriculum/02-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "02-5",
+    "url": "assets/audio/hsk4/curriculum/02-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "03-1",
+    "url": "assets/audio/hsk4/curriculum/03-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "03-2",
+    "url": "assets/audio/hsk4/curriculum/03-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "03-3",
+    "url": "assets/audio/hsk4/curriculum/03-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "03-4",
+    "url": "assets/audio/hsk4/curriculum/03-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "03-5",
+    "url": "assets/audio/hsk4/curriculum/03-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "04-1",
+    "url": "assets/audio/hsk4/curriculum/04-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "04-2",
+    "url": "assets/audio/hsk4/curriculum/04-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "04-3",
+    "url": "assets/audio/hsk4/curriculum/04-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "04-4",
+    "url": "assets/audio/hsk4/curriculum/04-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "04-5",
+    "url": "assets/audio/hsk4/curriculum/04-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "05-1",
+    "url": "assets/audio/hsk4/curriculum/05-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "05-2",
+    "url": "assets/audio/hsk4/curriculum/05-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "05-3",
+    "url": "assets/audio/hsk4/curriculum/05-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "05-4",
+    "url": "assets/audio/hsk4/curriculum/05-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "05-5",
+    "url": "assets/audio/hsk4/curriculum/05-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "06-1",
+    "url": "assets/audio/hsk4/curriculum/06-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "06-2",
+    "url": "assets/audio/hsk4/curriculum/06-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "06-3",
+    "url": "assets/audio/hsk4/curriculum/06-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "06-4",
+    "url": "assets/audio/hsk4/curriculum/06-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "06-5",
+    "url": "assets/audio/hsk4/curriculum/06-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "07-1",
+    "url": "assets/audio/hsk4/curriculum/07-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "07-2",
+    "url": "assets/audio/hsk4/curriculum/07-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "07-3",
+    "url": "assets/audio/hsk4/curriculum/07-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "07-4",
+    "url": "assets/audio/hsk4/curriculum/07-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "07-5",
+    "url": "assets/audio/hsk4/curriculum/07-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "08-1",
+    "url": "assets/audio/hsk4/curriculum/08-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "08-2",
+    "url": "assets/audio/hsk4/curriculum/08-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "08-3",
+    "url": "assets/audio/hsk4/curriculum/08-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "08-4",
+    "url": "assets/audio/hsk4/curriculum/08-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "08-5",
+    "url": "assets/audio/hsk4/curriculum/08-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-1",
+    "url": "assets/audio/hsk4/curriculum/09-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-2",
+    "url": "assets/audio/hsk4/curriculum/09-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-3",
+    "url": "assets/audio/hsk4/curriculum/09-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-4",
+    "url": "assets/audio/hsk4/curriculum/09-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "09-5",
+    "url": "assets/audio/hsk4/curriculum/09-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-1",
+    "url": "assets/audio/hsk4/curriculum/10-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-2",
+    "url": "assets/audio/hsk4/curriculum/10-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-3",
+    "url": "assets/audio/hsk4/curriculum/10-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-4",
+    "url": "assets/audio/hsk4/curriculum/10-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "10-5",
+    "url": "assets/audio/hsk4/curriculum/10-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-0",
+    "url": "assets/audio/hsk4/curriculum/11-0.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-1",
+    "url": "assets/audio/hsk4/curriculum/11-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-2",
+    "url": "assets/audio/hsk4/curriculum/11-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-3",
+    "url": "assets/audio/hsk4/curriculum/11-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-4",
+    "url": "assets/audio/hsk4/curriculum/11-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "11-5",
+    "url": "assets/audio/hsk4/curriculum/11-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-1",
+    "url": "assets/audio/hsk4/curriculum/12-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-2",
+    "url": "assets/audio/hsk4/curriculum/12-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-3",
+    "url": "assets/audio/hsk4/curriculum/12-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-4",
+    "url": "assets/audio/hsk4/curriculum/12-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "12-5",
+    "url": "assets/audio/hsk4/curriculum/12-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-1",
+    "url": "assets/audio/hsk4/curriculum/13-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-2",
+    "url": "assets/audio/hsk4/curriculum/13-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-3",
+    "url": "assets/audio/hsk4/curriculum/13-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-4",
+    "url": "assets/audio/hsk4/curriculum/13-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "13-5",
+    "url": "assets/audio/hsk4/curriculum/13-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-1",
+    "url": "assets/audio/hsk4/curriculum/14-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-2",
+    "url": "assets/audio/hsk4/curriculum/14-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-3",
+    "url": "assets/audio/hsk4/curriculum/14-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-4",
+    "url": "assets/audio/hsk4/curriculum/14-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "14-5",
+    "url": "assets/audio/hsk4/curriculum/14-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-1",
+    "url": "assets/audio/hsk4/curriculum/15-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-2",
+    "url": "assets/audio/hsk4/curriculum/15-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-3",
+    "url": "assets/audio/hsk4/curriculum/15-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-4",
+    "url": "assets/audio/hsk4/curriculum/15-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "15-5",
+    "url": "assets/audio/hsk4/curriculum/15-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-1",
+    "url": "assets/audio/hsk4/curriculum/16-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-2",
+    "url": "assets/audio/hsk4/curriculum/16-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-3",
+    "url": "assets/audio/hsk4/curriculum/16-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-4",
+    "url": "assets/audio/hsk4/curriculum/16-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "16-5",
+    "url": "assets/audio/hsk4/curriculum/16-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-1",
+    "url": "assets/audio/hsk4/curriculum/17-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-2",
+    "url": "assets/audio/hsk4/curriculum/17-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-3",
+    "url": "assets/audio/hsk4/curriculum/17-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-4",
+    "url": "assets/audio/hsk4/curriculum/17-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "17-5",
+    "url": "assets/audio/hsk4/curriculum/17-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-1",
+    "url": "assets/audio/hsk4/curriculum/18-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-2",
+    "url": "assets/audio/hsk4/curriculum/18-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-3",
+    "url": "assets/audio/hsk4/curriculum/18-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-4",
+    "url": "assets/audio/hsk4/curriculum/18-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "18-5",
+    "url": "assets/audio/hsk4/curriculum/18-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-1",
+    "url": "assets/audio/hsk4/curriculum/19-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-2",
+    "url": "assets/audio/hsk4/curriculum/19-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-3",
+    "url": "assets/audio/hsk4/curriculum/19-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-4",
+    "url": "assets/audio/hsk4/curriculum/19-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "19-5",
+    "url": "assets/audio/hsk4/curriculum/19-5.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-1",
+    "url": "assets/audio/hsk4/curriculum/20-1.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-2",
+    "url": "assets/audio/hsk4/curriculum/20-2.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-3",
+    "url": "assets/audio/hsk4/curriculum/20-3.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-4",
+    "url": "assets/audio/hsk4/curriculum/20-4.mp3",
+    "size": 1
+  },
+  {
+    "title": "20-5",
+    "url": "assets/audio/hsk4/curriculum/20-5.mp3",
+    "size": 1
+  }
+]

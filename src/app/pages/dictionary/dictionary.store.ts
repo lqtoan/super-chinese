@@ -16,7 +16,7 @@ export interface DictionaryState {
   filterType: FilterType | null;
   words: Word[];
   keyword: string;
-  total: number;
+  total: number | null;
   isVisible: boolean;
   isCreate: boolean;
   formValue: Partial<Word> | null;
@@ -28,7 +28,7 @@ const initialState = {
   filterType: null,
   words: [],
   keyword: '',
-  total: 0,
+  total: null,
   isVisible: false,
   isCreate: true,
   formValue: null,
@@ -77,26 +77,24 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   //#region
 
   //#region Effect
-  readonly loadAllWords = this.effect<number>(($) =>
+  readonly loadAllWords = this.effect(($) =>
     $.pipe(
       debounceTime(DEFAULT_DEBOUNCE_TIME),
       tap(() => this.patchState({ gettingStatus: 'loading', filterType: 'all' })),
-      switchMap((page) =>
-        this._service.getAllWords(page).pipe(
+      switchMap(() =>
+        this._service.getAllWords().pipe(
           tapResponse(
             (data) => {
-              if (page === 1) this._finalWords = [];
-              this._finalWords = this._finalWords.concat(data);
               this.patchState({
                 keyword: '',
-                words: this._finalWords,
-                total: this._finalWords.length,
+                words: data,
+                total: null,
                 gettingStatus: 'success',
               });
             },
             (err: HttpErrorResponse) => {
               this.patchState({ gettingStatus: 'fail' });
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           ),
           finalize(() => this.patchState({ gettingStatus: null }))
@@ -112,11 +110,11 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this._service.getLatestWords().pipe(
           tapResponse(
             (data) => {
-              this.patchState({ keyword: '', words: data, total: data.length, gettingStatus: 'success' });
+              this.patchState({ keyword: '', words: data, total: null, gettingStatus: 'success' });
             },
             (err: HttpErrorResponse) => {
               this.patchState({ gettingStatus: 'fail' });
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           ),
           finalize(() => this.patchState({ gettingStatus: null }))
@@ -136,7 +134,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this.patchState({ gettingStatus: 'fail' });
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           ),
           finalize(() => {
@@ -159,7 +157,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this.patchState({ submittingStatus: 'fail' });
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           ),
           finalize(() => {
@@ -182,7 +180,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             },
             (err: HttpErrorResponse) => {
               this.patchState({ submittingStatus: 'fail' });
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           ),
           finalize(() => {
@@ -202,7 +200,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
               this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {
-              this._message.error(err.error.message);
+              this._message.error(err.message);
             }
           )
         )

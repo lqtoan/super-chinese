@@ -2,7 +2,7 @@
   <nz-tabset [nzAnimated]="false"
              [nzSelectedIndex]="tabIndex"
              (nzSelectedIndexChange)="onSelectTab($event)">
-    <nz-tab *ngFor="let i of [1,2,3]"
+    <nz-tab *ngFor="let i of [1,2,3,4]"
             [nzTitle]="'HSK ' + i | translate">
       <ng-template nz-tab>
         <app-audio-list [audios]="vm.data"
@@ -22,7 +22,7 @@
                         (share)="onShare($event)"></app-audio-list>
       </ng-template>
     </nz-tab>
-    <nz-tab *ngFor="let i of [4,5,6]"
+    <nz-tab *ngFor="let i of [5,6]"
             [nzTitle]="'HSK ' + i | translate">
       <ng-template nz-tab>
         {{ 'COMING_SOON' | translate }}

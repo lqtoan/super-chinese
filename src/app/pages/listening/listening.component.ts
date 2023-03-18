@@ -4,13 +4,15 @@ import { combineLatest, Subject, takeUntil, zip } from 'rxjs';
 import { Audio } from '@models/audio.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AudioType } from '@enums/audio-type.enum';
+import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-listening',
   templateUrl: './listening.component.html',
   styleUrls: ['./listening.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ListeningStore],
+  providers: [ListeningStore, NzMessageService],
 })
 export class ListeningComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
@@ -25,23 +27,23 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly _store: ListeningStore,
+    private readonly _translateService: TranslateService,
+    private readonly _messageService: NzMessageService,
     private readonly _router: Router,
     private readonly _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
-      this.currentPage = res['page'];
-      if (res['tab'] !== this.tabIndex || res['type'] !== this._type) {
-        this._store.loadData([res['tab'] ? parseInt(res['tab']) : 0, res['type']]);
-        this._type = res['type'];
-        this.tabIndex = res['tab'];
-      }
-    });
-
     combineLatest([this.vm$, this._activatedRoute.queryParams])
       .pipe(takeUntil(this.destroy$))
       .subscribe((res) => {
+        this.currentPage = res[1]['page'];
+        // Dont re-load if type or tab no change
+        if (res[1]['tab'] !== this.tabIndex || res[1]['type'] !== this._type) {
+          this._store.loadData([res[1]['tab'] ? parseInt(res[1]['tab']) : 0, res[1]['type']]);
+          this._type = res[1]['type'];
+          this.tabIndex = res[1]['tab'];
+        }
         if (!res[0].isLoading) {
           this.url = res[1]['url'];
           this.title = res[1]['title'];
@@ -56,31 +58,49 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onSelectTab(tabIndex: number) {
+    // Change tab reset page, current audio
     this._router.navigate([], {
       queryParams: {
         tab: tabIndex,
         page: 1,
+        title: null,
+        url: null,
       },
+      // Merge current type
       queryParamsHandling: 'merge',
     });
   }
 
   onPageChange(pageIndex: number) {
+    // Change page not reset current audio
     this._router.navigate([], {
       queryParams: {
         page: pageIndex,
       },
+      // Merge current type, tab, current audio
       queryParamsHandling: 'merge',
     });
   }
 
   onSelectAudio(audio: Audio) {
-    this._store.selectAudio(audio);
     this._router.navigate([], {
       queryParams: {
         url: audio.url,
         title: audio.title,
       },
+      // Merge current type, tab, page
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  onPlayAudio(audio: Audio) {
+    this._store.play(audio);
+    this._router.navigate([], {
+      queryParams: {
+        url: audio.url,
+        title: audio.title,
+      },
+      // Merge current type, tab, page
       queryParamsHandling: 'merge',
     });
   }
@@ -90,7 +110,19 @@ export class ListeningComponent implements OnInit, OnDestroy {
     this._store.patchState({ isPlaying: true });
   }
 
+  onPauseAudio() {
+    this._store.stop();
+  }
+
   onPause() {
     this._store.patchState({ isPlaying: false });
+  }
+
+  onShare(audio: Audio) {
+    console.log(audio);
+
+    let url = `${window.location.host}/listening?type=${this._type}&tab=${this.tabIndex}&page=${this.currentPage}&title=${audio.title}&url=${audio.url}`;
+    navigator.clipboard.writeText(url);
+    this._messageService.success(this._translateService.instant('NOTIFICATION.COPIED'));
   }
 }

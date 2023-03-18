@@ -17,10 +17,13 @@ export class AudioListComponent {
   @Input() isPlaying: boolean = false;
   @Input() progress: any;
 
-  @Output() selectAudio = new EventEmitter<Audio>();
   @Output() pageChange = new EventEmitter<number>();
+  @Output() selectAudio = new EventEmitter<Audio>();
+  @Output() playAudio = new EventEmitter<Audio>();
+  @Output() pauseAudio = new EventEmitter();
   @Output() playing = new EventEmitter();
   @Output() pause = new EventEmitter();
+  @Output() share = new EventEmitter<Audio>();
 
   constructor() {}
 }

@@ -39,8 +39,6 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       debounce: true,
     }
   );
-  readonly getSelectedAudio = (): Audio | null => this.get().selectedAudio;
-  readonly getIsPlaying = (): boolean => this.get().isPlaying;
 
   //#region Updater
   //#endregion
@@ -66,32 +64,18 @@ export class ListeningStore extends ComponentStore<ListeningState> {
       )
     )
   );
-  readonly selectAudio = this.effect<Audio>(($) =>
+  readonly play = this.effect<Audio>(($) =>
     $.pipe(
       tap((audio) => {
-        if (this.getSelectedAudio() === audio && this.getIsPlaying()) {
-          this.stop();
-        } else {
-          this.play();
-          this.load(audio);
-        }
-
-        this.patchState({ selectedAudio: audio });
-      })
-    )
-  );
-  readonly play = this.effect(($) =>
-    $.pipe(
-      tap(() => {
         const controls = <HTMLAudioElement>document.querySelector('#audioControls');
-        if (!this.getIsPlaying())
-          controls
-            .play()
-            .then()
-            .catch((err) => console.log(err))
-            .finally();
+        controls
+          .play()
+          .then()
+          .catch((err) => console.log(err))
+          .finally();
+        controls.src = audio.url;
 
-        this.patchState({ isPlaying: true });
+        this.patchState({ isPlaying: true, selectedAudio: audio });
       })
     )
   );

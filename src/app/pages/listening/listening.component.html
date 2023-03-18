@@ -14,9 +14,12 @@
                         [progress]="vm.progress"
                         [currentPage]="currentPage"
                         (selectAudio)="onSelectAudio($event)"
+                        (playAudio)="onPlayAudio($event)"
+                        (pauseAudio)="onPauseAudio($event)"
                         (pageChange)="onPageChange($event)"
                         (playing)="onPlaying()"
-                        (pause)="onPause()"></app-audio-list>
+                        (pause)="onPause()"
+                        (share)="onShare($event)"></app-audio-list>
       </ng-template>
     </nz-tab>
     <nz-tab *ngFor="let i of [4,5,6]"

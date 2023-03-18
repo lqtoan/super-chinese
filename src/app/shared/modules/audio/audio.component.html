@@ -37,8 +37,7 @@
   <div class="audio-list">
     <div *ngFor="let audio of audios | paginate : { itemsPerPage: 16, currentPage: currentPage }"
          class="audio"
-         [class.audio--selected]="url === audio.url"
-         (click)="selectAudio.emit(audio)">
+         [class.audio--selected]="url === audio.url">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
       <strong [class.audio__title--selected]="url === audio.url"
               class="audio__title">{{ audio.title | translate }}
@@ -52,16 +51,29 @@
                    [nzPercent]="progress.percent"></nz-progress>
       <div class="actions">
         <span *ngIf="url === audio.url && isPlaying; else play"
+              nz-tooltip
+              [nzTooltipTitle]="'ACTION.PAUSE' | translate"
               class="pause"
+              (click)="pauseAudio.emit()"
               nz-icon
               nzType="pause-circle"
               nzTheme="fill"></span>
         <ng-template #play>
-          <span class="play"
+          <span nz-tooltip
+                [nzTooltipTitle]="'ACTION.PLAY' | translate"
+                class="play"
+                (click)="playAudio.emit(audio)"
                 nz-icon
                 nzType="play-circle"
                 nzTheme="fill"></span>
         </ng-template>
+        <span nz-tooltip
+              [nzTooltipTitle]="'ACTION.SHARE' | translate"
+              class="share"
+              (click)="share.emit(audio)"
+              nz-icon
+              nzType="link"
+              nzTheme="outline"></span>
       </div>
     </div>
   </div>

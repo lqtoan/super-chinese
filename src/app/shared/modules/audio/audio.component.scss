@@ -100,14 +100,11 @@
       position: absolute;
       right: 1rem;
       top: calc(50% - 1rem);
+      font-size: 1.5rem;
       color: rgba($color: $primary-color, $alpha: 0.8);
       transition: $transition;
-      .play {
-        font-size: 2rem;
-        opacity: 0;
-      }
-      .pause {
-        font-size: 2rem;
+      .share {
+        margin-left: 0.5rem;
       }
     }
     .actions:hover {

@@ -19,7 +19,7 @@ export interface DictionaryState {
   total: number;
   isVisible: boolean;
   isCreate: boolean;
-  formValue: Partial<Word> | undefined;
+  formValue: Partial<Word> | null;
 }
 
 const initialState = {
@@ -31,7 +31,7 @@ const initialState = {
   total: 0,
   isVisible: false,
   isCreate: true,
-  formValue: undefined,
+  formValue: null,
 };
 
 @Injectable()

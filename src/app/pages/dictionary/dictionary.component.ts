@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DictionaryService } from '@services/dictionary.service';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
@@ -20,7 +21,6 @@ import { Word } from '@models/word.model';
 export class DictionaryComponent implements OnInit, OnDestroy {
   readonly vm$ = this._store.vm$;
   keyword: string = '';
-  private _page: number = 1;
   readonly destroy$ = new Subject<void>();
 
   constructor(
@@ -30,14 +30,18 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     private readonly _languageService: LanguageService,
     private readonly _i18n: NzI18nService,
     private readonly _translateService: TranslateService,
-    private readonly _messageService: NzMessageService
+    private readonly _messageService: NzMessageService,
+    private readonly _router: Router,
+    private readonly _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this._userStore.loadData();
 
-    this._store.patchState({ filterType: 'latest' });
-    this.onView8Latest();
+    this._activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe((res) => {
+      if (res['ref']) this.onSearch(res['ref']);
+      else this.onView8Latest();
+    });
 
     this._languageService.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       switch (res) {
@@ -64,10 +68,19 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onSearch(keyword: string) {
-    keyword ? this._store.loadSearchResults(keyword) : this._store.loadLatestWords();
+    this._store.patchState({ filterType: 'search' });
+    if (keyword) {
+      this._store.loadSearchResults(keyword);
+      this.keyword = keyword;
+      this._router.navigate([], { queryParams: { ref: keyword } });
+    } else {
+      this.onView8Latest();
+      this._router.navigate([]);
+    }
   }
 
   onView8Latest() {
+    this._store.patchState({ filterType: 'latest' });
     this.keyword = '';
     this._store.loadLatestWords();
   }

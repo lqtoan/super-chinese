@@ -58,7 +58,7 @@
                   (nzOnOk)="handleOk()"> </nz-modal>
       </ul>
     </nz-dropdown-menu>
-    <strong *ngIf="vm.isSuccess && vm.filterType === 'search'"
+    <strong *ngIf="!vm.isLoading && vm.filterType === 'search'"
             class="totals">{{
       'TOTALS' | translate : { totals: vm.total }
       }}</strong>

@@ -99,7 +99,6 @@ export class ListeningStore extends ComponentStore<ListeningState> {
         this._service.getAudioEvent(audio).pipe(
           tapResponse(
             (event) => {
-              if (event.total) console.log(audio.title, event.total);
               this.patchState({
                 progress: {
                   type: event.type,

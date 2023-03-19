@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class RealtimeService {
-  private SOCKET_ENDPOINT = environment.api;
+  private SOCKET_ENDPOINT = environment.webSocket;
   ws: any;
   constructor() {}
 

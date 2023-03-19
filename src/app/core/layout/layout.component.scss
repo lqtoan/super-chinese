@@ -38,7 +38,7 @@
 .facebook {
   position: fixed;
   bottom: 0;
-  right: 1rem;
+  right: calc(3 * 100vw / 12);
   font-size: 2rem;
 }
 
@@ -57,6 +57,9 @@
   .copy-right {
     padding: 0 1rem;
   }
+  .facebook {
+    right: 1rem;
+  }
 }
 
 @media only screen and (max-width: $mobile) {
@@ -68,5 +71,8 @@
   }
   .copy-right {
     padding: 0 0.5rem;
+  }
+  .facebook {
+    right: 0.5rem;
   }
 }

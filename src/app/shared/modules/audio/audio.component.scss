@@ -14,6 +14,9 @@
   .ant-progress-text {
     font-family: Roboto, sans-serif;
   }
+  .ant-progress-outer {
+    width: 75%;
+  }
 }
 
 .controls {
@@ -76,7 +79,7 @@
   scroll-snap-type: y mandatory;
   .audio {
     position: relative;
-    padding: 1rem 5.5rem 1rem 1rem;
+    padding: 1rem;
     background: #fff;
     display: flex;
     flex-flow: column;
@@ -99,16 +102,21 @@
     .actions {
       position: absolute;
       right: 1rem;
-      top: calc(50% - 1.25rem);
+      top: calc(50% - 0.75rem);
       font-size: 2rem;
       color: rgba($color: $primary-color, $alpha: 0.8);
       transition: $transition;
+      .play,
+      .pause,
       .share {
-        margin-left: 0.5rem;
+        transition: $transition;
+        margin-left: 0.75rem;
       }
-    }
-    .actions:hover {
-      color: rgba($color: $primary-color, $alpha: 0.65);
+      .play:hover,
+      .pause:hover,
+      .share:hover {
+        color: rgba($color: $primary-color, $alpha: 0.65);
+      }
     }
   }
   .audio:hover {
@@ -133,7 +141,7 @@
     .audio {
       border: 2px solid $white;
       .actions {
-        color: rgba($color: $primary-color, $alpha: 0.65);
+        color: rgba($color: $primary-color, $alpha: 0.9);
         .play {
           opacity: 1;
         }

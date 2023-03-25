@@ -1,5 +1,7 @@
+import { Guid } from 'guid-typescript';
 export interface Word {
-  _id: string; // Auto gen by MongoDB
+  wordId: string;
+  // _id: string; // Auto gen by MongoDB
   display: string;
   pinyin: string;
   chinaVietnamWord: string;

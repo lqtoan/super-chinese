@@ -1,3 +1,4 @@
+import { Subject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { environment } from 'src/environments/environment';
@@ -8,14 +9,18 @@ export class RealtimeService {
   ws: any;
   constructor() {}
 
-  listenToTheSocket() {
+  listenToTheSocket(channel: string): Observable<any> {
+    let data$ = new Subject<any>();
     this.ws = io(this.SOCKET_ENDPOINT);
-    this.ws.on('message-broadcast', (data: string) => {
-      if (data) console.log(data);
+    this.ws.on(channel, (data: string) => {
+      if (data) {
+        data$.next(data);
+      }
     });
+    return data$;
   }
 
-  sendMessage(message: string) {
-    this.ws.emit('message', { message: message });
+  sendMessage(channel: string, message: string) {
+    this.ws.emit(channel, { message: message });
   }
 }

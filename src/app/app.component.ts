@@ -1,4 +1,3 @@
-import { RealtimeService } from './core/realtime/realtime.service';
 import { AuthenticationService } from './core/authentication/authentication.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -22,13 +21,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Super Chinese';
 
-  constructor(
-    private readonly translateService: TranslateService,
-    public readonly authService: AuthenticationService,
-    private readonly _realtimeService: RealtimeService
-  ) {
+  constructor(private readonly translateService: TranslateService, public readonly authService: AuthenticationService) {
     this.authService.getAccessToken();
     this.translateService.addLangs(['en', 'vi', 'zh']);
-    this._realtimeService.listenToTheSocket();
   }
 }

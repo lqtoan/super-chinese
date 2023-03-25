@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class DictionaryItemComponent {
   @Input() word: Word = {
-    _id: '',
+    wordId: '',
     display: '',
     define: '',
     pinyin: '',

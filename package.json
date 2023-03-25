@@ -25,6 +25,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "@nrwl/angular": "15.7.2",
     "@types/file-saver": "^2.0.5",
+    "guid-typescript": "^1.0.9",
     "ng-zorro-antd": "^13.4.0",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",

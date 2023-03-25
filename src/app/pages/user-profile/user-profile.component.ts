@@ -1,4 +1,4 @@
-import { UserProfileStore } from './user-profile.store';
+import { UserProfileStore } from '../../core/state/user-profile.store';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({

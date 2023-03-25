@@ -1,5 +1,4 @@
 import { LanguageService } from './language.service';
-import { Subject } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -11,17 +10,20 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ChangeLanguageComponent implements OnInit {
   currentLanguage: string = '';
-  languages = this.translateService.getLangs();
+  languages = this._translateService.getLangs();
 
-  constructor(private readonly translateService: TranslateService, private readonly languageService: LanguageService) {}
+  constructor(
+    private readonly _translateService: TranslateService,
+    private readonly _languageService: LanguageService
+  ) {}
 
   ngOnInit(): void {
-    this.languageService.currentLanguage$.subscribe((res) => (this.currentLanguage = res));
+    this._languageService.currentLanguage$.subscribe((res) => (this.currentLanguage = res));
   }
 
   changeLanguage(language: string) {
-    this.translateService.use(language);
+    this._translateService.use(language);
     this.currentLanguage = language;
-    this.languageService.changeLanguage(language);
+    this._languageService.changeLanguage(language);
   }
 }

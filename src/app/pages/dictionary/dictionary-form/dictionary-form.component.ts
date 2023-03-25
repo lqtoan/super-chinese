@@ -1,6 +1,13 @@
-import { UserProfileStore } from './../../user-profile/user-profile.store';
+import { UserProfileStore } from '../../../core/state/user-profile.store';
 import { DictionaryStore } from './../dictionary.store';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
 import { skip, Subject, takeUntil } from 'rxjs';
@@ -16,12 +23,13 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _store: DictionaryStore,
     private readonly _formBuilder: FormBuilder,
-    private readonly _userStore: UserProfileStore
+    private readonly _userStore: UserProfileStore,
+    private readonly _cdr: ChangeDetectorRef
   ) {}
   readonly formVm$ = this._store.formVm$;
 
   readonly dictionaryForm: FormGroup = this._formBuilder.group({
-    _id: [],
+    wordId: [],
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     chinaVietnamWord: ['', Validators.compose([])],
@@ -40,21 +48,27 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.formVm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       if (res.formValue) {
-        if(res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === '') res.formValue.chinaVietnamWord = undefined;
+        if (res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === '')
+          res.formValue.chinaVietnamWord = undefined;
         this.setValue(res.formValue);
         this._currentWord = res.formValue;
       }
     });
 
-    this.dictionaryForm.valueChanges.pipe(takeUntil(this.destroy$), skip(1)).subscribe((res: Partial<Word> | undefined) => {
-      if(res?.chinaVietnamWord === '') res.chinaVietnamWord = undefined;
-      if(res?.display !== this._currentWord?.display || 
-        res?.pinyin !== this._currentWord?.pinyin || 
-        res?.define !== this._currentWord?.define ||
-        res?.chinaVietnamWord !== this._currentWord?.chinaVietnamWord ||
-        res?.hsk !== this._currentWord?.hsk)
-        this.canEdit = true; else this.canEdit = false
-    })
+    this.dictionaryForm.valueChanges
+      .pipe(takeUntil(this.destroy$), skip(1))
+      .subscribe((res: Partial<Word> | undefined) => {
+        if (res?.chinaVietnamWord === '') res.chinaVietnamWord = undefined;
+        if (
+          res?.display !== this._currentWord?.display ||
+          res?.pinyin !== this._currentWord?.pinyin ||
+          res?.define !== this._currentWord?.define ||
+          res?.chinaVietnamWord !== this._currentWord?.chinaVietnamWord ||
+          res?.hsk !== this._currentWord?.hsk
+        )
+          this.canEdit = true;
+        else this.canEdit = false;
+      });
   }
 
   ngOnDestroy(): void {
@@ -64,7 +78,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   setValue(data: Partial<Word>) {
     this.dictionaryForm.patchValue({
-      _id: data._id,
+      wordId: data.wordId,
       display: data.display,
       pinyin: data.pinyin,
       chinaVietnamWord: data.chinaVietnamWord,
@@ -78,18 +92,19 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formValue: Word = this.dictionaryForm.getRawValue();
-    if(formValue._id) {
+    if (formValue.wordId) {
       formValue.updatedDate = new Date();
-      this._store.updateWord(formValue);
+      this._store.updateWordEffect(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
     } else {
       formValue.createdDate = new Date();
       formValue.createdBy = this._userStore.getUserName();
-      this._store.createWord(formValue);
+      this._store.createWordEffect(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
       this.dictionaryForm.reset();
     }
     this.shouldStay = true;
+    this._cdr.detectChanges();
   }
 
   onCancel() {

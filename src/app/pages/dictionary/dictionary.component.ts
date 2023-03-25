@@ -7,9 +7,10 @@ import { NzI18nService, en_US, zh_CN, vi_VN } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { LanguageService } from 'src/app/core/layout/change-language/language.service';
-import { UserProfileStore } from '../user-profile/user-profile.store';
+import { UserProfileStore } from '../../core/state/user-profile.store';
 import { DictionaryStore } from './dictionary.store';
 import { Word } from '@models/word.model';
+import { RealtimeService } from 'src/app/core/realtime/realtime.service';
 
 @Component({
   selector: 'app-dictionary',
@@ -32,7 +33,8 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     private readonly _translateService: TranslateService,
     private readonly _messageService: NzMessageService,
     private readonly _router: Router,
-    private readonly _activatedRoute: ActivatedRoute
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _realtimeService: RealtimeService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
         this.onSearch(res['ref']);
         this._store.patchState({ filterType: 'search' });
       } else {
-        this.onView8Latest();
+        this.onViewLatest();
         this._store.patchState({ filterType: 'latest' });
       }
     });
@@ -61,6 +63,30 @@ export class DictionaryComponent implements OnInit, OnDestroy {
           break;
       }
     });
+
+    this._realtimeService
+      .listenToTheSocket('new-word')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this._store.updateWords(res);
+        setTimeout(() => {
+          document.querySelector('.list')?.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 200);
+      });
+
+    this._realtimeService
+      .listenToTheSocket('update-word')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this._store.updateWords(res);
+      });
+
+    this._realtimeService
+      .listenToTheSocket('delete-word')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => {
+        this._store.deleteWord(res);
+      });
   }
 
   ngOnDestroy(): void {
@@ -78,12 +104,12 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       this.keyword = keyword;
       this._router.navigate([], { queryParams: { ref: keyword } });
     } else {
-      this.onView8Latest();
+      this.onViewLatest();
       this._router.navigate([]);
     }
   }
 
-  onView8Latest() {
+  onViewLatest() {
     this.keyword = '';
     this._router.navigate([]);
     this._store.loadLatestWords();
@@ -114,7 +140,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
   onDelete(id: string) {
     this._userStore.getEmail() === 'lqtoan37@gmail.com'
-      ? this._store.deleteWord(id)
+      ? this._store.deleteWordEffect(id)
       : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
   }
 }

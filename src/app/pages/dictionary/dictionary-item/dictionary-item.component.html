@@ -53,7 +53,7 @@
           [nzPopconfirmTitle]="'CONFIRM_DELETE' | translate: { word: word.display + '[' + word.pinyin + ']' }"
           nzOkText="OK"
           [nzCancelText]="'CANCEL' | translate"
-          (nzOnConfirm)="delete.emit(word._id)"
+          (nzOnConfirm)="delete.emit(word.wordId)"
           (nzOnCancel)="onCancel()"
           class="delete-button"
           nz-icon

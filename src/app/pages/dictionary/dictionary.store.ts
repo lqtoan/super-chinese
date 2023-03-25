@@ -74,6 +74,25 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   //     isCanEdit
   //   })
   // );
+  readonly updateWords = this.updater<Word>((state, word): DictionaryState => {
+    const words = state.words;
+    const index = words.findIndex((w) => w.wordId === word.wordId);
+    index === -1 ? words.unshift(word) : (words[index] = word);
+    return {
+      ...state,
+      words,
+    };
+  });
+
+  readonly deleteWord = this.updater<Word>((state, word): DictionaryState => {
+    const words = state.words;
+    const index = words.findIndex((w) => w.wordId === word.wordId);
+    words.splice(index, 1);
+    return {
+      ...state,
+      words,
+    };
+  });
   //#region
 
   //#region Effect
@@ -144,15 +163,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly createWord = this.effect<Word>((params$) =>
+  readonly createWordEffect = this.effect<Word>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.createWord(param).pipe(
           tapResponse(
-            () => {
+            (data) => {
               this.patchState({ submittingStatus: 'success' });
-              this.loadLatestWords();
+              this.updateWords(data);
               this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {
@@ -167,15 +186,16 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly updateWord = this.effect<Word>((params$) =>
+  readonly updateWordEffect = this.effect<Word>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ submittingStatus: 'loading' })),
       switchMap((param) =>
         this._service.updateWord(param).pipe(
           tapResponse(
-            () => {
+            (data) => {
               this.patchState({ submittingStatus: 'success' });
-              this.loadLatestWords();
+              this.updateWords(data);
+
               this._message.success(this._translateService.instant('NOTIFICATION.UPDATE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {
@@ -190,13 +210,15 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       )
     )
   );
-  readonly deleteWord = this.effect<string>((params$) =>
+  readonly deleteWordEffect = this.effect<string>((params$) =>
     params$.pipe(
       switchMap((param) =>
         this._service.deleteWord(param).pipe(
           tapResponse(
-            () => {
-              this.loadLatestWords();
+            (data) => {
+              console.log(data);
+
+              this.deleteWord(data);
               this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {

@@ -5,7 +5,7 @@ import { Workbook } from 'exceljs';
 import { TableHeader } from '../modules/table/models';
 import { DatePipe } from '@angular/common';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ExcelService {
   private readonly fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   private readonly fileExtension = '.xlsx';

@@ -1,4 +1,3 @@
-import { Guid } from 'guid-typescript';
 export interface Word {
   wordId: string;
   // _id: string; // Auto gen by MongoDB

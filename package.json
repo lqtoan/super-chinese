@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "nx",
-    "start": "nx serve --port 4400",
+    "start": "nx serve --open --port 4200",
     "build": "nx build --output-hashing=all",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"

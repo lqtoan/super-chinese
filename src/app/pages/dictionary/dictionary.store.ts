@@ -87,7 +87,7 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
   readonly deleteWord = this.updater<Word>((state, word): DictionaryState => {
     const words = state.words;
     const index = words.findIndex((w) => w.wordId === word.wordId);
-    words.splice(index, 1);
+    if (index > -1) words.splice(index, 1);
     return {
       ...state,
       words,

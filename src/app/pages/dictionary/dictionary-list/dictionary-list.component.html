@@ -8,7 +8,15 @@
     </div>
   </ng-container>
   <ng-template #wordListTemplate>
-    <ng-container *ngIf="isSuccess && words.length === 0 && filterType === 'search'">
+    <ng-container *ngIf="words.length === 0">
+      <img [style.margin]="'auto'"
+           [style.padding.rem]="'0.25'"
+           [style.width.%]="'75'"
+           src="assets/images/no_result.png" />
+      <h4 [style.text-align]="'center'">{{ 'EMPTY' | translate }}</h4>
+      <p [style.text-align]="'center'">{{ 'AFTER_EMPTY' | translate }}</p>
+    </ng-container>
+    <ng-container *ngIf="total === 0 && filterType === 'search'">
       <img [style.margin]="'auto'"
            [style.padding.rem]="'0.25'"
            [style.width.%]="'75'"

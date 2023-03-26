@@ -65,7 +65,8 @@
           "namedChunks": true
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "proxyConfig": "src/proxy.conf.json"
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",

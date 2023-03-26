@@ -20,6 +20,7 @@ export interface DictionaryState {
   isVisible: boolean;
   isCreate: boolean;
   formValue: Partial<Word> | null;
+  oldWord: Word | null;
 }
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
   isVisible: false,
   isCreate: true,
   formValue: null,
+  oldWord: null,
 };
 
 @Injectable()
@@ -57,13 +59,14 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
       debounce: true,
     }
   );
-  readonly formVm$ = this.select(({ isVisible, isCreate, formValue, submittingStatus }) => ({
+  readonly formVm$ = this.select(({ isVisible, isCreate, formValue, submittingStatus, oldWord }) => ({
     isVisible,
     isCreate,
     formValue,
     isSubmitting: submittingStatus === 'loading',
     isSubmitted: submittingStatus === 'success',
     isSubmitFail: submittingStatus === 'fail',
+    oldWord,
   }));
 
   private _finalWords: Word[] = [];
@@ -182,6 +185,25 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
           finalize(() => {
             this.patchState({ submittingStatus: null });
           })
+        )
+      )
+    )
+  );
+  readonly loadWordById = this.effect<string>((trigger$) =>
+    trigger$.pipe(
+      switchMap((id) =>
+        this._service.getWordById(id).pipe(
+          tapResponse(
+            (data) => {
+              if (data) {
+                this.patchState({ oldWord: data });
+              }
+            },
+            (err: HttpErrorResponse) => {
+              this._message.error(err.error.message);
+            }
+          ),
+          finalize(() => {})
         )
       )
     )

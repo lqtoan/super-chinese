@@ -1,16 +1,11 @@
+import { Notification } from '@models/notification.model';
 import { UserProfileStore } from '../../../core/state/user-profile.store';
 import { DictionaryStore } from './../dictionary.store';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
-import { skip, Subject, takeUntil } from 'rxjs';
+import { skip, Subject, take, takeUntil } from 'rxjs';
+import { NotificationStore } from 'src/app/core/state/notification.store';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -24,7 +19,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     private readonly _store: DictionaryStore,
     private readonly _formBuilder: FormBuilder,
     private readonly _userStore: UserProfileStore,
-    private readonly _cdr: ChangeDetectorRef
+    private readonly _notificationStore: NotificationStore
   ) {}
   readonly formVm$ = this._store.formVm$;
 
@@ -41,24 +36,29 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   });
   shouldStay: boolean = true;
   canEdit: boolean = false;
-  private _currentWord: Partial<Word> | undefined;
+  private _currentWord: Partial<Word> | null;
+  private _oldWord: Partial<Word> | null;
 
   readonly destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     this.formVm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       if (res.formValue) {
-        if (res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === '')
-          res.formValue.chinaVietnamWord = undefined;
+        if (res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === undefined)
+          res.formValue.chinaVietnamWord = '';
         this.setValue(res.formValue);
         this._currentWord = res.formValue;
+      }
+      if (res.oldWord) {
+        if (res.oldWord?.chinaVietnamWord === null || res.oldWord?.chinaVietnamWord === undefined)
+          res.oldWord.chinaVietnamWord = '';
+        this._oldWord = res.oldWord;
       }
     });
 
     this.dictionaryForm.valueChanges
       .pipe(takeUntil(this.destroy$), skip(1))
       .subscribe((res: Partial<Word> | undefined) => {
-        if (res?.chinaVietnamWord === '') res.chinaVietnamWord = undefined;
         if (
           res?.display !== this._currentWord?.display ||
           res?.pinyin !== this._currentWord?.pinyin ||
@@ -94,17 +94,42 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     const formValue: Word = this.dictionaryForm.getRawValue();
     if (formValue.wordId) {
       formValue.updatedDate = new Date();
+      formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       this._store.updateWordEffect(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
+
+      let notification: Notification = {
+        notificationId: '',
+        createdDate: new Date(),
+        createdBy: this._userStore.getUserName(),
+        action: 'IS_UPDATED_BY',
+        content: `${this._oldWord?.display}[${this._oldWord?.pinyin}] `,
+        extraContent: { new: formValue, old: this._oldWord },
+        navigate: null,
+        isRead: false,
+      };
+      this._notificationStore.createNotificationEffect(notification);
     } else {
+      formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       formValue.createdDate = new Date();
       formValue.createdBy = this._userStore.getUserName();
       this._store.createWordEffect(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
       this.dictionaryForm.reset();
+
+      let notification: Notification = {
+        notificationId: '',
+        createdDate: new Date(),
+        createdBy: this._userStore.getUserName(),
+        action: 'IS_CREATED_BY',
+        content: `${formValue.display}[${formValue.pinyin}] `,
+        extraContent: null,
+        navigate: `dictionary?ref=${formValue.wordId}`,
+        isRead: false,
+      };
+      this._notificationStore.createNotificationEffect(notification);
     }
     this.shouldStay = true;
-    this._cdr.detectChanges();
   }
 
   onCancel() {

@@ -56,6 +56,6 @@ export class UserProfileStore extends ComponentStore<UserProfileState> {
     )
   );
 
-  readonly getUserName = (): string => this.get().profile.nickname;
+  readonly getUserName = (): string => this.get().profile.name;
   readonly getEmail = (): string => this.get().profile.email;
 }

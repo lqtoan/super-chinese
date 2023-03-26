@@ -1,11 +1,13 @@
 import { LayoutRoutingModule } from './layout-routing.module';
-import { ChangeLanguageComponent } from './change-language/change-language.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserMenuComponent } from './user-menu/user-menu.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
+
+import { UserMenuComponent } from './user-menu/user-menu.component';
 import { LayoutComponent } from './layout.component';
+import { NotificationComponent } from './notification/notification.component';
+import { ChangeLanguageComponent } from './change-language/change-language.component';
 
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -16,6 +18,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 const nzModules = [
   NzAvatarModule,
@@ -26,11 +29,12 @@ const nzModules = [
   NzNotificationModule,
   NzToolTipModule,
   NzPopconfirmModule,
-  NzSpinModule
+  NzSpinModule,
+  NzBadgeModule,
 ];
 
 @NgModule({
-  declarations: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent, NavbarComponent],
+  declarations: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent, NavbarComponent, NotificationComponent],
   imports: [CommonModule, TranslateModule, nzModules, LayoutRoutingModule],
   exports: [UserMenuComponent, ChangeLanguageComponent, LayoutComponent],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],

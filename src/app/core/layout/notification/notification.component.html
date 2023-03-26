@@ -1,0 +1,65 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="notification"
+       nz-dropdown
+       [nzClickHide]="false"
+       [nzDisabled]="vm.isLoading"
+       [nzDropdownMenu]="notiMenu"
+       [nzPlacement]="'bottomRight'"
+       nzTrigger="click">
+    <nz-badge nzSize="small"
+              [nzCount]="vm.badgeCount">
+      <span nz-icon
+            nzType="bell"
+            nzTheme="fill"></span>
+    </nz-badge>
+  </div>
+  <nz-dropdown-menu #notiMenu="nzDropdownMenu">
+    <ul nz-menu>
+      <ng-container *ngIf="vm.notifications.length === 0">
+        <p>{{ 'No notification' | translate }}</p>
+      </ng-container>
+      <!-- <span *ngIf="vm.notifications.length > 0">Mark all as read</span> -->
+      <div [class.item__unread]="!notification.isRead"
+           (click)="onMarkAsRead(notification)"
+           class="item"
+           *ngFor="let notification of vm.notifications"
+           nz-menu-item>
+        <div class="item--content">
+          <span style="font-weight: 500;">{{ notification.content }}</span>
+          <span style="font-weight: 400;">{{ notification.action | translate }}</span>
+          <span style="font-weight: 600;">{{ notification.createdBy }}</span>
+          <div *ngIf="notification.extraContent">
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.display !== notification.extraContent.new?.display">
+              {{ 'DICTIONARY.DISPLAY' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.display }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.display }}</span>
+            </div>
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.pinyin !== notification.extraContent.new?.pinyin">
+              {{ 'DICTIONARY.PINYIN' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.pinyin }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.pinyin }}</span>
+            </div>
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.chinaVietnamWord !== notification.extraContent.new?.chinaVietnamWord">
+              {{ 'DICTIONARY.CHINA_VIETNAM_WORD' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.chinaVietnamWord }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.chinaVietnamWord }}</span>
+            </div>
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.define !== notification.extraContent.new?.define">
+              {{ 'DICTIONARY.DEFINE' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.define }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.define }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="item--date">{{ notification.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
+        <!-- <button nz-button
+                nzType="primary"
+                *ngIf="notification.navigate || notification.extraContent">View details</button> -->
+      </div>
+    </ul>
+  </nz-dropdown-menu>
+</ng-container>

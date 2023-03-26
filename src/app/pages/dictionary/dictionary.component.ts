@@ -1,3 +1,5 @@
+import { Notification } from '@models/notification.model';
+import { NotificationStore } from '../../core/state/notification.store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DictionaryService } from '@services/dictionary.service';
@@ -34,7 +36,8 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     private readonly _messageService: NzMessageService,
     private readonly _router: Router,
     private readonly _activatedRoute: ActivatedRoute,
-    private readonly _realtimeService: RealtimeService
+    private readonly _realtimeService: RealtimeService,
+    private readonly _notificationStore: NotificationStore
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     this._realtimeService
       .listenToTheSocket('new-word')
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
+      .subscribe((res: Word) => {
         this._store.updateWords(res);
         setTimeout(() => {
           document.querySelector('.list')?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,14 +80,14 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     this._realtimeService
       .listenToTheSocket('update-word')
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-        this._store.updateWords(res);
+      .subscribe((res: { old: Word; new: Word }) => {
+        this._store.updateWords(res.new);
       });
 
     this._realtimeService
       .listenToTheSocket('delete-word')
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
+      .subscribe((res: Word) => {
         this._store.deleteWord(res);
       });
   }
@@ -133,14 +136,27 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onEdit(word: Word) {
+    this._store.loadWordById(word.wordId);
     this._userStore.getEmail() === 'lqtoan37@gmail.com' || this._userStore.getUserName() === word.createdBy
       ? this._store.patchState({ formValue: word, isVisible: true, isCreate: false })
       : this._messageService.error(this._translateService.instant('NOTIFICATION.UPDATE_DECLINE'));
   }
 
-  onDelete(id: string) {
+  onDelete(word: Word) {
     this._userStore.getEmail() === 'lqtoan37@gmail.com'
-      ? this._store.deleteWordEffect(id)
+      ? this._store.deleteWordEffect(word.wordId)
       : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
+
+    let notification: Notification = {
+      notificationId: '',
+      createdDate: new Date(),
+      createdBy: this._userStore.getUserName(),
+      action: 'IS_DELETED_BY',
+      content: `${word.display}[${word.pinyin}] `,
+      extraContent: null,
+      navigate: null,
+      isRead: false,
+    };
+    this._notificationStore.createNotificationEffect(notification);
   }
 }

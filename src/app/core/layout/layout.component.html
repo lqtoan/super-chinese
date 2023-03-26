@@ -4,6 +4,7 @@
     <div style="white-space: pre-wrap;">{{ 'WELCOME' | translate }}</div>
     <div class="user">{{ user.name }}</div>
   </ng-container>
+  <app-notification class="notification"></app-notification>
   <span class="logout"
         nz-icon
         nzType="logout"
@@ -18,7 +19,9 @@
         (nzOnCancel)="cancel()"></span>
   <!-- <app-user-menu></app-user-menu> -->
 </div>
-<app-navbar></app-navbar>
+<app-navbar>
+</app-navbar>
+
 <div class="main">
   <router-outlet></router-outlet>
 </div>

@@ -1,0 +1,57 @@
+@import 'src/variables.scss';
+
+.ant-dropdown-menu {
+  padding: 0 !important;
+  max-height: 300px;
+  border-radius: 5px 0 0 5px !important;
+  overflow-y: scroll;
+}
+
+.item {
+  background: #fff;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  border-bottom: 0.5px solid rgba($color: $gray, $alpha: 0.25);
+  &--content {
+    .block {
+      display: list-item;
+      font-size: 11px;
+      line-height: $line-height;
+      color: rgba($color: $gray, $alpha: 0.5);
+      font-weight: 300;
+      &--old {
+        margin-right: 0.25rem;
+        color: $black;
+      }
+      &--new {
+        color: $black;
+      }
+    }
+  }
+  &--date {
+    margin-left: auto;
+    color: $gray;
+    font-size: 8px;
+  }
+  &__unread {
+    border-left: 5px solid $primary-color;
+    background: $white;
+  }
+  transition: $transition;
+}
+
+.item:hover {
+  background: rgba($color: $gray, $alpha: 0.25);
+}
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  display: initial;
+  width: 7.5px;
+  background: $white !important;
+}
+::-webkit-scrollbar-thumb {
+  display: initial;
+  background: $second-white !important;
+}

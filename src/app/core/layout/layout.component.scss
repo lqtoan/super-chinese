@@ -3,7 +3,7 @@
 
 .top {
   padding: 0 calc(3 * 100vw / 12);
-  height: 1.5rem;
+  height: 2rem;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
@@ -15,6 +15,19 @@
     color: $gray;
     margin-right: 0.5rem;
     font-weight: 600;
+  }
+  .notification {
+    margin-right: 1rem;
+    font-size: larger;
+    span {
+      transition: $transition;
+    }
+    span:hover {
+      opacity: 0.8;
+    }
+  }
+  .notification:hover {
+    cursor: pointer;
   }
   .logout {
     color: $red;

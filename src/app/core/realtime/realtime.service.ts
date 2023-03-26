@@ -1,3 +1,4 @@
+import { RealtimeChannel } from '@enums/realtime-channel.enum';
 import { Subject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
@@ -9,7 +10,7 @@ export class RealtimeService {
   ws: any;
   constructor() {}
 
-  listenToTheSocket(channel: string): Observable<any> {
+  listenToTheSocket(channel: RealtimeChannel): Observable<any> {
     let data$ = new Subject<any>();
     this.ws = io(this.SOCKET_ENDPOINT);
     this.ws.on(channel, (data: string) => {

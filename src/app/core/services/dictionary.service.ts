@@ -24,6 +24,10 @@ export class DictionaryService {
     return this._httpClient.post<Word>(this.API, word);
   }
 
+  getWordById(id: string): Observable<Word> {
+    return this._httpClient.get<Word>(`${this.API}/${id}`);
+  }
+
   updateWord(body: Word) {
     return this._httpClient.patch<Word>(`${this.API}/${body.wordId}`, body);
   }

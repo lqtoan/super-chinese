@@ -15,6 +15,7 @@ export class DictionaryItemComponent {
     hsk: '',
     type: '',
     chinaVietnamWord: '',
+    reference: '',
     createdDate: new Date(),
     createdBy: '',
     updatedDate: new Date(),

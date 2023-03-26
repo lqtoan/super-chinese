@@ -7,13 +7,17 @@
   overflow-y: auto;
 }
 
+.ant-badge-count-sm {
+  font-size: 10px;
+}
+
 .notification {
   margin-right: 0.75rem;
-  span {
-    font-size: 14px;
+  > span {
+    font-size: 16px;
     transition: $transition;
   }
-  span:hover {
+  > span:hover {
     opacity: 0.8;
   }
 }
@@ -50,13 +54,13 @@
   }
   &__unread {
     border-left: 5px solid $primary-color;
-    background: $white;
+    background: rgba($color: $gray, $alpha: 0.15);
   }
   transition: $transition;
 }
 
 .item:hover {
-  background: rgba($color: $gray, $alpha: 0.25);
+  background: $white;
 }
 
 /****************** thumbnail ******************/

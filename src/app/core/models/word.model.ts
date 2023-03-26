@@ -7,6 +7,7 @@ export interface Word {
   type: string;
   define: string;
   hsk: string;
+  reference: string;
   createdDate: Date;
   updatedDate: Date;
   createdBy: string;

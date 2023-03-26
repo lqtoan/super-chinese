@@ -27,9 +27,9 @@
            *ngFor="let notification of vm.notifications"
            nz-menu-item>
         <div class="item--content">
-          <span style="font-weight: 500;">{{ notification.content }}</span>
-          <span style="font-weight: 400;">{{ notification.action | translate }}</span>
-          <span style="font-weight: 600;">{{ notification.createdBy }}</span>
+          <span style="font-weight: 400;">{{ notification.content }}</span>
+          <span style="font-weight: 300;">{{ notification.action | translate }}</span>
+          <span style="font-weight: 500;">{{ notification.createdBy }}</span>
           <div *ngIf="notification.extraContent">
             <div class="block"
                  *ngIf="notification.extraContent.old?.display !== notification.extraContent.new?.display">
@@ -111,12 +111,17 @@
                   </ng-container>
                 </ng-container></span>
             </div>
-
             <div class="block"
                  *ngIf="notification.extraContent.old?.type !== notification.extraContent.new?.type">
               {{ 'DICTIONARY.TYPE' | translate }}:
               <del class="block--old">{{ notification.extraContent.old?.type | translate | lowercase }}</del>
               <span class="block--new">{{ notification.extraContent.new?.type | translate | lowercase }}</span>
+            </div>
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.reference== notification.extraContent.new?.reference">
+              {{ 'DICTIONARY.REFERENCE' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.reference | translate | lowercase }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.reference | translate | lowercase }}</span>
             </div>
           </div>
         </div>

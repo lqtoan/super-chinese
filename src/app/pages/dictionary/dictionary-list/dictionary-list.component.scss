@@ -9,11 +9,3 @@
   overflow: scroll;
   scroll-snap-type: y mandatory;
 }
-
-/****************** thumbnail ******************/
-::-webkit-scrollbar {
-  display: none;
-}
-::-webkit-scrollbar-thumb {
-  display: none;
-}

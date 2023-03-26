@@ -55,17 +55,24 @@
                nzSpan="12">
             <nz-form-item>
               <nz-form-label nzFor="chinaVietnamWord">{{ 'DICTIONARY.CHINA_VIETNAM_WORD' | translate }}</nz-form-label>
-              <nz-form-control [nzErrorTip]="errorChinaVietnamWord">
+              <nz-form-control>
                 <input nz-input
                        placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
                        id="chinaVietnamWord"
                        formControlName="chinaVietnamWord" />
-                <ng-template #errorChinaVietnamWord
-                             let-control>
-                  <ng-container *ngIf="control.touched && control.hasError('required')">
-                    {{ 'INPUT.PLACE_HOLDER' | translate }}
-                  </ng-container>
-                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="reference">{{ 'DICTIONARY.REFERENCE' | translate }}</nz-form-label>
+              <nz-form-control>
+                <input nz-input
+                       placeholder="{{ 'INPUT.PLACE_HOLDER' | translate }}"
+                       id="reference"
+                       formControlName="reference" />
               </nz-form-control>
             </nz-form-item>
           </div>

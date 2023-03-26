@@ -4,7 +4,7 @@ import { DictionaryStore } from './../dictionary.store';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
-import { skip, Subject, take, takeUntil } from 'rxjs';
+import { skip, Subject, takeUntil } from 'rxjs';
 import { NotificationStore } from 'src/app/core/state/notification.store';
 
 @Component({
@@ -31,6 +31,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     type: ['', Validators.compose([])],
     define: ['', Validators.compose([Validators.required])],
     hsk: ['', Validators.compose([Validators.required])],
+    reference: ['', Validators.compose([])],
     createdDate: ['', Validators.compose([])],
     updatedDate: ['', Validators.compose([])],
     createdBy: ['', Validators.compose([])],
@@ -66,7 +67,8 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
           res?.define !== this._currentWord?.define ||
           res?.chinaVietnamWord !== this._currentWord?.chinaVietnamWord ||
           res?.type !== this._currentWord?.type ||
-          res?.hsk !== this._currentWord?.hsk
+          res?.hsk !== this._currentWord?.hsk ||
+          res?.reference !== this._currentWord?.reference
         )
           this.canEdit = true;
         else this.canEdit = false;
@@ -87,6 +89,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       type: data.type,
       define: data.define,
       hsk: data.hsk,
+      reference: data.reference,
       createdDate: data.createdDate,
       updatedDate: data.updatedDate,
       createdBy: data.createdBy,
@@ -95,9 +98,10 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formValue: Word = this.dictionaryForm.getRawValue();
+    formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
+    formValue.reference = formValue.reference ? formValue.reference : '';
     if (formValue.wordId) {
       formValue.updatedDate = new Date();
-      formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       this._store.updateWordEffect(formValue);
       this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
 
@@ -114,7 +118,6 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       this._notificationStore.createNotificationEffect(notification);
       this._store.patchState({ oldWord: formValue });
     } else {
-      formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       formValue.createdDate = new Date();
       formValue.createdBy = this._userStore.getUserName();
       this._store.createWordEffect(formValue);

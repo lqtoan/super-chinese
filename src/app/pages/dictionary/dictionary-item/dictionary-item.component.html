@@ -41,6 +41,8 @@
     </ng-container>
   </span>
   <span class="word--define">{{ word.define | translate }}</span>
+  <span *ngIf="word.reference"
+        class="word--reference">{{ 'DICTIONARY.REFERENCE' | translate }}: {{ word.reference }}</span>
 
   <div class="actions">
     <span nz-tooltip

@@ -2,7 +2,6 @@
   <div class="notification"
        nz-dropdown
        [nzClickHide]="false"
-       [nzDisabled]="vm.isLoading"
        [nzDropdownMenu]="notiMenu"
        [nzPlacement]="'bottomRight'"
        nzTrigger="click">
@@ -14,7 +13,10 @@
     </nz-badge>
   </div>
   <nz-dropdown-menu #notiMenu="nzDropdownMenu">
-    <ul nz-menu>
+    <nz-spin *ngIf="vm.isLoading"
+             nzSimple></nz-spin>
+    <ul *ngIf="!vm.isLoading"
+        nz-menu>
       <ng-container *ngIf="vm.notifications.length === 0">
         <p>{{ 'No notification' | translate }}</p>
       </ng-container>

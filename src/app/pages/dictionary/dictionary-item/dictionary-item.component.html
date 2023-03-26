@@ -8,8 +8,10 @@
   </ng-template>
   <span class="word--name">{{ word.display }}</span>
   <span class="word--pinyin">[{{ word.pinyin }}]</span>
-  <span class="word--chivi">({{ word.chinaVietnamWord | titlecase }})</span>
-  <span class="word--type"><nz-tag>{{ word.type | translate | lowercase }}</nz-tag></span>
+  <span *ngIf="word.chinaVietnamWord !== ''"
+        class="word--chivi">({{ word.chinaVietnamWord | titlecase }})</span>
+  <span *ngIf="word.type"
+        class="word--type"><nz-tag>{{ word.type | translate | lowercase }}</nz-tag></span>
   <span class="word--hsk">
     <ng-container [ngSwitch]="word.hsk">
       <ng-container *ngSwitchCase="'hsk1'">

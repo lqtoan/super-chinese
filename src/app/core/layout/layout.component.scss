@@ -13,24 +13,12 @@
   }
   .user {
     color: $gray;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
     font-weight: 600;
-  }
-  .notification {
-    margin-right: 1rem;
-    font-size: larger;
-    span {
-      transition: $transition;
-    }
-    span:hover {
-      opacity: 0.8;
-    }
-  }
-  .notification:hover {
-    cursor: pointer;
   }
   .logout {
     color: $red;
+    font-size: 16px;
   }
   .logout:hover {
     cursor: pointer;

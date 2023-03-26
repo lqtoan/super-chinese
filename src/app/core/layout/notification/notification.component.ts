@@ -24,7 +24,6 @@ export class NotificationComponent implements OnInit {
   }
 
   onMarkAsRead(notification: Notification) {
-    console.log(notification);
     this._store.maskAsReadEffect(notification.notificationId);
 
     let updatedNotification = notification;

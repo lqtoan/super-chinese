@@ -102,3 +102,11 @@ $tablet: 1024px;
 $mobile: 768px;
 
 $max-width-container: 100%;
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+}

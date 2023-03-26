@@ -3,7 +3,7 @@
 .word {
   position: relative;
   min-height: 69.77px;
-  height: calc(100% / 8);
+  // height: calc(100% / 8);
   padding: 0.25rem 0.5rem 0;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
   display: flex;
@@ -27,11 +27,14 @@
     color: $blue;
   }
   &--type {
-    margin-left: 0.25rem;
-    color: $gray;
+    margin-left: 0.5rem;
+    .ant-tag {
+      font-size: $font-size;
+      color: rgba($color: $gray, $alpha: 0.5);
+    }
   }
   &--define {
-    width: 100%;
+    width: calc(100% - 2rem);
     color: $gray;
     font-weight: 500;
     word-wrap: break-word;
@@ -58,7 +61,7 @@
     position: absolute;
     bottom: 0;
     right: 0.5rem;
-    font-size: 18px;
+    font-size: 16px;
     .edit-button {
       margin-right: 0.125rem;
       transition: $transition;

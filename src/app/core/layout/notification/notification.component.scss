@@ -2,9 +2,23 @@
 
 .ant-dropdown-menu {
   padding: 0 !important;
-  max-height: calc(90vh);
+  max-height: calc(90vh - 2rem);
   border-radius: 5px 0 0 5px !important;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.notification {
+  margin-right: 0.75rem;
+  span {
+    font-size: 14px;
+    transition: $transition;
+  }
+  span:hover {
+    opacity: 0.8;
+  }
+}
+.notification:hover {
+  cursor: pointer;
 }
 
 .item {

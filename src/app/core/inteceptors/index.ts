@@ -2,6 +2,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BearerTokenInterceptor } from './bearer-interceptor';
 import { NoCacheHeadersInterceptor } from './no-cache-interceptor';
 import { PerformanceInterceptor } from './performance-interceptor';
+import { CorsInterceptor } from './cors-interceptor';
 
 export const interceptorProviders = [
   {
@@ -19,4 +20,9 @@ export const interceptorProviders = [
     useClass: PerformanceInterceptor,
     multi: true,
   },
+  // {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: CorsInterceptor,
+  //   multi: true,
+  // },
 ];

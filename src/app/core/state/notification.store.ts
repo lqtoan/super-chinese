@@ -65,8 +65,6 @@ export class NotificationStore extends ComponentStore<NotificationState> {
         this._service.getAllNotifications().pipe(
           tapResponse(
             (data: Notification[]) => {
-              console.log(data);
-
               this.patchState({ notifications: data, requestStatus: 'success' });
             },
             (error) => {

@@ -4,6 +4,7 @@ export interface Word {
   display: string;
   pinyin: string;
   chinaVietnamWord: string;
+  type: string;
   define: string;
   hsk: string;
   createdDate: Date;

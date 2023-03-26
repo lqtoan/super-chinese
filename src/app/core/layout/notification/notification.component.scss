@@ -2,7 +2,7 @@
 
 .ant-dropdown-menu {
   padding: 0 !important;
-  max-height: 300px;
+  max-height: calc(90vh);
   border-radius: 5px 0 0 5px !important;
   overflow-y: scroll;
 }
@@ -31,7 +31,7 @@
   }
   &--date {
     margin-left: auto;
-    color: $gray;
+    color: rgba($color: $gray, $alpha: 0.5);
     font-size: 8px;
   }
   &__unread {

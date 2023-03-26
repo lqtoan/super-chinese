@@ -28,6 +28,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     display: ['', Validators.compose([Validators.required])],
     pinyin: ['', Validators.compose([Validators.required])],
     chinaVietnamWord: ['', Validators.compose([])],
+    type: ['', Validators.compose([])],
     define: ['', Validators.compose([Validators.required])],
     hsk: ['', Validators.compose([Validators.required])],
     createdDate: ['', Validators.compose([])],
@@ -64,6 +65,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
           res?.pinyin !== this._currentWord?.pinyin ||
           res?.define !== this._currentWord?.define ||
           res?.chinaVietnamWord !== this._currentWord?.chinaVietnamWord ||
+          res?.type !== this._currentWord?.type ||
           res?.hsk !== this._currentWord?.hsk
         )
           this.canEdit = true;
@@ -82,6 +84,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       display: data.display,
       pinyin: data.pinyin,
       chinaVietnamWord: data.chinaVietnamWord,
+      type: data.type,
       define: data.define,
       hsk: data.hsk,
       createdDate: data.createdDate,
@@ -109,6 +112,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
         isRead: false,
       };
       this._notificationStore.createNotificationEffect(notification);
+      this._store.patchState({ oldWord: formValue });
     } else {
       formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       formValue.createdDate = new Date();
@@ -134,7 +138,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onCancel() {
     this.dictionaryForm.reset();
-    this._store.patchState({ isVisible: false, formValue: undefined });
+    this._store.patchState({ isVisible: false, formValue: undefined, oldWord: null });
     this.shouldStay = true;
   }
 }

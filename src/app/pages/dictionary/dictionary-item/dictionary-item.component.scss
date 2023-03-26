@@ -9,6 +9,7 @@
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
+  align-content: flex-start;
   scroll-snap-align: start;
   &--name {
     color: $red;
@@ -24,6 +25,10 @@
   &--chivi {
     margin-left: 0.125rem;
     color: $blue;
+  }
+  &--type {
+    margin-left: 0.25rem;
+    color: $gray;
   }
   &--define {
     width: 100%;

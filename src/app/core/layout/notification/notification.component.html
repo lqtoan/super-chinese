@@ -53,6 +53,69 @@
               <del class="block--old">{{ notification.extraContent.old?.define }}</del>
               <span class="block--new">{{ notification.extraContent.new?.define }}</span>
             </div>
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.hsk !== notification.extraContent.new?.hsk">
+              HSK:
+              <del class="block--old"> <ng-container [ngSwitch]="notification.extraContent.old?.hsk">
+                  <ng-container *ngSwitchCase="'hsk1'">
+                    HSK 1
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk2'">
+                    HSK 2
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk3'">
+                    HSK 3
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk4'">
+                    HSK 4
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk5'">
+                    HSK 5
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk6'">
+                    HSK 6
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk79'">
+                    HSK 7+
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'z---'">
+                    --------
+                  </ng-container>
+                </ng-container></del>
+              <span class="block--new"> <ng-container [ngSwitch]="notification.extraContent.new?.hsk">
+                  <ng-container *ngSwitchCase="'hsk1'">
+                    HSK 1
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk2'">
+                    HSK 2
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk3'">
+                    HSK 3
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk4'">
+                    HSK 4
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk5'">
+                    HSK 5
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk6'">
+                    HSK 6
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'hsk79'">
+                    HSK 7+
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'z---'">
+                    --------
+                  </ng-container>
+                </ng-container></span>
+            </div>
+
+            <div class="block"
+                 *ngIf="notification.extraContent.old?.type !== notification.extraContent.new?.type">
+              {{ 'DICTIONARY.TYPE' | translate }}:
+              <del class="block--old">{{ notification.extraContent.old?.type | translate | lowercase }}</del>
+              <span class="block--new">{{ notification.extraContent.new?.type | translate | lowercase }}</span>
+            </div>
           </div>
         </div>
         <div class="item--date">{{ notification.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</div>

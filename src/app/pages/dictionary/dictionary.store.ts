@@ -238,8 +238,6 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
         this._service.deleteWord(param).pipe(
           tapResponse(
             (data) => {
-              console.log(data);
-
               this.deleteWord(data);
               this._message.success(this._translateService.instant('NOTIFICATION.DELETE_SUCCESSFULLY'));
             },

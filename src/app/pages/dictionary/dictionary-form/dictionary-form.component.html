@@ -73,6 +73,49 @@
           <div nz-col
                nzSpan="12">
             <nz-form-item>
+              <nz-form-label nzFor="type">{{ 'DICTIONARY.TYPE' | translate }}</nz-form-label>
+              <nz-form-control>
+                <nz-select nzAllowClear
+                           [nzPlaceHolder]="'SELECT.PLACE_HOLDER' | translate"
+                           formControlName="type">
+                  <nz-option nzValue="DICTIONARY.TYPE.NOUN"
+                             [nzLabel]="'DICTIONARY.TYPE.NOUN' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.VERB"
+                             [nzLabel]="'DICTIONARY.TYPE.VERB' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.ADJ"
+                             [nzLabel]="'DICTIONARY.TYPE.ADJ' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.N"
+                             [nzLabel]="'DICTIONARY.TYPE.N' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.M"
+                             [nzLabel]="'DICTIONARY.TYPE.M' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.NM"
+                             [nzLabel]="'DICTIONARY.TYPE.NM' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.PRON"
+                             [nzLabel]="'DICTIONARY.TYPE.PRON' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.SUB"
+                             [nzLabel]="'DICTIONARY.TYPE.SUB' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.PREP"
+                             [nzLabel]="'DICTIONARY.TYPE.PREP' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.CONJ"
+                             [nzLabel]="'DICTIONARY.TYPE.CONJ' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.SUP"
+                             [nzLabel]="'DICTIONARY.TYPE.SUP' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.IN"
+                             [nzLabel]="'DICTIONARY.TYPE.IN' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.SOU"
+                             [nzLabel]="'DICTIONARY.TYPE.SOU' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.F"
+                             [nzLabel]="'DICTIONARY.TYPE.F' | translate"></nz-option>
+                  <nz-option nzValue="DICTIONARY.TYPE.L"
+                             [nzLabel]="'DICTIONARY.TYPE.L' | translate"></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col
+               nzSpan="12">
+            <nz-form-item>
               <nz-form-label nzRequired
                              nzFor="hsk">HSK</nz-form-label>
               <nz-form-control [nzErrorTip]="errorHsk">

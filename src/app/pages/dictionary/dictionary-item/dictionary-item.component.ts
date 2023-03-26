@@ -13,6 +13,7 @@ export class DictionaryItemComponent {
     define: '',
     pinyin: '',
     hsk: '',
+    type: '',
     chinaVietnamWord: '',
     createdDate: new Date(),
     createdBy: '',

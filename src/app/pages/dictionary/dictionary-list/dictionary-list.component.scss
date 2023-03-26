@@ -11,15 +11,9 @@
 }
 
 /****************** thumbnail ******************/
-// ::-webkit-scrollbar {
-//   display: block;
-//   width: 5px;
-//   height: 5px;
-//   background: $white !important;
-// }
-// ::-webkit-scrollbar-thumb {
-//   display: block;
-//   height: initial;
-//   background: $magenta-blue-white-linear-gradient !important;
-//   border-radius: 5px;
-// }
+::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+}

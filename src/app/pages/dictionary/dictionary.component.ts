@@ -143,20 +143,19 @@ export class DictionaryComponent implements OnInit, OnDestroy {
   }
 
   onDelete(word: Word) {
-    this._userStore.getEmail() === 'lqtoan37@gmail.com'
-      ? this._store.deleteWordEffect(word.wordId)
-      : this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
-
-    let notification: Notification = {
-      notificationId: '',
-      createdDate: new Date(),
-      createdBy: this._userStore.getUserName(),
-      action: 'IS_DELETED_BY',
-      content: `${word.display}[${word.pinyin}] `,
-      extraContent: null,
-      navigate: null,
-      isRead: false,
-    };
-    this._notificationStore.createNotificationEffect(notification);
+    if (this._userStore.getEmail() === 'lqtoan37@gmail.com') {
+      this._store.deleteWordEffect(word.wordId);
+      let notification: Notification = {
+        notificationId: '',
+        createdDate: new Date(),
+        createdBy: this._userStore.getUserName(),
+        action: 'IS_DELETED_BY',
+        content: `${word.display}[${word.pinyin}] `,
+        extraContent: null,
+        navigate: null,
+        isRead: false,
+      };
+      this._notificationStore.createNotificationEffect(notification);
+    } else this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
   }
 }

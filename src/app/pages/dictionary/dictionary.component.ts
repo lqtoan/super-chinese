@@ -71,6 +71,8 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       .listenToTheSocket('new-word')
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: Word) => {
+        console.log('Websocket connected!');
+
         this._store.updateWords(res);
         setTimeout(() => {
           document.querySelector('.list')?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -81,6 +83,8 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       .listenToTheSocket('update-word')
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: { old: Word; new: Word }) => {
+        console.log('Websocket connected!');
+
         this._store.updateWords(res.new);
       });
 
@@ -88,6 +92,8 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       .listenToTheSocket('delete-word')
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: Word) => {
+        console.log('Websocket connected!');
+
         this._store.deleteWord(res);
       });
   }

@@ -67,6 +67,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       }
     });
 
+    //#region TODO: realtime not work on production
     this._realtimeService
       .listenToTheSocket('new-word')
       .pipe(takeUntil(this.destroy$))
@@ -78,7 +79,6 @@ export class DictionaryComponent implements OnInit, OnDestroy {
           document.querySelector('.list')?.scrollTo({ top: 0, behavior: 'smooth' });
         }, 200);
       });
-
     this._realtimeService
       .listenToTheSocket('update-word')
       .pipe(takeUntil(this.destroy$))
@@ -87,7 +87,6 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
         this._store.updateWords(res.new);
       });
-
     this._realtimeService
       .listenToTheSocket('delete-word')
       .pipe(takeUntil(this.destroy$))
@@ -96,6 +95,7 @@ export class DictionaryComponent implements OnInit, OnDestroy {
 
         this._store.deleteWord(res);
       });
+    //#endregion
   }
 
   ngOnDestroy(): void {

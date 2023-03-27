@@ -175,6 +175,9 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
             (data) => {
               this.patchState({ submittingStatus: 'success' });
               this.updateWords(data);
+              setTimeout(() => {
+                document.querySelector('.list')?.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 200);
               this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {

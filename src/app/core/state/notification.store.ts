@@ -78,6 +78,28 @@ export class NotificationStore extends ComponentStore<NotificationState> {
       )
     )
   );
+  readonly loadNotificationsByUserIdEffect = this.effect<string>(($) =>
+    $.pipe(
+      tap(() => {
+        this.patchState({ requestStatus: 'loading' });
+      }),
+      switchMap((param) =>
+        this._service.getNotificationsByUserId(param).pipe(
+          tapResponse(
+            (data: Notification[]) => {
+              this.patchState({ notifications: data, requestStatus: 'success' });
+            },
+            (error) => {
+              this.patchState({ requestStatus: 'fail' });
+            }
+          ),
+          finalize(() => {
+            this.patchState({ requestStatus: null });
+          })
+        )
+      )
+    )
+  );
   readonly createNotificationEffect = this.effect<Notification>((params$) =>
     params$.pipe(
       tap(() => this.patchState({ requestStatus: 'loading' })),
@@ -87,7 +109,6 @@ export class NotificationStore extends ComponentStore<NotificationState> {
             (data) => {
               this.patchState({ requestStatus: 'success' });
               // this.updateNotifications(data);
-              // this.updateWords(data);
               // this._message.success(this._translateService.instant('NOTIFICATION.CREATE_SUCCESSFULLY'));
             },
             (err: HttpErrorResponse) => {

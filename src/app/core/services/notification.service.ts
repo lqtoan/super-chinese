@@ -15,6 +15,10 @@ export class NotificationService {
     return this._httpClient.get<Notification[]>(`${this.API}`);
   }
 
+  getNotificationsByUserId(userId: string): Observable<Notification[]> {
+    return this._httpClient.get<Notification[]>(`${this.API}/${userId}`);
+  }
+
   createNotification(notification: Notification) {
     notification.notificationId = Guid.create().toString();
     return this._httpClient.post<Notification>(this.API, notification);

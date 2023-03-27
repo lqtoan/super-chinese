@@ -131,7 +131,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
         action: 'IS_CREATED_BY',
         content: `${formValue.display}[${formValue.pinyin}] `,
         extraContent: null,
-        navigate: `dictionary?ref=${formValue.wordId}`,
+        navigate: `${formValue.wordId}`,
         isRead: false,
       };
       this._notificationStore.createNotificationEffect(notification);

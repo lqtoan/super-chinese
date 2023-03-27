@@ -13,6 +13,7 @@ export interface UserProfileState {
 const initialState = {
   requestStatus: null,
   profile: {
+    user_id: '',
     email: '',
     email_verified: false,
     name: '',

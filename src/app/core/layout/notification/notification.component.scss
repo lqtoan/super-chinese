@@ -62,14 +62,3 @@
 .item:hover {
   background: $white;
 }
-
-/****************** thumbnail ******************/
-::-webkit-scrollbar {
-  display: initial;
-  width: 7.5px;
-  background: $white !important;
-}
-::-webkit-scrollbar-thumb {
-  display: initial;
-  background: $second-white !important;
-}

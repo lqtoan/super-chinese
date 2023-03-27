@@ -56,7 +56,7 @@ export class NotificationStore extends ComponentStore<NotificationState> {
   //#endregion
 
   //#region Effect
-  readonly loadDataEffect = this.effect(($) =>
+  readonly loadAllNotificationsEffect = this.effect(($) =>
     $.pipe(
       tap(() => {
         this.patchState({ requestStatus: 'loading' });

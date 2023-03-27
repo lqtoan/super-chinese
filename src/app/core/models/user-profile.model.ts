@@ -1,4 +1,5 @@
 export interface UserProfile {
+  user_id: string;
   email: string;
   email_verified: boolean;
   name: string;

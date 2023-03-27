@@ -48,8 +48,9 @@ export class DictionaryComponent implements OnInit, OnDestroy {
         this.onSearch(res['ref']);
         this._store.patchState({ filterType: 'search' });
       } else {
-        this.onViewLatest();
-        this._store.patchState({ filterType: 'latest' });
+        this.onViewAll();
+        // this.onViewLatest();
+        // this._store.patchState({ filterType: 'latest' });
       }
     });
 
@@ -113,16 +114,16 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       this.keyword = keyword;
       this._router.navigate([], { queryParams: { ref: keyword } });
     } else {
-      this.onViewLatest();
+      // this.onViewLatest();
       this._router.navigate([]);
     }
   }
 
-  onViewLatest() {
-    this.keyword = '';
-    this._router.navigate([]);
-    this._store.loadLatestWords();
-  }
+  // onViewLatest() {
+  //   this.keyword = '';
+  //   this._router.navigate([]);
+  //   this._store.loadLatestWords();
+  // }
 
   showConfirm(): void {
     this._modal.confirm({

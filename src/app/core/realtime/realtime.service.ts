@@ -12,7 +12,7 @@ export class RealtimeService {
 
   listenToTheSocket(channel: RealtimeChannel): Observable<any> {
     let data$ = new Subject<any>();
-    this.ws = io('wss://super-chinese.cyclic.app:3000', {});
+    this.ws = io(this.SOCKET_ENDPOINT, {});
     this.ws.on(channel, (data: string) => {
       if (data) {
         data$.next(data);

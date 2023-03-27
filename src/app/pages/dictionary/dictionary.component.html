@@ -23,7 +23,7 @@
             nzType="search"
             (click)="keyword !== vm.keyword && !vm.isLoading ? onSearch(keyword) : $event.preventDefault()"></span>
     </ng-template>
-    <div class="filter"
+    <!-- <div class="filter"
          nz-button
          nz-dropdown
          nzTrigger="click"
@@ -57,7 +57,7 @@
         <nz-modal (nzOnCancel)="handleCancel()"
                   (nzOnOk)="handleOk()"> </nz-modal>
       </ul>
-    </nz-dropdown-menu>
+    </nz-dropdown-menu> -->
     <strong *ngIf="!vm.isLoading && vm.filterType === 'search' && vm.total"
             class="totals">{{
       'TOTALS' | translate : { totals: vm.total }

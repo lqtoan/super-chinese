@@ -1,0 +1,26 @@
+[debug] [2023-03-27T11:16:13.318Z] ----------------------------------------------------------------------
+[debug] [2023-03-27T11:16:13.319Z] Command:       /opt/homebrew/lib/node_modules/node/bin/node /opt/homebrew/bin/firebase deploy --only hosting
+[debug] [2023-03-27T11:16:13.319Z] CLI Version:   11.22.0
+[debug] [2023-03-27T11:16:13.319Z] Platform:      darwin
+[debug] [2023-03-27T11:16:13.319Z] Node Version:  v18.15.0
+[debug] [2023-03-27T11:16:13.322Z] Time:          Mon Mar 27 2023 18:16:13 GMT+0700 (Indochina Time)
+[debug] [2023-03-27T11:16:13.322Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-27T11:16:13.354Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-27T11:16:13.354Z] > authorizing via signed-in user (lqtoan37@gmail.com)
+[debug] [2023-03-27T11:16:13.354Z] [iam] checking project superchinese01 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-03-27T11:16:13.355Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/superchinese01:testIamPermissions [none]
+[debug] [2023-03-27T11:16:13.355Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/superchinese01:testIamPermissions x-goog-quota-user=projects/superchinese01
+[debug] [2023-03-27T11:16:13.356Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/superchinese01:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-27T11:16:14.606Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/superchinese01:testIamPermissions 200
+[debug] [2023-03-27T11:16:14.606Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/superchinese01:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-03-27T11:16:14.607Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/superchinese01 [none]
+[debug] [2023-03-27T11:16:15.222Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/superchinese01 200
+[debug] [2023-03-27T11:16:15.223Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/superchinese01 {"projectId":"superchinese01","projectNumber":"651198386985","displayName":"superchinese01","name":"projects/superchinese01","resources":{"hostingSite":"superchinese01","storageBucket":"superchinese01.appspot.com","locationId":"asia-southeast1"},"state":"ACTIVE","etag":"1_05a81750-3b86-4954-a824-acc4196bb9a0"}
+[info] 
+[info] === Deploying to 'superchinese01'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-03-27T11:16:15.228Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/superchinese01/versions [none]
+[debug] [2023-03-27T11:16:15.228Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/superchinese01/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-03-27T11:16:16.644Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/superchinese01/versions 200

@@ -29,7 +29,6 @@ export class NotificationComponent implements OnInit, OnDestroy {
     this._userStore.vm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {
       if (res.profile.name) this._store.loadNotificationsByUserIdEffect(res.profile.name);
     });
-    this._store.loadNotificationsByUserIdEffect('hello');
 
     this._realtimeService
       .listenToTheSocket('new-notification')

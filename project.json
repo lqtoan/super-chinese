@@ -32,7 +32,8 @@
         "stylePreprocessorOptions": {
           "includePaths": ["src/assets/scss"]
         },
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": ["guid-typescript"]
       },
       "configurations": {
         "production": {

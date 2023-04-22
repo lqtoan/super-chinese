@@ -3,7 +3,7 @@ import { NotificationStore } from '../../core/state/notification.store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DictionaryService } from '@services/dictionary.service';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN, vi_VN } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -48,9 +48,9 @@ export class DictionaryComponent implements OnInit, OnDestroy {
         this.onSearch(res['ref']);
         this._store.patchState({ filterType: 'search' });
       } else {
-        this.onViewAll();
-        // this.onViewLatest();
-        // this._store.patchState({ filterType: 'latest' });
+        // this.onViewAll();
+        this.onViewLatest();
+        this._store.patchState({ filterType: 'latest' });
       }
     });
 
@@ -119,11 +119,11 @@ export class DictionaryComponent implements OnInit, OnDestroy {
     }
   }
 
-  // onViewLatest() {
-  //   this.keyword = '';
-  //   this._router.navigate([]);
-  //   this._store.loadLatestWords();
-  // }
+  onViewLatest() {
+    this.keyword = '';
+    this._router.navigate([]);
+    this._store.loadLatestWords();
+  }
 
   showConfirm(): void {
     this._modal.confirm({
@@ -164,5 +164,9 @@ export class DictionaryComponent implements OnInit, OnDestroy {
       };
       this._notificationStore.createNotificationEffect(notification);
     } else this._messageService.error(this._translateService.instant('NOTIFICATION.DELETE_DECLINE'));
+  }
+
+  onKeydown(ev: any) {
+    console.log(ev);
   }
 }

@@ -1,1 +1,1 @@
-export type RealtimeChannel = 'new-word' | 'update-word' | 'delete-word' | 'new-notification';
+export type RealtimeChannel = 'user' | 'new-word' | 'update-word' | 'delete-word' | 'new-notification';

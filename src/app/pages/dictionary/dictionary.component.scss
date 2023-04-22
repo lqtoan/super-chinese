@@ -68,7 +68,7 @@
 @media screen and (max-width: $mobile) {
   .top {
     .create-button {
-      span:last-child {
+      span:nth-child(2) {
         display: none;
       }
     }

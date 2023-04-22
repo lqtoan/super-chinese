@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
 import { skip, Subject, takeUntil } from 'rxjs';
 import { NotificationStore } from 'src/app/core/state/notification.store';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-dictionary-form',
@@ -98,43 +99,46 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formValue: Word = this.dictionaryForm.getRawValue();
-    formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
-    formValue.reference = formValue.reference ? formValue.reference : '';
-    if (formValue.wordId) {
-      formValue.updatedDate = new Date();
-      this._store.updateWordEffect(formValue);
-      this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
+    if (this.dictionaryForm.valid) {
+      formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
+      formValue.reference = formValue.reference ? formValue.reference : '';
+      if (formValue.wordId) {
+        formValue.updatedDate = new Date();
+        this._store.updateWordEffect(formValue);
+        this._store.patchState({ isVisible: this.shouldStay, formValue: formValue });
 
-      let notification: Notification = {
-        notificationId: '',
-        createdDate: new Date(),
-        createdBy: this._userStore.getUserName(),
-        action: 'IS_UPDATED_BY',
-        content: `${this._oldWord?.display}[${this._oldWord?.pinyin}] `,
-        extraContent: { new: formValue, old: this._oldWord },
-        navigate: null,
-        isRead: false,
-      };
-      this._notificationStore.createNotificationEffect(notification);
-      this._store.patchState({ oldWord: formValue });
-    } else {
-      formValue.createdDate = new Date();
-      formValue.createdBy = this._userStore.getUserName();
-      this._store.createWordEffect(formValue);
-      this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
-      this.dictionaryForm.reset();
+        let notification: Notification = {
+          notificationId: '',
+          createdDate: new Date(),
+          createdBy: this._userStore.getUserName(),
+          action: 'IS_UPDATED_BY',
+          content: `${this._oldWord?.display}[${this._oldWord?.pinyin}] `,
+          extraContent: { new: formValue, old: this._oldWord },
+          navigate: null,
+          isRead: false,
+        };
+        this._notificationStore.createNotificationEffect(notification);
+        this._store.patchState({ oldWord: formValue });
+      } else {
+        formValue.wordId = Guid.create().toString();
+        formValue.createdDate = new Date();
+        formValue.createdBy = this._userStore.getUserName();
+        this._store.createWordEffect(formValue);
+        this._store.patchState({ isVisible: this.shouldStay, formValue: undefined });
+        this.dictionaryForm.reset();
 
-      let notification: Notification = {
-        notificationId: '',
-        createdDate: new Date(),
-        createdBy: this._userStore.getUserName(),
-        action: 'IS_CREATED_BY',
-        content: `${formValue.display}[${formValue.pinyin}] `,
-        extraContent: null,
-        navigate: `${formValue.wordId}`,
-        isRead: false,
-      };
-      this._notificationStore.createNotificationEffect(notification);
+        let notification: Notification = {
+          notificationId: '',
+          createdDate: new Date(),
+          createdBy: this._userStore.getUserName(),
+          action: 'IS_CREATED_BY',
+          content: `${formValue.display}[${formValue.pinyin}] `,
+          extraContent: null,
+          navigate: `${formValue.wordId}`,
+          isRead: false,
+        };
+        this._notificationStore.createNotificationEffect(notification);
+      }
     }
     this.shouldStay = true;
   }

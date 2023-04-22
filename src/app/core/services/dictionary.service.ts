@@ -3,7 +3,6 @@ import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Guid } from 'guid-typescript';
 
 @Injectable()
 export class DictionaryService {
@@ -20,7 +19,6 @@ export class DictionaryService {
   }
 
   createWord(word: Word) {
-    word.wordId = Guid.create().toString();
     return this._httpClient.post<Word>(this.API, word);
   }
 

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "nx",
-    "start": "nx serve --open --port 4200",
+    "start": "nx serve --open --port 4200 --host=0.0.0.0 --poll 5000 --publicHost=true --disable-host-check",
     "build": "nx build --output-hashing=all",
+    "build:docker": "ng build --configuration=production",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },

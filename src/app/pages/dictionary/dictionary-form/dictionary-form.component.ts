@@ -49,12 +49,14 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
       if (res.formValue) {
         if (res.formValue?.chinaVietnamWord === null || res.formValue?.chinaVietnamWord === undefined)
           res.formValue.chinaVietnamWord = '';
+        if (res.formValue?.reference === null || res.formValue?.reference === undefined) res.formValue.reference = '';
         this.setValue(res.formValue);
         this._currentWord = res.formValue;
       }
       if (res.oldWord) {
         if (res.oldWord?.chinaVietnamWord === null || res.oldWord?.chinaVietnamWord === undefined)
           res.oldWord.chinaVietnamWord = '';
+        if (res.oldWord?.reference === null || res.oldWord?.reference === undefined) res.oldWord.reference = '';
         this._oldWord = res.oldWord;
       }
     });

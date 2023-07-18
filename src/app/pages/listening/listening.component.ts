@@ -19,7 +19,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
   readonly destroy$ = new Subject<void>();
 
   private _type: AudioType = 'CURRICULUM';
-  private _selectedAudio?: Audio;
+  selectedAudio?: Audio;
 
   tabIndex: number = 0;
   currentPage: number = 1;
@@ -48,7 +48,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
         if (!res[0].isLoading) {
           this.url = res[1]['url'];
           this.title = res[1]['title'];
-          this._selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
+          this.selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
         }
         setTimeout(() => {
           document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -97,6 +97,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onSelectAudio(audio: Audio) {
+    this.selectedAudio = audio;
     this._router.navigate([], {
       queryParams: {
         url: audio.url,
@@ -120,7 +121,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
   }
 
   onPlaying() {
-    if (this._selectedAudio) this._store.loadAudio(this._selectedAudio);
+    if (this.selectedAudio) this._store.loadAudio(this.selectedAudio);
     this._store.patchState({ isPlaying: true });
   }
 

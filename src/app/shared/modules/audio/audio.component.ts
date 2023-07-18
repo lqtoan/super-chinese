@@ -11,6 +11,7 @@ export class AudioListComponent {
   @Input() audios: Audio[] = [];
   @Input() isLoading: boolean = false;
   @Input() currentPage: number = 1;
+  @Input() selectedAudio: Audio;
   @Input() url: string;
   @Input() title: string;
   @Input() isPlaying: boolean = false;

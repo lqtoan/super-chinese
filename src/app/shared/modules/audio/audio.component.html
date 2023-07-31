@@ -40,13 +40,13 @@
          [class.audio--selected]="url === audio.url"
          (click)="selectedAudio === audio && isPlaying ? pauseAudio.emit() : playAudio.emit(audio)">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
-      <strong [class.audio__title--selected]="url === audio.url"
+      <strong [class.audio__title--selected]="selectedAudio === audio"
               class="audio__title">{{ audio.title | translate }}
       </strong>
-      <p *ngIf="url === audio.url && isPlaying && (progress.type === 0 || !progress.percent)">
+      <p *ngIf="selectedAudio === audio && isPlaying && (progress.type === 0 || !progress.percent)">
         {{ 'FILE_LOADING' | translate }}
       </p>
-      <nz-progress *ngIf="url === audio.url && isPlaying && progress.type !== 0"
+      <nz-progress *ngIf="selectedAudio === audio && isPlaying && progress.type !== 0"
                    [nzStrokeWidth]="4"
                    [nzStrokeColor]="{ '0%': '#b48eadbf', '100%': '#88c0d0bf' }"
                    [nzPercent]="progress.percent"></nz-progress>

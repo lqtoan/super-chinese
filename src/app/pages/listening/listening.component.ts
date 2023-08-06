@@ -23,8 +23,6 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
   tabIndex: number = 0;
   currentPage: number = 1;
-  url: string;
-  title: string;
 
   constructor(
     private readonly _store: ListeningStore,
@@ -46,8 +44,6 @@ export class ListeningComponent implements OnInit, OnDestroy {
           this.tabIndex = res[1]['tab'];
         }
         if (!res[0].isLoading) {
-          this.url = res[1]['url'];
-          this.title = res[1]['title'];
           this.selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
         }
         setTimeout(() => {

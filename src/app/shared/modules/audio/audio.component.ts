@@ -12,8 +12,6 @@ export class AudioListComponent {
   @Input() isLoading: boolean = false;
   @Input() currentPage: number = 1;
   @Input() selectedAudio: Audio;
-  @Input() url: string;
-  @Input() title: string;
   @Input() isPlaying: boolean = false;
   @Input() progress: { type: number; loaded: number; total: number; percent: number };
 
@@ -23,6 +21,4 @@ export class AudioListComponent {
   @Output() playing = new EventEmitter();
   @Output() pause = new EventEmitter();
   @Output() share = new EventEmitter<Audio>();
-
-  constructor() {}
 }

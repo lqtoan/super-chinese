@@ -37,6 +37,7 @@
   "SHOULD_STAY": "Tiếp tục {{ action }}",
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Thêm mới thành công!",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Cập nhật thành công!",
+  "NOTIFICATION.READ_SUCCESSFULLY": "Đã đọc thông báo!",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Xoá thành công!",
   "NOTIFICATION.UPDATE_DECLINE": "Bạn không có quyền để chỉnh sửa!",
   "NOTIFICATION.DELETE_DECLINE": "Bạn không có quyền để xoá!",

@@ -14,6 +14,7 @@
     <nz-input-group class="search-input"
                     [nzSuffix]="suffixIconSearch">
       <input nz-input
+             [disabled]="vm.isLoading"
              [(ngModel)]="keyword"
              [placeholder]="'ACTION.SEARCH' | translate"
              (keydown.enter)="keyword !== vm.keyword && !vm.isLoading ? onSearch(keyword) : $event.preventDefault()" />

@@ -38,6 +38,7 @@
   "NOTIFICATION.CREATE_SUCCESSFULLY": "创建成功！",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "更新成功！",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "删除成功！",
+  "NOTIFICATION.READ_SUCCESSFULLY": "Read successfully!",
   "NOTIFICATION.UPDATE_DECLINE": "You don't have permission to edit！",
   "NOTIFICATION.DELETE_DECLINE": "You don't have permission to delete！",
   "NOTIFICATION.COPIED": "Copy 成功!",

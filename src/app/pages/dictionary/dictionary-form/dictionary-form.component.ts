@@ -104,6 +104,8 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
     if (this.dictionaryForm.valid) {
       formValue.chinaVietnamWord = formValue.chinaVietnamWord ? formValue.chinaVietnamWord : '';
       formValue.reference = formValue.reference ? formValue.reference : '';
+
+      // Edit
       if (formValue.wordId) {
         formValue.updatedDate = new Date();
         this._store.updateWordEffect(formValue);
@@ -121,7 +123,9 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
         };
         this._notificationStore.createNotificationEffect(notification);
         this._store.patchState({ oldWord: formValue });
-      } else {
+      }
+      // Create
+      else {
         formValue.wordId = Guid.create().toString();
         formValue.createdDate = new Date();
         formValue.createdBy = this._userStore.getUserName();

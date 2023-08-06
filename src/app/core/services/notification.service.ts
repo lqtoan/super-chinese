@@ -25,6 +25,10 @@ export class NotificationService {
   }
 
   markAsRead(notificationId: string) {
-    return this._httpClient.patch<Notification>(`${this.API}/${notificationId ? notificationId : null}`, null);
+    return this._httpClient.patch<Notification>(`${this.API}/read/${notificationId ? notificationId : null}`, null);
+  }
+
+  markAsUnRead(notificationId: string) {
+    return this._httpClient.patch<Notification>(`${this.API}/unread/${notificationId ? notificationId : null}`, null);
   }
 }

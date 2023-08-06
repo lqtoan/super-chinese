@@ -3,7 +3,6 @@
 .word {
   position: relative;
   min-height: 69.77px;
-  // height: calc(100% / 8);
   padding: 0.25rem 0.5rem 0;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
   display: flex;
@@ -65,7 +64,7 @@
   }
   .actions {
     position: absolute;
-    top: 40px;
+    bottom: 4px;
     right: 0.5rem;
     font-size: 16px;
     .edit-button {

@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 import { NotificationService } from '../services/notification.service';
 import { finalize, switchMap, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface NotificationState {
   requestStatus: RequestStatus | null;
@@ -16,9 +18,13 @@ const initialState = {
   notifications: [],
 };
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class NotificationStore extends ComponentStore<NotificationState> {
-  constructor(private readonly _service: NotificationService) {
+  constructor(
+    private readonly _service: NotificationService,
+    private readonly _message: NzMessageService,
+    private readonly _translateService: TranslateService
+  ) {
     super(initialState);
   }
 
@@ -127,6 +133,23 @@ export class NotificationStore extends ComponentStore<NotificationState> {
     params$.pipe(
       switchMap((param) =>
         this._service.markAsRead(param).pipe(
+          tapResponse(
+            () => {
+              // this.markAsRead(data.notificationId);
+              this._message.success(this._translateService.instant('NOTIFICATION.READ_SUCCESSFULLY'));
+            },
+            (err: HttpErrorResponse) => {
+              // this._message.error(err.message);
+            }
+          )
+        )
+      )
+    )
+  );
+  readonly maskAsUnReadEffect = this.effect<string>((params$) =>
+    params$.pipe(
+      switchMap((param) =>
+        this._service.markAsUnRead(param).pipe(
           tapResponse(
             () => {
               // this.markAsRead(data.notificationId);

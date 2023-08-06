@@ -38,6 +38,7 @@
   "NOTIFICATION.CREATE_SUCCESSFULLY": "Create successfully!",
   "NOTIFICATION.UPDATE_SUCCESSFULLY": "Update successfully!",
   "NOTIFICATION.DELETE_SUCCESSFULLY": "Delete successfully!",
+  "NOTIFICATION.READ_SUCCESSFULLY": "Read successfully!",
   "NOTIFICATION.UPDATE_DECLINE": "You don't have permission to edit",
   "NOTIFICATION.DELETE_DECLINE": "You don't have permission to delete",
   "NOTIFICATION.COPIED": "Copy successfully!",

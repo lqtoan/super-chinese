@@ -1,11 +1,38 @@
 @import '/src/variables.scss';
 
+:host:hover {
+  ::-webkit-scrollbar {
+    display: block;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    visibility: visible;
+  }
+}
+
 .list {
   margin: 0;
+  padding: 0;
   height: calc(80vh - 8rem);
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 0.5px rgba($color: $gray, $alpha: 0.3) inset;
-  overflow: scroll;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
+}
+
+/****************** thumbnail ******************/
+::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  display: block;
+  visibility: hidden;
+  background: $linear-gradient;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

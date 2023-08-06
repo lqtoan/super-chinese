@@ -20,13 +20,17 @@
       <ng-container *ngIf="vm.notifications.length === 0">
         <p>{{ 'No notification' | translate }}</p>
       </ng-container>
-      <!-- <span *ngIf="vm.notifications.length > 0">Mark all as read</span> -->
-      <div [class.item__unread]="!notification.isRead"
-           (click)="onMarkAsRead(notification)"
+      <!-- <span (click)="onMarkAsRead()"
+            *ngIf="vm.notifications.length > 0">Mark all as read</span>
+      <span style="margin-left: auto;"
+            (click)="onMarkAsUnRead()"
+            *ngIf="vm.notifications.length > 0">Mark all as unread</span> -->
+      <div [class.item--unread]="!notification.isRead"
+           (click)="onClickNotification(notification)"
            class="item"
            *ngFor="let notification of vm.notifications"
            nz-menu-item>
-        <div class="item--content">
+        <div class="item__content">
           <span style="font-weight: 400;">{{ notification.content }}</span>
           <span style="font-weight: 300;">{{ notification.action | translate }}</span>
           <span style="font-weight: 500;">{{ notification.createdBy }}</span>
@@ -125,7 +129,7 @@
             </div>
           </div>
         </div>
-        <div class="item--date">{{ notification.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
+        <div class="item__date">{{ notification.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
         <!-- <button nz-button
                 nzType="primary"
                 *ngIf="notification.navigate || notification.extraContent">View details</button> -->

@@ -1,5 +1,4 @@
-<div id="list"
-     #wordListViewport
+<div #wordListViewport
      (scroll)="onScroll()"
      class="list">
   <ng-container *ngIf="isLoading; else wordListTemplate">

@@ -4,12 +4,15 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { RealtimeService } from '../realtime/realtime.service';
 import { io } from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { NotificationStore } from '../state/notification.store';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [NotificationStore, NzMessageService],
 })
 export class LayoutComponent implements OnInit {
   readonly year: Date = new Date();

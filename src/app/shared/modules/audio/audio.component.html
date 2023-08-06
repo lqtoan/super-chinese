@@ -37,7 +37,7 @@
   <div class="audio-list">
     <div *ngFor="let audio of audios | paginate : { itemsPerPage: 16, currentPage: currentPage }"
          class="audio"
-         [class.audio--selected]="selectedAudio.url === audio.url"
+         [class.audio--selected]="selectedAudio === audio"
          (click)="selectedAudio === audio && isPlaying ? pauseAudio.emit() : playAudio.emit(audio)">
       <div class="audio__type">{{ audio.type | translate }} {{ audio.grade | uppercase }}</div>
       <strong [class.audio__title--selected]="selectedAudio === audio"

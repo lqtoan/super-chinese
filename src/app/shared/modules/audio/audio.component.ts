@@ -19,6 +19,5 @@ export class AudioListComponent {
   @Output() playAudio = new EventEmitter<Audio>();
   @Output() pauseAudio = new EventEmitter();
   @Output() playing = new EventEmitter();
-  @Output() pause = new EventEmitter();
   @Output() share = new EventEmitter<Audio>();
 }

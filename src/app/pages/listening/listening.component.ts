@@ -125,10 +125,6 @@ export class ListeningComponent implements OnInit, OnDestroy {
     this._store.stopAudio();
   }
 
-  onPause() {
-    this._store.patchState({ isPlaying: false });
-  }
-
   onShare(audio: Audio) {
     let url = `${window.location.host}/listening?type=${this._type}&tab=${this.tabIndex}&page=${this.currentPage}&title=${audio.title}&url=${audio.url}`;
     navigator.clipboard.writeText(url);

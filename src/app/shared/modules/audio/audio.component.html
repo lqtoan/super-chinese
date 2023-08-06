@@ -4,10 +4,10 @@
 <ng-template #audioListTemplate>
   <div class="controls"
        *ngIf="selectedAudio">
-    <h4 class="audio__title">{{ title | translate }}</h4>
+    <h4 class="audio__title">{{ selectedAudio.title | translate }}</h4>
     <audio id="audioControls"
            (playing)="playing.emit()"
-           (pause)="pause.emit()"
+           (pause)="pauseAudio.emit()"
            controls
            autoplay
            preload="none"

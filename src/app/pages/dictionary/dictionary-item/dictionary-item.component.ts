@@ -7,19 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./dictionary-item.component.scss'],
 })
 export class DictionaryItemComponent {
-  @Input() word: Word = {
-    wordId: '',
-    display: '',
-    define: '',
-    pinyin: '',
-    hsk: '',
-    type: '',
-    chinaVietnamWord: '',
-    reference: '',
-    createdDate: new Date(),
-    createdBy: '',
-    updatedDate: new Date(),
-  };
+  @Input() word: Word;
 
   @Output() edit = new EventEmitter();
   @Output() delete = new EventEmitter();

@@ -3,8 +3,7 @@
 .navbar {
   background: $black;
   padding: 1rem calc(3 * 100vw / 12);
-  // height: 9rem;
-  height: 20vh;
+  height: $nav-height;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

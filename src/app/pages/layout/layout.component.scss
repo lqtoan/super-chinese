@@ -3,7 +3,7 @@
 
 .top {
   padding: 0 calc(3 * 100vw / 12);
-  height: 2rem;
+  height: $top-height;
   background: $linear-gradient;
   display: flex;
   justify-content: flex-end;
@@ -27,7 +27,7 @@
 
 .main {
   padding: 1rem calc(3 * 100vw / 12);
-  height: calc(80vh - 3.5rem);
+  height: $main-height;
   overflow-y: scroll;
 }
 

@@ -2,7 +2,7 @@
 
 .ant-dropdown-menu {
   padding: 0 !important;
-  max-height: calc(90vh - 2rem);
+  max-height: calc($main-height);
   border-radius: 5px 0 0 5px !important;
   overflow-y: auto;
 }

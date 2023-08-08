@@ -10,53 +10,61 @@
   align-items: baseline;
   align-content: flex-start;
   scroll-snap-align: start;
-  &--name {
+  &__name {
     color: $red;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 1px;
     font-family: 'Noto Serif SC', serif;
   }
-  &--pinyin {
+  &__pinyin {
     margin-left: 0.25rem;
     color: #81a1c1;
   }
-  &--chivi {
+  &__chivi {
     margin-left: 0.125rem;
     color: $blue;
   }
-  &--type {
-    margin-left: 0.5rem;
-    .ant-tag {
-      font-size: $font-size;
-      color: rgba($color: $gray, $alpha: 0.5);
+  &-tags {
+    margin-left: auto;
+    &__type {
+      margin-right: 0.25rem;
+      .ant-tag {
+        margin: 0;
+        font-size: $font-size;
+        padding: 0 0.25rem;
+        color: rgba($color: $gray, $alpha: 0.5);
+        border-radius: 7px;
+        border-width: 1px;
+      }
+    }
+    &__hsk {
+      .ant-tag {
+        margin: 0;
+        padding: 0 0.25rem;
+        width: 3rem;
+        font-weight: 500;
+        border-radius: 7px;
+        border-width: 1px;
+      }
     }
   }
-  &--define {
+
+  &__define {
     width: calc(100% - 2rem);
     color: $gray;
     font-weight: 500;
     word-wrap: break-word;
   }
-  &--hsk {
-    margin-left: auto;
-    .ant-tag {
-      margin: 0;
-      padding: 0 0.25rem;
-      width: 3rem;
-      font-weight: 500;
-      border-radius: 7.5px;
-      border-width: 1.5px;
-    }
-  }
-  &--date {
+
+  &__date {
     width: 90%;
     color: rgba($color: $gray, $alpha: 0.5);
     font-size: 9px;
     text-align: right;
     line-height: 100%;
   }
-  &--reference {
+  &__reference {
     color: #ebcb8b;
     font-size: 11px;
     font-weight: 600;

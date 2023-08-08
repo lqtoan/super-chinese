@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulatio
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
 import { skip, Subject, takeUntil } from 'rxjs';
-import { NotificationStore } from 'src/app/core/state/notification.store';
+import { NotificationStore } from '../../layout/notification/notification.store';
 import { Guid } from 'guid-typescript';
 
 @Component({

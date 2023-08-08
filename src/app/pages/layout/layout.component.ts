@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication/authentication.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { RealtimeService } from '../realtime/realtime.service';
 import { io } from 'socket.io-client';
-import { environment } from 'src/environments/environment';
-import { NotificationStore } from '../state/notification.store';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NotificationStore } from './notification/notification.store';
+import { environment } from '../../../environments/environment';
+import { RealtimeService } from './../../core/realtime/realtime.service';
+import { AuthenticationService } from './../../core/authentication/authentication.service';
 
 @Component({
   selector: 'app-layout',

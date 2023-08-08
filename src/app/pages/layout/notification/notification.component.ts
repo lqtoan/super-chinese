@@ -1,8 +1,8 @@
 import { RealtimeService } from 'src/app/core/realtime/realtime.service';
 import { Notification } from '@models/notification.model';
-import { NotificationStore } from '../../state/notification.store';
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
+import { NotificationStore } from './notification.store';
 
 @Component({
   selector: 'app-notification',
@@ -29,14 +29,27 @@ export class NotificationComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  onClickNotification(notification: Notification) {
-    if (notification.isRead) {
-      this._store.maskAsUnReadEffect(notification.notificationId);
+  onClickNotification(notification?: Notification) {
+    if (notification) {
+      if (notification.isRead) {
+        this._store.maskAsUnReadEffect(notification.notificationId);
+      } else {
+        this._store.maskAsReadEffect(notification.notificationId);
+      }
+      let updatedNotification = notification;
+      updatedNotification.isRead = !notification.isRead;
+      this._store.updateNotifications(updatedNotification);
     } else {
-      this._store.maskAsReadEffect(notification.notificationId);
+      this._store.markAsRead(null);
+      this._store.maskAsReadEffect('');
     }
-    let updatedNotification = notification;
-    updatedNotification.isRead = !notification.isRead;
-    this._store.updateNotifications(updatedNotification);
   }
+
+  deleteNotification(id: string) {
+    this._store.deleteNotificationEffect(id);
+  }
+
+  // onMaskAllAsRead() {
+  //   this._store.maskAsReadEffect();
+  // }
 }

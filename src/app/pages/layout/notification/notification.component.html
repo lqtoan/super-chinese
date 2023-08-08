@@ -6,7 +6,7 @@
        [nzPlacement]="'bottomRight'"
        nzTrigger="click">
     <nz-badge nzSize="small"
-              [nzCount]="vm.badgeCount">
+              nzDot="true">
       <span nz-icon
             nzType="history"
             nzTheme="outline"></span>
@@ -20,10 +20,10 @@
       <ng-container *ngIf="vm.notifications.length === 0">
         <p>{{ 'No notification' | translate }}</p>
       </ng-container>
-      <!-- <span (click)="onMarkAsRead()"
-            *ngIf="vm.notifications.length > 0">Mark all as read</span>
-      <span style="margin-left: auto;"
-            (click)="onMarkAsUnRead()"
+      <!-- <span (click)="onClickNotification()"
+            *ngIf="vm.notifications.length > 0">Mark all as read</span> -->
+      <!-- <span style="margin-left: auto;"
+            (click)="onClickNotification()"
             *ngIf="vm.notifications.length > 0">Mark all as unread</span> -->
       <div [class.item--unread]="!notification.isRead"
            (click)="onClickNotification(notification)"
@@ -130,9 +130,10 @@
           </div>
         </div>
         <div class="item__date">{{ notification.createdDate | date: 'hh:mm:ss dd/MM/yyyy' }}</div>
-        <!-- <button nz-button
+        <!-- <button class="item__delete"
+                nz-button
                 nzType="primary"
-                *ngIf="notification.navigate || notification.extraContent">View details</button> -->
+                (click)="deleteNotification(notification.notificationId); $event.stopPropagation()">Delete note</button> -->
       </div>
     </ul>
   </nz-dropdown-menu>

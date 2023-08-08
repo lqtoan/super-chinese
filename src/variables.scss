@@ -9,9 +9,10 @@ $gray: #4c566a;
 $red: #bf616a;
 $blue: #88c0d0;
 
-$big-space: 8rem;
-$medium-space: 4rem;
-$small-space: 0.5rem;
+$top-height: 1.5rem;
+$nav-height: 15vh;
+$bottom-height: 1.5rem;
+$main-height: calc(100vh - $top-height - $nav-height - $bottom-height);
 
 $linear-gradient: linear-gradient(
   135deg,

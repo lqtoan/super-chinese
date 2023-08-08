@@ -1,5 +1,9 @@
 @import '/src/variables.scss';
 
+:host {
+  transition: $transition;
+}
+
 :host:hover {
   ::-webkit-scrollbar {
     display: block;
@@ -13,7 +17,7 @@
 .list {
   margin: 0;
   padding: 0;
-  height: calc(80vh - 8rem);
+  height: calc($main-height - 4.5rem);
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 2px 0.5px rgba($color: $gray, $alpha: 0.3) inset;
@@ -24,15 +28,12 @@
 /****************** thumbnail ******************/
 ::-webkit-scrollbar {
   display: block;
-  width: 8px;
+  background: transparent;
+  width: 6px;
 }
 ::-webkit-scrollbar-thumb {
   display: block;
   visibility: hidden;
   background: $linear-gradient;
   border-radius: 4px;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent;
 }

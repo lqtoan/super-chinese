@@ -1,18 +1,18 @@
 import { Notification } from '@models/notification.model';
-import { NotificationStore } from '../../core/state/notification.store';
+import { NotificationStore } from '../layout/notification/notification.store';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DictionaryService } from '@services/dictionary.service';
-import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NzI18nService, en_US, zh_CN, vi_VN } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import { LanguageService } from 'src/app/core/layout/change-language/language.service';
 import { UserProfileStore } from '../../core/state/user-profile.store';
 import { DictionaryStore } from './dictionary.store';
 import { Word } from '@models/word.model';
 import { RealtimeService } from 'src/app/core/realtime/realtime.service';
+import { LanguageService } from '../layout/change-language/language.service';
 
 @Component({
   selector: 'app-dictionary',

@@ -1,48 +1,51 @@
 <li class="word">
   <ng-content select="[slot=index]"></ng-content>
   <span *ngIf="word.updatedDate; else createdDate"
-        class="word--date">
+        class="word__date">
     {{ 'UPDATED' | translate }}: {{ word.updatedDate | date : 'dd/MM/yyyy' }}</span>
   <ng-template #createdDate>
-    <span class="word--date"> {{ 'CREATED' | translate }}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
+    <span class="word__date"> {{ 'CREATED' | translate }}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
   </ng-template>
-  <span class="word--name">{{ word.display }}</span>
-  <span class="word--pinyin">[{{ word.pinyin }}]</span>
+  <span class="word__name">{{ word.display }}</span>
+  <span class="word__pinyin">[{{ word.pinyin }}]</span>
   <span *ngIf="word.chinaVietnamWord !== ''"
-        class="word--chivi">({{ word.chinaVietnamWord | titlecase }})</span>
-  <span *ngIf="word.type"
-        class="word--type"><nz-tag>{{ word.type | translate | lowercase }}</nz-tag></span>
-  <span class="word--hsk">
-    <ng-container [ngSwitch]="word.hsk">
-      <ng-container *ngSwitchCase="'hsk1'">
-        <nz-tag [nzColor]="'cyan'">HSK 1</nz-tag>
+        class="word__chivi">({{ word.chinaVietnamWord | titlecase }})</span>
+  <div class="word-tags">
+    <span *ngIf="word.type"
+          class="word-tags__type"><nz-tag>{{ word.type | translate | lowercase }}</nz-tag></span>
+    <span class="word-tags__hsk">
+      <ng-container [ngSwitch]="word.hsk">
+        <ng-container *ngSwitchCase="'hsk1'">
+          <nz-tag [nzColor]="'cyan'">HSK 1</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk2'">
+          <nz-tag [nzColor]="'blue'">HSK 2</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk3'">
+          <nz-tag [nzColor]="'geekblue'">HSK 3</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk4'">
+          <nz-tag [nzColor]="'purple'">HSK 4</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk5'">
+          <nz-tag [nzColor]="'volcano'">HSK 5</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk6'">
+          <nz-tag [nzColor]="'red'">HSK 6</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'hsk79'">
+          <nz-tag [nzColor]="'magenta'">HSK 7+</nz-tag>
+        </ng-container>
+        <ng-container *ngSwitchCase="'z---'">
+          <nz-tag>--------</nz-tag>
+        </ng-container>
       </ng-container>
-      <ng-container *ngSwitchCase="'hsk2'">
-        <nz-tag [nzColor]="'blue'">HSK 2</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'hsk3'">
-        <nz-tag [nzColor]="'geekblue'">HSK 3</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'hsk4'">
-        <nz-tag [nzColor]="'purple'">HSK 4</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'hsk5'">
-        <nz-tag [nzColor]="'volcano'">HSK 5</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'hsk6'">
-        <nz-tag [nzColor]="'red'">HSK 6</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'hsk79'">
-        <nz-tag [nzColor]="'magenta'">HSK 7+</nz-tag>
-      </ng-container>
-      <ng-container *ngSwitchCase="'z---'">
-        <nz-tag>--------</nz-tag>
-      </ng-container>
-    </ng-container>
-  </span>
-  <span class="word--define">{{ word.define | translate }}</span>
+    </span>
+  </div>
+
+  <span class="word__define">{{ word.define | translate }}</span>
   <span *ngIf="word.reference"
-        class="word--reference">{{ 'DICTIONARY.REFERENCE' | translate }}: {{ word.reference }}</span>
+        class="word__reference">{{ 'DICTIONARY.REFERENCE' | translate }}: {{ word.reference }}</span>
 
   <div class="actions">
     <span nz-tooltip

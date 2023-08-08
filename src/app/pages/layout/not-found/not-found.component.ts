@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
-import { environment } from 'src/environments/environment';
-import { RealtimeService } from '../../realtime/realtime.service';
+import { RealtimeService } from '../../../core/realtime/realtime.service';
 
 @Component({
   selector: 'app-not-found',

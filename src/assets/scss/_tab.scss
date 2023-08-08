@@ -42,7 +42,7 @@
 }
 
 nz-tabset {
-  height: calc(80vh - 6rem);
+  height: calc($main-height - 2rem);
   overflow-y: hidden;
 }
 

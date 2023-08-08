@@ -1,6 +1,9 @@
 @import '/src/variables.scss';
 @import 'spinner';
 
+$control-height: 7rem;
+$pagination-height: 5vh;
+
 ::ng-deep {
   .ant-progress-status-success .ant-progress-bg {
     background: unset;
@@ -23,7 +26,7 @@
   margin-top: 0.5rem;
   position: sticky;
   padding: 1rem;
-  height: 7rem;
+  height: $control-height;
   background: $second-linear-gradient;
   display: flex;
   flex-direction: column;
@@ -40,7 +43,7 @@
 }
 
 .pagination {
-  height: 5vh;
+  height: $pagination-height;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +72,7 @@
 
 .audio-list {
   padding: 0 1px 0.5rem;
-  height: calc(75vh - 15.5rem);
+  height: calc($main-height - $pagination-height - $control-height - 4rem);
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
   grid-template-columns: repeat(1, 1fr);

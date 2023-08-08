@@ -3,6 +3,7 @@
 .ant-dropdown-menu {
   padding: 0 !important;
   max-height: calc($main-height);
+  width: 25vw;
   border-radius: 5px 0 0 5px !important;
   overflow-y: auto;
 }
@@ -62,4 +63,16 @@
 
 .item:hover {
   background: $white;
+}
+
+@media screen and (max-width: $tablet) {
+  .ant-dropdown-menu {
+    width: calc(37.5vw + 100px);
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .ant-dropdown-menu {
+    width: 300px;
+  }
 }

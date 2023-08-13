@@ -15,10 +15,11 @@
   <nz-dropdown-menu #notiMenu="nzDropdownMenu">
     <nz-spin *ngIf="vm.isLoading"
              nzSimple></nz-spin>
-    <ul *ngIf="!vm.isLoading"
+    <ul class="list"
+        *ngIf="!vm.isLoading"
         nz-menu>
       <ng-container *ngIf="vm.notifications.length === 0">
-        <p>{{ 'No notification' | translate }}</p>
+        <p class="empty">{{ 'No notification' | translate }}</p>
       </ng-container>
       <!-- <span (click)="onClickNotification()"
             *ngIf="vm.notifications.length > 0">Mark all as read</span> -->

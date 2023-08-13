@@ -2,7 +2,7 @@
 
 .word {
   position: relative;
-  min-height: 69.77px;
+  min-height: 82.5px;
   padding: 0.25rem 0.5rem 0;
   border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
   display: flex;
@@ -11,18 +11,18 @@
   align-content: flex-start;
   scroll-snap-align: start;
   &__name {
+    width: 100%;
     color: $red;
     font-size: 24px;
-    line-height: 100%;
     letter-spacing: 1px;
     font-family: 'Noto Serif SC', serif;
   }
   &__pinyin {
-    margin-left: 0.25rem;
+    margin-right: 0.25rem;
     color: #81a1c1;
   }
   &__chivi {
-    margin-left: 0.125rem;
+    margin-right: 0.125rem;
     color: $blue;
   }
   &-tags {
@@ -65,6 +65,7 @@
     line-height: 100%;
   }
   &__reference {
+    width: 100%;
     color: #ebcb8b;
     font-size: 11px;
     font-weight: 600;
@@ -72,7 +73,7 @@
   }
   .actions {
     position: absolute;
-    bottom: 4px;
+    bottom: 0;
     right: 0.5rem;
     font-size: 16px;
     .edit-button {

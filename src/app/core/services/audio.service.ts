@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Audio } from '@models/audio.model';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AudioType } from '@enums/audio-type.enum';
 
 @Injectable({

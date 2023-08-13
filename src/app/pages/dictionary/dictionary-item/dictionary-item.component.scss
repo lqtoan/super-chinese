@@ -12,6 +12,7 @@
   scroll-snap-align: start;
   &__name {
     width: 100%;
+    z-index: 2;
     color: $red;
     font-size: 24px;
     letter-spacing: 1px;
@@ -22,11 +23,13 @@
     color: #81a1c1;
   }
   &__chivi {
-    margin-right: 0.125rem;
     color: $blue;
   }
   &-tags {
-    margin-left: auto;
+    z-index: 1;
+    position: absolute;
+    top: 24px;
+    right: 0.5rem;
     &__type {
       margin-right: 0.25rem;
       .ant-tag {

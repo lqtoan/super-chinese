@@ -7,9 +7,6 @@
     <span class="word__date"> {{ 'CREATED' | translate }}: {{ word.createdDate | date : 'dd/MM/yyyy' }}</span>
   </ng-template>
   <span class="word__name">{{ word.display }}</span>
-  <span class="word__pinyin">[{{ word.pinyin }}]</span>
-  <span *ngIf="word.chinaVietnamWord !== ''"
-        class="word__chivi">({{ word.chinaVietnamWord | titlecase }})</span>
   <div class="word-tags">
     <span *ngIf="word.type"
           class="word-tags__type"><nz-tag>{{ word.type | translate | lowercase }}</nz-tag></span>
@@ -42,6 +39,10 @@
       </ng-container>
     </span>
   </div>
+  <span class="word__pinyin">[{{ word.pinyin }}]</span>
+  <span *ngIf="word.chinaVietnamWord !== ''"
+        class="word__chivi">({{ word.chinaVietnamWord | titlecase }})</span>
+
 
   <span class="word__define">{{ word.define | translate }}</span>
   <span *ngIf="word.reference"

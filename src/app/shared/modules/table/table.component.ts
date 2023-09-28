@@ -23,18 +23,6 @@ import { Subject, takeUntil } from 'rxjs';
   // encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent<RecordType extends { [key: string]: any }, IdType> implements AfterViewInit, OnDestroy {
-  private _checkedKeys: Set<IdType> = new Set<IdType>();
-  get checkedKeys() {
-    return Array.from(this._checkedKeys).filter(Boolean);
-  }
-  @Input() set checkedKeys(value: IdType[]) {
-    this._checkedKeys = new Set(value.filter(Boolean));
-    this.refreshCheckedStatus();
-  }
-  private allRecordsChecked = false;
-  private indeterminate = false;
-
-  trackByIndex() {}
   @Input() records: RecordType[] = [];
   @Input() idField: keyof RecordType = '_id';
   @Input() total: number = this.records.length;
@@ -42,6 +30,22 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
   @Input() headers: TableHeader<RecordType>[] = [];
   @Input() isSelectable: boolean = false;
   @Input() clientPagination: boolean = false;
+  private _checkedKeys: Set<IdType> = new Set<IdType>();
+  private allRecordsChecked = false;
+  private indeterminate = false;
+
+  constructor(private readonly cdr: ChangeDetectorRef, private readonly excelService: ExcelService) {}
+
+  get checkedKeys() {
+    return Array.from(this._checkedKeys).filter(Boolean);
+  }
+
+  @Input() set checkedKeys(value: IdType[]) {
+    this._checkedKeys = new Set(value.filter(Boolean));
+    this.refreshCheckedStatus();
+  }
+
+  trackByIndex() {}
 
   // @Output() readonly checkedKeysChange = new EventEmitter<IdType[]>();
 
@@ -52,16 +56,9 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly cdr: ChangeDetectorRef, private readonly excelService: ExcelService) {}
-
   ngAfterContentInit() {
     this.customCells.changes.pipe(takeUntil(this.destroy$)).subscribe(() => this.mapCustomCells());
     this.mapCustomCells();
-  }
-
-  private mapCustomCells() {
-    this.cellTemplates = this.customCells.reduce((acc, item) => ({ ...acc, [item.type || '']: item.template }), {});
-    this.cdr.markForCheck();
   }
 
   ngAfterViewInit() {
@@ -76,8 +73,18 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
       });
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   isChecked(id: IdType): boolean {
     return this._checkedKeys.has(id);
+  }
+
+  private mapCustomCells() {
+    this.cellTemplates = this.customCells.reduce((acc, item) => ({ ...acc, [item.type || '']: item.template }), {});
+    this.cdr.markForCheck();
   }
 
   private onCheck(id: IdType, checked: boolean) {
@@ -116,10 +123,5 @@ export class TableComponent<RecordType extends { [key: string]: any }, IdType> i
 
   private onExportExcel() {
     this.excelService.exportExcel(this.records, this.headers);
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

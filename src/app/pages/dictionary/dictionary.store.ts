@@ -38,13 +38,6 @@ const initialState = {
 
 @Injectable()
 export class DictionaryStore extends ComponentStore<DictionaryState> {
-  constructor(
-    private readonly _service: DictionaryService,
-    private readonly _message: NzMessageService,
-    private readonly _translateService: TranslateService
-  ) {
-    super(initialState);
-  }
   readonly vm$ = this.select(
     ({ gettingStatus, filterType, words, keyword, total }) => ({
       isLoading: gettingStatus === 'loading',
@@ -263,4 +256,12 @@ export class DictionaryStore extends ComponentStore<DictionaryState> {
     )
   );
   //#region
+
+  constructor(
+    private readonly _service: DictionaryService,
+    private readonly _message: NzMessageService,
+    private readonly _translateService: TranslateService
+  ) {
+    super(initialState);
+  }
 }

@@ -16,12 +16,6 @@ import { Guid } from 'guid-typescript';
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryFormComponent implements OnInit, OnDestroy {
-  constructor(
-    private readonly _store: DictionaryStore,
-    private readonly _formBuilder: FormBuilder,
-    private readonly _userStore: UserProfileStore,
-    private readonly _notificationStore: NotificationStore
-  ) {}
   readonly formVm$ = this._store.formVm$;
 
   readonly dictionaryForm: FormGroup = this._formBuilder.group({
@@ -43,6 +37,13 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
   private _oldWord: Partial<Word> | null;
 
   readonly destroy$ = new Subject<void>();
+
+    constructor(
+    private readonly _store: DictionaryStore,
+    private readonly _formBuilder: FormBuilder,
+    private readonly _userStore: UserProfileStore,
+    private readonly _notificationStore: NotificationStore
+  ) {}
 
   ngOnInit(): void {
     this.formVm$.pipe(takeUntil(this.destroy$)).subscribe((res) => {

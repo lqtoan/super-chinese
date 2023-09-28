@@ -16,6 +16,7 @@ import { AuthenticationService } from './../../core/authentication/authenticatio
 })
 export class LayoutComponent implements OnInit {
   readonly year: Date = new Date();
+
   constructor(
     public readonly authService: AuthenticationService,
     private readonly _notification: NzNotificationService,

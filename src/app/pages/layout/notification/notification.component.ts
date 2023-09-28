@@ -11,10 +11,10 @@ import { NotificationStore } from './notification.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationComponent implements OnInit, OnDestroy {
-  constructor(private readonly _store: NotificationStore, private readonly _realtimeService: RealtimeService) {}
-
   readonly vm$ = this._store.vm$;
   readonly destroy$ = new Subject<void>();
+
+  constructor(private readonly _store: NotificationStore, private readonly _realtimeService: RealtimeService) {}
 
   ngOnInit(): void {
     this._store.loadAllNotificationsEffect();

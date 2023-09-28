@@ -27,10 +27,6 @@ const initialState = {
 
 @Injectable()
 export class UserProfileStore extends ComponentStore<UserProfileState> {
-  constructor(private readonly _service: UserProfileService) {
-    super(initialState);
-  }
-
   readonly vm$ = this.select(({ requestStatus, profile }) => ({ requestStatus, profile }), { debounce: true });
 
   readonly loadData = this.effect(($) =>
@@ -59,4 +55,8 @@ export class UserProfileStore extends ComponentStore<UserProfileState> {
 
   readonly getUserName = (): string => this.get().profile.name;
   readonly getEmail = (): string => this.get().profile.email;
+
+  constructor(private readonly _service: UserProfileService) {
+    super(initialState);
+  }
 }

@@ -9,9 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   providers: [UserProfileStore],
 })
 export class UserProfileComponent implements OnInit {
-  constructor(private readonly _store: UserProfileStore) {}
-
   readonly vm$ = this._store.vm$;
+
+  constructor(private readonly _store: UserProfileStore) {}
 
   ngOnInit(): void {
     this._store.loadData();

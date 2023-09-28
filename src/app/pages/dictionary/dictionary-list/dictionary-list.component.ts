@@ -19,7 +19,7 @@ export class DictionaryListComponent {
   @ViewChild('wordListViewport', { static: false }) wordListTemplate: ElementRef<HTMLDivElement>;
 
   onScroll(): void {
-    let element = this.wordListTemplate.nativeElement;
+    const element = this.wordListTemplate.nativeElement;
     if (element.scrollTop >= element.scrollHeight - element.offsetHeight) {
       // this.loadMore.emit();
     }

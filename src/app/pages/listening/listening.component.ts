@@ -35,16 +35,16 @@ export class ListeningComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     combineLatest([this.vm$, this._activatedRoute.queryParams])
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-        this.currentPage = res[1]['page'];
+      .subscribe(([vm, queryParams]) => {
+        this.currentPage = queryParams['page'];
         // Don't re-load if type or tab no change
-        if (res[1]['tab'] !== this.tabIndex || res[1]['type'] !== this._type) {
-          this._store.loadData([res[1]['tab'] ? parseInt(res[1]['tab']) : 0, res[1]['type']]);
-          this._type = res[1]['type'];
-          this.tabIndex = res[1]['tab'];
+        if (queryParams['tab'] !== this.tabIndex || queryParams['type'] !== this._type) {
+          this._store.loadData([queryParams['tab'] ? parseInt(queryParams['tab']) : 0, queryParams['type']]);
+          this._type = queryParams['type'];
+          this.tabIndex = queryParams['tab'];
         }
-        if (!res[0].isLoading) {
-          this.selectedAudio = res[0].data.find((v) => v.url === res[1]['url']);
+        if (!vm.isLoading) {
+          this.selectedAudio = vm.data.find((v) => v.url === queryParams['url']);
         }
         setTimeout(() => {
           document.querySelector('.audio--selected')?.scrollIntoView({ block: 'start', behavior: 'smooth' });

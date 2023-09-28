@@ -7,7 +7,7 @@ import { finalize } from 'rxjs/operators';
 @Injectable()
 export class CorsInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    let headers = req.headers.set('Access-Control-Allow-Origin', '*');
+    const headers = req.headers.set('Access-Control-Allow-Origin', '*');
     const reqClone = req.clone({
       headers,
     });

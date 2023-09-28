@@ -1,10 +1,10 @@
 <ng-container *ngIf="vm$ | async as vm">
   <div class="top">
-    <button [nzLoading]="vm.isLoading"
-            [disabled]="vm.isLoading"
+    <button class="create-button"
             nz-button
             nzType="primary"
-            class="create-button"
+            [nzLoading]="vm.isLoading"
+            [disabled]="vm.isLoading"
             (click)="onCreate()">
       <span nz-icon
             nzType="plus"
@@ -14,8 +14,8 @@
     <nz-input-group class="search-input"
                     [nzSuffix]="suffixIconSearch">
       <input nz-input
-             [disabled]="vm.isLoading"
              [(ngModel)]="keyword"
+             [disabled]="vm.isLoading"
              [placeholder]="'ACTION.SEARCH' | translate"
              (keydown.enter)="keyword !== vm.keyword && !vm.isLoading ? onSearch(keyword) : $event.preventDefault()" />
     </nz-input-group>
@@ -64,12 +64,12 @@
       'TOTALS' | translate : { totals: vm.total }
       }}</strong>
   </div>
-  <app-dictionary-list (edit)="onEdit($event)"
-                       (delete)="onDelete($event)"
-                       [isLoading]="vm.isLoading"
+  <app-dictionary-list [isLoading]="vm.isLoading"
                        [isSuccess]="vm.isSuccess"
                        [words]="vm.words"
-                       [filterType]="vm.filterType"></app-dictionary-list>
+                       [filterType]="vm.filterType"
+                       (edit)="onEdit($event)"
+                       (delete)="onDelete($event)"></app-dictionary-list>
 </ng-container>
 
 <app-dictionary-form></app-dictionary-form>

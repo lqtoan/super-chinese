@@ -22,10 +22,6 @@ const initialState = {
 
 @Injectable()
 export class ListeningStore extends ComponentStore<ListeningState> {
-  constructor(private readonly _service: AudioService) {
-    super(initialState);
-  }
-
   readonly vm$ = this.select(
     ({ data, isLoading, isPlaying, progress }) => ({
       data,
@@ -120,4 +116,8 @@ export class ListeningStore extends ComponentStore<ListeningState> {
     )
   );
   //#endregion
+
+  constructor(private readonly _service: AudioService) {
+    super(initialState);
+  }
 }

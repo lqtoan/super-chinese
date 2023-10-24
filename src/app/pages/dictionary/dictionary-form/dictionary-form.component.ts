@@ -38,7 +38,7 @@ export class DictionaryFormComponent implements OnInit, OnDestroy {
 
   readonly destroy$ = new Subject<void>();
 
-    constructor(
+  constructor(
     private readonly _store: DictionaryStore,
     private readonly _formBuilder: FormBuilder,
     private readonly _userStore: UserProfileStore,

@@ -72,7 +72,7 @@ $pagination-height: 5vh;
 
 .audio-list {
   padding: 0 1px 0.5rem;
-  height: calc($main-height - $pagination-height - $control-height - 4rem);
+  height: calc($main-height - $pagination-height - $control-height - 4.5rem);
   background: rgba($color: $white, $alpha: 0.1);
   display: grid;
   grid-template-columns: repeat(1, 1fr);

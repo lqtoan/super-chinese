@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-change-language',
   templateUrl: './change-language.component.html',
   styleUrls: ['./change-language.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangeLanguageComponent implements OnInit {
   currentLanguage: string = '';

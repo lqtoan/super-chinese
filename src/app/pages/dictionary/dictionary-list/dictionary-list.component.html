@@ -7,7 +7,7 @@
     </div>
   </ng-container>
   <ng-template #wordListTemplate>
-    <ng-container *ngIf="words.length === 0">
+    <ng-container *ngIf="words.length === 0 && filterType === 'search'">
       <img [style.margin]="'auto'"
            [style.padding.rem]="'0.25'"
            [style.width.%]="'75'"

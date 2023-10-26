@@ -5,7 +5,6 @@ import { Audio } from '@models/audio.model';
   selector: 'app-audio-list',
   templateUrl: './audio.component.html',
   styleUrls: ['./audio.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AudioListComponent {
   @Input() audios: Audio[] = [];

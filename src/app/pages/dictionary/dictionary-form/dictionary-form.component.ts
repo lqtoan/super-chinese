@@ -1,7 +1,7 @@
 import { Notification } from '@models/notification.model';
 import { UserProfileStore } from '../../../core/state/user-profile.store';
 import { DictionaryStore } from './../dictionary.store';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Word } from '@models/word.model';
 import { skip, Subject, takeUntil } from 'rxjs';
@@ -12,7 +12,6 @@ import { Guid } from 'guid-typescript';
   selector: 'app-dictionary-form',
   templateUrl: './dictionary-form.component.html',
   styleUrls: ['./dictionary-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class DictionaryFormComponent implements OnInit, OnDestroy {

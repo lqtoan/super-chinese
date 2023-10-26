@@ -20,14 +20,6 @@ const initialState = {
 
 @Injectable()
 export class NotificationStore extends ComponentStore<NotificationState> {
-  constructor(
-    private readonly _service: NotificationService,
-    private readonly _message: NzMessageService,
-    private readonly _translateService: TranslateService
-  ) {
-    super(initialState);
-  }
-
   readonly vm$ = this.select(
     ({ requestStatus, notifications }) => ({
       requestStatus,
@@ -189,4 +181,12 @@ export class NotificationStore extends ComponentStore<NotificationState> {
       )
     )
   );
+
+  constructor(
+    private readonly _service: NotificationService,
+    private readonly _message: NzMessageService,
+    private readonly _translateService: TranslateService
+  ) {
+    super(initialState);
+  }
 }

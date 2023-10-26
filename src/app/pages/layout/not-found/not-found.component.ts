@@ -12,6 +12,7 @@ export class NotFoundComponent implements OnInit {
   constructor(private readonly _realtimeService: RealtimeService) {}
 
   ngOnInit(): void {}
+
   onClick() {
     // this.service.sendToken();
   }

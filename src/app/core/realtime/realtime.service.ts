@@ -6,18 +6,15 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class RealtimeService {
-  private SOCKET_ENDPOINT = environment.webSocket;
-  ws: Socket;
+  socket: Socket;
   constructor() {}
 
   listenToTheSocket(channel: RealtimeChannel): Observable<any> {
     let data$ = new Subject<any>();
-    // this.ws = io('https://super-chinese.cyclic.app', { withCredentials: true });
-    this.ws = io(environment.webSocket, { autoConnect: true, transports: ['websocket'] });
-    this.ws.connect();
+    // this.socket = io('https://super-chinese.cyclic.app', { withCredentials: true });
+    this.socket = io(environment.webSocket, { autoConnect: true, transports: ['websocket'] });
 
-    this.ws.on(channel, (data: string) => {
-      console.log(this.ws);
+    this.socket.on(channel, (data: string) => {
       if (data) {
         data$.next(data);
       }
@@ -26,6 +23,6 @@ export class RealtimeService {
   }
 
   sendMessage(channel: string, message: string) {
-    this.ws.emit(channel, { message: message });
+    this.socket.emit(channel, { message: message });
   }
 }

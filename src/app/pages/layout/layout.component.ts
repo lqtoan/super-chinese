@@ -25,12 +25,12 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     // this.firstNotification();
-    // this._realtimeService.socket = io(environment.webSocket, { autoConnect: true, transports: ['websocket'] });
-    // if (this._realtimeService.socket.connected) {
-    // } else {
-    //   // this.firstNotification();
-    //   this._realtimeService.socket.connect();
-    // }
+    this._realtimeService.socket = io(environment.webSocket, { autoConnect: true, transports: ['websocket'] });
+    if (this._realtimeService.socket.connected) {
+    } else {
+      // this.firstNotification();
+      this._realtimeService.socket.connect();
+    }
 
     this._realtimeService.listenToTheSocket('user').subscribe((res) => {
       if (res) this._realtimeService.socket.connect();

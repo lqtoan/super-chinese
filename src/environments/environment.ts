@@ -17,9 +17,10 @@ export const environment = {
     redirectUri: window.location.origin,
   },
   authApi: 'https://hsk-1.us.auth0.com',
-  // api: 'http://localhost:3000/api/', // .NET core
   api: 'http://localhost:8000/api/', // NodeJs
   webSocket: 'http://localhost:8000',
+  // api: 'https://silky-jamie-superchinese-188ed003.koyeb.app/api/',
+  // webSocket: 'wss://silky-jamie-superchinese-188ed003.koyeb.app/api',
 };
 
 /*

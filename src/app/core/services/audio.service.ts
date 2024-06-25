@@ -11,7 +11,7 @@ export class AudioService {
   constructor(private readonly _httpClient: HttpClient) {}
 
   getAllAudios(index: number, audioType: AudioType): Observable<Audio[]> {
-    const type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise';
+    let type: string = audioType === 'CURRICULUM' ? 'curriculum' : 'exercise';
     return this._httpClient.get<Audio[]>(`assets/mock/hsk${index + 1}.${type}.json`);
   }
 

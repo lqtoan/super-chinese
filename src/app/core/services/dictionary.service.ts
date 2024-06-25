@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class DictionaryService {
   constructor(private readonly _httpClient: HttpClient) {}
 
-  private API = `${environment.api}words`;
+  private readonly API = `${environment.api}words`;
 
   getAllWords(): Observable<Word[]> {
     return this._httpClient.get<Word[]>(`${this.API}`);

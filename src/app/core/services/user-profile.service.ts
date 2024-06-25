@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class UserProfileService {
   constructor(private readonly _httpClient: HttpClient) {}
 
-  private API = `${environment.authApi}`;
+  private readonly API = `${environment.authApi}`;
 
   getUserProfile(): Observable<UserProfile> {
     const url = `${this.API}/userinfo`;

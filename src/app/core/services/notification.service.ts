@@ -9,7 +9,7 @@ import { Guid } from 'guid-typescript';
 export class NotificationService {
   constructor(private readonly _httpClient: HttpClient) {}
 
-  private API = `${environment.api}notifications`;
+  private readonly API = `${environment.api}notifications`;
 
   getAllNotifications(): Observable<Notification[]> {
     return this._httpClient.get<Notification[]>(`${this.API}`);
